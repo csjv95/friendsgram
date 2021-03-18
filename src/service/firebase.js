@@ -1,16 +1,18 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDADottT7ntCj8zHBCw8zlSn3TIgbhMD7w",
-  authDomain: "instargram-graph.firebaseapp.com",
-  projectId: "instargram-graph",
-  storageBucket: "instargram-graph.appspot.com",
-  messagingSenderId: "477003740312",
-  appId: "1:477003740312:web:6ce2dbe65a9858a40fcced",
-  measurementId: "G-ETCQLQZ6H7",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGEING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
-firebase.initializeApp(firebaseConfig);
-const firestore  = firebase.firestore();
-
-export {firestore};
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const firestore = firebaseApp.firestore();
+const firebaseAuth = firebaseApp.auth();
+export { firestore, firebaseApp, firebaseAuth };

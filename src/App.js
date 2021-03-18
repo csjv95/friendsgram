@@ -1,32 +1,17 @@
-import { useCallback, useEffect, useState } from "react";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import FacebookLogin from "./componet/FacebookLogin";
-import { firestore } from "./service/firebase";
+import Login from "./componet/Login/Login";
 
 function App() {
-  let [tasksData, setTaskData] = useState([]);
-
-  const fetchData = useCallback(() => {
-    let tasksData = [];
-    firestore
-      .collection("my")
-      .get()
-      .then((docs) => {
-        docs.forEach((doc) => {
-          tasksData.push({ name: doc.data().name, age: doc.data().age, sexy: doc.data().sexy});
-        });
-        setTaskData((preTasks) => preTasks.concat(tasksData));
-      });
-  },[]);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
   return (
     <>
-      <FacebookLogin />
-      {console.log(tasksData)};
+      <Switch>
+        <Route path="/login" component={Login}/>
+        <Route path="/facebook" component={FacebookLogin} />
+      </Switch>
+      
     </>
   );
 }
