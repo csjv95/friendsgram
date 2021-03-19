@@ -8,10 +8,9 @@ function App() {
   return (
     <>
       <Switch>
-        <Route path="/login" component={Login}/>
+        <Route path="/" exact component={Login} />
         <Route path="/facebook" component={FacebookLogin} />
       </Switch>
-      
     </>
   );
 }
