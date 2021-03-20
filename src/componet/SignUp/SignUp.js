@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import googleAuth from "../../service/google_auth";
+import { Link } from "react-router-dom";
+import writeUserData from "../../service/writeUserData";
 
 import {
   StContainerDiv,
@@ -15,22 +18,42 @@ import {
   StLoginFormDown,
   StSignUpSpan,
 } from "../../Global/StLogin/StLogin";
-import { Link } from "react-router-dom";
+
 
 const SignUp = () => {
+  const [userData, setUserData] = useState({
+    email: "",
+    name: "",
+    nicname: "",
+    password: "",
+  });
 
-  
+  const onClick = (event) => {
+    event.preventDefault();
+    googleAuth();
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    writeUserData(userData);
+  };
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setUserData({ ...userData, [name]: value });
+  };
 
   return (
     <StContainerDiv>
       <StLoginSection>
-        <StLoginFormUp >
+        <StLoginFormUp onSubmit={handleSubmit}>
           <StTitle>Instargram</StTitle>
-          <StAuthLoginBtn >
+          <StAuthLoginBtn onClick={onClick}>
             <StGoogleSquareIcon />
             Google로 로그인
           </StAuthLoginBtn>
-          <StAuthLoginBtn >
+          <StAuthLoginBtn onClick={onClick}>
             <StFacebookSquareIcon />
             FaceBook로 로그인
           </StAuthLoginBtn>
@@ -39,10 +62,36 @@ const SignUp = () => {
             <li>또는</li>
             <LineLi />
           </StContainerOr>
-          <StLoginInput type="email" placeholder="이메일" />
-          <StLoginInput type="text" placeholder="성명" />
-          <StLoginInput type="text" placeholder="사용자 이름" />
-          <StLoginInput type="pw" placeholder="비밀번호" />
+          <StLoginInput
+            type="email"
+            placeholder="이메일"
+            name="email"
+            vlaue={userData.email}
+            onChange={handleChange}
+          />
+          <StLoginInput
+            type="text"
+            placeholder="성명"
+            name="name"
+            value={userData.name}
+            onChange={handleChange}
+          />
+          <StLoginInput
+            type="text"
+            autoComplete="username"
+            placeholder="사용자 이름"
+            name="nicname"
+            value={userData.nicname}
+            onChange={handleChange}
+          />
+          <StLoginInput
+            type="password"
+            autoComplete="current-password"
+            placeholder="비밀번호"
+            name="password"
+            value={userData.password}
+            onChange={handleChange}
+          />
           <StAccessBtn>가입</StAccessBtn>
           <div>
             가입하면 Instagram의 약관, 데이터 정책 및 쿠키 정책에 동의하게
