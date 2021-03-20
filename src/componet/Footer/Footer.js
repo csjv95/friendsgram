@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const Footer = () => {
   return (
+
     <StFooterEl>
       <StFooterUl>
         <StFooterLi>소개</StFooterLi>
