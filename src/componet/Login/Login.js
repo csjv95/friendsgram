@@ -1,5 +1,5 @@
 import googleAuth from "../../service/google_auth";
-import Footer from "../Footer/Footer";
+import LoginFooter from "../LoginFooter/LoginFooter";
 import { Link } from "react-router-dom";
 import {
   StContainerDiv,
@@ -53,7 +53,7 @@ const Login = () => {
           </StSignUpSpan>
         </StLoginFormDown>
       </StLoginSection>
-      <Footer />
+      <LoginFooter />
     </StContainerDiv>
   );
 };

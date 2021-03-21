@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Footer = () => {
+const LoginFooter = () => {
   return (
 
     <StFooterEl>
@@ -70,4 +70,4 @@ const StLanguage = styled.select`
   color: #808080;
 `;
 
-export default Footer;
+export default LoginFooter;
