@@ -5,9 +5,9 @@ import RouteMain from "./routes/routeMain/routeMain";
 import RouteLogin from "./routes/routeLogin/routeLogin";
 
 function App() {
-  const [isLogin, setLogin] = useState(true);
+  const [isLogin, setLogin] = useState(false);
 
-  return <>{isLogin === true ? <RouteMain /> : <RouteLogin />}</>;
+  return <>{isLogin === true ? <RouteMain /> : <RouteLogin setLogin={setLogin}/>}</>;
 }
 
 export default App;

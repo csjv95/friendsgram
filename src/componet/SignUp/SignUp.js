@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import googleAuth from "../../service/google_auth";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import writeUserData from "../../service/writeUserData";
 
 import {
@@ -18,9 +18,10 @@ import {
   StLoginFormDown,
   StSignUpSpan,
 } from "../../Global/StLogin/StLogin";
-
+import auth from "../../service/auth/auth";
 
 const SignUp = () => {
+  const history = useHistory();
   const [userData, setUserData] = useState({
     email: "",
     name: "",
@@ -33,15 +34,17 @@ const SignUp = () => {
     googleAuth();
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event,) => {
     event.preventDefault();
-    writeUserData(userData);
+    auth(userData,history);
+    
   };
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setUserData({ ...userData, [name]: value });
+
   };
 
   return (
@@ -86,13 +89,13 @@ const SignUp = () => {
           />
           <StLoginInput
             type="password"
-            autoComplete="current-password"
+            autocomplete="current-password"
             placeholder="비밀번호"
             name="password"
             value={userData.password}
             onChange={handleChange}
           />
-          <StAccessBtn>가입</StAccessBtn>
+          <StAccessBtn onClick={handleSubmit}>가입</StAccessBtn>
           <div>
             가입하면 Instagram의 약관, 데이터 정책 및 쿠키 정책에 동의하게
             됩니다.
