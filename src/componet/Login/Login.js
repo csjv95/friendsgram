@@ -19,8 +19,10 @@ import {
   StSignUpSpan,
 } from "../../Global/StLogin/StLogin";
 import { useState } from "react";
+import authLogin from "../../service/auth/authLogin";
 
 const Login = ({ setLogin }) => {
+
   const [userLoginData, setUserLoginData] = useState({
     id: "",
     pw: "",
@@ -39,7 +41,9 @@ const Login = ({ setLogin }) => {
 
   const onLogin = (event) => {
     event.preventDefault();
-    checkUser(userLoginData,setLogin);
+    authLogin(userLoginData,setLogin);
+    
+    // checkUser(userLoginData, setLogin);
   };
 
   return (

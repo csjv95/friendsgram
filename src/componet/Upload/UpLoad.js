@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-
-const UpLoadSection = styled.section`
-  flex-grow: 1;
-  margin-top: 4em;
-  display: flex;
-  flex-wrap: wrap;
-`;
+import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 
 const UpLoad = () => {
   const [upLoadFile, setUpLoadFile] = useState();
@@ -21,13 +14,13 @@ const UpLoad = () => {
   }
 
   return (
-    <UpLoadSection >
+    <StMainRouterSection >
       <form action="#" onSubmit={handleSubmit}>
         <input type="file" name="uploadpic" onChange={handleChange} />
         <div>{upLoadFile}</div>
         <button>up load</button>
       </form>
-    </UpLoadSection>
+    </StMainRouterSection>
   );
 };
 

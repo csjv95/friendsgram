@@ -63,6 +63,11 @@ export const StAccessBtn = styled.button`
   background-color: skyblue;
 `;
 
+export const SyAccessDiv = styled.div`
+ text-align : center;
+  font-size : 0.7em;
+`
+
 export const StContainerOr = styled.ul`
   width: 100%;
   display: flex;

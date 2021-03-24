@@ -1,10 +1,10 @@
-import { firestore } from "./firebase";
+import { firebasestore } from "./firebase";
 
 const checkUser = (userLoginData,setLogin) => {
   const { id:userid, pw: userpw } = userLoginData;
   console.log(userid,userpw);
   const data = [];
-  const user = firestore
+  const user = firebasestore
     .collection("users")
     .get()
     .then((querySnapshot) => {

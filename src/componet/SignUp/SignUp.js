@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import googleAuth from "../../service/google_auth";
 import { Link, useHistory } from "react-router-dom";
-import writeUserData from "../../service/writeUserData";
 
 import {
   StContainerDiv,
@@ -15,10 +14,11 @@ import {
   LineLi,
   StLoginInput,
   StAccessBtn,
+  SyAccessDiv,
   StLoginFormDown,
   StSignUpSpan,
 } from "../../Global/StLogin/StLogin";
-import auth from "../../service/auth/auth";
+import authSignUp from "../../service/auth/authSignUp";
 
 const SignUp = () => {
   const history = useHistory();
@@ -34,17 +34,15 @@ const SignUp = () => {
     googleAuth();
   };
 
-  const handleSubmit = (event,) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    auth(userData,history);
-    
+    authSignUp(userData,history);
   };
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setUserData({ ...userData, [name]: value });
-
   };
 
   return (
@@ -89,17 +87,17 @@ const SignUp = () => {
           />
           <StLoginInput
             type="password"
-            autocomplete="current-password"
+            autoComplete="current-password"
             placeholder="비밀번호"
             name="password"
             value={userData.password}
             onChange={handleChange}
           />
           <StAccessBtn onClick={handleSubmit}>가입</StAccessBtn>
-          <div>
+          <SyAccessDiv>
             가입하면 Instagram의 약관, 데이터 정책 및 쿠키 정책에 동의하게
             됩니다.
-          </div>
+          </SyAccessDiv>
         </StLoginFormUp>
         <StLoginFormDown>
           <StSignUpSpan>

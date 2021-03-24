@@ -23,7 +23,7 @@ const Header = () => {
       <nav>
         <HeaderNavul>
           <HeaderNavUlLi>
-            <NavLink exact to="/home">
+            <NavLink exact to="/">
               <HomeIcon />
             </NavLink>
           </HeaderNavUlLi>
