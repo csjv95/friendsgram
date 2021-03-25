@@ -1,5 +1,5 @@
 import { firebaseAuth } from "../firebase";
-import { firebasestore } from "../firebase";
+import { firebaseStore } from "../firebase";
 
 const authSignUp = async (userData, history) => {
   const { email, name, nicname, password } = userData;
@@ -16,7 +16,7 @@ const authSignUp = async (userData, history) => {
     });
 
     // DB에 넣기
-    await firebasestore.collection("users").doc(user.uid).set({
+    await firebaseStore.collection("users").doc(user.uid).set({
       email,
       name,
       nicname,

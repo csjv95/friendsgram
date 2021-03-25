@@ -47,8 +47,6 @@ const Login = ({ setLogin }) => {
   const onLogin = (event) => {
     event.preventDefault();
     authLogin(userLoginData,setLogin);
-    
-    // checkUser(userLoginData, setLogin);
   };
 
   return (

@@ -1,11 +1,11 @@
-import { firebasestore } from "../firebase";
+import { firebaseStore } from "../firebase";
 import { firebaseAuth } from "../firebase";
 
 const homeData = (setUserData) => {
   const user = firebaseAuth.currentUser;
   const uid = user.uid;
 
-  const docRef = firebasestore.collection("users").doc(uid);
+  const docRef = firebaseStore.collection("users").doc(uid);
 
   docRef
     .get()
