@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { firestore } from "../service/firebase";
+import { firebasestore } from "../service/firebase";
 const FacebookLogin = () => {
   let [tasksData, setTaskData] = useState([]);
 
   const fetchData = useCallback(() => {
     let tasksData = [];
-    firestore
+    firebasestore
       .collection("my")
       .get()
       .then((docs) => {

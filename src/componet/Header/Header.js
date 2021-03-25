@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import {firebaseAuth} from "../../service/firebase";
 import {
   HomeIcon,
   SendIcon,
@@ -15,6 +16,10 @@ import {
 } from "../../Global/StHeader/StHeader";
 
 const Header = () => {
+  const onLogout = () => {
+    firebaseAuth.signOut()
+  }
+
   return (
     <HeaderContainer>
       <HeaderLogo href="/home">Intstargram</HeaderLogo>
@@ -50,6 +55,7 @@ const Header = () => {
               />
             </NavLink>
           </HeaderNavUlLiMy>
+          <li><button onClick={onLogout}>logout</button></li>
         </HeaderNavul>
       </nav>
     </HeaderContainer>

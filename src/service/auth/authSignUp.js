@@ -9,6 +9,7 @@ const authSignUp = async (userData, history) => {
 
     //프로필업데이트
     const user = firebaseAuth.currentUser;
+    console.log(user.uid);
     await user.updateProfile({
       name,
       nicname,
