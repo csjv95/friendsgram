@@ -5,11 +5,11 @@ import MainFooter from "../../componet/MainFooter/MainFooter";
 import MainRouter from "./MainRouter/MainRouter";
 
 
-const RouteMain = () => {
+const RouteMain = ({setLogin}) => {
   return (
     <AppContainer>
       <Header />
-      <MainRouter />
+      <MainRouter setLogin={setLogin}/>
       <MainFooter />
     </AppContainer>
   );

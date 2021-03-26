@@ -20,6 +20,7 @@ export const HeartIcon = styled(Heart)`
   width: 1.5em;
 `;
 
+
 export const HeaderContainer = styled.header`
   width: 100%;
   position: fixed;
@@ -62,6 +63,5 @@ export const HeaderNavUlLiMy = styled.li`
 export const HeaderMyImg = styled.img`
   height: 100%;
   padding: 0.1em;
-  border: 1px solid #000000;
   border-radius: 50%;
 `;

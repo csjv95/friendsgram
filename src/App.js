@@ -6,8 +6,8 @@ import RouteLogin from "./routes/routeLogin/routeLogin";
 
 function App() {
   const [isLogin, setLogin] = useState(false);
-
-  return <>{isLogin === true ? <RouteMain /> : <RouteLogin setLogin={setLogin}/>}</>;
+  console.log(isLogin);
+  return <>{isLogin === true ? <RouteMain setLogin={setLogin}/> : <RouteLogin setLogin={setLogin}/>}</>;
 }
 
 export default App;
