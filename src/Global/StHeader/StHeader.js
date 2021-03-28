@@ -1,25 +1,4 @@
 import styled from "styled-components";
-import { HomeAlt } from "@styled-icons/boxicons-regular/HomeAlt";
-import { Send } from "@styled-icons/feather/Send";
-import { Compass2 } from "@styled-icons/icomoon/Compass2";
-import { Heart } from "@styled-icons/bootstrap/Heart";
-
-export const HomeIcon = styled(HomeAlt)`
-  width: 1.5em;
-`;
-
-export const SendIcon = styled(Send)`
-  width: 1.5em;
-`;
-
-export const CompassIcon = styled(Compass2)`
-  width: 1.5em;
-`;
-
-export const HeartIcon = styled(Heart)`
-  width: 1.5em;
-`;
-
 
 export const HeaderContainer = styled.header`
   width: 100%;

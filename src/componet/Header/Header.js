@@ -1,11 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import {firebaseAuth} from "../../service/firebase";
+import { firebaseAuth } from "../../service/firebase";
 import {
-  HomeIcon,
-  SendIcon,
-  CompassIcon,
-  HeartIcon,
   HeaderContainer,
   HeaderLogo,
   HeaderSearch,
@@ -14,11 +10,17 @@ import {
   HeaderNavUlLiMy,
   HeaderMyImg,
 } from "../../Global/StHeader/StHeader";
+import {
+  StHomeIcon,
+  StSendIcon,
+  StCompassIcon,
+  StHeartIcon,
+} from "../../Global/StIcon/StIcon";
 
 const Header = () => {
   const onLogout = () => {
-    firebaseAuth.signOut()
-  }
+    firebaseAuth.signOut();
+  };
 
   return (
     <HeaderContainer>
@@ -29,22 +31,22 @@ const Header = () => {
         <HeaderNavul>
           <HeaderNavUlLi>
             <NavLink exact to="/">
-              <HomeIcon />
+              <StHomeIcon />
             </NavLink>
           </HeaderNavUlLi>
           <HeaderNavUlLi>
             <NavLink exact to="/message">
-              <SendIcon />
+              <StSendIcon />
             </NavLink>
           </HeaderNavUlLi>
           <HeaderNavUlLi>
             <NavLink exact to="/upload">
-              <CompassIcon />
+              <StCompassIcon />
             </NavLink>
           </HeaderNavUlLi>
           <HeaderNavUlLi>
             <NavLink exact to="/heart">
-              <HeartIcon />
+              <StHeartIcon />
             </NavLink>
           </HeaderNavUlLi>
           <HeaderNavUlLiMy>
@@ -55,7 +57,9 @@ const Header = () => {
               />
             </NavLink>
           </HeaderNavUlLiMy>
-          <li><button onClick={onLogout}>logout</button></li>
+          <li>
+            <button onClick={onLogout}>logout</button>
+          </li>
         </HeaderNavul>
       </nav>
     </HeaderContainer>

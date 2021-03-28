@@ -16,6 +16,7 @@ const FooterInfoCompany = styled.ul`
 `;
 
 const FooterCopyRight = styled.ul`
+  margin : 0.5em;
   display: flex;
   justify-content: center;
   align-items: center;
