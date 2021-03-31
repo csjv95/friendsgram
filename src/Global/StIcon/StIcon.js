@@ -21,7 +21,7 @@ export const StCompassIcon = styled(Compass2)`
 `;
 
 export const StHeartIcon = styled(Heart)`
-  width: 1.5em;
+  width: ${({width}) => width}em;
 `;
 
 export const StChatbubbleIcon = styled(Chatbubble)`
