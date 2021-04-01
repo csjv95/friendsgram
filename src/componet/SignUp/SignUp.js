@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import googleAuth from "../../service/google_auth";
 import { Link, useHistory } from "react-router-dom";
 
+import authSignUp from "../../service/auth/authSignUp";
 import {
   StContainerDiv,
   StLoginSection,
   StLoginFormUp,
   StTitle,
   StAuthLoginBtn,
-  StGoogleSquareIcon,
-  StFacebookSquareIcon,
   StContainerOr,
   LineLi,
   StLoginInput,
@@ -17,8 +16,11 @@ import {
   SyAccessDiv,
   StLoginFormDown,
   StSignUpSpan,
-} from "../../Global/StLogin/StLogin";
-import authSignUp from "../../service/auth/authSignUp";
+} from "../../Global/StLoginForm/StLoginForm";
+import {
+  StFacebookSquareIcon,
+  StGoogleSquareIcon,
+} from "../../Global/StIcon/StIcon";
 
 const SignUp = () => {
   const history = useHistory();
@@ -36,7 +38,7 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    authSignUp(userData,history);
+    authSignUp(userData, history);
   };
 
   const handleChange = (event) => {

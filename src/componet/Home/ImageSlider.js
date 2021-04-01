@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 const Images = [
-  "https://picsum.photos/id/0/200/200",
+  "https://picsum.photos/id/0/600/600",
   "https://picsum.photos/id/100/200/600",
   "https://picsum.photos/id/500/600/600",
   "https://picsum.photos/id/900/600/600",
@@ -11,9 +11,9 @@ const Images = [
 
 const ImageWraper = styled.section`
   width: 37.5em;
-  height: 37.5em;
-  overflow : hidden;
-  `;
+  min-height: 37.5em;
+  overflow: hidden;
+`;
 
 const ImageList = styled.ul`
   display: flex;
@@ -33,27 +33,22 @@ const ImageSlider = () => {
   const ImgRef = useRef();
   const [imgIndex, setImgIndex] = useState(0);
 
+  const backClick = () => {
+    console.log("back");
+    ImgRef.current.style.transform = `translateX(${-100 * (imgIndex - 1)}%)`;
+    setImgIndex(imgIndex - 1);
+  };
+
+  const nextClick = () => {
+    console.log("next");
+    ImgRef.current.style.transform = `translateX(${-100 * (imgIndex + 1)}%)`;
+    setImgIndex(imgIndex + 1);
+  };
+
   return (
     <>
-      <button onClick={() => {
-          console.log("back");
-          ImgRef.current.style.transform = `translateX(${
-            -100 * (imgIndex - 1)
-          }%)`;
-          setImgIndex(imgIndex -1);
-        }}>back</button>
-      <button
-        onClick={() => {
-          console.log("next");
-          ImgRef.current.style.transform = `translateX(${
-            -100 * (imgIndex + 1)
-          }%)`;
-          setImgIndex(imgIndex +1);
-        }}
-      >
-        next
-      </button>
-      <ImageWraper >
+      <ImageWraper>
+        <button onClick={backClick}>back</button>
         <ImageList ref={ImgRef}>
           {Images.map((img) => (
             <ImageItem>
@@ -61,6 +56,7 @@ const ImageSlider = () => {
             </ImageItem>
           ))}
         </ImageList>
+          <button onClick={nextClick}>next</button>
       </ImageWraper>
     </>
   );

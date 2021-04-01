@@ -7,32 +7,34 @@ import { Chatbubble } from "@styled-icons/ionicons-outline/Chatbubble";
 import { Bookmark } from "@styled-icons/feather/Bookmark";
 import { DotsHorizontalRounded } from "@styled-icons/boxicons-regular/DotsHorizontalRounded";
 import { Smile } from "@styled-icons/feather/Smile";
+import { FacebookSquare } from "@styled-icons/boxicons-logos/FacebookSquare";
+import { Google2 } from "@styled-icons/icomoon/Google2";
 
 export const StHomeIcon = styled(HomeAlt)`
-  width: 1.5em;
+  width: ${({ width }) => width}em;
 `;
 
 export const StSendIcon = styled(Send)`
-  width: 1.5em;
+  width: ${({ width }) => width}em;
 `;
 
 export const StCompassIcon = styled(Compass2)`
-  width: 1.5em;
+  width: ${({ width }) => width}em;
 `;
 
 export const StHeartIcon = styled(Heart)`
-  width: ${({width}) => width}em;
+  width: ${({ width }) => width}em;
 `;
 
 export const StChatbubbleIcon = styled(Chatbubble)`
-  width: 1.5em;
+  width: ${({ width }) => width}em;
 `;
 export const StBookmarkIcon = styled(Bookmark)`
-  width: 2em;
+  width: ${({ width }) => width}em;
 `;
 
 export const StMenuIcon = styled(DotsHorizontalRounded)`
-  width: 1.5em;
+  width: ${({ width }) => width}em;
   cursor: pointer;
 `;
 
@@ -47,5 +49,15 @@ export const StDotIcon = styled.div`
 
 export const StSmileIocn = styled(Smile)`
   background-color: white;
-  width: 1.5em;
+  width: ${({ width }) => width}em;
+`;
+export const StFacebookSquareIcon = styled(FacebookSquare)`
+  width: 1.3em;
+  margin-right: 0.5em;
+  color: #0000ff;
+`;
+
+export const StGoogleSquareIcon = styled(Google2)`
+  width: 1.1em;
+  margin-right: 0.5em;
 `;

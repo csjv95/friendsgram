@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { FacebookSquare } from "@styled-icons/boxicons-logos/FacebookSquare";
-import { Google2 } from "@styled-icons/icomoon/Google2";
 
 export const StContainerDiv = styled.div`
   height: 100vh;
@@ -78,17 +76,6 @@ export const LineLi = styled.li`
   margin: 0 0.5em;
   border-top: 1px solid #d3d3d3;
   flex-grow: 1;
-`;
-
-export const StFacebookSquareIcon = styled(FacebookSquare)`
-  width: 1.3em;
-  margin-right: 0.5em;
-  color: #0000ff;
-`;
-
-export const StGoogleSquareIcon = styled(Google2)`
-  width: 1.1em;
-  margin-right: 0.5em;
 `;
 
 export const StAuthLoginBtn = styled.button`

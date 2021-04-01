@@ -1,32 +1,32 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import googleAuth from "../../service/google_auth";
 import LoginFooter from "../LoginFooter/LoginFooter";
-
-import { Link } from "react-router-dom";
+import authLogin from "../../service/auth/authLogin";
+import authCheckUser from "../../service/auth/authCheckUser";
 import {
   StContainerDiv,
-  StLoginInput,
   StLoginSection,
   StLoginFormUp,
   StTitle,
+  StLoginInput,
   StAccessBtn,
   StContainerOr,
   LineLi,
   StAuthLoginBtn,
-  StGoogleSquareIcon,
-  StFacebookSquareIcon,
   StPwSpan,
   StLoginFormDown,
   StSignUpSpan,
-} from "../../Global/StLogin/StLogin";
-import { useEffect, useState } from "react";
-import authLogin from "../../service/auth/authLogin";
-import authCheckUser from "../../service/auth/authCheckUser";
+} from "../../Global/StLoginForm/StLoginForm";
+import {
+  StGoogleSquareIcon,
+  StFacebookSquareIcon,
+} from "../../Global/StIcon/StIcon";
 
 const Login = ({ setLogin }) => {
-
-  useEffect(()=> {
+  useEffect(() => {
     authCheckUser(setLogin);
-  },[setLogin])
+  }, [setLogin]);
 
   const [userLoginData, setUserLoginData] = useState({
     id: "",
@@ -46,7 +46,7 @@ const Login = ({ setLogin }) => {
 
   const onLogin = (event) => {
     event.preventDefault();
-    authLogin(userLoginData,setLogin);
+    authLogin(userLoginData, setLogin);
   };
 
   return (
