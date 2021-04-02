@@ -9,6 +9,8 @@ import { DotsHorizontalRounded } from "@styled-icons/boxicons-regular/DotsHorizo
 import { Smile } from "@styled-icons/feather/Smile";
 import { FacebookSquare } from "@styled-icons/boxicons-logos/FacebookSquare";
 import { Google2 } from "@styled-icons/icomoon/Google2";
+import {ChevronLeft} from "@styled-icons/boxicons-solid/ChevronLeft";
+import {ChevronRight} from "@styled-icons/boxicons-solid/ChevronRight"
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -35,29 +37,38 @@ export const StBookmarkIcon = styled(Bookmark)`
 
 export const StMenuIcon = styled(DotsHorizontalRounded)`
   width: ${({ width }) => width}em;
-  cursor: pointer;
 `;
 
-export const StDotIcon = styled.div`
+export const StDotIcon = styled.button`
   width: 0.4em;
   height: 0.4em;
   display: inline-block;
   border-radius: 50%;
   background-color: #d3d3d3;
-  cursor: pointer;
 `;
 
 export const StSmileIocn = styled(Smile)`
   background-color: white;
   width: ${({ width }) => width}em;
 `;
+
 export const StFacebookSquareIcon = styled(FacebookSquare)`
-  width: 1.3em;
+  width: ${({ width }) => width}em;
   margin-right: 0.5em;
   color: #0000ff;
 `;
 
 export const StGoogleSquareIcon = styled(Google2)`
-  width: 1.1em;
+  width: ${({ width }) => width}em;
   margin-right: 0.5em;
 `;
+
+export const StLeftArrow = styled(ChevronLeft)`
+  width: ${({width})=> width}em;
+  color: ${({color}) => color};
+`
+
+export const StRightArrow = styled(ChevronRight)`
+  width : ${({width}) => width}em;
+  color: ${({color}) => color};
+`

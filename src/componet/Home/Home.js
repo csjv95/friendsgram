@@ -10,7 +10,7 @@ const StHomeContainer = styled.section`
   display: flex;
 `;
 
-const StArticleContainer = styled.ul`
+const StArticleList = styled.ul`
   display : flex;
   flex-direction : column;
 `;
@@ -31,12 +31,12 @@ const Home = () => {
   return (
     <StMainRouterSection>
       <StHomeContainer>
-        <StArticleContainer>
+        <StArticleList>
           <HomeArticle />
           <HomeArticle />
           <HomeArticle />
           <HomeArticle />
-        </StArticleContainer>
+        </StArticleList>
         <StFollowerCotainer>
           <HomeFollow />
         </StFollowerCotainer>

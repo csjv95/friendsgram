@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+import { StLeftArrow, StRightArrow } from "../../Global/StIcon/StIcon";
 
 const Images = [
   "https://picsum.photos/id/0/600/600",
@@ -10,6 +11,7 @@ const Images = [
 ];
 
 const ImageWraper = styled.section`
+  position: relative;
   width: 37.5em;
   min-height: 37.5em;
   overflow: hidden;
@@ -17,6 +19,7 @@ const ImageWraper = styled.section`
 
 const ImageList = styled.ul`
   display: flex;
+  transition: all 300ms ease-out;
 `;
 
 const ImageItem = styled.li`
@@ -27,6 +30,22 @@ const ImageItem = styled.li`
 const Image = styled.img`
   width: 37.5em;
   height: 37.5em;
+`;
+
+const BtnCotainer = styled.div`
+  width: 95%;
+  padding: 0 1em;
+  position: absolute;
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+`;
+
+const Btn = styled.button`
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  background-color: white;
 `;
 
 const ImageSlider = () => {
@@ -48,7 +67,14 @@ const ImageSlider = () => {
   return (
     <>
       <ImageWraper>
-        <button onClick={backClick}>back</button>
+        <BtnCotainer>
+          <Btn onClick={backClick}>
+            <StLeftArrow width="1.5" color="lightgrey" />
+          </Btn>
+          <Btn onClick={nextClick}>
+            <StRightArrow width="1.5" color="lightgrey" />
+          </Btn>
+        </BtnCotainer>
         <ImageList ref={ImgRef}>
           {Images.map((img) => (
             <ImageItem>
@@ -56,7 +82,6 @@ const ImageSlider = () => {
             </ImageItem>
           ))}
         </ImageList>
-          <button onClick={nextClick}>next</button>
       </ImageWraper>
     </>
   );

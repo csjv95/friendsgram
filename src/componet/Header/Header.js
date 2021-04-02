@@ -12,6 +12,7 @@ import { StProfile } from "../../Global/StProfile/StProfile";
 
 const HeaderContainer = styled.header`
   width: 100%;
+  padding : 0.5em;
   position: fixed;
   top: 0;
   left: 0;
@@ -31,7 +32,11 @@ const HeaderLogo = styled.a`
 `;
 
 const HeaderSearch = styled.input`
-  padding: 0 0.2em;
+  height: 1.2em;
+  padding: 0.5em;
+  background-color : whitesmoke;
+  border : 1px solid #d3d3d3;
+  border-radius : 0.2em;
 `;
 
 const HeaderNavul = styled.ul`
@@ -86,6 +91,7 @@ const Header = () => {
               <StProfile
                 src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/56593842_427595071141963_9102473363216924672_n.jpg?tp=1&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=8GvUdv2sa94AX_J7O03&oh=9a29dc6ab80091beab9f95a0f5ab8c6c&oe=6075CB7C"
                 alt="my"
+                height="100%"
               />
             </NavLink>
           </HeaderNavUlLiMy>

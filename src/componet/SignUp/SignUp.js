@@ -53,11 +53,11 @@ const SignUp = () => {
         <StLoginFormUp onSubmit={handleSubmit}>
           <StTitle>Instargram</StTitle>
           <StAuthLoginBtn onClick={onClick}>
-            <StGoogleSquareIcon />
+            <StGoogleSquareIcon width="1.1"/>
             Google로 로그인
           </StAuthLoginBtn>
           <StAuthLoginBtn onClick={onClick}>
-            <StFacebookSquareIcon />
+            <StFacebookSquareIcon width="1.3"/>
             FaceBook로 로그인
           </StAuthLoginBtn>
           <StContainerOr>
