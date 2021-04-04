@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import "./App.css";
 import RouteMain from "./routes/routeMain/routeMain";
 import RouteLogin from "./routes/routeLogin/routeLogin";
+import authCheckUser from "./service/auth/authCheckUser";
 
 function App() {
   const [isLogin, setLogin] = useState(false);
-  console.log(isLogin);
-  return <>{isLogin === true ? <RouteMain setLogin={setLogin}/> : <RouteLogin setLogin={setLogin}/>}</>;
+  useEffect(() => {
+    authCheckUser(setLogin);
+  }, [setLogin]);
+  return (
+    <>
+      {isLogin === true ? (
+        <RouteMain setLogin={setLogin} />
+      ) : (
+        <RouteLogin setLogin={setLogin} />
+      )}
+    </>
+  );
 }
 
 export default App;

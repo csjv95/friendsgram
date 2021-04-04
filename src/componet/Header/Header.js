@@ -22,6 +22,7 @@ const HeaderContainer = styled.header`
   border-bottom: 1px solid rgb(219, 219, 219);
   margin-bottom: 4em;
   background-color: #ffffff;
+  z-index:100;
 `;
 
 const HeaderLogo = styled.a`
@@ -33,7 +34,7 @@ const HeaderLogo = styled.a`
 
 const HeaderSearch = styled.input`
   height: 1.2em;
-  padding: 0.5em;
+  padding: 1em;
   background-color : whitesmoke;
   border : 1px solid #d3d3d3;
   border-radius : 0.2em;
@@ -72,7 +73,7 @@ const Header = () => {
             </NavLink>
           </HeaderNavUlLi>
           <HeaderNavUlLi>
-            <NavLink exact to="/message">
+            <NavLink exact to="/direct">
               <StSendIcon width="1.5"/>
             </NavLink>
           </HeaderNavUlLi>

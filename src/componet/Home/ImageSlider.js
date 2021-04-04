@@ -33,7 +33,7 @@ const Image = styled.img`
 `;
 
 const BtnCotainer = styled.div`
-  width: 95%;
+  width: 100%;
   padding: 0 1em;
   position: absolute;
   top: 50%;

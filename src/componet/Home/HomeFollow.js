@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Profiles from "./Profiles";
 
-const FollowList = styled.ul``;
+const FollowList = styled.ul`
+  position:fixed;
+`;
 
 const FollowRecomend = styled.li`
   margin : 2em 0 1em 0; 

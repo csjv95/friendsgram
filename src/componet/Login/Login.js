@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import googleAuth from "../../service/google_auth";
 import LoginFooter from "../LoginFooter/LoginFooter";
 import authLogin from "../../service/auth/authLogin";
-import authCheckUser from "../../service/auth/authCheckUser";
+
 import {
   StContainerDiv,
   StLoginSection,
@@ -24,10 +24,6 @@ import {
 } from "../../Global/StIcon/StIcon";
 
 const Login = ({ setLogin }) => {
-  useEffect(() => {
-    authCheckUser(setLogin);
-  }, [setLogin]);
-
   const [userLoginData, setUserLoginData] = useState({
     id: "",
     pw: "",

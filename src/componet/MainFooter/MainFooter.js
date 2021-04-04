@@ -26,6 +26,10 @@ const FooterCopyRight = styled.ul`
   }
 `;
 
+const Select = styled.select`
+  border: none;
+`
+
 const MainFooter = () => {
   return (
     <FooterCotainer>
@@ -64,10 +68,10 @@ const MainFooter = () => {
 
       <FooterCopyRight>
         <li>
-          <select>
+          <Select>
             <option value="korean">한국어</option>
             <option value="english">english</option>
-          </select>
+          </Select>
         </li>
         <li>© 2021 Outstagram from SJ</li>
       </FooterCopyRight>

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../componet/Header/Header";
 import MainFooter from "../../componet/MainFooter/MainFooter";
-import MainRouter from "./MainRouter/MainRouter";
+import NavRouter from "../navRouter/navRouter";
 import styled from "styled-components";
 
 const AppContainer = styled.div`
@@ -9,14 +9,13 @@ const AppContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-
 `;
 
-const RouteMain = ({setLogin}) => {
+const RouteMain = () => {
   return (
     <AppContainer>
       <Header />
-      <MainRouter setLogin={setLogin}/>
+      <NavRouter />
       <MainFooter />
     </AppContainer>
   );

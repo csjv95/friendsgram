@@ -73,7 +73,6 @@ const StComments = styled.form`
 `;
 
 const StCommentsArea = styled.textarea`
-  height: 1.2em;
   margin : 0 1em;
   padding : 0.5em;
   flex-grow: 1;

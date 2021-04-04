@@ -17,7 +17,7 @@ export const StLoginSection = styled.section`
 `;
 
 export const StLoginFormUp = styled.form`
-  max-width: 15em;
+  max-width: 20em;
   padding: 3em 3em 1em 3em;
   display: flex;
   flex-wrap: wrap;
@@ -42,7 +42,7 @@ export const StLoginInput = styled.input`
 
 export const StLoginFormDown = styled.form`
   width: 100%;
-  max-width: 15em;
+  max-width: 20em;
   margin-top: 1em;
   padding: 1em 3em;
   display: flex;
