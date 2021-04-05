@@ -12,7 +12,7 @@ export const StLoginSection = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
   flex-grow: 1;
 `;
 
@@ -23,8 +23,8 @@ export const StLoginFormUp = styled.form`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  border: 1px solid #d3d3d3;
-  background-color: #ffffff;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
 export const StTitle = styled.h1`
@@ -36,8 +36,8 @@ export const StLoginInput = styled.input`
   width: 100%;
   margin: 0.5em 0;
   padding: 0.5em;
-  border: 1px solid #d3d3d3;
-  background-color: #f5f5f5;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
 export const StLoginFormDown = styled.form`
@@ -48,8 +48,8 @@ export const StLoginFormDown = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #d3d3d3;
-  background-color: #ffffff;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
 export const StAccessBtn = styled.button`
@@ -57,14 +57,14 @@ export const StAccessBtn = styled.button`
   padding: 0.5em;
   margin-bottom: 0.5em;
   border-radius: 0.3em;
-  color: #ffffff;
-  background-color: skyblue;
+  color: ${({ theme }) => theme.colors.textColorWhite};
+  background-color: ${({ theme }) => theme.colors.skyblue};
 `;
 
 export const SyAccessDiv = styled.div`
- text-align : center;
-  font-size : 0.7em;
-`
+  text-align: center;
+  font-size: 0.7em;
+`;
 
 export const StContainerOr = styled.ul`
   width: 100%;
@@ -74,7 +74,7 @@ export const StContainerOr = styled.ul`
 
 export const LineLi = styled.li`
   margin: 0 0.5em;
-  border-top: 1px solid #d3d3d3;
+  border-top: 1px solid 1px solid ${({ theme }) => theme.colors.borderColor};
   flex-grow: 1;
 `;
 

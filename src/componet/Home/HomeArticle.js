@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { StProfile } from "../../Global/StProfile/StProfile";
+import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import {
   StMenuIcon,
   StChatbubbleIcon,
@@ -16,8 +16,9 @@ const StArticleItem = styled.li`
   margin-right: 2em;
   margin-bottom: 4em;
   /* width: 38.375rem; */
-  border: 1px solid #d3d3d3;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 0.2rem;
+  background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
 const StArticleHeader = styled.header`
@@ -65,27 +66,29 @@ const StHomeIconBoxLi = styled.li`
 `;
 
 const StComments = styled.form`
-  padding: 0.8em;
+  margin-top: 1em;
+  padding: 0 0.8em;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #d3d3d3;
+  border-top: 1px solid ${({ theme }) => theme.colors.borderColor};
 `;
 
 const StCommentsArea = styled.textarea`
-  margin : 0 1em;
-  padding : 0.5em;
+  margin: 0 1em;
+  padding: 1.3em 0.5em 0.5em 0.5em;
   flex-grow: 1;
   border: none;
   resize: none;
-  outline : none;
+  outline: none;
+  background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 const HomeArticle = () => {
   return (
     <StArticleItem>
       <StArticleHeader>
         <StHeaderProfileCotainer>
-          <StProfile
+          <StProfileImg
             src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/56593842_427595071141963_9102473363216924672_n.jpg?tp=1&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=8GvUdv2sa94AX_J7O03&oh=9a29dc6ab80091beab9f95a0f5ab8c6c&oe=6075CB7C"
             alt="my"
             height="100%"

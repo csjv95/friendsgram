@@ -15,7 +15,7 @@ const FollowRecomend = styled.li`
 const RecomendText = styled.div`
  font-size : 0.8em;
  font-weight: 600;
- color : #d3d3d3;
+ color : ${({theme})=> theme.colors.textColorLihgtgrey}
 `
 
 const RecomendBtn = styled.button`

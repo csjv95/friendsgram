@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const FooterCotainer = styled.footer`
-  margin: 0 auto;
+  padding-bottom: 3em;
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
+  & :nth-child(n) {
+    color: ${({ theme }) => theme.colors.textColorLihgtgrey};
+  }
 `;
 
 const FooterInfoCompany = styled.ul`
@@ -16,7 +20,7 @@ const FooterInfoCompany = styled.ul`
 `;
 
 const FooterCopyRight = styled.ul`
-  margin : 0.5em;
+  margin: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +32,8 @@ const FooterCopyRight = styled.ul`
 
 const Select = styled.select`
   border: none;
-`
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
+`;
 
 const MainFooter = () => {
   return (

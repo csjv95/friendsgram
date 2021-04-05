@@ -46,7 +46,7 @@ const StFooterEl = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: whitesmoke;
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
 const StFooterUl = styled.ul`
@@ -60,14 +60,14 @@ const StFooterUl = styled.ul`
 const StFooterLi = styled.li`
   margin: 0 0.5em;
   font-size: 0.7em;
-  color: #808080;
+  color: ${({ theme }) => theme.colors.textColor};
 `;
 
 const StLanguage = styled.select`
   border: none;
   background-color: transparent;
   font-size: 0.8em;
-  color: #808080;
+  color: ${({ theme }) => theme.colors.textColor};
 `;
 
 export default LoginFooter;

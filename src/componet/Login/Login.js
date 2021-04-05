@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import googleAuth from "../../service/google_auth";
-import LoginFooter from "../LoginFooter/LoginFooter";
+import LoginFooter from "../../Global/LoginFooter/LoginFooter";
 import authLogin from "../../service/auth/authLogin";
 
 import {
@@ -72,11 +72,11 @@ const Login = ({ setLogin }) => {
             <LineLi></LineLi>
           </StContainerOr>
           <StAuthLoginBtn onClick={onClick}>
-            <StGoogleSquareIcon width="1.1"/>
+            <StGoogleSquareIcon width="1.1" />
             Google로 로그인
           </StAuthLoginBtn>
           <StAuthLoginBtn onClick={onClick}>
-            <StFacebookSquareIcon width="1.3"/>
+            <StFacebookSquareIcon width="1.3" />
             FaceBook로 로그인
           </StAuthLoginBtn>
           <StPwSpan>비밀번호를 잊으셨나요?</StPwSpan>
