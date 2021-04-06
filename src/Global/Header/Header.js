@@ -78,7 +78,7 @@ const Header = () => {
             </NavLink>
           </HeaderNavUlLi>
           <HeaderNavUlLi>
-            <NavLink exact to="/upload">
+            <NavLink exact to="/post">
               <StCompassIcon width="1.5" />
             </NavLink>
           </HeaderNavUlLi>

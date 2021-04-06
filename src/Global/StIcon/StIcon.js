@@ -9,8 +9,10 @@ import { DotsHorizontalRounded } from "@styled-icons/boxicons-regular/DotsHorizo
 import { Smile } from "@styled-icons/feather/Smile";
 import { FacebookSquare } from "@styled-icons/boxicons-logos/FacebookSquare";
 import { Google2 } from "@styled-icons/icomoon/Google2";
-import {ChevronLeft} from "@styled-icons/boxicons-solid/ChevronLeft";
-import {ChevronRight} from "@styled-icons/boxicons-solid/ChevronRight"
+import { ChevronLeft } from "@styled-icons/boxicons-solid/ChevronLeft";
+import { ChevronRight } from "@styled-icons/boxicons-solid/ChevronRight";
+import { Upload } from "@styled-icons/bootstrap/Upload";
+import { Map } from "@styled-icons/boxicons-regular/Map";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -64,11 +66,21 @@ export const StGoogleSquareIcon = styled(Google2)`
 `;
 
 export const StLeftArrow = styled(ChevronLeft)`
-  width: ${({width})=> width}em;
-  color: ${({color}) => color};
-`
+  width: ${({ width }) => width}em;
+  color: ${({ color }) => color};
+`;
 
 export const StRightArrow = styled(ChevronRight)`
-  width : ${({width}) => width}em;
-  color: ${({color}) => color};
+  width: ${({ width }) => width}em;
+  color: ${({ color }) => color};
+`;
+
+export const StUpload = styled(Upload)`
+  width: ${({ width }) => width}em;
+  color: ${({ color }) => color};
+`;
+
+export const StMap = styled(Map)`
+  width: ${({ width }) => width}em;
+  color: ${({ color }) => color};
 `
