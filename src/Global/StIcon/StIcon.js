@@ -13,6 +13,7 @@ import { ChevronLeft } from "@styled-icons/boxicons-solid/ChevronLeft";
 import { ChevronRight } from "@styled-icons/boxicons-solid/ChevronRight";
 import { Upload } from "@styled-icons/bootstrap/Upload";
 import { Map } from "@styled-icons/boxicons-regular/Map";
+import { Close } from "@styled-icons/evaicons-solid/Close";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -76,6 +77,7 @@ export const StRightArrow = styled(ChevronRight)`
 `;
 
 export const StUpload = styled(Upload)`
+  margin: ${({ margin }) => margin};
   width: ${({ width }) => width}em;
   color: ${({ color }) => color};
 `;
@@ -83,4 +85,8 @@ export const StUpload = styled(Upload)`
 export const StMap = styled(Map)`
   width: ${({ width }) => width}em;
   color: ${({ color }) => color};
-`
+`;
+export const StCloseIcon = styled(Close)`
+  width: ${({ width }) => width}em;
+  color: ${({ color }) => color};
+`;

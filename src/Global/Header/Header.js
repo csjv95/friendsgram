@@ -5,7 +5,7 @@ import { firebaseAuth } from "../../service/firebase";
 import {
   StHomeIcon,
   StSendIcon,
-  StCompassIcon,
+  StUpload,
   StHeartIcon,
 } from "../StIcon/StIcon";
 import { StProfileImg } from "../StProfileImg/StProfileImg";
@@ -55,7 +55,7 @@ const HeaderNavUlLiMy = styled.li`
   height: 1.3em;
 `;
 
-const Header = () => {
+const Header = ({handleModal}) => {
   const onLogout = () => {
     firebaseAuth.signOut();
   };
@@ -78,9 +78,9 @@ const Header = () => {
             </NavLink>
           </HeaderNavUlLi>
           <HeaderNavUlLi>
-            <NavLink exact to="/post">
-              <StCompassIcon width="1.5" />
-            </NavLink>
+            <button onClick ={handleModal}>
+              <StUpload width="1.5" />
+            </button>
           </HeaderNavUlLi>
           <HeaderNavUlLi>
             <NavLink exact to="/heart">
