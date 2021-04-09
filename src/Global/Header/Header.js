@@ -55,7 +55,7 @@ const HeaderNavUlLiMy = styled.li`
   height: 1.3em;
 `;
 
-const Header = ({handleModal}) => {
+const Header = ({handlePost}) => {
   const onLogout = () => {
     firebaseAuth.signOut();
   };
@@ -78,7 +78,7 @@ const Header = ({handleModal}) => {
             </NavLink>
           </HeaderNavUlLi>
           <HeaderNavUlLi>
-            <button onClick ={handleModal}>
+            <button onClick ={handlePost}>
               <StUpload width="1.5" />
             </button>
           </HeaderNavUlLi>

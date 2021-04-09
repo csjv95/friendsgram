@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { StCloseIcon, StMap, StUpload } from "../../Global/StIcon/StIcon";
-import DaumPostcode from 'react-daum-postcode';
+
 const PostCotainer = styled.section`
   position: fixed;
   left: 0;
@@ -76,6 +76,9 @@ const Textarea = styled.textarea`
 const UploadLocation = styled.ul`
   display: flex;
   justify-content: space-between;
+  & :nth-child(n+2) {
+    display : flex;
+  }
 `;
 
 const ChatAccess = styled.ul`
@@ -141,11 +144,11 @@ const CloseBtnCotainer = styled.div`
   }
 `;
 
-const Post = ({ handleModal }) => {
+const Post = ({ handlePost, handleAddress, addressName }) => {
   const [imgs, setImgs] = useState();
 
   const handleLocation = () => {
-    //주소 가져오기 
+    handleAddress();
   };
 
   const handleSubmit = (event) => {
@@ -156,7 +159,7 @@ const Post = ({ handleModal }) => {
     <PostCotainer>
       <PostForm onSubmit={handleSubmit}>
         <CloseBtnCotainer>
-          <button onClick={handleModal}>
+          <button onClick={handlePost}>
             <StCloseIcon width="1.5" />
           </button>
         </CloseBtnCotainer>
@@ -188,6 +191,7 @@ const Post = ({ handleModal }) => {
         <UploadLocation>
           <li>위치추가</li>
           <li>
+            {addressName && <div>{addressName}</div>}
             <button onClick={handleLocation}>
               <StMap width="1.5" />
             </button>
