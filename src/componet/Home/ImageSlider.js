@@ -6,14 +6,14 @@ const Images = [
   "https://picsum.photos/id/0/600/600",
   "https://picsum.photos/id/100/200/600",
   "https://picsum.photos/id/500/600/600",
-  "https://picsum.photos/id/900/600/600",
+  "https://picsum.photos/id/900/200/600",
   "https://picsum.photos/id/1000/600/600",
 ];
 
 const ImageWraper = styled.section`
   position: relative;
-  width: 37.5em;
-  min-height: 37.5em;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 `;
 
@@ -27,9 +27,14 @@ const ImageItem = styled.li`
   min-height: 100%;
 `;
 
+const ImgWrapper = styled.div`
+  width : 100%;
+  height : 100%;
+`
+
 const Image = styled.img`
-  width: 37.5em;
-  height: 37.5em;
+  max-width:100%;
+  max-height: 100%;
 `;
 
 const BtnCotainer = styled.div`
@@ -48,7 +53,7 @@ const Btn = styled.button`
   background-color: white;
 `;
 
-const ImageSlider = () => {
+const ImageSlider = ({imgs}) => {
   const ImgRef = useRef();
   const [imgIndex, setImgIndex] = useState(0);
 
@@ -76,9 +81,11 @@ const ImageSlider = () => {
           </Btn>
         </BtnCotainer>
         <ImageList ref={ImgRef}>
-          {Images.map((img) => (
-            <ImageItem>
+          {Images.map((img, index) => (
+            <ImageItem key={index}>
+              <ImgWrapper>
               <Image src={img} alt="pic" />
+              </ImgWrapper>
             </ImageItem>
           ))}
         </ImageList>

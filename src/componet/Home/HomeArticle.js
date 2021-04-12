@@ -43,6 +43,11 @@ const StHomeArticle = styled.article`
   width: 100%;
 `;
 
+const ImageSliderContainer = styled.div`
+  width : 37.5em;
+  height : 37.5em;
+`
+
 const StHomeArticleFuntion = styled.section`
   padding: 0 1em;
 
@@ -83,6 +88,7 @@ const StCommentsArea = styled.textarea`
   outline: none;
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
+
 const HomeArticle = () => {
   return (
     <StArticleItem>
@@ -98,7 +104,9 @@ const HomeArticle = () => {
         <StMenuIcon width="1.5" />
       </StArticleHeader>
       <StHomeArticle>
-        <ImageSlider />
+        <ImageSliderContainer>
+        <ImageSlider imgWidth="37.5" imgHeight="37.5"/>
+        </ImageSliderContainer>
         <StHomeArticleFuntion>
           <StHomeIconBox>
             <StHomeIconBoxUl>

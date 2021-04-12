@@ -1,4 +1,3 @@
-import { useState } from "react";
 import DaumPostcode from "react-daum-postcode";
 import styled from "styled-components";
 import { StCloseIcon } from "../../Global/StIcon/StIcon";

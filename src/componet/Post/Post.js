@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { StCloseIcon, StMap, StUpload } from "../../Global/StIcon/StIcon";
+import ImageSlider from "../Home/ImageSlider";
 
 const PostCotainer = styled.section`
   position: fixed;
@@ -60,6 +61,15 @@ const UploadImg = styled.ul`
   background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
+const UploadImgPreview = styled.ul`
+  height: 300px;
+`;
+
+const ImageSliderContainer = styled.div`
+  width: 100%;
+  height: 280px;
+`;
+
 const UploadText = styled.ul`
   display: flex;
   flex-direction: column;
@@ -76,8 +86,8 @@ const Textarea = styled.textarea`
 const UploadLocation = styled.ul`
   display: flex;
   justify-content: space-between;
-  & :nth-child(n+2) {
-    display : flex;
+  & :nth-child(n + 2) {
+    display: flex;
   }
 `;
 
@@ -145,14 +155,28 @@ const CloseBtnCotainer = styled.div`
 `;
 
 const Post = ({ handlePost, handleAddress, addressName }) => {
-  const [imgs, setImgs] = useState();
+  const [imgs, setImgs] = useState(null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   const handleLocation = () => {
     handleAddress();
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const onChageInput = (event) => {
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    reader.onloadend = () => {
+      console.log(reader);
+      
+      setImgs(reader.result);
+    };
+    reader.readAsDataURL(file);
+    console.log(imgs);
+    console.log(event.target.files);
+    console.log(event.target.files.length);
   };
 
   return (
@@ -165,7 +189,12 @@ const Post = ({ handlePost, handleAddress, addressName }) => {
         </CloseBtnCotainer>
         <UploadTitle>새 게시물 </UploadTitle>
         <UploadSpace>
-          <UploadInput type="file" id="upload" />
+          <UploadInput
+            type="file"
+            id="upload"
+            multiple
+            onChange={onChageInput}
+          />
           <li>새로운 파일 업로드</li>
           <li>
             <UploadLabelBtn htmlFor="upload">
@@ -173,14 +202,25 @@ const Post = ({ handlePost, handleAddress, addressName }) => {
             </UploadLabelBtn>
           </li>
         </UploadSpace>
-        <UploadImg>
-          <li>
-            <UploadLabelBtn htmlFor="upload">
-              <StUpload width="3" margin="1em" />
-            </UploadLabelBtn>
-          </li>
-          <li>업로드된 사진은 여기에 표시됩니다</li>
-        </UploadImg>
+
+        {imgs ? (
+          <UploadImgPreview>
+            <li>
+              <ImageSliderContainer>
+                <ImageSlider imgs={imgs} />
+              </ImageSliderContainer>
+            </li>
+          </UploadImgPreview>
+        ) : (
+          <UploadImg>
+            <li>
+              <UploadLabelBtn htmlFor="upload">
+                <StUpload width="3" margin="1em" />
+              </UploadLabelBtn>
+            </li>
+            <li>업로드된 사진은 여기에 표시됩니다</li>
+          </UploadImg>
+        )}
 
         <UploadText>
           <li>문구 입력</li>
