@@ -2,14 +2,6 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { StLeftArrow, StRightArrow } from "../../Global/StIcon/StIcon";
 
-const Images = [
-  "https://picsum.photos/id/0/600/600",
-  "https://picsum.photos/id/100/200/600",
-  "https://picsum.photos/id/500/600/600",
-  "https://picsum.photos/id/900/200/600",
-  "https://picsum.photos/id/1000/600/600",
-];
-
 const ImageWraper = styled.section`
   position: relative;
   width: 100%;
@@ -81,10 +73,10 @@ const ImageSlider = ({imgs}) => {
           </Btn>
         </BtnCotainer>
         <ImageList ref={ImgRef}>
-          {Images.map((img, index) => (
+          {imgs.map((img, index) => (
             <ImageItem key={index}>
               <ImgWrapper>
-              <Image src={img} alt="pic" />
+              <Image src={img.imgUrl} alt="pic" />
               </ImgWrapper>
             </ImageItem>
           ))}

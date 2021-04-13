@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { StCloseIcon, StMap, StUpload } from "../../Global/StIcon/StIcon";
+import uploadData from "../../service/routeData/uploadData";
 import ImageSlider from "../Home/ImageSlider";
 
 const PostCotainer = styled.section`
@@ -155,10 +156,13 @@ const CloseBtnCotainer = styled.div`
 `;
 
 const Post = ({ handlePost, handleAddress, addressName }) => {
-  const [imgs, setImgs] = useState(null);
+   const [imgs, setImgs] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    uploadData(imgs);
+    handlePost();
+    alert('성공적으로 게시물이 업로드 되었습니다');
   };
 
   const handleLocation = () => {
@@ -166,17 +170,15 @@ const Post = ({ handlePost, handleAddress, addressName }) => {
   };
 
   const onChageInput = (event) => {
-    let reader = new FileReader();
-    let file = event.target.files[0];
-    reader.onloadend = () => {
-      console.log(reader);
-      
-      setImgs(reader.result);
-    };
-    reader.readAsDataURL(file);
-    console.log(imgs);
-    console.log(event.target.files);
-    console.log(event.target.files.length);
+    const target = event.target.files; //객체 안에 배열로 구성
+    const files = [];
+
+    [...target].forEach((file) => {
+      //console.log(file);
+      const imgUrl = URL.createObjectURL(file);
+      files.push({ file: file, imgUrl: imgUrl });
+    });
+    setImgs([...imgs, ...files]);
   };
 
   return (

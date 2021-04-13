@@ -44,9 +44,9 @@ const StHomeArticle = styled.article`
 `;
 
 const ImageSliderContainer = styled.div`
-  width : 37.5em;
-  height : 37.5em;
-`
+  width: 37.5em;
+  height: 37.5em;
+`;
 
 const StHomeArticleFuntion = styled.section`
   padding: 0 1em;
@@ -88,7 +88,13 @@ const StCommentsArea = styled.textarea`
   outline: none;
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
-
+const imgs = [
+  { imgUrl: "https://picsum.photos/id/0/600/600" },
+  { imgUrl: "https://picsum.photos/id/100/200/600" },
+  { imgUrl: "https://picsum.photos/id/500/600/600" },
+  { imgUrl: "https://picsum.photos/id/900/200/600" },
+  { imgUrl: "https://picsum.photos/id/1000/600/600" },
+];
 const HomeArticle = () => {
   return (
     <StArticleItem>
@@ -105,7 +111,7 @@ const HomeArticle = () => {
       </StArticleHeader>
       <StHomeArticle>
         <ImageSliderContainer>
-        <ImageSlider imgWidth="37.5" imgHeight="37.5"/>
+          <ImageSlider imgWidth="37.5" imgHeight="37.5" imgs={imgs} />
         </ImageSliderContainer>
         <StHomeArticleFuntion>
           <StHomeIconBox>
