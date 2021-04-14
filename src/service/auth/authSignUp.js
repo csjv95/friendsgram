@@ -16,12 +16,17 @@ const authSignUp = async (userData, history) => {
     });
 
     // DB에 넣기
-    await firebaseStore.collection("users").doc(user.uid).set({
-      email,
-      name,
-      nicname,
-      password,
-    });
+    await firebaseStore
+      .collection("users")
+      .doc(user.uid)
+      .collection("signupData")
+      .doc()
+      .set({
+        email,
+        name,
+        nicname,
+        password,
+      });
 
     history.push({
       pathname: "/",

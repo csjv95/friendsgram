@@ -1,6 +1,6 @@
 import { firebaseStorage, firebaseAuth } from "../firebase";
 
-const uploadData = (imgs) => {
+const postDataToStorage = (imgs) => {
   const user = firebaseAuth.currentUser;
   const uid = user.uid;
 
@@ -13,4 +13,4 @@ const uploadData = (imgs) => {
   });
 };
 
-export default uploadData;
+export default postDataToStorage;

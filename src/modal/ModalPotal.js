@@ -1,10 +1,13 @@
 import ReactDOM from "react-dom";
 
-const ModalPotal = ({ children }) => {
-  const post = document.getElementById("post");
-  const address = document.getElementById("address");
-  console.log(children);
-  return ReactDOM.createPortal(children, post,address);
+const ModalPotal = ({ children,potalName }) => {
+  
+  const potal = () => {
+    const name = potalName;
+    return name;
+  }
+  console.log(potalName,children);
+  return ReactDOM.createPortal(children,potal());
 };
 
 export default ModalPotal;

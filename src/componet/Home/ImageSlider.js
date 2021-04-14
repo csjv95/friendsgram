@@ -20,12 +20,12 @@ const ImageItem = styled.li`
 `;
 
 const ImgWrapper = styled.div`
-  width : 100%;
-  height : 100%;
-`
+  width: 100%;
+  height: 100%;
+`;
 
 const Image = styled.img`
-  max-width:100%;
+  max-width: 100%;
   max-height: 100%;
 `;
 
@@ -45,7 +45,7 @@ const Btn = styled.button`
   background-color: white;
 `;
 
-const ImageSlider = ({imgs}) => {
+const ImageSlider = ({ imgs }) => {
   const ImgRef = useRef();
   const [imgIndex, setImgIndex] = useState(0);
 
@@ -62,27 +62,25 @@ const ImageSlider = ({imgs}) => {
   };
 
   return (
-    <>
-      <ImageWraper>
-        <BtnCotainer>
-          <Btn onClick={backClick}>
-            <StLeftArrow width="1.5" color="lightgrey" />
-          </Btn>
-          <Btn onClick={nextClick}>
-            <StRightArrow width="1.5" color="lightgrey" />
-          </Btn>
-        </BtnCotainer>
-        <ImageList ref={ImgRef}>
-          {imgs.map((img, index) => (
-            <ImageItem key={index}>
-              <ImgWrapper>
+    <ImageWraper>
+      <BtnCotainer>
+        <Btn onClick={backClick}>
+          <StLeftArrow width="1.5" color="lightgrey" />
+        </Btn>
+        <Btn onClick={nextClick}>
+          <StRightArrow width="1.5" color="lightgrey" />
+        </Btn>
+      </BtnCotainer>
+      <ImageList ref={ImgRef}>
+        {imgs.map((img, index) => (
+          <ImageItem key={index}>
+            <ImgWrapper>
               <Image src={img.imgUrl} alt="pic" />
-              </ImgWrapper>
-            </ImageItem>
-          ))}
-        </ImageList>
-      </ImageWraper>
-    </>
+            </ImgWrapper>
+          </ImageItem>
+        ))}
+      </ImageList>
+    </ImageWraper>
   );
 };
 

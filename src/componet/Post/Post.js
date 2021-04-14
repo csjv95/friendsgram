@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { StCloseIcon, StMap, StUpload } from "../../Global/StIcon/StIcon";
-import uploadData from "../../service/routeData/uploadData";
 import ImageSlider from "../Home/ImageSlider";
+import postDataToStore from "../../service/postData/postDataToStore";
+import postDataToStorage from "../../service/postData/postDataToStorage";
 
 const PostCotainer = styled.section`
   position: fixed;
@@ -156,13 +157,20 @@ const CloseBtnCotainer = styled.div`
 `;
 
 const Post = ({ handlePost, handleAddress, addressName }) => {
-   const [imgs, setImgs] = useState([]);
+  const [imgs, setImgs] = useState([]);
+  const [text, setText] = useState("");
+  const [chat, setChat] = useState(false);
+  const [state,setState] = useState([]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    uploadData(imgs);
+  const onSubmit = () => {
+    postDataToStorage(imgs);
+    postDataToStore(imgs,text,chat,addressName,state,setState)
+    alert("성공적으로 게시물이 업로드 되었습니다");
     handlePost();
-    alert('성공적으로 게시물이 업로드 되었습니다');
+  }
+
+  const preventDefault = (event) => {
+    event.preventDefault();
   };
 
   const handleLocation = () => {
@@ -172,18 +180,25 @@ const Post = ({ handlePost, handleAddress, addressName }) => {
   const onChageInput = (event) => {
     const target = event.target.files; //객체 안에 배열로 구성
     const files = [];
-
     [...target].forEach((file) => {
-      //console.log(file);
       const imgUrl = URL.createObjectURL(file);
       files.push({ file: file, imgUrl: imgUrl });
     });
     setImgs([...imgs, ...files]);
   };
 
+  const onChangeText = (event) => {
+    const text = event.target.value;
+    setText(text);
+  };
+
+  const onChageChat = () => {
+    setChat(!chat);
+  };
+
   return (
     <PostCotainer>
-      <PostForm onSubmit={handleSubmit}>
+      <PostForm onSubmit={preventDefault}>
         <CloseBtnCotainer>
           <button onClick={handlePost}>
             <StCloseIcon width="1.5" />
@@ -227,7 +242,10 @@ const Post = ({ handlePost, handleAddress, addressName }) => {
         <UploadText>
           <li>문구 입력</li>
           <li>
-            <Textarea placeholder="문구를 입력해주세요" />
+            <Textarea
+              placeholder="문구를 입력해주세요"
+              onChange={onChangeText}
+            />
           </li>
         </UploadText>
         <UploadLocation>
@@ -243,14 +261,14 @@ const Post = ({ handlePost, handleAddress, addressName }) => {
         <ChatAccess>
           <li>댓글 기능</li>
           <li>
-            <CheckBoxContainer>
+            <CheckBoxContainer onChange={onChageChat}>
               <CheckBoxInput type="checkbox" id="access" />
               <CheckBoxLabel htmlFor="access" />
             </CheckBoxContainer>
           </li>
         </ChatAccess>
         <CloseBtnCotainer>
-          <button>업로드</button>
+          <button onClick={onSubmit}> 업로드</button>
         </CloseBtnCotainer>
       </PostForm>
     </PostCotainer>

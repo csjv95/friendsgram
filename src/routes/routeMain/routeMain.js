@@ -16,6 +16,8 @@ const AppContainer = styled.div`
 `;
 
 const RouteMain = () => {
+  const post = document.getElementById("post");
+  const address = document.getElementById("address");
   const [postModal, setPostModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
   const [addressName, setAddressName] = useState("");
@@ -27,11 +29,11 @@ const RouteMain = () => {
   const handleAddress = () => {
     setAddressModal(!addressModal);
   };
-
+  
   return (
     <AppContainer>
       {postModal && (
-        <ModalPotal>
+        <ModalPotal potalName={post}>
           <Post
             handlePost={handlePost}
             handleAddress={handleAddress}
@@ -40,7 +42,7 @@ const RouteMain = () => {
         </ModalPotal>
       )}
       {addressModal && (
-        <ModalPotal>
+        <ModalPotal potalName={address}>
           <Address
             handleAddress={handleAddress}
             setAddressName={setAddressName}
