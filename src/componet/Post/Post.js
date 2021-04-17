@@ -156,18 +156,23 @@ const CloseBtnCotainer = styled.div`
   }
 `;
 
-const Post = ({ handlePost, handleAddress, addressName }) => {
-  const [imgs, setImgs] = useState([]);
-  const [text, setText] = useState("");
-  const [chat, setChat] = useState(false);
-  const [state,setState] = useState([]);
-
+const Post = ({
+  handlePost,
+  handleAddress,
+  addressName,
+  imgs,
+  setImgs,
+  text,
+  setText,
+  noComments,
+  setNoComments,
+}) => {
   const onSubmit = () => {
     postDataToStorage(imgs);
-    postDataToStore(imgs,text,chat,addressName,state,setState)
+    postDataToStore(imgs, text, noComments, addressName);
     alert("성공적으로 게시물이 업로드 되었습니다");
     handlePost();
-  }
+  };
 
   const preventDefault = (event) => {
     event.preventDefault();
@@ -193,7 +198,7 @@ const Post = ({ handlePost, handleAddress, addressName }) => {
   };
 
   const onChageChat = () => {
-    setChat(!chat);
+    setNoComments(!noComments);
   };
 
   return (

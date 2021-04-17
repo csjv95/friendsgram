@@ -21,6 +21,9 @@ const RouteMain = () => {
   const [postModal, setPostModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
   const [addressName, setAddressName] = useState("");
+  const [imgs, setImgs] = useState([]);
+  const [text, setText] = useState("");
+  const [noComments, setNoComments] = useState(false);
 
   const handlePost = () => {
     setPostModal(!postModal);
@@ -29,12 +32,18 @@ const RouteMain = () => {
   const handleAddress = () => {
     setAddressModal(!addressModal);
   };
-  
+
   return (
     <AppContainer>
       {postModal && (
         <ModalPotal potalName={post}>
           <Post
+            imgs={imgs}
+            setImgs={setImgs}
+            text={text}
+            setText={setText}
+            noComments={noComments}
+            setNoComments={setNoComments}
             handlePost={handlePost}
             handleAddress={handleAddress}
             addressName={addressName}

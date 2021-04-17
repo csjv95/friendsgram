@@ -11,8 +11,8 @@ const StHomeContainer = styled.section`
 `;
 
 const StArticleList = styled.ul`
-  display : flex;
-  flex-direction : column;
+  display: flex;
+  flex-direction: column;
 `;
 
 const StFollowerCotainer = styled.section`
@@ -22,7 +22,7 @@ const StFollowerCotainer = styled.section`
 `;
 
 const Home = () => {
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     homeData(setUserData);
@@ -32,10 +32,9 @@ const Home = () => {
     <StMainRouterSection>
       <StHomeContainer>
         <StArticleList>
-          <HomeArticle />
-          <HomeArticle />
-          <HomeArticle />
-          <HomeArticle />
+          {userData.map((article, index) => (
+            <HomeArticle key={index} article={article} />
+          ))}
         </StArticleList>
         <StFollowerCotainer>
           <HomeFollow />

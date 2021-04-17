@@ -5,7 +5,7 @@ import { firebaseAuth } from "../../service/firebase";
 import {
   StHomeIcon,
   StSendIcon,
-  StUpload,
+  StPlusSquare,
   StHeartIcon,
 } from "../StIcon/StIcon";
 import { StProfileImg } from "../StProfileImg/StProfileImg";
@@ -79,7 +79,7 @@ const Header = ({handlePost}) => {
           </HeaderNavUlLi>
           <HeaderNavUlLi>
             <button onClick ={handlePost}>
-              <StUpload width="1.5" />
+              <StPlusSquare width="1.5" />
             </button>
           </HeaderNavUlLi>
           <HeaderNavUlLi>

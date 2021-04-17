@@ -1,6 +1,6 @@
 import { firebaseStorage, firebaseAuth } from "../firebase";
 
-const uploadData = (imgs) => {
+const uploadData = async(imgs) => {
   const user = firebaseAuth.currentUser;
   const uid = user.uid;
 
@@ -8,9 +8,10 @@ const uploadData = (imgs) => {
     alert(`please upload your image ${typeof imgs}`);
   }
   // 업로드
-  imgs.forEach((img) => {
-    firebaseStorage.ref(`/${uid}/${img.file.name}`).put(img.file);
+  await imgs.forEach((img) => {
+    firebaseStorage.ref(`/${uid}`).put(img.file);
   });
+
 };
 
 export default uploadData;

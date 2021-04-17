@@ -1,27 +1,22 @@
 import { firebaseStore } from "../firebase";
 import { firebaseAuth } from "../firebase";
 
-const homeData = (setUserData) => {
+const homeData = async (setUserData) => {
   const user = firebaseAuth.currentUser;
   const uid = user.uid;
 
-  const docRef = firebaseStore.collection("users").doc(uid);
+  const postData = firebaseStore
+    .collection("users")
+    .doc(uid)
+    .collection("post");
 
-  docRef
-    .get()
-    .then((doc) => {
-      console.log(doc.exists);
-      if (doc.exists) {
-        console.log("Document data:", doc.data());
-        setUserData(doc.data());
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    })
-    .catch((error) => {
-      console.log("Error getting document:", error);
+  let data = [];
+  await postData.get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      data.push(doc.data());
     });
+    setUserData(data);
+  });
 };
 
 export default homeData;

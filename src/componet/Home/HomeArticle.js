@@ -11,6 +11,7 @@ import {
   StSmileIocn,
 } from "../../Global/StIcon/StIcon";
 import ImageSlider from "./ImageSlider";
+import time from "../../service/time/time";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -95,7 +96,8 @@ const imgs = [
   { imgUrl: "https://picsum.photos/id/900/200/600" },
   { imgUrl: "https://picsum.photos/id/1000/600/600" },
 ];
-const HomeArticle = () => {
+const HomeArticle = ({ article }) => {
+  const { imgs, noComments, timestamp, text, addressName } = article;
   return (
     <StArticleItem>
       <StArticleHeader>
@@ -144,13 +146,15 @@ const HomeArticle = () => {
           </StHomeIconBox>
           <div>좋아요 136</div>
           <div>해쉬태크들</div>
-          <div>upload data(2일전)</div>
+          <div>{time(timestamp)}</div>
         </StHomeArticleFuntion>
-        <StComments>
-          <StSmileIocn width="1.5" />
-          <StCommentsArea placeholder="댓글 달기..."></StCommentsArea>
-          <button>게시</button>
-        </StComments>
+        {!noComments && (
+          <StComments>
+            <StSmileIocn width="1.5" />
+            <StCommentsArea placeholder="댓글 달기..."></StCommentsArea>
+            <button>게시</button>
+          </StComments>
+        )}
       </StHomeArticle>
     </StArticleItem>
   );
