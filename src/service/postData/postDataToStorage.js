@@ -9,7 +9,7 @@ const postDataToStorage = (imgs) => {
   }
   // 업로드
   imgs.forEach((img) => {
-    firebaseStorage.ref(`/${uid}/${img.file.name}`).put(img.file);
+    firebaseStorage.ref().child(`/${uid}/${img.file.name}`).put(img.file);
   });
 };
 

@@ -27,7 +27,7 @@ const SignUp = () => {
   const [userData, setUserData] = useState({
     email: "",
     name: "",
-    nicname: "",
+    displayName: "",
     password: "",
   });
 
@@ -83,8 +83,8 @@ const SignUp = () => {
             type="text"
             autoComplete="username"
             placeholder="사용자 이름"
-            name="nicname"
-            value={userData.nicname}
+            name="displayName"
+            value={userData.displayName}
             onChange={handleChange}
           />
           <StLoginInput

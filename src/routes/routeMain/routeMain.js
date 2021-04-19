@@ -20,7 +20,7 @@ const RouteMain = () => {
   const address = document.getElementById("address");
   const [postModal, setPostModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
-  const [addressName, setAddressName] = useState("");
+  const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
   const [text, setText] = useState("");
   const [noComments, setNoComments] = useState(false);
@@ -46,7 +46,7 @@ const RouteMain = () => {
             setNoComments={setNoComments}
             handlePost={handlePost}
             handleAddress={handleAddress}
-            addressName={addressName}
+            location={location}
           />
         </ModalPotal>
       )}
@@ -54,7 +54,7 @@ const RouteMain = () => {
         <ModalPotal potalName={address}>
           <Address
             handleAddress={handleAddress}
-            setAddressName={setAddressName}
+            setLocation={setLocation}
           />
         </ModalPotal>
       )}

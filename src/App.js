@@ -6,9 +6,11 @@ import authCheckUser from "./service/auth/authCheckUser";
 
 function App() {
   const [isLogin, setLogin] = useState(false);
+
   useEffect(() => {
     authCheckUser(setLogin);
   }, [setLogin]);
+  
   return (
     <>
       {isLogin === true ? (

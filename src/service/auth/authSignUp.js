@@ -2,30 +2,32 @@ import { firebaseAuth } from "../firebase";
 import { firebaseStore } from "../firebase";
 
 const authSignUp = async (userData, history) => {
-  const { email, name, nicname, password } = userData;
+  const { email, name, displayName, password } = userData;
   try {
     //이메일 패스워드로 회원가입
     await firebaseAuth.createUserWithEmailAndPassword(email, password);
 
     //프로필업데이트
     const user = firebaseAuth.currentUser;
-    console.log(user.uid);
     await user.updateProfile({
       name,
-      nicname,
+      displayName,
     });
 
     // DB에 넣기
     await firebaseStore
       .collection("users")
       .doc(user.uid)
-      .collection("signupData")
+      .collection("userData")
       .doc()
       .set({
         email,
         name,
-        nicname,
+        displayName,
         password,
+        photoURL : "http://www.damodarcollege.edu.in/web/wp-content/uploads/2021/01/sample-photo1.jpg",
+        follower: [],
+        following : []
       });
 
     history.push({

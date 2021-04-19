@@ -12,6 +12,7 @@ import {
 } from "../../Global/StIcon/StIcon";
 import ImageSlider from "./ImageSlider";
 import time from "../../service/time/time";
+import getStorage from "../../service/getStorage/getStorage";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -30,15 +31,27 @@ const StArticleHeader = styled.header`
 `;
 
 const StHeaderProfileCotainer = styled.div`
-  height: 1.5em;
+  height: 2.5em;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const StHeaderProfileId = styled.span`
+const StProfileInfo = styled.div`
   margin-left: 1em;
+  display : flex;
+  flex-direction : column;
+  justify-items: center;
+`
+
+const StProfileId = styled.span`
+  font-weight : 600;
 `;
+
+const StprofileLoction = styled.span`
+  margin-top: 0.2em;
+  font-size : 0.4em;
+`
 
 const StHomeArticle = styled.article`
   width: 100%;
@@ -89,25 +102,23 @@ const StCommentsArea = styled.textarea`
   outline: none;
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
-const imgs = [
-  { imgUrl: "https://picsum.photos/id/0/600/600" },
-  { imgUrl: "https://picsum.photos/id/100/200/600" },
-  { imgUrl: "https://picsum.photos/id/500/600/600" },
-  { imgUrl: "https://picsum.photos/id/900/200/600" },
-  { imgUrl: "https://picsum.photos/id/1000/600/600" },
-];
+
 const HomeArticle = ({ article }) => {
-  const { imgs, noComments, timestamp, text, addressName } = article;
+  const { imgs, noComments, timestamp, text, location, displayName } = article;
   return (
     <StArticleItem>
       <StArticleHeader>
+        {getStorage(imgs)}
         <StHeaderProfileCotainer>
           <StProfileImg
             src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/56593842_427595071141963_9102473363216924672_n.jpg?tp=1&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=yyXKpuG-JU8AX8YRTka&edm=ABfd0MgAAAAA&ccb=7-4&oh=142b6867c72be34b9d9262ae9269f410&oe=609AF8FC&_nc_sid=7bff83"
             alt="my"
             height="100%"
           />
-          <StHeaderProfileId>user ID</StHeaderProfileId>
+          <StProfileInfo>
+            <StProfileId>{displayName}</StProfileId>
+            <StprofileLoction>{location}</StprofileLoction>
+          </StProfileInfo>
         </StHeaderProfileCotainer>
         <StMenuIcon width="1.5" />
       </StArticleHeader>
@@ -145,7 +156,7 @@ const HomeArticle = ({ article }) => {
             <StBookmarkIcon width="2" />
           </StHomeIconBox>
           <div>좋아요 136</div>
-          <div>해쉬태크들</div>
+          <div>{text}</div>
           <div>{time(timestamp)}</div>
         </StHomeArticleFuntion>
         {!noComments && (

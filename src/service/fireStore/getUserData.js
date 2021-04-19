@@ -1,22 +1,21 @@
 import { firebaseStore } from "../firebase";
 import { firebaseAuth } from "../firebase";
 
-const homeData = async (setUserData) => {
+const getUserData = async (setUserData) => {
   const user = firebaseAuth.currentUser;
   const uid = user.uid;
 
-  const postData = firebaseStore
+  const userData = firebaseStore
     .collection("users")
     .doc(uid)
-    .collection("post");
+    .collection("userData");
 
-  let data = [];
-  await postData.get().then((querySnapshot) => {
+  await userData.get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      data.push(doc.data());
+      setUserData(doc.data());
     });
-    setUserData(data);
+    
   });
-};
+}
 
-export default homeData;
+export default getUserData;

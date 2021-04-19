@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { StCloseIcon, StMap, StUpload } from "../../Global/StIcon/StIcon";
 import ImageSlider from "../Home/ImageSlider";
@@ -159,7 +159,7 @@ const CloseBtnCotainer = styled.div`
 const Post = ({
   handlePost,
   handleAddress,
-  addressName,
+  location,
   imgs,
   setImgs,
   text,
@@ -169,7 +169,7 @@ const Post = ({
 }) => {
   const onSubmit = () => {
     postDataToStorage(imgs);
-    postDataToStore(imgs, text, noComments, addressName);
+    postDataToStore(imgs, text, noComments, location);
     alert("성공적으로 게시물이 업로드 되었습니다");
     handlePost();
   };
@@ -256,7 +256,7 @@ const Post = ({
         <UploadLocation>
           <li>위치추가</li>
           <li>
-            {addressName && <div>{addressName}</div>}
+            {location && <div>{location}</div>}
             <button onClick={handleLocation}>
               <StMap width="1.5" />
             </button>

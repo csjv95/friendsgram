@@ -29,10 +29,10 @@ const BtnContainer = styled.div`
   background-color : white;
 `;
 
-const Address = ({ handleAddress, setAddressName }) => {
+const Address = ({ handleAddress, setLocation }) => {
   const handleComplete = (data) => {
     console.log(data.buildingName);
-    setAddressName(data.buildingName);
+    setLocation(data.buildingName);
     handleAddress();
   };
 

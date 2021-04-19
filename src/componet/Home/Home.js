@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
-import homeData from "../../service/routeData/homeData";
+import getUserData from "../../service/fireStore/getUserData";
+import getPostData from "../../service/fireStore/getPostData";
 import HomeArticle from "./HomeArticle";
 import HomeFollow from "./HomeFollow";
 
@@ -23,21 +24,23 @@ const StFollowerCotainer = styled.section`
 
 const Home = () => {
   const [userData, setUserData] = useState([]);
+  const [postData, setPostData] = useState([]);
 
   useEffect(() => {
-    homeData(setUserData);
+    getUserData(setUserData);
+    getPostData(setPostData);
   }, []);
 
   return (
     <StMainRouterSection>
       <StHomeContainer>
         <StArticleList>
-          {userData.map((article, index) => (
+          {postData.map((article, index) => (
             <HomeArticle key={index} article={article} />
           ))}
         </StArticleList>
         <StFollowerCotainer>
-          <HomeFollow />
+          <HomeFollow userData={userData}/>
         </StFollowerCotainer>
       </StHomeContainer>
     </StMainRouterSection>
