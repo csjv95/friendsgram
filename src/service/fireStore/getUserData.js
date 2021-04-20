@@ -14,7 +14,6 @@ const getUserData = async (setUserData) => {
     querySnapshot.forEach((doc) => {
       setUserData(doc.data());
     });
-    
   });
 }
 

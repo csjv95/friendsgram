@@ -5,5 +5,5 @@ export const StMainRouterSection = styled.section`
   padding-top: 6em;
   display: flex;
   flex-wrap: wrap;
-  background-color: #fafafa;
+  background-color: ${({ theme }) => theme.colors.backgroundColor};;
 `;
