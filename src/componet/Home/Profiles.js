@@ -30,13 +30,23 @@ const StProfileNicname = styled.li`
   color: ${({ theme }) => theme.colors.textColorLihgtgrey};
 `;
 
-const Profiles = ({ imgHeight, btnText, photoURL, displayName, name,onBtnClick }) => {
+const Profiles = ({
+  imgHeight,
+  btnText,
+  photoURL,
+  displayName,
+  name,
+  onBtnClick,
+}) => {
   return (
     <StProfile>
       <StProfileImg src={photoURL} alt="my" height={imgHeight} />
       <StProfileInfo>
         <StProfileId>{name}</StProfileId>
         <StProfileNicname>{displayName}</StProfileNicname>
+        {/* 현재 로그인한 uid가
+ collection("follow").where("following", "==", (uid or displayName)이면 
+회원님을 팔로우 합니다 작성 */}
       </StProfileInfo>
       <StProfileBtn onClick={onBtnClick}>{btnText}</StProfileBtn>
     </StProfile>
