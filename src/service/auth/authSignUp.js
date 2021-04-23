@@ -19,8 +19,6 @@ const authSignUp = async (userData, history) => {
     // DB에 넣기
     await firebaseStore
       .collection("users")
-      .doc(uid)
-      .collection("userData")
       .doc()
       .set({
         email,
