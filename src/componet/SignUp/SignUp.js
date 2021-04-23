@@ -24,6 +24,11 @@ import {
 
 const SignUp = () => {
   const history = useHistory();
+  const [follow, setFollow] = useState({
+    follower: [],
+    following: [],
+  })
+  
   const [userData, setUserData] = useState({
     email: "",
     name: "",
@@ -38,7 +43,7 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    authSignUp(userData, history);
+    authSignUp(userData, follow, history);
   };
 
   const handleChange = (event) => {

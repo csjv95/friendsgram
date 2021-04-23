@@ -23,7 +23,7 @@ const RecomendBtn = styled.button`
 `;
 
 const HomeFollow = ({ userData }) => {
-  const { following, follwer, displayName, photoURL, name } = userData;
+  const { displayName, photoURL, name } = userData;
 
   return (
     <FollowList>
@@ -42,5 +42,4 @@ const HomeFollow = ({ userData }) => {
     </FollowList>
   );
 };
-
 export default HomeFollow;

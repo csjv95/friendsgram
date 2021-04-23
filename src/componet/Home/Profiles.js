@@ -17,7 +17,7 @@ const StProfileInfo = styled.ul`
 
 const StProfileBtn = styled.button`
   font-weight: 600;
-  color: ${({theme}) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.blue};
 `;
 
 const StProfileId = styled.li`
@@ -27,22 +27,18 @@ const StProfileId = styled.li`
 
 const StProfileNicname = styled.li`
   font-size: 0.8em;
-  color: ${({theme}) => theme.colors.textColorLihgtgrey};
+  color: ${({ theme }) => theme.colors.textColorLihgtgrey};
 `;
 
-const Profiles = ({ imgHeight, btnText,photoURL,displayName,name }) => {
+const Profiles = ({ imgHeight, btnText, photoURL, displayName, name,onBtnClick }) => {
   return (
     <StProfile>
-      <StProfileImg
-        src={photoURL}
-        alt="my"
-        height={imgHeight}
-      />
+      <StProfileImg src={photoURL} alt="my" height={imgHeight} />
       <StProfileInfo>
         <StProfileId>{name}</StProfileId>
         <StProfileNicname>{displayName}</StProfileNicname>
       </StProfileInfo>
-      <StProfileBtn>{btnText}</StProfileBtn>
+      <StProfileBtn onClick={onBtnClick}>{btnText}</StProfileBtn>
     </StProfile>
   );
 };

@@ -9,8 +9,6 @@ const postDataToStore = (imgs, text, noComments, location) => {
   const displayName = user.displayName;
 
   const postData = firebaseStore
-    .collection("users")
-    .doc(uid)
     .collection("post")
     .doc();
 
@@ -27,6 +25,7 @@ const postDataToStore = (imgs, text, noComments, location) => {
     noComments,
     location,
     timestamp,
+    uid,
   });
 };
 

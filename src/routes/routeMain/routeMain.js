@@ -8,7 +8,7 @@ import ModalPotal from "../../modal/ModalPotal";
 import Address from "../../componet/Address/Adress";
 import getUserData from "../../service/fireStore/getUserData";
 import getPostData from "../../service/fireStore/getPostData";
-import getUserList from "../../service/fireStore/getUserList";
+import getUsersList from "../../service/fireStore/getUsersList";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -34,7 +34,7 @@ const RouteMain = () => {
   useEffect(() => {
     getUserData(setUserData);
     getPostData(setPostData);
-    getUserList(setUsersList); 
+    getUsersList(setUsersList); 
   }, []);
 
   const handlePost = () => {

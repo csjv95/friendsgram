@@ -5,16 +5,18 @@ const getUserData = async (setUserData) => {
   const user = firebaseAuth.currentUser;
   const uid = user.uid;
 
-  const userData = firebaseStore
-    .collection("users")
-    .doc(uid)
-    .collection("userData");
+  const userData = firebaseStore.collection("users").where("uid", "==", uid);
 
-  await userData.get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      setUserData(doc.data());
+  await userData
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        setUserData(doc.data());
+      });
+    })
+    .catch((error) => {
+      console.log("Error getting documents: ", error);
     });
-  });
-}
+};
 
 export default getUserData;
