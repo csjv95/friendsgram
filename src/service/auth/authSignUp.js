@@ -19,14 +19,14 @@ const authSignUp = async (userData, follow, history) => {
     });
 
     // DB에 넣기 follow
-    await firebaseStore.collection("follow").doc().set({
+    await firebaseStore.collection("follow").doc(uid).set({
       follower,
       following,
       uid,
     });
 
     // DB에 넣기 userdata
-    await firebaseStore.collection("users").doc().set({
+    await firebaseStore.collection("users").doc(uid).set({
       email,
       name,
       displayName,

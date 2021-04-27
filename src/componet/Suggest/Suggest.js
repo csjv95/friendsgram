@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
+import setFollow from "../../service/follow/setFollow";
 import Profiles from "../Home/Profiles";
 
 const StSuggestContainer = styled.section`
@@ -21,11 +22,15 @@ const StSugget = styled.ul`
 `;
 
 const Suggest = ({ usersList }) => {
-  const onBtnClick = () => {
+
+  const onBtnClick = (event) => {
     // When clicked 
-    // following = 내가 follow한거 / follower 나를 follow 한사람
+    // following = 내가 follow한거 / follower = 나를 follow 한사람
     // step 1. 팔로워에 내유아이 찾아서 팔로잉에 click된 아이디 넣고
     // step 2. 팔로잉 한 사람의 아이디에 follow에 follower에 아이디넣기
+    // console.log(event.target.parentNode.dataset.uid);
+     const targetUser = event.target.parentNode.dataset.uid;
+     setFollow(targetUser);
   }
 
   return (
@@ -42,6 +47,7 @@ const Suggest = ({ usersList }) => {
               displayName={user.displayName}
               name={user.name}
               onBtnClick={onBtnClick}
+              uid={user.uid}
             />
           ))}
         </StSugget>
