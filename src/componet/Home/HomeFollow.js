@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Profiles from "./Profiles";
+import { NavLink } from "react-router-dom";
 
 const FollowList = styled.ul`
   position: fixed;
@@ -36,7 +37,9 @@ const HomeFollow = ({ userData }) => {
       />
       <FollowRecomend>
         <RecomendText>회원님을 위한 추천</RecomendText>
-        <RecomendBtn>모두 보기</RecomendBtn>
+        <NavLink to="/suggest">
+          <RecomendBtn>모두 보기</RecomendBtn>
+        </NavLink>
       </FollowRecomend>
       <Profiles imgHeight="2em" btnText="팔로우" />
     </FollowList>

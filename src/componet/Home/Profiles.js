@@ -16,8 +16,11 @@ const StProfileInfo = styled.ul`
 `;
 
 const StProfileBtn = styled.button`
+  padding: 0.5em;
+  border-radius: 0.2em;
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.blue};
+  background-color : ${({ theme }) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.contentColor};
 `;
 
 const StProfileId = styled.li`

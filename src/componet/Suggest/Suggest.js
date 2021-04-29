@@ -24,13 +24,10 @@ const StSugget = styled.ul`
 const Suggest = ({ usersList }) => {
 
   const onBtnClick = (event) => {
-    // When clicked 
-    // following = 내가 follow한거 / follower = 나를 follow 한사람
-    // step 1. 팔로워에 내유아이 찾아서 팔로잉에 click된 아이디 넣고
-    // step 2. 팔로잉 한 사람의 아이디에 follow에 follower에 아이디넣기
-    // console.log(event.target.parentNode.dataset.uid);
      const targetUser = event.target.parentNode.dataset.uid;
      setFollow(targetUser);
+     const currentText = event.target;
+     currentText.innerText="팔로잉";
   }
 
   return (
@@ -38,6 +35,7 @@ const Suggest = ({ usersList }) => {
       <StSuggestContainer>
         <StSuggetTitle>추천</StSuggetTitle>
         <StSugget>
+          {console.log(usersList)}
           {usersList.map((user, index) => (
             <Profiles
               key={index}

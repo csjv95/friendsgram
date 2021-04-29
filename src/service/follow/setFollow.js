@@ -1,7 +1,7 @@
 import { firebaseStore } from "../firebase";
 import { firebaseAuth, firebase } from "../firebase";
 
-const setFollowing = async (targetUser) => {
+const setFollow = async (targetUser) => {
   const user = firebaseAuth.currentUser;
   const uid = user.uid;
   const currentUserFollow = firebaseStore.collection("follow").doc(uid);
@@ -20,4 +20,4 @@ const setFollowing = async (targetUser) => {
     })
 };
 
-export default setFollowing;
+export default setFollow;

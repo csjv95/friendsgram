@@ -15,6 +15,7 @@ import { Upload } from "@styled-icons/bootstrap/Upload";
 import { Map } from "@styled-icons/boxicons-regular/Map";
 import { Close } from "@styled-icons/evaicons-solid/Close";
 import { PlusSquare } from "@styled-icons/bootstrap/PlusSquare"
+
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
 `;
