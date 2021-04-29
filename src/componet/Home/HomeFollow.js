@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Profiles from "./Profiles";
 import { NavLink } from "react-router-dom";
+import { firebaseAuth } from "../../service/firebase";
+import setFollow from "../../service/follow/setFollow";
 
 const FollowList = styled.ul`
   position: fixed;
@@ -26,13 +28,25 @@ const RecomendBtn = styled.button`
 const HomeFollow = ({ userData, usersList }) => {
   const { displayName, photoURL, name } = userData;
 
+  const onLogout = () => {
+    firebaseAuth.signOut();
+  };
+
+  const onBtnClick = (event) => {
+    const targetUser = event.target.parentNode.dataset.uid;
+    setFollow(targetUser);
+    const currentText = event.target;
+    currentText.innerText="팔로잉";
+ }
+
   return (
     <FollowList>
       <Profiles
         imgHeight="4em"
-        btnText="전환"
+        btnText="logout"
         photoURL={photoURL}
         displayName={displayName}
+        onBtnClick={onLogout}
         name={name}
       />
       <FollowRecomend>
@@ -49,6 +63,7 @@ const HomeFollow = ({ userData, usersList }) => {
           photoURL={user.photoURL}
           displayName={user.displayName}
           name={user.name}
+          onBtnClick={onBtnClick}
           uid={user.uid}
         />
       ))}

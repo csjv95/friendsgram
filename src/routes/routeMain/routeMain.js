@@ -9,8 +9,7 @@ import Address from "../../componet/Address/Adress";
 import getUserData from "../../service/fireStore/getUserData";
 import getPostData from "../../service/fireStore/getPostData";
 import getUsersList from "../../service/fireStore/getUsersList";
-import followingList from "../../service/follow/followingList";
-import followerList from "../../service/follow/followerList";
+
 
 const AppContainer = styled.div`
   width: 100%;
@@ -37,8 +36,6 @@ const RouteMain = () => {
     getUserData(setUserData);
     getPostData(setPostData);
     getUsersList(setUsersList);
-    followingList();
-    followerList();
   }, []);
 
   const handlePost = () => {

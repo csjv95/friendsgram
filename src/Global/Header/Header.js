@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { firebaseAuth } from "../../service/firebase";
 import {
   StHomeIcon,
   StSendIcon,
@@ -52,14 +51,10 @@ const HeaderNavUlLi = styled.li`
 `;
 
 const HeaderNavUlLiMy = styled.li`
-  height: 1.3em;
+  height: 1.5em;
 `;
 
 const Header = ({handlePost}) => {
-  const onLogout = () => {
-    firebaseAuth.signOut();
-  };
-
   return (
     <HeaderContainer>
       <HeaderLogo href="/home">Intstargram</HeaderLogo>
@@ -96,9 +91,6 @@ const Header = ({handlePost}) => {
               />
             </NavLink>
           </HeaderNavUlLiMy>
-          <li>
-            <button onClick={onLogout}>logout</button>
-          </li>
         </HeaderNavul>
       </nav>
     </HeaderContainer>

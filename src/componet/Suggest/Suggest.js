@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
-import setFollow from "../../service/follow/setFollow";
 import Profiles from "../Home/Profiles";
+import setFollow from "../../service/follow/setFollow";
 
 const StSuggestContainer = styled.section`
   margin: 0 auto;
@@ -22,13 +22,12 @@ const StSugget = styled.ul`
 `;
 
 const Suggest = ({ usersList }) => {
-
-  // const onBtnClick = (event) => {
-  //    const targetUser = event.target.parentNode.dataset.uid;
-  //    setFollow(targetUser);
-  //    const currentText = event.target;
-  //    currentText.innerText="팔로잉";
-  // }
+  const onBtnClick = (event) => {
+     const targetUser = event.target.parentNode.dataset.uid;
+     setFollow(targetUser);
+     const currentText = event.target;
+     currentText.innerText="팔로잉";
+  }
 
   return (
     <StMainRouterSection>
@@ -43,7 +42,7 @@ const Suggest = ({ usersList }) => {
               photoURL={user.photoURL}
               displayName={user.displayName}
               name={user.name}
-              // onBtnClick={onBtnClick}
+              onBtnClick={onBtnClick}
               uid={user.uid}
             />
           ))}
