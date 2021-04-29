@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
+import setFollow from "../../service/follow/setFollow";
 
 const StProfile = styled.li`
   margin: 1em 0;
@@ -39,9 +40,14 @@ const Profiles = ({
   photoURL,
   displayName,
   name,
-  onBtnClick,
   uid
 }) => {
+  const onBtnClick = (event) => {
+    const targetUser = event.target.parentNode.dataset.uid;
+    setFollow(targetUser);
+    const currentText = event.target;
+    currentText.innerText="팔로잉";
+ }
   return (
     <StProfile data-uid={uid}>
       <StProfileImg src={photoURL} alt="my" height={imgHeight} />

@@ -23,28 +23,27 @@ const StSugget = styled.ul`
 
 const Suggest = ({ usersList }) => {
 
-  const onBtnClick = (event) => {
-     const targetUser = event.target.parentNode.dataset.uid;
-     setFollow(targetUser);
-     const currentText = event.target;
-     currentText.innerText="팔로잉";
-  }
+  // const onBtnClick = (event) => {
+  //    const targetUser = event.target.parentNode.dataset.uid;
+  //    setFollow(targetUser);
+  //    const currentText = event.target;
+  //    currentText.innerText="팔로잉";
+  // }
 
   return (
     <StMainRouterSection>
       <StSuggestContainer>
         <StSuggetTitle>추천</StSuggetTitle>
         <StSugget>
-          {console.log(usersList)}
-          {usersList.map((user, index) => (
+          {usersList.map((user) => (
             <Profiles
-              key={index}
+              key={user.uid}
               imgHeight="3em"
               btnText="팔로우"
               photoURL={user.photoURL}
               displayName={user.displayName}
               name={user.name}
-              onBtnClick={onBtnClick}
+              // onBtnClick={onBtnClick}
               uid={user.uid}
             />
           ))}

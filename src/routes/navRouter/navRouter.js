@@ -9,7 +9,7 @@ const NavRouter = ({ userData, postData, usersList }) => {
   return (
     <Switch>
       <Route exact path="/">
-        <Home userData={userData} postData={postData} />
+        <Home userData={userData} postData={postData} usersList={usersList} />
       </Route>
       <Route path="/direct" component={Direct} />
       <Route path="/post" component={Post} />

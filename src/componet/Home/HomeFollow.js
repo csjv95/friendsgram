@@ -23,7 +23,7 @@ const RecomendBtn = styled.button`
   font-weight: 600;
 `;
 
-const HomeFollow = ({ userData }) => {
+const HomeFollow = ({ userData, usersList }) => {
   const { displayName, photoURL, name } = userData;
 
   return (
@@ -41,7 +41,17 @@ const HomeFollow = ({ userData }) => {
           <RecomendBtn>모두 보기</RecomendBtn>
         </NavLink>
       </FollowRecomend>
-      <Profiles imgHeight="2em" btnText="팔로우" />
+      {usersList.slice(0, 4).map((user) => (
+        <Profiles
+          key={user.uid}
+          imgHeight="2em"
+          btnText="팔로우"
+          photoURL={user.photoURL}
+          displayName={user.displayName}
+          name={user.name}
+          uid={user.uid}
+        />
+      ))}
     </FollowList>
   );
 };

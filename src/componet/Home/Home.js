@@ -20,7 +20,7 @@ const StFollowerCotainer = styled.section`
   justify-content: center;
 `;
 
-const Home = ({userData,postData}) => {
+const Home = ({ userData, postData, usersList }) => {
   return (
     <StMainRouterSection>
       <StHomeContainer>
@@ -30,7 +30,7 @@ const Home = ({userData,postData}) => {
           ))}
         </StArticleList>
         <StFollowerCotainer>
-          <HomeFollow userData={userData}/>
+          <HomeFollow userData={userData} usersList={usersList}/>
         </StFollowerCotainer>
       </StHomeContainer>
     </StMainRouterSection>
