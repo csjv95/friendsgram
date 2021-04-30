@@ -20,7 +20,7 @@ const StProfileBtn = styled.button`
   padding: 0.5em;
   border-radius: 0.2em;
   font-weight: 600;
-  background-color : ${({ theme }) => theme.colors.blue};
+  background-color: ${({ theme }) => theme.colors.blue};
   color: ${({ theme }) => theme.colors.contentColor};
 `;
 
@@ -41,7 +41,8 @@ const Profiles = ({
   displayName,
   name,
   onBtnClick,
-  uid
+  uid,
+  followingList,
 }) => {
   return (
     <StProfile data-uid={uid}>
@@ -49,9 +50,10 @@ const Profiles = ({
       <StProfileInfo>
         <StProfileId>{name}</StProfileId>
         <StProfileNicname>{displayName}</StProfileNicname>
-        {/* 현재 로그인한 uid가
-            collection("follow").where("following", "==", (uid or displayName)이면 
-            회원님을 팔로우 합니다 작성 */}
+        {/* {followingList.length >= true ?
+          followingList.map((following) =>
+            following === uid ? <div>팔로잉</div> : <div>팔로우</div>
+          ) : <div>{btnText}</div>} */}
       </StProfileInfo>
       <StProfileBtn onClick={onBtnClick}>{btnText}</StProfileBtn>
     </StProfile>

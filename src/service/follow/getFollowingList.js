@@ -2,11 +2,12 @@ import {firebaseStore} from "../firebase";
 import {firebaseAuth} from "../firebase";
 
 
-const followingList = async () => {
+const getFollowingList = async (setFollowingList) => {
   // follow에 현제 uid follwing [] 가져오기
   const currentUserUid = firebaseAuth.currentUser.uid;
   const followingData = firebaseStore.collection("follow").where("uid", "==", currentUserUid);
-  const following = []
+  const following = [];
+  
   await followingData
   .get()
   .then((querySnapshot) => {
@@ -14,8 +15,7 @@ const followingList = async () => {
       following.push(doc.data().following);
     });
   })
-  console.log(following)
- 
+  setFollowingList(...following);
 }
 
-export default followingList;
+export default getFollowingList;

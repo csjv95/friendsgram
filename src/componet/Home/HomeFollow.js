@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Profiles from "./Profiles";
 import { NavLink } from "react-router-dom";
@@ -25,22 +25,28 @@ const RecomendBtn = styled.button`
   font-weight: 600;
 `;
 
-const HomeFollow = ({ userData, usersList }) => {
+const HomeFollow = ({ userData, usersList, followingList }) => {
   const { displayName, photoURL, name } = userData;
+  const [isFollowing, setIsFollowing] = useState("");
 
   const onLogout = () => {
     firebaseAuth.signOut();
   };
 
   const onBtnClick = (event) => {
+    // following이 있을떄는 팔로잉 취소
     const targetUser = event.target.parentNode.dataset.uid;
-    setFollow(targetUser);
-    const currentText = event.target;
-    currentText.innerText="팔로잉";
- }
+    setFollow(targetUser,followingList);
+    //followingList.map((followingUser) =>
+      //followingUser === targetUser ? "팔로잉" : "팔로우"
+    //);
+    // const currentText = event.target;
+    // currentText.innerText="팔로잉";
+  };
 
   return (
     <FollowList>
+      {console.log(followingList)}
       <Profiles
         imgHeight="4em"
         btnText="logout"
@@ -48,6 +54,7 @@ const HomeFollow = ({ userData, usersList }) => {
         displayName={displayName}
         onBtnClick={onLogout}
         name={name}
+        followingList={followingList}
       />
       <FollowRecomend>
         <RecomendText>회원님을 위한 추천</RecomendText>
@@ -59,12 +66,13 @@ const HomeFollow = ({ userData, usersList }) => {
         <Profiles
           key={user.uid}
           imgHeight="2em"
-          btnText="팔로우"
+          btnText={isFollowing ? "팔로잉" : "팔로우"}
           photoURL={user.photoURL}
           displayName={user.displayName}
           name={user.name}
           onBtnClick={onBtnClick}
           uid={user.uid}
+          followingList={followingList}
         />
       ))}
     </FollowList>

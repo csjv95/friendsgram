@@ -9,7 +9,8 @@ import Address from "../../componet/Address/Adress";
 import getUserData from "../../service/fireStore/getUserData";
 import getPostData from "../../service/fireStore/getPostData";
 import getUsersList from "../../service/fireStore/getUsersList";
-
+import getFollowingList from "../../service/follow/getFollowingList";
+import getFollowerList from "../../service/follow/getFollowerList";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -24,7 +25,9 @@ const RouteMain = () => {
   const address = document.getElementById("address");
   const [userData, setUserData] = useState([]);
   const [postData, setPostData] = useState([]);
-  const [usersList,setUsersList] = useState([]);
+  const [usersList, setUsersList] = useState([]);
+  const [followingList, setFollowingList] = useState([]);
+  const [followerList, setFollowerList] = useState([]);
   const [postModal, setPostModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
   const [location, setLocation] = useState("");
@@ -36,6 +39,8 @@ const RouteMain = () => {
     getUserData(setUserData);
     getPostData(setPostData);
     getUsersList(setUsersList);
+    getFollowingList(setFollowingList);
+    getFollowerList(setFollowerList);
   }, []);
 
   const handlePost = () => {
@@ -69,7 +74,12 @@ const RouteMain = () => {
         </ModalPotal>
       )}
       <Header handlePost={handlePost} />
-      <NavRouter userData={userData} postData={postData} usersList={usersList}/>
+      <NavRouter
+        userData={userData}
+        postData={postData}
+        usersList={usersList}
+        followingList={followingList}
+      />
       <MainFooter />
     </AppContainer>
   );

@@ -21,7 +21,9 @@ const StSugget = styled.ul`
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
-const Suggest = ({ usersList }) => {
+const Suggest = ({ usersList,followingList }) => {
+  //btn 바꾸기
+  // when clicked follow btn change word like that following
   const onBtnClick = (event) => {
      const targetUser = event.target.parentNode.dataset.uid;
      setFollow(targetUser);
@@ -44,6 +46,7 @@ const Suggest = ({ usersList }) => {
               name={user.name}
               onBtnClick={onBtnClick}
               uid={user.uid}
+              followingList={followingList}
             />
           ))}
         </StSugget>
