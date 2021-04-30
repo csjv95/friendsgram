@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
-import setFollow from "../../service/follow/setFollow";
 
 const StProfile = styled.li`
   margin: 1em 0;

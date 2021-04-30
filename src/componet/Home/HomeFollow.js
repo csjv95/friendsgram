@@ -34,14 +34,11 @@ const HomeFollow = ({ userData, usersList, followingList }) => {
   };
 
   const onBtnClick = (event) => {
-    // following이 있을떄는 팔로잉 취소
     const targetUser = event.target.parentNode.dataset.uid;
     setFollow(targetUser,followingList);
     //followingList.map((followingUser) =>
       //followingUser === targetUser ? "팔로잉" : "팔로우"
     //);
-    // const currentText = event.target;
-    // currentText.innerText="팔로잉";
   };
 
   return (

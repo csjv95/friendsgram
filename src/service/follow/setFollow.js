@@ -7,7 +7,6 @@ const setFollow = async (targetUser, followingList) => {
   const selectUserFollow = firebaseStore.collection("follow").doc(targetUser);
   const isFollowing = followingList.includes(targetUser);
 
-  //following에 자기 uid가 있으면 지우고 없으면 넣기 if()
   if (isFollowing) {
     // following 삭제
     await currentUserFollow.update({

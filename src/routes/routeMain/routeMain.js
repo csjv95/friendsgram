@@ -11,6 +11,7 @@ import getPostData from "../../service/fireStore/getPostData";
 import getUsersList from "../../service/fireStore/getUsersList";
 import getFollowingList from "../../service/follow/getFollowingList";
 import getFollowerList from "../../service/follow/getFollowerList";
+import { authGetUid } from "../../service/auth/authGetUid";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -23,6 +24,7 @@ const AppContainer = styled.div`
 const RouteMain = () => {
   const post = document.getElementById("post");
   const address = document.getElementById("address");
+  const [currentUserUid,setCurrentUserUid] = useState("")
   const [userData, setUserData] = useState([]);
   const [postData, setPostData] = useState([]);
   const [usersList, setUsersList] = useState([]);
@@ -36,6 +38,7 @@ const RouteMain = () => {
   const [noComments, setNoComments] = useState(false);
 
   useEffect(() => {
+    authGetUid(setCurrentUserUid);
     getUserData(setUserData);
     getPostData(setPostData);
     getUsersList(setUsersList);
@@ -79,6 +82,7 @@ const RouteMain = () => {
         postData={postData}
         usersList={usersList}
         followingList={followingList}
+        currentUserUid={currentUserUid}
       />
       <MainFooter />
     </AppContainer>
