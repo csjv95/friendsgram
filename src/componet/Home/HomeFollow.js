@@ -34,16 +34,17 @@ const HomeFollow = ({ userData, usersList, followingList }) => {
     firebaseAuth.signOut();
   };
 
-  const onBtnClick = (event) => {
+  const onBtnClick = async(event) => {
     const targetUser = event.target.parentNode.dataset.uid;
-    setFollow(targetUser,followingList);
-    changeBtn(targetUser,followingList,setIsFollowing);
-    console.log(targetUser);
+    console.log('before setFollow',isFollowing);
+    await setFollow(targetUser,followingList,setIsFollowing);
+    console.log('after setfollow',isFollowing);
+    await changeBtn(targetUser,followingList,isFollowing);
   };
 
   return (
     <FollowList>
-      {console.log(followingList)}
+      {console.log(isFollowing)}
       <Profiles
         imgHeight="4em"
         btnText="logout"
@@ -51,7 +52,6 @@ const HomeFollow = ({ userData, usersList, followingList }) => {
         displayName={displayName}
         onBtnClick={onLogout}
         name={name}
-        followingList={followingList}
       />
       <FollowRecomend>
         <RecomendText>회원님을 위한 추천</RecomendText>

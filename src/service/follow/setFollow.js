@@ -1,12 +1,12 @@
 import { firebaseStore } from "../firebase";
 import { firebaseAuth, firebase } from "../firebase";
 
-const setFollow = async (targetUser, followingList) => {
+const setFollow = async (targetUser, followingList,setIsFollowing) => {
   const currentUserUid = firebaseAuth.currentUser.uid;
   const currentUserFollow = firebaseStore.collection("follow").doc(currentUserUid);
   const selectUserFollow = firebaseStore.collection("follow").doc(targetUser);
   const isFollowing = followingList.includes(targetUser);
-
+  
   if (isFollowing) {
     // following 삭제
     await currentUserFollow.update({
@@ -14,10 +14,11 @@ const setFollow = async (targetUser, followingList) => {
     });
 
     //follower 삭제
-  await selectUserFollow.update({
-    follower: firebase.firestore.FieldValue.arrayRemove(currentUserUid),
-  });
-    console.log('언팔로잉');
+    await selectUserFollow.update({
+      follower: firebase.firestore.FieldValue.arrayRemove(currentUserUid),
+    });
+    await setIsFollowing('')
+    console.log("언팔로잉");
 
   } else {
     // following 업데이트 하기
@@ -29,7 +30,8 @@ const setFollow = async (targetUser, followingList) => {
     await selectUserFollow.update({
       follower: firebase.firestore.FieldValue.arrayUnion(currentUserUid),
     });
-    console.log('팔로잉 완료')
+    await setIsFollowing(targetUser)
+    console.log("팔로잉 완료");
   }
 };
 
