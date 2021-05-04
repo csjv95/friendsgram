@@ -4,6 +4,7 @@ import Profiles from "./Profiles";
 import { NavLink } from "react-router-dom";
 import { firebaseAuth } from "../../service/firebase";
 import setFollow from "../../service/follow/setFollow";
+import { changeBtn } from "../../service/follow/changeBtn";
 
 const FollowList = styled.ul`
   position: fixed;
@@ -36,9 +37,8 @@ const HomeFollow = ({ userData, usersList, followingList }) => {
   const onBtnClick = (event) => {
     const targetUser = event.target.parentNode.dataset.uid;
     setFollow(targetUser,followingList);
-    //followingList.map((followingUser) =>
-      //followingUser === targetUser ? "팔로잉" : "팔로우"
-    //);
+    changeBtn(targetUser,followingList,setIsFollowing);
+    console.log(targetUser);
   };
 
   return (
