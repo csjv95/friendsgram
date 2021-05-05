@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StCloseIcon, StMap, StUpload } from "../../Global/StIcon/StIcon";
 import ImageSlider from "../Home/ImageSlider";
 import postDataToStore from "../../service/postData/postDataToStore";
 import postDataToStorage from "../../service/postData/postDataToStorage";
+import { getPostId } from "../../service/postData/getPostId";
+
 
 const PostCotainer = styled.section`
   position: fixed;
@@ -167,17 +169,23 @@ const Post = ({
   noComments,
   setNoComments,
 }) => {
+  const [postId,setPostId] = useState("");
+
+  useEffect(()=> {
+    getPostId(setPostId);
+  },[])
+
   const onSubmit = () => {
-    postDataToStorage(imgs);
-    postDataToStore(imgs, text, noComments, location);
+    postDataToStore(text, noComments, location,postId);
+    postDataToStorage(imgs,postId);
     alert("성공적으로 게시물이 업로드 되었습니다");
     handlePost();
   };
-
+  
   const preventDefault = (event) => {
     event.preventDefault();
   };
-
+  
   const handleLocation = () => {
     handleAddress();
   };

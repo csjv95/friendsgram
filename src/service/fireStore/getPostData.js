@@ -1,10 +1,12 @@
 import { firebaseStore } from "../firebase";
 import { firebaseAuth } from "../firebase";
 
-const getPostData = async (setPostData) => {
+const getPostData = async (setPostData,followingList) => {
   const user = firebaseAuth.currentUser;
   const uid = user.uid;
+  const getFollowingList = followingList;
 
+  // 지금 followinglist = [SivOS1FerqaFQMa9smx9EDldwzC2]; 
   const postData = firebaseStore
     .collection("users")
     .doc(uid)

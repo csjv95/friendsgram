@@ -37,14 +37,15 @@ const RouteMain = () => {
   const [text, setText] = useState("");
   const [noComments, setNoComments] = useState(false);
 
+
   useEffect(() => {
     authGetUid(setCurrentUserUid);
     getUserData(setUserData);
-    getPostData(setPostData);
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-  }, []);
+    getPostData(setPostData);
+  },[]); 
 
   const handlePost = () => {
     setPostModal(!postModal);

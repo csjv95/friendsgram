@@ -44,7 +44,7 @@ const HomeFollow = ({ userData, usersList, followingList }) => {
 
   return (
     <FollowList>
-      {console.log(isFollowing)}
+      
       <Profiles
         imgHeight="4em"
         btnText="logout"
