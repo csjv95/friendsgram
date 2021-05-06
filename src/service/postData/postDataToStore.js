@@ -19,7 +19,7 @@ const postDataToStore = (text, noComments, location, postId) => {
   postData.set({
     postId,
     displayName,
-    imgs : [],
+    imgsData : [],
     text,
     noComments,
     location,
