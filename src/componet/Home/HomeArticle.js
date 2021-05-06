@@ -103,16 +103,18 @@ const StCommentsArea = styled.textarea`
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
-const HomeArticle = ({ article }) => {
-  const { imgs, noComments, timestamp, text, location, displayName } = article;
+const HomeArticle = ({ article,userData }) => {
+  const { imgsData, noComments, timestamp, text, location, displayName } = article;
+  const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
+  const {photoURL} = userData;
+
   return (
     <StArticleItem>
       <StArticleHeader>
-        {console.log('article')}
         <StHeaderProfileCotainer>
           <StProfileImg
-            src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/56593842_427595071141963_9102473363216924672_n.jpg?tp=1&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=yyXKpuG-JU8AX8YRTka&edm=ABfd0MgAAAAA&ccb=7-4&oh=142b6867c72be34b9d9262ae9269f410&oe=609AF8FC&_nc_sid=7bff83"
-            alt="my"
+            src={photoURL}
+            alt="my profile img"
             height="100%"
           />
           <StProfileInfo>

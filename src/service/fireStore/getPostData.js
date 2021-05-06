@@ -8,9 +8,9 @@ const getPostData = async (setPostData,followingList) => {
 
   // 지금 followinglist = [SivOS1FerqaFQMa9smx9EDldwzC2]; 
   const postData = firebaseStore
-    .collection("users")
+    .collection("post")
     .doc(uid)
-    .collection("post");
+    .collection("my-post")
 
   let data = [];
   await postData.get().then((querySnapshot) => {

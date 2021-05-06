@@ -42,11 +42,11 @@ const postDataToStorage = (imgs, postId) => {
       async () => {
         const urlResult = uploadTask.snapshot.ref.getDownloadURL();
         const metadataReult = uploadTask.snapshot.ref.getMetadata();
-        const url = await Promise.resolve(urlResult);
-        const metaData = await Promise.resolve(metadataReult);
-        const {name, timeCreated} = metaData;
+        const imgUrl = await Promise.resolve(urlResult);
+        const ImgMetaData = await Promise.resolve(metadataReult);
+        const {name, timeCreated} = ImgMetaData;
 
-        const myPost = firebaseStore
+        firebaseStore
           .collection("post")
           .doc(currentUserUid)
           .collection("my-post")
@@ -55,10 +55,10 @@ const postDataToStorage = (imgs, postId) => {
             imgsData: firebase.firestore.FieldValue.arrayUnion({
               name,
               timeCreated,
-              url
+              imgUrl
             }),
           });
-          console.log(metaData)
+
       }
     );
   });
