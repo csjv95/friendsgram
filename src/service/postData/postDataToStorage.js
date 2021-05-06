@@ -39,8 +39,10 @@ const postDataToStorage = (imgs, postId) => {
       (error) => {
         console.log(error);
       },
-      () => {
-        const url = uploadTask.snapshot.ref.getDownloadURL();
+      async () => {
+        const urlResult = uploadTask.snapshot.ref.getDownloadURL();
+        const url = await Promise.resolve(urlResult);
+
         const myPost = firebaseStore
           .collection("post")
           .doc(currentUserUid)
@@ -49,7 +51,8 @@ const postDataToStorage = (imgs, postId) => {
           .update({
             imgs: firebase.firestore.FieldValue.arrayUnion(url),
           });
-          return myPost;
+          
+          console.log(url);
       }
     );
   });
