@@ -103,7 +103,7 @@ const StCommentsArea = styled.textarea`
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
-const HomeArticle = ({ article,userData }) => {
+const HomeArticle = ({ article,userData,followingList }) => {
   const { imgsData, noComments, timestamp, text, location, displayName } = article;
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const {photoURL} = userData;

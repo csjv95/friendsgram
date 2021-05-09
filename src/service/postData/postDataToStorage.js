@@ -45,7 +45,7 @@ const postDataToStorage = (imgs, postId) => {
         const ImgMetaData = await Promise.resolve(metadataReult);
         const {name, timeCreated} = ImgMetaData;
 
-        firebaseStore
+       await firebaseStore
           .collection("post")
           .doc(currentUserUid)
           .collection("my-post")
@@ -57,7 +57,6 @@ const postDataToStorage = (imgs, postId) => {
               imgUrl
             }),
           });
-
       }
     );
   });

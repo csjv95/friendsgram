@@ -5,12 +5,11 @@ import Home from "../../componet/Home/Home";
 import Post from "../../componet/Post/Post";
 import Suggest from "../../componet/Suggest/Suggest";
 
-const NavRouter = ({ userData, postData, usersList, followingList }) => {
+const NavRouter = ({ userData, usersList, followingList }) => {
   return (
     <Switch>
-      {console.log(followingList)}
       <Route exact path="/">
-        <Home userData={userData} postData={postData} usersList={usersList} followingList={followingList}/>
+        <Home userData={userData} usersList={usersList} followingList={followingList}/>
       </Route>
       <Route path="/direct" component={Direct} />
       <Route path="/post" component={Post} />

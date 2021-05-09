@@ -7,7 +7,6 @@ import Post from "../../componet/Post/Post";
 import ModalPotal from "../../modal/ModalPotal";
 import Address from "../../componet/Address/Adress";
 import getUserData from "../../service/fireStore/getUserData";
-import getPostData from "../../service/fireStore/getPostData";
 import getUsersList from "../../service/fireStore/getUsersList";
 import getFollowingList from "../../service/follow/getFollowingList";
 import getFollowerList from "../../service/follow/getFollowerList";
@@ -26,7 +25,6 @@ const RouteMain = () => {
   const address = document.getElementById("address");
   const [currentUserUid,setCurrentUserUid] = useState("")
   const [userData, setUserData] = useState([]);
-  const [postData, setPostData] = useState([]);
   const [usersList, setUsersList] = useState([]);
   const [followingList, setFollowingList] = useState([]);
   const [followerList, setFollowerList] = useState([]);
@@ -44,7 +42,6 @@ const RouteMain = () => {
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-    getPostData(setPostData);
   },[]); 
 
   const handlePost = () => {
@@ -81,7 +78,6 @@ const RouteMain = () => {
       <Header handlePost={handlePost} />
       <NavRouter
         userData={userData}
-        postData={postData}
         usersList={usersList}
         followingList={followingList}
         currentUserUid={currentUserUid}

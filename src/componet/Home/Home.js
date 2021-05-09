@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
+import getPostData from "../../service/fireStore/getPostData";
 import HomeArticle from "./HomeArticle";
 import HomeFollow from "./HomeFollow";
 
@@ -20,13 +21,20 @@ const StFollowerCotainer = styled.section`
   justify-content: center;
 `;
 
-const Home = ({ userData, postData, usersList, followingList }) => {
+const Home = ({ userData, usersList, followingList }) => {
+  const [postData, setPostData ] = useState([]);
+
+  useEffect(()=> {
+    getPostData(setPostData,followingList);
+  },[followingList])
+
   return (
     <StMainRouterSection>
+      {console.log(postData)}
       <StHomeContainer>
         <StArticleList>
           {postData.map((article, index) => (
-            <HomeArticle key={index} article={article} userData={userData} />
+            <HomeArticle key={index} article={article} userData={userData} followingList={followingList} />
           ))}
         </StArticleList>
         <StFollowerCotainer>
