@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 import Profiles from "../Home/Profiles";
 import setFollow from "../../service/follow/setFollow";
+import { changeBtn } from "../../service/follow/changeBtn";
 
 const StSuggestContainer = styled.section`
   margin: 0 auto;
@@ -22,13 +23,16 @@ const StSugget = styled.ul`
 `;
 
 const Suggest = ({ usersList,followingList }) => {
+  const [isFollowing, setIsFollowing] = useState("");
+
   //btn 바꾸기
   // when clicked follow btn change word like that following
-  const onBtnClick = (event) => {
-     const targetUser = event.target.parentNode.dataset.uid;
-     setFollow(targetUser);
-     const currentText = event.target;
-     currentText.innerText="팔로잉";
+  const onBtnClick = async (event) => {
+    const targetUser = event.target.parentNode.dataset.uid;
+    console.log('before setFollow',isFollowing);
+    await setFollow(targetUser,followingList,setIsFollowing);
+    console.log('after setfollow',isFollowing);
+    await changeBtn(targetUser,followingList,isFollowing);
   }
 
   return (

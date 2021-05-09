@@ -77,6 +77,7 @@ const RouteMain = () => {
           <Address handleAddress={handleAddress} setLocation={setLocation} />
         </ModalPotal>
       )}
+      
       <Header handlePost={handlePost} />
       <NavRouter
         userData={userData}

@@ -18,8 +18,7 @@ const postDataToStorage = (imgs, postId) => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log(`upload is ${progress}% done`);
 
         switch (snapshot.state) {

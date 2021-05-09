@@ -8,6 +8,7 @@ import Suggest from "../../componet/Suggest/Suggest";
 const NavRouter = ({ userData, postData, usersList, followingList }) => {
   return (
     <Switch>
+      {console.log(followingList)}
       <Route exact path="/">
         <Home userData={userData} postData={postData} usersList={usersList} followingList={followingList}/>
       </Route>
