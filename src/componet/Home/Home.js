@@ -30,7 +30,6 @@ const Home = ({ userData, usersList, followingList }) => {
 
   return (
     <StMainRouterSection>
-      {console.log(postData)}
       <StHomeContainer>
         <StArticleList>
           {postData.map((article, index) => (
