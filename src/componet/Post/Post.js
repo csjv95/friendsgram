@@ -168,6 +168,7 @@ const Post = ({
   setText,
   noComments,
   setNoComments,
+  setProgressBar,
 }) => {
   const [postId,setPostId] = useState("");
 
@@ -177,7 +178,7 @@ const Post = ({
 
   const onSubmit = () => {
     postDataToStore(text, noComments, location,postId);
-    postDataToStorage(imgs,postId);
+    postDataToStorage(imgs,postId,setProgressBar);
     alert("성공적으로 게시물이 업로드 되었습니다");
     handlePost();
   };

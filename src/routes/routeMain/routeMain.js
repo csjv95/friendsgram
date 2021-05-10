@@ -11,6 +11,7 @@ import getUsersList from "../../service/fireStore/getUsersList";
 import getFollowingList from "../../service/follow/getFollowingList";
 import getFollowerList from "../../service/follow/getFollowerList";
 import { authGetUid } from "../../service/auth/authGetUid";
+import ProgressBar from "../../componet/ProgressBar/ProgressBar";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -34,7 +35,7 @@ const RouteMain = () => {
   const [imgs, setImgs] = useState([]);
   const [text, setText] = useState("");
   const [noComments, setNoComments] = useState(false);
-
+  const [progressBar, setProgressBar] = useState(0);
 
   useEffect(() => {
     authGetUid(setCurrentUserUid);
@@ -66,6 +67,7 @@ const RouteMain = () => {
             handlePost={handlePost}
             handleAddress={handleAddress}
             location={location}
+            setProgressBar={setProgressBar}
           />
         </ModalPotal>
       )}
@@ -75,6 +77,7 @@ const RouteMain = () => {
         </ModalPotal>
       )}
       
+      {progressBar && <ProgressBar progressBar={progressBar}/>}
       <Header handlePost={handlePost} />
       <NavRouter
         userData={userData}

@@ -5,8 +5,8 @@ const setFollow = async (targetUser, followingList,setIsFollowing) => {
   const currentUserUid = firebaseAuth.currentUser.uid;
   const currentUserFollow = firebaseStore.collection("follow").doc(currentUserUid);
   const selectUserFollow = firebaseStore.collection("follow").doc(targetUser);
-  console.log(followingList);
   const isFollowing = followingList.includes(targetUser);
+
   if (isFollowing) {
     // following 삭제
     await currentUserFollow.update({

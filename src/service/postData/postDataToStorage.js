@@ -5,7 +5,7 @@ import {
   firebase,
 } from "../firebase";
 
-const postDataToStorage = (imgs, postId) => {
+const postDataToStorage = (imgs, postId, setProgressBar) => {
   const currentUserUid = firebaseAuth.currentUser.uid;
 
   // storage 업로드
@@ -18,8 +18,12 @@ const postDataToStorage = (imgs, postId) => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(`upload is ${progress}% done`);
+        //progress tag는 부동소수점만 지원 so use Math.round
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+
+        setProgressBar(progress);
 
         switch (snapshot.state) {
           case "paused":
@@ -43,9 +47,9 @@ const postDataToStorage = (imgs, postId) => {
         const metadataReult = uploadTask.snapshot.ref.getMetadata();
         const imgUrl = await Promise.resolve(urlResult);
         const ImgMetaData = await Promise.resolve(metadataReult);
-        const {name, timeCreated} = ImgMetaData;
+        const { name, timeCreated } = ImgMetaData;
 
-       await firebaseStore
+        await firebaseStore
           .collection("post")
           .doc(currentUserUid)
           .collection("my-post")
@@ -54,9 +58,11 @@ const postDataToStorage = (imgs, postId) => {
             imgsData: firebase.firestore.FieldValue.arrayUnion({
               name,
               timeCreated,
-              imgUrl
+              imgUrl,
             }),
           });
+        //porogressBar reset
+        setProgressBar(0);
       }
     );
   });
