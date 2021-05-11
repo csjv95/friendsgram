@@ -12,7 +12,6 @@ import {
 } from "../../Global/StIcon/StIcon";
 import ImageSlider from "./ImageSlider";
 import time from "../../service/time/time";
-import getStorage from "../../service/getStorage/getStorage";
 
 const StArticleItem = styled.li`
   margin-right: 2em;

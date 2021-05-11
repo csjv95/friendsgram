@@ -13,6 +13,7 @@ function App() {
   
   return (
     <>
+    {console.log('app')}
       {isLogin === true ? (
         <RouteMain setLogin={setLogin} />
       ) : (

@@ -77,8 +77,8 @@ const RouteMain = () => {
         </ModalPotal>
       )}
       
-      {progressBar && <ProgressBar progressBar={progressBar}/>}
-      <Header handlePost={handlePost} />
+      {progressBar && <ProgressBar progressBar={progressBar} />}
+      <Header handlePost={handlePost} userData={userData} />
       <NavRouter
         userData={userData}
         usersList={usersList}

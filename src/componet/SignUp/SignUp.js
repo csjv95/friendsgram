@@ -27,8 +27,8 @@ const SignUp = () => {
   const [follow, setFollow] = useState({
     follower: [],
     following: [],
-  })
-  
+  });
+
   const [userData, setUserData] = useState({
     email: "",
     name: "",
@@ -47,10 +47,19 @@ const SignUp = () => {
   };
 
   const handleChange = (event) => {
+    if(event.key === 'Enter') {
+      console.log('enter');
+    }
     const name = event.target.name;
     const value = event.target.value;
     setUserData({ ...userData, [name]: value });
   };
+
+  const handleKeyPress = (event) => {
+    if(event.key === "Enter") {
+      handleSubmit(event);
+    }
+  }
 
   return (
     <StContainerDiv>
@@ -58,11 +67,11 @@ const SignUp = () => {
         <StLoginFormUp onSubmit={handleSubmit}>
           <StTitle>Instargram</StTitle>
           <StAuthLoginBtn onClick={onClick}>
-            <StGoogleSquareIcon width="1.1"/>
+            <StGoogleSquareIcon width="1.1" />
             Google로 로그인
           </StAuthLoginBtn>
           <StAuthLoginBtn onClick={onClick}>
-            <StFacebookSquareIcon width="1.3"/>
+            <StFacebookSquareIcon width="1.3" />
             FaceBook로 로그인
           </StAuthLoginBtn>
           <StContainerOr>
@@ -76,6 +85,7 @@ const SignUp = () => {
             name="email"
             vlaue={userData.email}
             onChange={handleChange}
+            onKeyPress={handleKeyPress}
           />
           <StLoginInput
             type="text"
@@ -83,6 +93,7 @@ const SignUp = () => {
             name="name"
             value={userData.name}
             onChange={handleChange}
+            onKeyPress={handleKeyPress}
           />
           <StLoginInput
             type="text"
@@ -91,6 +102,7 @@ const SignUp = () => {
             name="displayName"
             value={userData.displayName}
             onChange={handleChange}
+            onKeyPress={handleKeyPress}
           />
           <StLoginInput
             type="password"
@@ -99,6 +111,7 @@ const SignUp = () => {
             name="password"
             value={userData.password}
             onChange={handleChange}
+            onKeyPress={handleKeyPress}
           />
           <StAccessBtn onClick={handleSubmit}>가입</StAccessBtn>
           <SyAccessDiv>

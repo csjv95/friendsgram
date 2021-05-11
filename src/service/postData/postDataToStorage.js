@@ -5,11 +5,11 @@ import {
   firebase,
 } from "../firebase";
 
-const postDataToStorage = (imgs, postId, setProgressBar) => {
+const postDataToStorage = async (imgs, postId, setProgressBar) => {
   const currentUserUid = firebaseAuth.currentUser.uid;
 
   // storage 업로드
-  imgs.forEach((img) => {
+  await imgs.forEach((img) => {
     const uploadTask = firebaseStorage
       .ref()
       .child(`/${currentUserUid}/${postId}/${img.file.name}`)
@@ -22,22 +22,7 @@ const postDataToStorage = (imgs, postId, setProgressBar) => {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-
         setProgressBar(progress);
-
-        switch (snapshot.state) {
-          case "paused":
-            console.log("paused");
-            break;
-
-          case "running":
-            console.log("running");
-            break;
-
-          default:
-            console.log("default");
-            break;
-        }
       },
       (error) => {
         console.log(error);

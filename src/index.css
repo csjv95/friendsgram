@@ -29,6 +29,12 @@ button {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+  outline: none;
+  color:  #000000;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

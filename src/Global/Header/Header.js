@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   StHomeIcon,
   StSendIcon,
@@ -8,8 +8,11 @@ import {
   StHeartIcon,
 } from "../StIcon/StIcon";
 import { StProfileImg } from "../StProfileImg/StProfileImg";
+import Search from "../../componet/Search/Search";
+import SearchRecord from "../../componet/Search/SearchRecord";
+import { useEffect } from "react";
 
-const HeaderContainer = styled.header`
+const StHeaderContainer = styled.header`
   width: 100%;
   padding: 0.5em;
   position: fixed;
@@ -24,76 +27,153 @@ const HeaderContainer = styled.header`
   z-index: 100;
 `;
 
-const HeaderLogo = styled.a`
+const StHeaderLogo = styled.a`
   font-family: "Cookie", cursive;
   font-size: 2em;
   color: ${({ theme }) => theme.colors.logoColor};
   text-decoration: none;
 `;
 
-const HeaderSearch = styled.input`
+const StHeaderSearchLabel = styled.label`
+  position: relative;
+`;
+
+const StHeaderSearch = styled.input`
   height: 1.2em;
   padding: 1em;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
-  border: 1px solid ${({theme}) => theme.colors.borderColor};
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 0.2em;
 `;
 
-const HeaderNavul = styled.ul`
+const StHeaderNavul = styled.ul`
   display: flex;
   & > :nth-child(n) {
     margin-right: 1em;
   }
 `;
 
-const HeaderNavUlLi = styled.li`
+const StHeaderNavUlLi = styled.li`
   margin-right: 0.2em;
 `;
 
-const HeaderNavUlLiMy = styled.li`
+const StHeaderNavUlLiMy = styled.li`
   height: 1.5em;
 `;
 
-const Header = ({handlePost}) => {
+const StMySection = styled.section`
+  width: 10em;
+  background-color: ${({ theme }) => theme.colors.contentColor};
+`;
+const StMyUl = styled.ul``;
+
+const StMyLi = styled.li``;
+
+const Header = ({ handlePost, userData }) => {
+  const [search, setSearch] = useState(false);
+  const [headerText, setHeaderText] = useState("");
+  const [profile, setProfile] = useState(false);
+  const RefSearch = useRef();
+
+  // const searchOnClick = () => {
+  //   setSearch(!search);
+  // };
+  //
+  // const onSearchChange = (event) => {
+  //   const text = event.target.value;
+  //   setHeaderText(text);
+  //   setSearch(false);
+  // };
+
+  const profileOnClick = () => {
+    setProfile(!profile);
+  };
+
+  const onFocus = (event) => {
+    setSearch(!search);
+  };
+
+  const onBlur = (event) => {
+    setSearch(!search);
+  }
+
+  const activeStyle = {
+    padding: `0.2em 0.2em 0.3em 0.2em`,
+    border: `1px solid`,
+    borderRadius: `50%`,
+  };
+
   return (
-    <HeaderContainer>
-      <HeaderLogo href="/home">Intstargram</HeaderLogo>
-      <HeaderSearch type="text" placeholder="검색"></HeaderSearch>
+    <StHeaderContainer>
+      <StHeaderLogo href="/home">Intstargram</StHeaderLogo>
+      <StHeaderSearchLabel htmlFor="search" >
+        <StHeaderSearch
+          id="search"
+          type="search"
+          placeholder="검색"
+          //onChange={onSearchChange}
+          autoComplete="off"
+          onFocus={onFocus}
+          onBlur={onBlur}
+        />
+        {search && <SearchRecord RefSearch={RefSearch}/>}
+        {headerText && <Search headerText={headerText} />}
+      </StHeaderSearchLabel>
 
       <nav>
-        <HeaderNavul>
-          <HeaderNavUlLi>
-            <NavLink exact to="/">
+        <StHeaderNavul>
+          <StHeaderNavUlLi>
+            <NavLink exact to="/" activeStyle={activeStyle}>
               <StHomeIcon width="1.5" />
             </NavLink>
-          </HeaderNavUlLi>
-          <HeaderNavUlLi>
-            <NavLink exact to="/direct">
+          </StHeaderNavUlLi>
+          <StHeaderNavUlLi>
+            <NavLink exact to="/direct" activeStyle={activeStyle}>
               <StSendIcon width="1.5" />
             </NavLink>
-          </HeaderNavUlLi>
-          <HeaderNavUlLi>
-            <button onClick ={handlePost}>
+          </StHeaderNavUlLi>
+          <StHeaderNavUlLi>
+            <button onClick={handlePost}>
               <StPlusSquare width="1.5" />
             </button>
-          </HeaderNavUlLi>
-          <HeaderNavUlLi>
-            <NavLink exact to="/heart">
+          </StHeaderNavUlLi>
+          <StHeaderNavUlLi>
+            <NavLink exact to="/heart" activeStyle={activeStyle}>
               <StHeartIcon width="1.5" />
             </NavLink>
-          </HeaderNavUlLi>
-          <HeaderNavUlLiMy>
-            <NavLink exact to="/my">
-              <StProfileImg
-                src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/56593842_427595071141963_9102473363216924672_n.jpg?tp=1&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=yyXKpuG-JU8AX8YRTka&edm=ABfd0MgAAAAA&ccb=7-4&oh=142b6867c72be34b9d9262ae9269f410&oe=609AF8FC&_nc_sid=7bff83"
-                alt="my"
-                height="100%"
-              />
-            </NavLink>
-          </HeaderNavUlLiMy>
-        </HeaderNavul>
+          </StHeaderNavUlLi>
+          <StHeaderNavUlLiMy>
+            <StProfileImg
+              src={userData.photoURL}
+              alt="my"
+              height="100%"
+              onClick={profileOnClick}
+            />
+            {profile && (
+              <StMySection>
+                <StMyUl>
+                  <StMyLi>
+                    <Link to="">프로필</Link>
+                  </StMyLi>
+                  <StMyLi>
+                    <Link to="">저장됨</Link>
+                  </StMyLi>
+                  <StMyLi>
+                    <Link to="">설정</Link>
+                  </StMyLi>
+                  <StMyLi>
+                    <Link to="">계정 전환</Link>
+                  </StMyLi>
+                  <StMyLi>
+                    <Link to="">로그아웃</Link>
+                  </StMyLi>
+                </StMyUl>
+              </StMySection>
+            )}
+          </StHeaderNavUlLiMy>
+        </StHeaderNavul>
       </nav>
-    </HeaderContainer>
+    </StHeaderContainer>
   );
 };
 export default Header;
