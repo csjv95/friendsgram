@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Profiles from "./Profiles";
 import { NavLink } from "react-router-dom";
-import { firebaseAuth } from "../../service/firebase";
 import setFollow from "../../service/follow/setFollow";
 import { changeBtn } from "../../service/follow/changeBtn";
+import { authLogout } from "../../service/auth/authLogout";
 
 const FollowList = styled.ul`
   position: fixed;
@@ -31,7 +31,7 @@ const HomeFollow = ({ userData, usersList, followingList }) => {
   const [isFollowing, setIsFollowing] = useState("");
 
   const onLogout = () => {
-    firebaseAuth.signOut();
+    authLogout();
   };
 
   const onBtnClick = async(event) => {

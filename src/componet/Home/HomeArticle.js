@@ -9,6 +9,7 @@ import {
   StBookmarkIcon,
   StDotIcon,
   StSmileIocn,
+  StLine,
 } from "../../Global/StIcon/StIcon";
 import ImageSlider from "./ImageSlider";
 import time from "../../service/time/time";
@@ -62,8 +63,7 @@ const ImageSliderContainer = styled.div`
 `;
 
 const StHomeArticleFuntion = styled.section`
-  padding: 0 1em;
-
+  padding: 0.5em;
   & > :nth-child(n) {
     margin-bottom: 0.3em;
   }
@@ -84,8 +84,7 @@ const StHomeIconBoxLi = styled.li`
 `;
 
 const StComments = styled.form`
-  margin-top: 1em;
-  padding: 0 0.8em;
+  padding: 0 0.5em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,10 +122,12 @@ const HomeArticle = ({ article,userData}) => {
         </StHeaderProfileCotainer>
         <StMenuIcon width="1.5" />
       </StArticleHeader>
+      <StLine />
       <StHomeArticle>
         <ImageSliderContainer>
           <ImageSlider imgWidth="37.5" imgHeight="37.5" imgs={imgs} />
         </ImageSliderContainer>
+        <StLine />
         <StHomeArticleFuntion>
           <StHomeIconBox>
             <StHomeIconBoxUl>

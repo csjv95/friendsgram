@@ -6,11 +6,16 @@ import {
   StSendIcon,
   StPlusSquare,
   StHeartIcon,
+  StUserCircle,
+  StBookmarkIcon,
+  StSettings,
+  StTransfer,
+  StLine,
 } from "../StIcon/StIcon";
 import { StProfileImg } from "../StProfileImg/StProfileImg";
 import Search from "../../componet/Search/Search";
 import SearchRecord from "../../componet/Search/SearchRecord";
-import { useEffect } from "react";
+import { authLogout } from "../../service/auth/authLogout";
 
 const StHeaderContainer = styled.header`
   width: 100%;
@@ -46,6 +51,10 @@ const StHeaderSearch = styled.input`
   border-radius: 0.2em;
 `;
 
+const StHeaderNav = styled.nav`
+  position: relative;
+`;
+
 const StHeaderNavul = styled.ul`
   display: flex;
   & > :nth-child(n) {
@@ -62,40 +71,62 @@ const StHeaderNavUlLiMy = styled.li`
 `;
 
 const StMySection = styled.section`
-  width: 10em;
+  position: absolute;
+  top: 2.4em;
+  width: 13em;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  border-radius: ${({ theme }) => theme.colors.borderRadius};
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
-const StMyUl = styled.ul``;
 
-const StMyLi = styled.li``;
+const StMyUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StMyLi = styled.li`
+  padding: 0.2em 0.5em;
+  font-weight: 500;
+  transition: all 300ms ease-in;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.backgroundColor};
+  }
+`;
+
+const StLink = styled(Link)`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const Header = ({ handlePost, userData }) => {
   const [search, setSearch] = useState(false);
   const [headerText, setHeaderText] = useState("");
   const [profile, setProfile] = useState(false);
-  const RefSearch = useRef();
+  const [currentEvent, setCurrentEvent] = useState();
 
-  // const searchOnClick = () => {
-  //   setSearch(!search);
-  // };
-  //
-  // const onSearchChange = (event) => {
-  //   const text = event.target.value;
-  //   setHeaderText(text);
-  //   setSearch(false);
-  // };
+  const onSearchChange = (event) => {
+    const text = event.target.value;
+    setHeaderText(text);
+    setSearch(false);
+  };
 
   const profileOnClick = () => {
     setProfile(!profile);
   };
 
   const onFocus = (event) => {
+    setCurrentEvent(event.target);
     setSearch(!search);
   };
 
   const onBlur = (event) => {
     setSearch(!search);
-  }
+    console.log("hello");
+  };
+
+  const onLogout = () => {
+    authLogout();
+  };
 
   const activeStyle = {
     padding: `0.2em 0.2em 0.3em 0.2em`,
@@ -105,22 +136,22 @@ const Header = ({ handlePost, userData }) => {
 
   return (
     <StHeaderContainer>
-      <StHeaderLogo href="/home">Intstargram</StHeaderLogo>
-      <StHeaderSearchLabel htmlFor="search" >
+      <StHeaderLogo href="/">Intstargram</StHeaderLogo>
+      <StHeaderSearchLabel htmlFor="search">
         <StHeaderSearch
           id="search"
           type="search"
           placeholder="검색"
-          //onChange={onSearchChange}
+          onChange={onSearchChange}
           autoComplete="off"
           onFocus={onFocus}
           onBlur={onBlur}
         />
-        {search && <SearchRecord RefSearch={RefSearch}/>}
+        {search && <SearchRecord currentEvent={currentEvent} />}
         {headerText && <Search headerText={headerText} />}
       </StHeaderSearchLabel>
 
-      <nav>
+      <StHeaderNav>
         <StHeaderNavul>
           <StHeaderNavUlLi>
             <NavLink exact to="/" activeStyle={activeStyle}>
@@ -149,30 +180,43 @@ const Header = ({ handlePost, userData }) => {
               height="100%"
               onClick={profileOnClick}
             />
-            {profile && (
-              <StMySection>
-                <StMyUl>
-                  <StMyLi>
-                    <Link to="">프로필</Link>
-                  </StMyLi>
-                  <StMyLi>
-                    <Link to="">저장됨</Link>
-                  </StMyLi>
-                  <StMyLi>
-                    <Link to="">설정</Link>
-                  </StMyLi>
-                  <StMyLi>
-                    <Link to="">계정 전환</Link>
-                  </StMyLi>
-                  <StMyLi>
-                    <Link to="">로그아웃</Link>
-                  </StMyLi>
-                </StMyUl>
-              </StMySection>
-            )}
           </StHeaderNavUlLiMy>
         </StHeaderNavul>
-      </nav>
+        {profile && (
+          <StMySection>
+            <StMyUl>
+              <StMyLi>
+                <StLink to="">
+                  <StUserCircle width="1.5" />
+                  <div>프로필</div>
+                </StLink>
+              </StMyLi>
+              <StMyLi>
+                <StLink to="">
+                  <StBookmarkIcon width="1.5" />
+                  <div>저장됨</div>
+                </StLink>
+              </StMyLi>
+              <StMyLi>
+                <StLink to="">
+                  <StSettings width="1.5" />
+                  <div>설정</div>
+                </StLink>
+              </StMyLi>
+              <StMyLi>
+                <StLink to="">
+                  <StTransfer width="1.5" />
+                  <div>계정 전환</div>
+                </StLink>
+              </StMyLi>
+              <StLine />
+              <StMyLi>
+                <StLink onClick={onLogout}>로그아웃</StLink>
+              </StMyLi>
+            </StMyUl>
+          </StMySection>
+        )}
+      </StHeaderNav>
     </StHeaderContainer>
   );
 };

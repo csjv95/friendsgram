@@ -4,7 +4,7 @@ import { Send } from "@styled-icons/feather/Send";
 import { Compass2 } from "@styled-icons/icomoon/Compass2";
 import { Heart } from "@styled-icons/bootstrap/Heart";
 import { Chatbubble } from "@styled-icons/ionicons-outline/Chatbubble";
-import { Bookmark } from "@styled-icons/feather/Bookmark";
+import { Bookmark } from "@styled-icons/bootstrap/Bookmark";
 import { DotsHorizontalRounded } from "@styled-icons/boxicons-regular/DotsHorizontalRounded";
 import { Smile } from "@styled-icons/feather/Smile";
 import { FacebookSquare } from "@styled-icons/boxicons-logos/FacebookSquare";
@@ -14,7 +14,10 @@ import { ChevronRight } from "@styled-icons/boxicons-solid/ChevronRight";
 import { Upload } from "@styled-icons/bootstrap/Upload";
 import { Map } from "@styled-icons/boxicons-regular/Map";
 import { Close } from "@styled-icons/evaicons-solid/Close";
-import { PlusSquare } from "@styled-icons/bootstrap/PlusSquare"
+import { PlusSquare } from "@styled-icons/bootstrap/PlusSquare";
+import { UserCircle } from "@styled-icons/boxicons-regular/UserCircle";
+import { Settings } from "@styled-icons/material/Settings";
+import { Transfer } from "@styled-icons/boxicons-regular/Transfer";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -42,12 +45,12 @@ export const StBookmarkIcon = styled(Bookmark)`
 export const StMenuIcon = styled(DotsHorizontalRounded)`
   width: ${({ width }) => width}em;
 `;
-
 export const StDotIcon = styled.button`
   width: 0.4em;
   height: 0.4em;
   display: inline-block;
   border-radius: 50%;
+
   background-color: #d3d3d3;
 `;
 
@@ -94,6 +97,27 @@ export const StCloseIcon = styled(Close)`
 `;
 
 export const StPlusSquare = styled(PlusSquare)`
-  width : ${({width}) => width}em;
+  width: ${({ width }) => width}em;
   color: ${({ color }) => color};
+`;
+
+export const StUserCircle = styled(UserCircle)`
+  width: ${({ width }) => width}em;
+  color: ${({ theme }) => theme.colors.black};
+`;
+
+export const StSettings = styled(Settings)`
+  width: ${({ width }) => width}em;
+  color: ${({ theme }) => theme.colors.black};
+`;
+
+export const StTransfer = styled(Transfer)`
+  width: ${({ width }) => width}em;
+  color: ${({ theme }) => theme.colors.black};
+`;
+
+export const StLine = styled.div`
+  width : 100%;
+  height : 1px;
+  background-color : ${({theme}) => theme.colors.borderColor};
 `

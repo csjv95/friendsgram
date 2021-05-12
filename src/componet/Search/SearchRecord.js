@@ -11,9 +11,14 @@ const StSearch = styled.section`
 const StTitle = styled.h1`
   font-size: 1em;
 `;
-const SearchRecord = ({RefSearch}) => {
+
+const SearchRecord = ({currentEvent}) => {
+  const handleOnClick = () => {
+    console.log(currentEvent);
+  }
+
   return (
-    <StSearch ref={RefSearch}>
+    <StSearch onClick={handleOnClick}>
       <StTitle>최근 검색 항목</StTitle>
     </StSearch>
   );
