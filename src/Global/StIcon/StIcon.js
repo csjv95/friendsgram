@@ -118,6 +118,6 @@ export const StTransfer = styled(Transfer)`
 
 export const StLine = styled.div`
   width : 100%;
-  height : 1px;
+  height : 1.2px;
   background-color : ${({theme}) => theme.colors.borderColor};
 `

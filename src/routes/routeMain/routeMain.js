@@ -24,7 +24,7 @@ const AppContainer = styled.div`
 const RouteMain = () => {
   const post = document.getElementById("post");
   const address = document.getElementById("address");
-  const [currentUserUid,setCurrentUserUid] = useState("")
+  const [currentUserUid,setCurrentUserUid] = useState("");
   const [userData, setUserData] = useState([]);
   const [usersList, setUsersList] = useState([]);
   const [followingList, setFollowingList] = useState([]);
@@ -83,6 +83,7 @@ const RouteMain = () => {
         userData={userData}
         usersList={usersList}
         followingList={followingList}
+        followerList={followerList}
         currentUserUid={currentUserUid}
       />
       <MainFooter />

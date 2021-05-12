@@ -186,7 +186,7 @@ const Header = ({ handlePost, userData }) => {
           <StMySection>
             <StMyUl>
               <StMyLi>
-                <StLink to="">
+                <StLink to="/:name">
                   <StUserCircle width="1.5" />
                   <div>프로필</div>
                 </StLink>
