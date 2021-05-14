@@ -1,14 +1,20 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-const MyProfileRouter = ({match}) => {
+const MyProfileRouter = ({userData}) => {
+  const {displayName} = userData
   return (
     <Switch>
-      {console.log(match)}
-      <Route exact path="/:name" />
-      <Route path="/:name/chanel" />
-      <Route path="/:name/saved" />
-      <Route path="/:name/teged" />
+      <Route exact path={`/${displayName}`}/>
+      <Route path={`/${displayName}/chanel`} >
+        <div>chanel</div>
+        </Route>
+      <Route path={`/${displayName}/saved`}>
+      <div>saved</div>
+        </Route>
+      <Route path={`/${displayName}/tagged`} >
+      <div>tagged</div>
+        </Route>
     </Switch>
   );
 };

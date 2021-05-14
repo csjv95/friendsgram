@@ -57,11 +57,10 @@ const StNavUl = styled.ul`
   justify-content : space-around;
 `
 
-const MyProfile = ({ userData,followingList,followerList }) => {
+const MyProfile = ({ userData,followingList,followerList,match }) => {
   const { name, displayName, photoURL,introduction } = userData;
   return (
     <StMainRouterSection> 
-      {console.log(followingList.length)}
       <StpPofileContainer>
         <StTopSection>
           <StProfileImg src={photoURL} alt={photoURL} height="10em" />
@@ -90,21 +89,21 @@ const MyProfile = ({ userData,followingList,followerList }) => {
         <nav>
           <StNavUl>
             <li>
-              <Link to="/:name">게시물</Link>
+              <Link to={`/${displayName}`}>게시물</Link>
             </li>
             <li>
-              <Link to="">IGTV</Link>
+              <Link to={`/${displayName}/chanel`}>IGTV</Link>
             </li>
             <li>
-              <Link to="">저장됨</Link>
+              <Link to={`/${displayName}/saved`}>저장됨</Link>
             </li>
             <li>
-              <Link to="">태그됨</Link>
+              <Link to={`/${displayName}/tagged`}>태그됨</Link>
             </li>
           </StNavUl>
         </nav>
         <section>
-          <MyProfileRouter />
+          <MyProfileRouter userData={userData}/>
         </section>
       </StpPofileContainer>
     </StMainRouterSection>

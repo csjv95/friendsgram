@@ -8,6 +8,7 @@ const DirectRouter = ({users}) => {
     <Switch>
       <Route exact path="/direct" component={EmptyChat}/>
       <Route path="/direct/:username" component={UserChat} />
+      <Route render={() => <div>페이지를 찾을 수 없습니다.</div>} />
     </Switch>
   );
 };

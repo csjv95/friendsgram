@@ -98,7 +98,12 @@ const StLink = styled(Link)`
   justify-content: space-between;
 `;
 
+const StLogoutBtn = styled.button`
+  width : 100%;
+`
+
 const Header = ({ handlePost, userData }) => {
+  const {displayName} = userData;
   const [search, setSearch] = useState(false);
   const [headerText, setHeaderText] = useState("");
   const [profile, setProfile] = useState(false);
@@ -121,7 +126,7 @@ const Header = ({ handlePost, userData }) => {
 
   const onBlur = (event) => {
     setSearch(!search);
-    console.log("hello");
+    
   };
 
   const onLogout = () => {
@@ -186,32 +191,32 @@ const Header = ({ handlePost, userData }) => {
           <StMySection>
             <StMyUl>
               <StMyLi>
-                <StLink to="/:name">
+                <StLink to={`/${displayName}`}>
                   <StUserCircle width="1.5" />
                   <div>프로필</div>
                 </StLink>
               </StMyLi>
               <StMyLi>
-                <StLink to="">
+                <StLink to={`/${displayName}/saved`}>
                   <StBookmarkIcon width="1.5" />
                   <div>저장됨</div>
                 </StLink>
               </StMyLi>
               <StMyLi>
-                <StLink to="">
+                <StLink to={`/${displayName}/setting`}>
                   <StSettings width="1.5" />
                   <div>설정</div>
                 </StLink>
               </StMyLi>
               <StMyLi>
-                <StLink to="">
+                <StLink to="/">
                   <StTransfer width="1.5" />
                   <div>계정 전환</div>
                 </StLink>
               </StMyLi>
               <StLine />
               <StMyLi>
-                <StLink onClick={onLogout}>로그아웃</StLink>
+                <StLogoutBtn onClick={onLogout} >로그아웃</StLogoutBtn>
               </StMyLi>
             </StMyUl>
           </StMySection>
