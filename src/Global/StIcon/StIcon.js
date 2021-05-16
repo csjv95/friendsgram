@@ -18,6 +18,7 @@ import { PlusSquare } from "@styled-icons/bootstrap/PlusSquare";
 import { UserCircle } from "@styled-icons/boxicons-regular/UserCircle";
 import { Settings } from "@styled-icons/material/Settings";
 import { Transfer } from "@styled-icons/boxicons-regular/Transfer";
+import { ImageMultiple } from "@styled-icons/fluentui-system-filled/ImageMultiple";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -117,7 +118,15 @@ export const StTransfer = styled(Transfer)`
 `;
 
 export const StLine = styled.div`
-  width : 100%;
-  height : 1.2px;
-  background-color : ${({theme}) => theme.colors.borderColor};
-`
+  width: 100%;
+  height: 1.2px;
+  background-color: ${({ theme }) => theme.colors.borderColor};
+`;
+
+export const StImageMultiple = styled(ImageMultiple)`
+  width: ${({ width }) => width}em;
+  position : ${({ position }) => position};
+  top:  ${({ top }) => top}px;
+  right: ${({ right }) => right}px;
+  color : ${({ color }) => color};
+`;

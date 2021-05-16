@@ -1,66 +1,105 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { StLine, StSettings } from "../../Global/StIcon/StIcon";
+import {
+  StImageMultiple,
+  StLine,
+  StSettings,
+} from "../../Global/StIcon/StIcon";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import MyProfileRouter from "../../routes/myProfileRouter/myProfileRouter";
+import { getMyPost } from "../../service/postData/getMyPost";
 
 const StpPofileContainer = styled.section`
-  margin : 0 auto;
+  margin: 0 auto;
 `;
 
 const StTopSection = styled.section`
-  width : 56.25rem;
+  width: 56.25rem;
+  margin-bottom: 2em;
   display: flex;
 `;
 
 const StInformation = styled.section`
-  margin-left: 15em;
-  display : flex;
-  flex-direction : column;
+  margin-left: 10em;
+  display: flex;
+  flex-direction: column;
 
-  &>:nth-child(n) {
+  & > :nth-child(n) {
     margin: 0.5em 0;
   }
-`
+  & > :first-child {
+    margin-top: 0;
+  }
+`;
 
 const StInfoTop = styled.ul`
-  display : flex;
-  &>:nth-child(n) {
-    margin-left: 0.5em;
+  display: flex;
+  & > :nth-child(n) {
+    margin-right: 0.5em;
   }
   &:first-child {
     font-size: 2em;
   }
-`
+`;
 
 const StInfoMid = styled.ul`
-  display : flex;
-  &>:nth-child(n) {
-    margin-left: 0.5em;
+  display: flex;
+  & > :nth-child(n) {
+    margin-right: 0.5em;
   }
-`
+`;
 
 const StInfoBottom = styled.ul`
-  margin-bottom : 1em;
-  display : flex;
-  flex-direction : column;
-  &>:nth-child(n) {
-    margin-left: 0.5em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  & > :nth-child(n) {
+    margin-right: 0.5em;
   }
+`;
 
-`
 const StNavUl = styled.ul`
-  padding-top : 1em;
-  display : flex;
-  justify-content : space-around;
-`
+  width: 56.25rem;
+  display: flex;
+  justify-content: space-around;
 
-const MyProfile = ({ userData,followingList,followerList,match }) => {
-  const { name, displayName, photoURL,introduction } = userData;
+  & > :nth-child(n) {
+    padding-top: 1em;
+  }
+`;
+
+const StPostList = styled.ul`
+  width: 56.25rem;
+  display: flex;
+`;
+
+const StPostItem = styled.li`
+  position: relative;
+  width: 33%;
+  height: 14em;
+  padding: 0.5em;
+`;
+
+const StPostImg = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 0.1em;
+`;
+
+const MyProfile = ({ userData, followingList, followerList, match }) => {
+  const [myPostData, setMyPostData] = useState([]);
+  const { name, displayName, photoURL, introduction } = userData;
+
+  useEffect(() => {
+    getMyPost(setMyPostData);
+  }, []);
+
+  const onLinkClick = () => {};
+
   return (
-    <StMainRouterSection> 
+    <StMainRouterSection>
       <StpPofileContainer>
         <StTopSection>
           <StProfileImg src={photoURL} alt={photoURL} height="10em" />
@@ -75,19 +114,23 @@ const MyProfile = ({ userData,followingList,followerList,match }) => {
               </li>
             </StInfoTop>
             <StInfoMid>
-              <li>게시물</li>
+              <li>게시물 {myPostData.length}</li>
               <li>팔로워 {followingList.length}</li>
               <li>팔로우 {followerList.length}</li>
             </StInfoMid>
             <StInfoBottom>
               <li>{name}</li>
-              {introduction ? <li>{introduction}</li> : <div>나를 소개해주세요</div>}
+              {introduction ? (
+                <li>{introduction}</li>
+              ) : (
+                <div>나를 소개해주세요</div>
+              )}
             </StInfoBottom>
           </StInformation>
         </StTopSection>
         <StLine />
         <nav>
-          <StNavUl>
+          <StNavUl onClick={onLinkClick}>
             <li>
               <Link to={`/${displayName}`}>게시물</Link>
             </li>
@@ -103,7 +146,23 @@ const MyProfile = ({ userData,followingList,followerList,match }) => {
           </StNavUl>
         </nav>
         <section>
-          <MyProfileRouter userData={userData}/>
+          <MyProfileRouter userData={userData} />
+          <StPostList>
+            {myPostData.map((data,postId) => (
+              <StPostItem key={postId}>
+                <StPostImg src={data.imgsData[0].imgUrl} alt="data" />
+                {data.imgsData.length > 1 && (
+                  <StImageMultiple
+                    width="1.4"
+                    color="white"
+                    position="absolute"
+                    top="14"
+                    right="14"
+                  />
+                )}
+              </StPostItem>
+            ))}
+          </StPostList>
         </section>
       </StpPofileContainer>
     </StMainRouterSection>
