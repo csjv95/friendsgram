@@ -19,6 +19,9 @@ import { UserCircle } from "@styled-icons/boxicons-regular/UserCircle";
 import { Settings } from "@styled-icons/material/Settings";
 import { Transfer } from "@styled-icons/boxicons-regular/Transfer";
 import { ImageMultiple } from "@styled-icons/fluentui-system-filled/ImageMultiple";
+import { Table } from "@styled-icons/fluentui-system-regular/Table";
+import { Tv } from "@styled-icons/boxicons-regular/Tv";
+import { Tag } from "@styled-icons/bootstrap/Tag";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -119,14 +122,26 @@ export const StTransfer = styled(Transfer)`
 
 export const StLine = styled.div`
   width: 100%;
-  height: 1.2px;
+  height: 1px;
   background-color: ${({ theme }) => theme.colors.borderColor};
 `;
 
 export const StImageMultiple = styled(ImageMultiple)`
   width: ${({ width }) => width}em;
-  position : ${({ position }) => position};
-  top:  ${({ top }) => top}px;
+  position: ${({ position }) => position};
+  top: ${({ top }) => top}px;
   right: ${({ right }) => right}px;
-  color : ${({ color }) => color};
+  color: ${({ color }) => color};
+`;
+
+export const StTable = styled(Table)`
+  width: ${({ width }) => width}em;
+`;
+
+export const StTv = styled(Tv)`
+  width: ${({ width }) => width}em;
+`;
+
+export const StTag = styled(Tag)`
+  width: ${({ width }) => width}em;
 `;

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import {
-  StImageMultiple,
+  StBookmarkIcon,
   StLine,
   StSettings,
+  StTable,
+  StTag,
+  StTv,
 } from "../../Global/StIcon/StIcon";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
@@ -44,6 +47,13 @@ const StInfoTop = styled.ul`
   }
 `;
 
+const StEditor = styled.button`
+  padding: 0.4em;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  border-radius: 0.2em;
+  font-weight: 600;
+`;
+
 const StInfoMid = styled.ul`
   display: flex;
   & > :nth-child(n) {
@@ -62,30 +72,24 @@ const StInfoBottom = styled.ul`
 
 const StNavUl = styled.ul`
   width: 56.25rem;
+  padding: 0 10em;
   display: flex;
   justify-content: space-around;
 
   & > :nth-child(n) {
-    padding-top: 1em;
+    font-size: 0.8em;
+  }
+  & :nth-child(n) {
+    display: flex;
+    font-weight: 600;
   }
 `;
 
-const StPostList = styled.ul`
-  width: 56.25rem;
-  display: flex;
-`;
-
-const StPostItem = styled.li`
-  position: relative;
-  width: 33%;
-  height: 14em;
-  padding: 0.5em;
-`;
-
-const StPostImg = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 0.1em;
+const StNavLink = styled(NavLink)`
+  padding-top: 1em;
+  & > :first-child {
+    margin-right: 0.3em;
+  }
 `;
 
 const MyProfile = ({ userData, followingList, followerList, match }) => {
@@ -107,7 +111,7 @@ const MyProfile = ({ userData, followingList, followerList, match }) => {
             <StInfoTop>
               <li>{displayName}</li>
               <li>
-                <button>프로필 편집</button>
+                <StEditor>프로필 편집</StEditor>
               </li>
               <li>
                 <StSettings width="1" />
@@ -132,37 +136,54 @@ const MyProfile = ({ userData, followingList, followerList, match }) => {
         <nav>
           <StNavUl onClick={onLinkClick}>
             <li>
-              <Link to={`/${displayName}`}>게시물</Link>
+              <StNavLink
+                exact
+                to={`/${displayName}`}
+                activeStyle={{
+                  borderTop: "1px solid",
+                }}
+              >
+                <StTable width="1" />
+                <div>게시물</div>
+              </StNavLink>
             </li>
             <li>
-              <Link to={`/${displayName}/chanel`}>IGTV</Link>
+              <StNavLink
+                to={`/${displayName}/chanel`}
+                activeStyle={{
+                  borderTop: "1px solid",
+                }}
+              >
+                <StTv width="1" />
+                <div>IGTV</div>
+              </StNavLink>
             </li>
             <li>
-              <Link to={`/${displayName}/saved`}>저장됨</Link>
+              <StNavLink
+                to={`/${displayName}/saved`}
+                activeStyle={{
+                  borderTop: "1px solid",
+                }}
+              >
+                <StBookmarkIcon width="1" />
+                <div>저장됨</div>
+              </StNavLink>
             </li>
             <li>
-              <Link to={`/${displayName}/tagged`}>태그됨</Link>
+              <StNavLink
+                to={`/${displayName}/tagged`}
+                activeStyle={{
+                  borderTop: "1px solid",
+                }}
+              >
+                <StTag width="1" />
+                <div>태그됨</div>
+              </StNavLink>
             </li>
           </StNavUl>
         </nav>
         <section>
-          <MyProfileRouter userData={userData} />
-          <StPostList>
-            {myPostData.map((data,postId) => (
-              <StPostItem key={postId}>
-                <StPostImg src={data.imgsData[0].imgUrl} alt="data" />
-                {data.imgsData.length > 1 && (
-                  <StImageMultiple
-                    width="1.4"
-                    color="white"
-                    position="absolute"
-                    top="14"
-                    right="14"
-                  />
-                )}
-              </StPostItem>
-            ))}
-          </StPostList>
+          <MyProfileRouter userData={userData} myPostData={myPostData} />
         </section>
       </StpPofileContainer>
     </StMainRouterSection>
