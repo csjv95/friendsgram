@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link,NavLink } from "react-router-dom";
 import styled from "styled-components";
 import {
   StBookmarkIcon,
@@ -106,13 +106,13 @@ const MyProfile = ({ userData, followingList, followerList, match }) => {
     <StMainRouterSection>
       <StpPofileContainer>
         <StTopSection>
-          <StProfileImg src={photoURL} alt={photoURL} height="10em" />
+          <StProfileImg src={photoURL} alt="my-profile-img" height="10em" />
           <StInformation>
             <StInfoTop>
               <li>{displayName}</li>
-              <li>
+              <Link to="/account/edit">
                 <StEditor>프로필 편집</StEditor>
-              </li>
+              </Link>
               <li>
                 <StSettings width="1" />
               </li>

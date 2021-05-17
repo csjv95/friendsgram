@@ -189,7 +189,7 @@ const Header = ({ handlePost, userData }) => {
         </StHeaderNavul>
         {profile && (
           <StMySection>
-            <StMyUl>
+            <StMyUl onClick={profileOnClick}>
               <StMyLi>
                 <StLink to={`/${displayName}`}>
                   <StUserCircle width="1.5" />
@@ -203,7 +203,7 @@ const Header = ({ handlePost, userData }) => {
                 </StLink>
               </StMyLi>
               <StMyLi>
-                <StLink to={`/${displayName}/setting`}>
+                <StLink to={`/${displayName}/edit`}>
                   <StSettings width="1.5" />
                   <div>설정</div>
                 </StLink>
