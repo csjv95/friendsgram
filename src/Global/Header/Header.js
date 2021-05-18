@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 import {
@@ -203,7 +203,7 @@ const Header = ({ handlePost, userData }) => {
                 </StLink>
               </StMyLi>
               <StMyLi>
-                <StLink to={`/${displayName}/edit`}>
+                <StLink to="/edit">
                   <StSettings width="1.5" />
                   <div>설정</div>
                 </StLink>

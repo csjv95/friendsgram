@@ -2,7 +2,16 @@ import { firebaseAuth } from "../firebase";
 import { firebaseStore } from "../firebase";
 
 const authSignUp = async (userData, follow, history) => {
-  const { email, name, displayName, password } = userData;
+  const {
+    email,
+    name,
+    displayName,
+    password,
+    introduction,
+    webSite,
+    phoneNum,
+    gen,
+  } = userData;
   const { follower, following } = follow;
 
   try {
@@ -32,6 +41,10 @@ const authSignUp = async (userData, follow, history) => {
       displayName,
       password,
       photoURL: "/imgs/defaultUserImg.png",
+      introduction,
+      webSite,
+      phoneNum,
+      gen,
       uid,
     });
 

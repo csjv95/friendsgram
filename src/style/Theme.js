@@ -3,7 +3,7 @@ const colors = {
   contentColor: "#ffffff",
   logoColor : "#000000",
   borderColor: "#dbdbdb",
-  borderRadius : "0.4em",
+  borderRadius : "0.2em",
   textColorLihgtgrey: "#8e8e8e",
   textColorWhite: "#ffffff",
   lightgrey : "#d3d3d3",

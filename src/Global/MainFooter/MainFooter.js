@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const FooterCotainer = styled.footer`
+  padding-top : 2em;
   padding-bottom: 3em;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
   & :nth-child(n) {

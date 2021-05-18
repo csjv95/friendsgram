@@ -110,7 +110,7 @@ const MyProfile = ({ userData, followingList, followerList, match }) => {
           <StInformation>
             <StInfoTop>
               <li>{displayName}</li>
-              <Link to="/account/edit">
+              <Link to="/edit">
                 <StEditor>프로필 편집</StEditor>
               </Link>
               <li>

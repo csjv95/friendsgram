@@ -34,6 +34,10 @@ const SignUp = () => {
     name: "",
     displayName: "",
     password: "",
+    introduction: "",
+    webSite: "",
+    phoneNum: "",
+    gen: "",
   });
 
   const onClick = (event) => {
@@ -47,8 +51,8 @@ const SignUp = () => {
   };
 
   const handleChange = (event) => {
-    if(event.key === 'Enter') {
-      console.log('enter');
+    if (event.key === "Enter") {
+      console.log("enter");
     }
     const name = event.target.name;
     const value = event.target.value;
@@ -56,10 +60,10 @@ const SignUp = () => {
   };
 
   const handleKeyPress = (event) => {
-    if(event.key === "Enter") {
+    if (event.key === "Enter") {
       handleSubmit(event);
     }
-  }
+  };
 
   return (
     <StContainerDiv>
