@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../../../Global/Button/Button";
 import { StProfileImg } from "../../../Global/StProfileImg/StProfileImg";
@@ -56,11 +56,13 @@ const StIputContainer = styled.div`
 `;
 
 const StEditInput = styled.input`
-  border: 1px solid ${({theme}) => theme.colors.borderColor};
-  border-radius : ${({theme}) => theme.colors.borderRadius};
-`
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  border-radius: ${({ theme }) => theme.colors.borderRadius};
+`;
 
 const StTextArea = styled.textarea`
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  border-radius: ${({ theme }) => theme.colors.borderRadius};
   resize: none;
 `;
 
@@ -76,18 +78,20 @@ const ChangeEdit = ({ userData }) => {
     gen,
   } = userData;
 
-  const [reUserData, setReUserData] = useState(userData);
+  const [reUserData, setReUserData] = useState({});
 
   const onChangeInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setReUserData({...reUserData, [name]: value});
+    console.log(reUserData);
+    setReUserData({ ...reUserData, [name]: value });
   };
 
-  const onSubmit = () => {
+  const onSubmit = (event) => {
+    event.preventDefault();
     setUserData(reUserData);
-  }
-  
+  };
+
   return (
     <StEditMain>
       <StImgSection>
@@ -107,7 +111,7 @@ const ChangeEdit = ({ userData }) => {
             <StEditInput
               type="text"
               name="name"
-              placeholder={name}
+              placeholder={name ? name : "이름"}
               onChange={onChangeInput}
             />
             <div>
@@ -125,7 +129,7 @@ const ChangeEdit = ({ userData }) => {
             <StEditInput
               type="text"
               name="displayName"
-              placeholder={displayName}
+              placeholder={displayName ? displayName : "사용자 이름"}
               onChange={onChangeInput}
             />
           </StIputContainer>
@@ -139,7 +143,7 @@ const ChangeEdit = ({ userData }) => {
             <StEditInput
               type="text"
               name="webSite"
-              placeholder={webSite}
+              placeholder={webSite ? webSite : "웹사이트"}
               onChange={onChangeInput}
             />
           </StIputContainer>
@@ -153,7 +157,7 @@ const ChangeEdit = ({ userData }) => {
             <StTextArea
               type="text"
               name="introduction"
-              placeholder={introduction}
+              placeholder={introduction ? introduction : "소개"}
               onChange={onChangeInput}
             />
             <div>개인정보</div>
@@ -172,7 +176,7 @@ const ChangeEdit = ({ userData }) => {
             <StEditInput
               type="email"
               name="email"
-              placeholder={email}
+              placeholder={email ? email : "이메일"}
               onChange={onChangeInput}
             />
           </StIputContainer>
@@ -186,7 +190,7 @@ const ChangeEdit = ({ userData }) => {
             <StEditInput
               type="tel"
               name="phoneNum"
-              placeholder={phoneNum}
+              placeholder={phoneNum ? phoneNum : "전화번호"}
               onChange={onChangeInput}
             />
           </StIputContainer>
@@ -200,12 +204,12 @@ const ChangeEdit = ({ userData }) => {
             <StEditInput
               type="text"
               name="gen"
-              placeholder={gen}
+              placeholder={gen ? gen : "성별"}
               onChange={onChangeInput}
             />
           </StIputContainer>
         </StSetContainer>
-       <Button btnText="제출" width="4em" padding="0.1em"/>
+        <Button btnText="제출" width="4em" padding="0.1em" onClick={onSubmit} />
       </StChangeForm>
     </StEditMain>
   );
