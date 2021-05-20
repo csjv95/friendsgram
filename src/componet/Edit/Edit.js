@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 import EditRouter from "../../routes/editRouter/editRouter";
@@ -16,14 +17,21 @@ const StEditAside = styled.aside`
   border-right: 1px solid ${({ theme }) => theme.colors.borderColor};
 `;
 
+const StNavLink = styled(NavLink)`
+  margin : 1em;
+`
+const navStyle = {
+  borderLeft : `1px solid red`
+}
+
 const Edit = ({ userData }) => {
   return (
     <StMainRouterSection>
       <StEditContainer>
         <StEditAside>
           <ul>
-            <li>프로필 편집</li>
-            <li>비밀번호 변경</li>
+            <li><StNavLink to="/edit" activeStyle={navStyle}>프로필 편집</StNavLink></li>
+            <li><StNavLink to="/edit/password/change" activeStyle={navStyle}>비밀번호 변경</StNavLink></li>
           </ul>
         </StEditAside>
         <EditRouter userData={userData} />

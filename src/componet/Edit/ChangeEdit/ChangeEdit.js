@@ -1,70 +1,18 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
 import Button from "../../../Global/Button/Button";
+import {
+  StEditMain,
+  StImgSection,
+  StChnageImgList,
+  StChangeForm,
+  StSetContainer,
+  StLabelContainer,
+  StIputContainer,
+  StEditInput,
+  StTextArea,
+} from "../../../Global/StEditForm/StEditForm";
 import { StProfileImg } from "../../../Global/StProfileImg/StProfileImg";
 import setUserData from "../../../service/usersData/setUserData";
-
-const StEditMain = styled.main`
-  width: 70%;
-  padding: 1em 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const StImgSection = styled.section`
-  display: flex;
-`;
-
-const StChnageImgList = styled.ul`
-  margin-left: 2em;
-
-  & > :first-child {
-    font-size: 1.5em;
-  }
-`;
-
-const StChangeForm = styled.form`
-  padding: 2em 4em;
-  flex-grow: 1;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const StSetContainer = styled.div`
-  width: 100%;
-  display: flex;
-`;
-
-const StLabelContainer = styled.div`
-  width: 25%;
-  margin-right: 2em;
-  padding-top: 0.6em;
-  text-align: right;
-
-  & > :first-child {
-    font-weight: 600;
-  }
-`;
-
-const StIputContainer = styled.div`
-  width: 75%;
-  & > :first-child {
-    width: 80%;
-    height: 2.5em;
-  }
-`;
-
-const StEditInput = styled.input`
-  border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  border-radius: ${({ theme }) => theme.colors.borderRadius};
-`;
-
-const StTextArea = styled.textarea`
-  border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  border-radius: ${({ theme }) => theme.colors.borderRadius};
-  resize: none;
-`;
 
 const ChangeEdit = ({ userData }) => {
   const {
@@ -93,22 +41,41 @@ const ChangeEdit = ({ userData }) => {
   };
 
   return (
-    <StEditMain>
-      <StImgSection>
+    <StEditMain
+      width="70%"
+      padding="1em 0"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+    >
+      <StImgSection marginLeft="8em" display="flex">
         <StProfileImg src={photoURL} alt="my-profile-img" height="4em" />
-        <StChnageImgList>
+        <StChnageImgList marginLeft="2em">
           <li>{displayName}</li>
           <li>프로필사진 바꾸기</li>
         </StChnageImgList>
       </StImgSection>
 
-      <StChangeForm action="" onSubmit={onSubmit}>
-        <StSetContainer>
-          <StLabelContainer>
+      <StChangeForm
+        onSubmit={onSubmit}
+        padding="2em 4em"
+        flexGrow="1"
+        display="flex"
+        flexWrap="wrap"
+      >
+        <StSetContainer width="100%" display="flex">
+          <StLabelContainer
+            width="25%"
+            marginRight="2em"
+            paddingTop="0.6em"
+            textAlign="right"
+          >
             <label htmlFor="name">이름</label>
           </StLabelContainer>
-          <StIputContainer>
+          <StIputContainer width="75%">
             <StEditInput
+              width="80%"
+              height="2.5em"
               type="text"
               name="name"
               placeholder={name ? name : "이름"}
@@ -121,12 +88,19 @@ const ChangeEdit = ({ userData }) => {
           </StIputContainer>
         </StSetContainer>
 
-        <StSetContainer>
-          <StLabelContainer>
+        <StSetContainer width="100%" display="flex">
+          <StLabelContainer
+            width="25%"
+            marginRight="2em"
+            paddingTop="0.6em"
+            textAlign="right"
+          >
             <label htmlFor="displayName">사용자 이름</label>
           </StLabelContainer>
-          <StIputContainer>
+          <StIputContainer width="75%">
             <StEditInput
+              width="80%"
+              height="2.5em"
               type="text"
               name="displayName"
               placeholder={displayName ? displayName : "사용자 이름"}
@@ -135,12 +109,19 @@ const ChangeEdit = ({ userData }) => {
           </StIputContainer>
         </StSetContainer>
 
-        <StSetContainer>
-          <StLabelContainer>
+        <StSetContainer width="100%" display="flex">
+          <StLabelContainer
+            width="25%"
+            marginRight="2em"
+            paddingTop="0.6em"
+            textAlign="right"
+          >
             <label htmlFor="webSite">웹사이트</label>
           </StLabelContainer>
-          <StIputContainer>
+          <StIputContainer width="75%">
             <StEditInput
+              width="80%"
+              height="2.5em"
               type="text"
               name="webSite"
               placeholder={webSite ? webSite : "웹사이트"}
@@ -149,12 +130,19 @@ const ChangeEdit = ({ userData }) => {
           </StIputContainer>
         </StSetContainer>
 
-        <StSetContainer>
-          <StLabelContainer>
+        <StSetContainer width="100%" display="flex">
+          <StLabelContainer
+            width="25%"
+            marginRight="2em"
+            paddingTop="0.6em"
+            textAlign="right"
+          >
             <label htmlFor="introduction">소개</label>
           </StLabelContainer>
-          <StIputContainer>
+          <StIputContainer width="75%">
             <StTextArea
+              width="80%"
+              height="2.5em"
               type="text"
               name="introduction"
               placeholder={introduction ? introduction : "소개"}
@@ -168,12 +156,19 @@ const ChangeEdit = ({ userData }) => {
           </StIputContainer>
         </StSetContainer>
 
-        <StSetContainer>
-          <StLabelContainer>
+        <StSetContainer width="100%" display="flex">
+          <StLabelContainer
+            width="25%"
+            marginRight="2em"
+            paddingTop="0.6em"
+            textAlign="right"
+          >
             <label htmlFor="email">이메일</label>
           </StLabelContainer>
-          <StIputContainer>
+          <StIputContainer width="75%">
             <StEditInput
+              width="80%"
+              height="2.5em"
               type="email"
               name="email"
               placeholder={email ? email : "이메일"}
@@ -182,12 +177,19 @@ const ChangeEdit = ({ userData }) => {
           </StIputContainer>
         </StSetContainer>
 
-        <StSetContainer>
-          <StLabelContainer>
+        <StSetContainer width="100%" display="flex">
+          <StLabelContainer
+            width="25%"
+            marginRight="2em"
+            paddingTop="0.6em"
+            textAlign="right"
+          >
             <label htmlFor="phoneNum">전화번호</label>
           </StLabelContainer>
-          <StIputContainer>
+          <StIputContainer width="75%">
             <StEditInput
+              width="80%"
+              height="2.5em"
               type="tel"
               name="phoneNum"
               placeholder={phoneNum ? phoneNum : "전화번호"}
@@ -196,12 +198,19 @@ const ChangeEdit = ({ userData }) => {
           </StIputContainer>
         </StSetContainer>
 
-        <StSetContainer>
-          <StLabelContainer>
+        <StSetContainer width="100%" display="flex">
+          <StLabelContainer
+            width="25%"
+            marginRight="2em"
+            paddingTop="0.6em"
+            textAlign="right"
+          >
             <label htmlFor="gen">성별</label>
           </StLabelContainer>
-          <StIputContainer>
+          <StIputContainer width="75%">
             <StEditInput
+              width="80%"
+              height="2.5em"
               type="text"
               name="gen"
               placeholder={gen ? gen : "성별"}
