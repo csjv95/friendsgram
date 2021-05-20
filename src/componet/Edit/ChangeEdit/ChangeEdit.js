@@ -31,7 +31,6 @@ const ChangeEdit = ({ userData }) => {
   const onChangeInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    console.log(reUserData);
     setReUserData({ ...reUserData, [name]: value });
   };
 

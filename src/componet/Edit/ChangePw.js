@@ -12,24 +12,36 @@ import {
   StEditInput,
 } from "../../Global/StEditForm/StEditForm";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
+import authPwChange from "../../service/auth/authPwChange";
 import { Theme } from "../../style/Theme";
 
 const ChangePw = ({ userData }) => {
-  const { photoURL, displayName } = userData;
-  const [newPw, setNewPw] = useState({});
-
+  const { photoURL, displayName, password } = userData;
+  const [newPw, setNewPw] = useState({
+    lastPw: "",
+    newPw: "",
+    checkPw: "",
+  });
+  console.log(password);
   const onSubmit = (event) => {
     event.preventDefault();
-    // 비밀번호 재설정
+    // 첫번째 input 비밀번호 check 맞는지 확인 v
+    // 두번째와 세번째 input 값이 같은지 확인 v
+    // 위에 결과가 다 ok이면 비밀번호 change v
+    // 비밀번호 재설정 v
+
+    newPw.lastPw === password
+      ? newPw.newPw === newPw.checkPw
+        ? authPwChange(newPw)
+        : console.log("두 비밀번호가 일치하는지 확인하세요")
+      : console.log("비밀번호를 확인해주세요");
   };
 
   const onChangeInput = (event) => {
-    const pw = event.targer.value;
-    console.log(pw);
-    // 첫번째 input 비밀번호 check 맞는지 확인
-    // 두번째와 세번째 input 값이 같은지 확인
-    // 위에 결과가 다 ok이면 비밀번호 change
-  }
+    const value = event.target.value;
+    const name = event.target.name;
+    setNewPw({ ...newPw, [name]: value });
+  };
 
   return (
     <StEditMain
