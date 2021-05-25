@@ -1,5 +1,6 @@
 import {firebaseAuth} from "../firebase";
 
-export const authLogout = () => {
+export const authLogout = (props) => {
   firebaseAuth.signOut();
+  console.log(props);
 }

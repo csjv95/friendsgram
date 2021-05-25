@@ -17,12 +17,13 @@ import { Theme } from "../../style/Theme";
 
 const ChangePw = ({ userData }) => {
   const { photoURL, displayName, password } = userData;
+  
   const [newPw, setNewPw] = useState({
     lastPw: "",
     newPw: "",
     checkPw: "",
   });
-  console.log(password);
+
   const onSubmit = (event) => {
     event.preventDefault();
     // 첫번째 input 비밀번호 check 맞는지 확인 v
@@ -45,7 +46,7 @@ const ChangePw = ({ userData }) => {
 
   return (
     <StEditMain
-      width="70%"
+      width="75%"
       padding="1em 0"
       display="flex"
       flexDirection="column"

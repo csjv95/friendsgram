@@ -10,6 +10,8 @@ import {
   StIputContainer,
   StEditInput,
   StTextArea,
+  StImgLabel,
+  StImgInput,
 } from "../../../Global/StEditForm/StEditForm";
 import { StProfileImg } from "../../../Global/StProfileImg/StProfileImg";
 import setUserData from "../../../service/usersData/setUserData";
@@ -37,11 +39,12 @@ const ChangeEdit = ({ userData }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     setUserData(reUserData);
+    
   };
 
   return (
     <StEditMain
-      width="70%"
+      width="75%"
       padding="1em 0"
       display="flex"
       flexDirection="column"
@@ -51,7 +54,10 @@ const ChangeEdit = ({ userData }) => {
         <StProfileImg src={photoURL} alt="my-profile-img" height="4em" />
         <StChnageImgList marginLeft="2em">
           <li>{displayName}</li>
-          <li>프로필사진 바꾸기</li>
+          <li>
+            <StImgLabel htmlFor="img">프로필 사진 바꾸기</StImgLabel>
+            <StImgInput type="file" id="img" />
+          </li>
         </StChnageImgList>
       </StImgSection>
 

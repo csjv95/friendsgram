@@ -6,7 +6,7 @@ import styled from "styled-components";
 import Post from "../../componet/Post/Post";
 import ModalPotal from "../../modal/ModalPotal";
 import Address from "../../componet/Address/Adress";
-import getUserData from "../../service/fireStore/getUserData";
+import getUserData from "../../service/fireStore/getCurrenttUserData";
 import getUsersList from "../../service/fireStore/getUsersList";
 import getFollowingList from "../../service/follow/getFollowingList";
 import getFollowerList from "../../service/follow/getFollowerList";
@@ -22,9 +22,10 @@ const AppContainer = styled.div`
 `;
 
 const RouteMain = () => {
+  // useReducer 써야 될것들 context API
   const post = document.getElementById("post");
   const address = document.getElementById("address");
-  const [currentUserUid,setCurrentUserUid] = useState("");
+  const [currentUserUid, setCurrentUserUid] = useState("");
   const [userData, setUserData] = useState([]);
   const [usersList, setUsersList] = useState([]);
   const [followingList, setFollowingList] = useState([]);
@@ -43,7 +44,7 @@ const RouteMain = () => {
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-  },[]); 
+  }, []);
 
   const handlePost = () => {
     setPostModal(!postModal);
@@ -76,9 +77,8 @@ const RouteMain = () => {
           <Address handleAddress={handleAddress} setLocation={setLocation} />
         </ModalPotal>
       )}
-      
       {progressBar && <ProgressBar progressBar={progressBar} />}
-      <Header handlePost={handlePost} userData={userData} />
+      <Header handlePost={handlePost} userData={userData}  usersList={usersList}/>
       <NavRouter
         userData={userData}
         usersList={usersList}

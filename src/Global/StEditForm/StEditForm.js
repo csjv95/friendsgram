@@ -22,6 +22,14 @@ export const StChnageImgList = styled.ul`
   }
 `;
 
+export const StImgLabel = styled.label`
+  cursor: pointer;
+`;
+
+export const StImgInput = styled.input`
+  display : none;
+`
+
 export const StChangeForm = styled.form`
   padding: ${({ padding }) => padding};
   flex-grow: ${({ flexGrow }) => flexGrow};

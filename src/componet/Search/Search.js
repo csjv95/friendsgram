@@ -12,11 +12,10 @@ const StSearch = styled.section`
 const StTitle = styled.h1`
   font-size:1em
 `
-const Search = ({headerText}) => {
-
+const Search = ({searchText,usersList}) => {
   useEffect(()=> {
-    getSearch(headerText)
-  },[headerText])
+    getSearch(searchText)
+  },[searchText])
 
   return (
     <StSearch >

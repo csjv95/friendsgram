@@ -13,26 +13,50 @@ const StEditContainer = styled.section`
 `;
 
 const StEditAside = styled.aside`
-  width: 30%;
+  width: 25%;
   border-right: 1px solid ${({ theme }) => theme.colors.borderColor};
 `;
 
+const StEditList = styled.ul``;
+
+const StEditListItem = styled.li`
+  display: flex;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.backgroundColor};
+    border-left: 2px solid ${({theme})=> theme.colors.borderColor};
+  }
+  .selected {
+    font-weight: 600;
+    border-left: 2px solid;
+  }
+`;
+
 const StNavLink = styled(NavLink)`
-  margin : 1em;
-`
-const navStyle = {
-  borderLeft : `1px solid red`
-}
+  width: 100%;
+  padding: 1em 1em 1em 2em;
+`;
 
 const Edit = ({ userData }) => {
   return (
     <StMainRouterSection>
       <StEditContainer>
         <StEditAside>
-          <ul>
-            <li><StNavLink to="/edit" activeStyle={navStyle}>프로필 편집</StNavLink></li>
-            <li><StNavLink to="/edit/password/change" activeStyle={navStyle}>비밀번호 변경</StNavLink></li>
-          </ul>
+          <StEditList>
+            <StEditListItem>
+              <StNavLink exact to="/edit" activeClassName={"selected"}>
+                프로필 편집
+              </StNavLink>
+            </StEditListItem>
+            <StEditListItem>
+              <StNavLink
+                to="/edit/password/change"
+                activeClassName={"selected"}
+              >
+                비밀번호 변경
+              </StNavLink>
+            </StEditListItem>
+          </StEditList>
         </StEditAside>
         <EditRouter userData={userData} />
       </StEditContainer>

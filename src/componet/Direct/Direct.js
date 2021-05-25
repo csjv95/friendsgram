@@ -48,12 +48,14 @@ const DirectUserInfo = styled.ul`
   flex-direction: column;
 `;
 
-const Direct = () => {
+const Direct = (props) => {
   const users = [
     { username: "SJ" },
     { username: "Reem" },
     { username: "Sandra" },
   ];
+
+  console.log(props)
 
   return (
     <StMainRouterSection>

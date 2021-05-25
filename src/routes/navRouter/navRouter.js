@@ -7,8 +7,7 @@ import MyProfile from "../../componet/MyProfile/MyProfile";
 import Post from "../../componet/Post/Post";
 import Suggest from "../../componet/Suggest/Suggest";
 
-const NavRouter = ({ userData, usersList, followingList, followerList }) => {
-  const { displayName } = userData;
+const NavRouter = ({ userData, usersList, followingList, followerList }) => {  
   return (
     <Switch>
       <Route exact path="/">
@@ -23,7 +22,7 @@ const NavRouter = ({ userData, usersList, followingList, followerList }) => {
       <Route path="/suggest">
         <Suggest usersList={usersList} followingList={followingList} />
       </Route>
-      <Route  path={`/${displayName}`}>
+      <Route path="/:username">
         <MyProfile
           userData={userData}
           followingList={followingList}
@@ -31,7 +30,7 @@ const NavRouter = ({ userData, usersList, followingList, followerList }) => {
         />
       </Route>
       <Route path="/edit">
-        <Edit userData={userData}/>
+        <Edit userData={userData} />
         </Route>
       <Route render={() => <div>페이지를 찾을 수 없습니다.</div>} />
     </Switch>

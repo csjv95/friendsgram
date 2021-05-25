@@ -102,16 +102,16 @@ const StLogoutBtn = styled.button`
   width : 100%;
 `
 
-const Header = ({ handlePost, userData }) => {
+const Header = ({ handlePost, userData, usersList }) => {
   const {displayName} = userData;
   const [search, setSearch] = useState(false);
-  const [headerText, setHeaderText] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [profile, setProfile] = useState(false);
   const [currentEvent, setCurrentEvent] = useState();
 
   const onSearchChange = (event) => {
     const text = event.target.value;
-    setHeaderText(text);
+    setSearchText(text);
     setSearch(false);
   };
 
@@ -126,7 +126,6 @@ const Header = ({ handlePost, userData }) => {
 
   const onBlur = (event) => {
     setSearch(!search);
-    
   };
 
   const onLogout = () => {
@@ -152,8 +151,8 @@ const Header = ({ handlePost, userData }) => {
           onFocus={onFocus}
           onBlur={onBlur}
         />
-        {search && <SearchRecord currentEvent={currentEvent} />}
-        {headerText && <Search headerText={headerText} />}
+        {search && <SearchRecord currentEvent={currentEvent}  />}
+        {searchText && <Search searchText={searchText} usersList={usersList}/>}
       </StHeaderSearchLabel>
 
       <StHeaderNav>

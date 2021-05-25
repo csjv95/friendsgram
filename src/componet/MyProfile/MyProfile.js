@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link,NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
 import {
   StBookmarkIcon,
@@ -13,6 +13,7 @@ import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRout
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import MyProfileRouter from "../../routes/myProfileRouter/myProfileRouter";
 import { getMyPost } from "../../service/postData/getMyPost";
+import getMatchUserData from "../../service/usersData/getMatchUserData";
 
 const StpPofileContainer = styled.section`
   margin: 0 auto;
@@ -92,13 +93,16 @@ const StNavLink = styled(NavLink)`
   }
 `;
 
-const MyProfile = ({ userData, followingList, followerList, match }) => {
+const MyProfile = ({ userData, followingList, followerList }) => {
+  const match = useParams();
+  const [matchUser, setMatchUser] = useState("");
   const [myPostData, setMyPostData] = useState([]);
-  const { name, displayName, photoURL, introduction } = userData;
-
+  const { name, displayName, photoURL, introduction } = matchUser;
+  
   useEffect(() => {
-    getMyPost(setMyPostData);
-  }, []);
+    getMatchUserData(match, setMatchUser);
+    getMyPost(setMyPostData, match);
+  }, [match]);
 
   const onLinkClick = () => {};
 
