@@ -104,7 +104,7 @@ const StLogoutBtn = styled.button`
 
 const Header = ({ handlePost, userData, usersList }) => {
   const {displayName} = userData;
-  const [search, setSearch] = useState(false);
+  const [search, setSearch] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [profile, setProfile] = useState(false);
   const [currentEvent, setCurrentEvent] = useState();
