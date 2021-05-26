@@ -202,7 +202,7 @@ const Header = ({ handlePost, userData, usersList }) => {
                 </StLink>
               </StMyLi>
               <StMyLi>
-                <StLink to="/edit">
+                <StLink exact="ture" to="/edit">
                   <StSettings width="1.5" />
                   <div>설정</div>
                 </StLink>

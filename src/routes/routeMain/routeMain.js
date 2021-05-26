@@ -12,6 +12,7 @@ import getFollowingList from "../../service/follow/getFollowingList";
 import getFollowerList from "../../service/follow/getFollowerList";
 import { authGetUid } from "../../service/auth/authGetUid";
 import ProgressBar from "../../componet/ProgressBar/ProgressBar";
+import Message from "../../Global/Message/Message";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -25,6 +26,7 @@ const RouteMain = () => {
   // useReducer 써야 될것들 context API
   const post = document.getElementById("post");
   const address = document.getElementById("address");
+  const message = document.getElementById("message");
   const [currentUserUid, setCurrentUserUid] = useState("");
   const [userData, setUserData] = useState([]);
   const [usersList, setUsersList] = useState([]);
@@ -32,6 +34,7 @@ const RouteMain = () => {
   const [followerList, setFollowerList] = useState([]);
   const [postModal, setPostModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
+  const [messageModal, setMessageModal] = useState(false);
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
   const [text, setText] = useState("");
@@ -77,8 +80,17 @@ const RouteMain = () => {
           <Address handleAddress={handleAddress} setLocation={setLocation} />
         </ModalPotal>
       )}
+      {messageModal && (
+        <ModalPotal potalName={message}>
+          <Message />
+        </ModalPotal>
+      )}
       {progressBar && <ProgressBar progressBar={progressBar} />}
-      <Header handlePost={handlePost} userData={userData}  usersList={usersList}/>
+      <Header
+        handlePost={handlePost}
+        userData={userData}
+        usersList={usersList}
+      />
       <NavRouter
         userData={userData}
         usersList={usersList}

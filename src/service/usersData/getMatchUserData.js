@@ -12,7 +12,6 @@ const getMatchUserData = async (match, setMatchUser) => {
     .then((user) => user.forEach((data) => matchUser.push(data.data())));
 
   setMatchUser(...matchUser);
-  console.log(...matchUser)
 };
 
 export default getMatchUserData;

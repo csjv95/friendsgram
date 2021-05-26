@@ -19,7 +19,6 @@ const DaumPostcodeCotainer = styled.section`
 const postCodeStyle = {
   width: "450px",
   height: "710px",
-  
 };
 
 const BtnContainer = styled.div`
