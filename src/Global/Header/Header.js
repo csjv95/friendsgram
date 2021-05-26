@@ -16,6 +16,7 @@ import { StProfileImg } from "../StProfileImg/StProfileImg";
 import Search from "../../componet/Search/Search";
 import SearchRecord from "../../componet/Search/SearchRecord";
 import { authLogout } from "../../service/auth/authLogout";
+import setSearchRecord from "../../service/search/setSearchRecord";
 
 const StHeaderContainer = styled.header`
   width: 100%;
@@ -132,6 +133,10 @@ const Header = ({ handlePost, userData, usersList }) => {
     authLogout();
   };
 
+  const onSearchSubmit = (event) => {
+    event.preventDefault();
+    setSearchRecord(searchText)
+  }
   const activeStyle = {
     padding: `0.2em 0.2em 0.3em 0.2em`,
     border: `1px solid`,
@@ -141,6 +146,7 @@ const Header = ({ handlePost, userData, usersList }) => {
   return (
     <StHeaderContainer>
       <StHeaderLogo href="/">Intstargram</StHeaderLogo>
+      <form onSubmit={onSearchSubmit}>
       <StHeaderSearchLabel htmlFor="search">
         <StHeaderSearch
           id="search"
@@ -151,9 +157,10 @@ const Header = ({ handlePost, userData, usersList }) => {
           onFocus={onFocus}
           onBlur={onBlur}
         />
-        {search && <SearchRecord currentEvent={currentEvent}  />}
+        {search && <SearchRecord currentEvent={currentEvent}  searchText={searchText}/>}
         {searchText && <Search searchText={searchText} usersList={usersList}/>}
       </StHeaderSearchLabel>
+      </form>
 
       <StHeaderNav>
         <StHeaderNavul>

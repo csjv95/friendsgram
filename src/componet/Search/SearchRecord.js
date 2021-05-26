@@ -14,7 +14,7 @@ const StTitle = styled.h1`
   font-size: 1em;
 `;
 
-const SearchRecord = ({ currentEvent }) => {
+const SearchRecord = ({ currentEvent,searchText }) => {
   const handleOnClick = () => {
     console.log(currentEvent);
   };
@@ -51,6 +51,7 @@ const SearchRecord = ({ currentEvent }) => {
               btnText="모두 지우기"
             />
           </li>
+          {/* 검색 length 만큼 list 뿌리기 */}
         </StSearchList>
       </StRectangle>
     </>

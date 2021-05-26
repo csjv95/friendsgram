@@ -38,7 +38,7 @@ const Suggest = ({ usersList,followingList }) => {
   return (
     <StMainRouterSection>
       <StSuggestContainer>
-        <StSuggetTitle>추천</StSuggetTitle>
+        <StSuggetTitle>회원님을 위한 추천</StSuggetTitle>
         <StSugget>
           {usersList.map((user) => (
             <Profiles

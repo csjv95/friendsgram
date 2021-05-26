@@ -48,6 +48,15 @@ const authSignUp = async (userData, follow, history) => {
       uid,
     });
 
+    await firebaseStore
+      .collection("search")
+      .doc(uid)
+      .collection("record")
+      .doc(uid)
+      .set({
+        record: [],
+      });
+
     history.push({
       pathname: "/",
       state: userData,
