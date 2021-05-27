@@ -1,9 +1,11 @@
 import { firebaseStore } from "../firebase";
 
-export const getSearch = async (searchText) => {
+export const getSearch = async (searchText, setRecomendUser) => {
   const firebaseUserList = firebaseStore.collection("users");
+  const re = new RegExp(`^${searchText}`);
   const allUserList = [];
-  const selectedUser = []
+  const selectedUser = [];
+  const finallList = [];
 
   await firebaseUserList.get().then((user) => {
     user.forEach((doc) => {
@@ -11,10 +13,11 @@ export const getSearch = async (searchText) => {
     });
   });
 
-  const inculdeText = allUserList.filter(async (user) =>
-    await user.includes(searchText) && selectedUser.push(user)
+  allUserList.forEach(
+    (user) => user.includes(searchText) && selectedUser.push(user)
   );
-
-  console.log(selectedUser);
-  inculdeText.map(async item => console.log(await item))
+  
+  selectedUser.forEach((user) => re.test(user) && finallList.push(user));
+  // setRecomendUser([...new Set(finallList.sort().concat(selectedUser.sort()))]);
+  setRecomendUser([...new Set([...finallList.sort(),...selectedUser.sort()])]);
 };

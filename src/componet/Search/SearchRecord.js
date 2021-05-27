@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../../Global/Button/Button";
 import { StRectangle, StTriangle } from "../../Global/StBubbleChat/BubbleChat";
+import getSearchRecord from "../../service/search/getSearchRecord";
 import { Theme } from "../../style/Theme";
 
 const StSearchList = styled.ul`
@@ -14,10 +15,16 @@ const StTitle = styled.h1`
   font-size: 1em;
 `;
 
-const SearchRecord = ({ currentEvent,searchText }) => {
+const SearchRecord = ({ currentEvent, searchText }) => {
+  const [record , setRecord]  = useState([]);
+
   const handleOnClick = () => {
     console.log(currentEvent);
   };
+
+  useEffect(() => {
+    getSearchRecord(setRecord);
+  }, []);
 
   return (
     <>
@@ -52,6 +59,7 @@ const SearchRecord = ({ currentEvent,searchText }) => {
             />
           </li>
           {/* 검색 length 만큼 list 뿌리기 */}
+          {/* {console.log(record)} */}
         </StSearchList>
       </StRectangle>
     </>

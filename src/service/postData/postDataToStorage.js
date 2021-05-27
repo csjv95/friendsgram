@@ -4,7 +4,7 @@ import {
   firebaseAuth,
   firebase,
 } from "../firebase";
-import reload from "../reload";
+import reload from "../reload/reload";
 
 const postDataToStorage = async (imgs, postId, setProgressBar) => {
   const currentUserUid = firebaseAuth.currentUser.uid;

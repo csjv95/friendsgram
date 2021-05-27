@@ -57,10 +57,12 @@ const authSignUp = async (userData, follow, history) => {
         record: [],
       });
 
-    history.push({
-      pathname: "/",
-      state: userData,
-    });
+    // history.push({
+    //   pathname: "/",
+    //   state: userData,
+    // });
+
+    window.location.href = "/";
   } catch (error) {
     const errorMessage = error.message;
     alert(errorMessage);

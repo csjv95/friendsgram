@@ -1,5 +1,5 @@
 import { firebaseStore, firebaseAuth } from "../firebase";
-import reload from "../reload";
+import reload from "../reload/reload";
 
 const setUserData = async (reUserData) => {
   const currentUserUid = firebaseAuth.currentUser.uid;

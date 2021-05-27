@@ -100,11 +100,11 @@ const StLink = styled(Link)`
 `;
 
 const StLogoutBtn = styled.button`
-  width : 100%;
-`
+  width: 100%;
+`;
 
 const Header = ({ handlePost, userData, usersList }) => {
-  const {displayName} = userData;
+  const { displayName } = userData;
   const [search, setSearch] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [profile, setProfile] = useState(false);
@@ -135,8 +135,9 @@ const Header = ({ handlePost, userData, usersList }) => {
 
   const onSearchSubmit = (event) => {
     event.preventDefault();
-    setSearchRecord(searchText)
-  }
+    setSearchRecord(searchText);
+  };
+  
   const activeStyle = {
     padding: `0.2em 0.2em 0.3em 0.2em`,
     border: `1px solid`,
@@ -147,19 +148,23 @@ const Header = ({ handlePost, userData, usersList }) => {
     <StHeaderContainer>
       <StHeaderLogo href="/">Intstargram</StHeaderLogo>
       <form onSubmit={onSearchSubmit}>
-      <StHeaderSearchLabel htmlFor="search">
-        <StHeaderSearch
-          id="search"
-          type="search"
-          placeholder="검색"
-          onChange={onSearchChange}
-          autoComplete="off"
-          onFocus={onFocus}
-          onBlur={onBlur}
-        />
-        {search && <SearchRecord currentEvent={currentEvent}  searchText={searchText}/>}
-        {searchText && <Search searchText={searchText} usersList={usersList}/>}
-      </StHeaderSearchLabel>
+        <StHeaderSearchLabel htmlFor="search">
+          <StHeaderSearch
+            id="search"
+            type="search"
+            placeholder="검색"
+            onChange={onSearchChange}
+            autoComplete="off"
+            onFocus={onFocus}
+            onBlur={onBlur}
+          />
+          {search && (
+            <SearchRecord currentEvent={currentEvent} searchText={searchText} />
+          )}
+          {searchText && (
+            <Search searchText={searchText} usersList={usersList} />
+          )}
+        </StHeaderSearchLabel>
       </form>
 
       <StHeaderNav>
@@ -222,7 +227,7 @@ const Header = ({ handlePost, userData, usersList }) => {
               </StMyLi>
               <StLine />
               <StMyLi>
-                <StLogoutBtn onClick={onLogout} >로그아웃</StLogoutBtn>
+                <StLogoutBtn onClick={onLogout}>로그아웃</StLogoutBtn>
               </StMyLi>
             </StMyUl>
           </StMySection>

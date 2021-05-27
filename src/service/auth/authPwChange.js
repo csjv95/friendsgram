@@ -1,5 +1,5 @@
 import { firebaseAuth, firebaseStore } from "../firebase";
-import reload from "../reload";
+import reload from "../reload/reload";
 
 const authPwChange = async (newPw) => {
   const { checkPw } = newPw;
