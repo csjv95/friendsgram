@@ -13,7 +13,7 @@ import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRout
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import MyProfileRouter from "../../routes/myProfileRouter/myProfileRouter";
 import { getMyPost } from "../../service/postData/getMyPost";
-import getMatchUserData from "../../service/usersData/getMatchUserData";
+import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
 
 const StpPofileContainer = styled.section`
   margin: 0 auto;
@@ -101,7 +101,7 @@ const MyProfile = ({ followingList, followerList }) => {
   const { name, displayName, photoURL, introduction } = matchUser;
   
   useEffect(() => {
-    getMatchUserData(match, setMatchUser);
+    getMatchDisplayName(match, setMatchUser);
     getMyPost(setMyPostData, match);
   }, [match]);
 

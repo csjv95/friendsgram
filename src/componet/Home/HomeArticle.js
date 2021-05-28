@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import {
@@ -13,6 +13,7 @@ import {
 } from "../../Global/StIcon/StIcon";
 import ImageSlider from "./ImageSlider";
 import time from "../../service/time/time";
+import getMatchUid from "../../service/usersData/getMatchUid";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -39,19 +40,19 @@ const StHeaderProfileCotainer = styled.div`
 
 const StProfileInfo = styled.div`
   margin-left: 1em;
-  display : flex;
-  flex-direction : column;
+  display: flex;
+  flex-direction: column;
   justify-items: center;
-`
+`;
 
 const StProfileId = styled.span`
-  font-weight : 600;
+  font-weight: 600;
 `;
 
 const StprofileLoction = styled.span`
   margin-top: 0.2em;
-  font-size : 0.4em;
-`
+  font-size: 0.4em;
+`;
 
 const StHomeArticle = styled.article`
   width: 100%;
@@ -101,22 +102,23 @@ const StCommentsArea = styled.textarea`
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
-const HomeArticle = ({ article,userData}) => {
-  const { imgsData, noComments, timestamp, text, location, displayName } = article;
+const HomeArticle = ({ article, userData }) => {
+  const { imgsData, noComments, timestamp, text, location, displayName, uid } =
+    article;
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
-  const {photoURL} = userData;
+  const { photoURL } = userData;
+  const [match, setMatchUser] = useState({});
 
+  useEffect(() => {
+    getMatchUid(uid, setMatchUser);
+  }, [uid]);
   return (
     <StArticleItem>
       <StArticleHeader>
         <StHeaderProfileCotainer>
-          <StProfileImg
-            src={photoURL}
-            alt="my profile img"
-            height="100%"
-          />
+          <StProfileImg src={photoURL} alt="my profile img" height="100%" />
           <StProfileInfo>
-            <StProfileId>{displayName}</StProfileId>
+            <StProfileId>{match.displayName}</StProfileId>
             <StprofileLoction>{location}</StprofileLoction>
           </StProfileInfo>
         </StHeaderProfileCotainer>

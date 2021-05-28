@@ -108,7 +108,6 @@ const Header = ({ handlePost, userData, usersList }) => {
   const [search, setSearch] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [profile, setProfile] = useState(false);
-  const [currentEvent, setCurrentEvent] = useState();
 
   const onSearchChange = (event) => {
     const text = event.target.value;
@@ -120,15 +119,6 @@ const Header = ({ handlePost, userData, usersList }) => {
     setProfile(!profile);
   };
 
-  const onFocus = (event) => {
-    setCurrentEvent(event.target);
-    setSearch(!search);
-  };
-
-  const onBlur = (event) => {
-    setSearch(!search);
-  };
-
   const onLogout = () => {
     authLogout();
   };
@@ -137,33 +127,34 @@ const Header = ({ handlePost, userData, usersList }) => {
     event.preventDefault();
     setSearchRecord(searchText);
   };
-  
+
   const activeStyle = {
     padding: `0.2em 0.2em 0.3em 0.2em`,
     border: `1px solid`,
     borderRadius: `50%`,
   };
 
+  const onSearchClick = () => {
+    setSearch(!search);
+  }
+
   return (
     <StHeaderContainer>
       <StHeaderLogo href="/">Intstargram</StHeaderLogo>
       <form onSubmit={onSearchSubmit}>
-        <StHeaderSearchLabel htmlFor="search">
+        <StHeaderSearchLabel htmlFor="search" onClick={onSearchClick}>
           <StHeaderSearch
             id="search"
             type="search"
             placeholder="검색"
             onChange={onSearchChange}
             autoComplete="off"
-            onFocus={onFocus}
-            onBlur={onBlur}
           />
-          {search && (
-            <SearchRecord currentEvent={currentEvent} searchText={searchText} />
-          )}
-          {searchText && (
-            <Search searchText={searchText} />
-          )}
+        { search || searchText ?
+          <Search
+            searchText={searchText}
+            search={search}
+          /> : false }
         </StHeaderSearchLabel>
       </form>
 

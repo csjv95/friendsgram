@@ -6,7 +6,6 @@ const postDataToStore = (text, noComments, location, postId) => {
   // const time = new Date(timestamp); 여기서 하면 firestore가 seconds변환시켜줘서 받아올때 해주기;
   const user = firebaseAuth.currentUser;
   const uid = user.uid;
-  const displayName = user.displayName;
 
   const postData = firebaseStore
     .collection("post")
@@ -18,7 +17,6 @@ const postDataToStore = (text, noComments, location, postId) => {
 
   postData.set({
     postId,
-    displayName,
     imgsData : [],
     text,
     noComments,

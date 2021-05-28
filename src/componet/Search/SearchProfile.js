@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import getMatchUserData from "../../service/usersData/getMatchUserData";
+import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
 import Profiles from "../Home/Profiles";
 
 const SearchProfile = ({ user }) => {
   const [match, setMatchUserData] = useState([]);
 
   useEffect(() => {
-    getMatchUserData(user, setMatchUserData);
+    getMatchDisplayName(user, setMatchUserData);
   }, [user]);
 
   const onBtnClick = (event) => {

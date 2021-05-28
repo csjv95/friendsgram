@@ -1,8 +1,7 @@
 import { firebaseStore } from "../firebase";
 
-const getMatchUserData = async (match, setMatchUser) => {
+const getMatchDisplayName = async (match, setMatchUser) => {
   const matchUser = [];
-
   const user = firebaseStore
     .collection("users")
     .where("displayName", "==", match);
@@ -14,4 +13,4 @@ const getMatchUserData = async (match, setMatchUser) => {
   setMatchUser(...matchUser);
 };
 
-export default getMatchUserData;
+export default getMatchDisplayName;
