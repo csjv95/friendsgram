@@ -105,7 +105,7 @@ const StLogoutBtn = styled.button`
 
 const Header = ({ handlePost, userData, usersList }) => {
   const { displayName } = userData;
-  const [search, setSearch] = useState(true);
+  const [search, setSearch] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [profile, setProfile] = useState(false);
   const [currentEvent, setCurrentEvent] = useState();
@@ -162,7 +162,7 @@ const Header = ({ handlePost, userData, usersList }) => {
             <SearchRecord currentEvent={currentEvent} searchText={searchText} />
           )}
           {searchText && (
-            <Search searchText={searchText} usersList={usersList} />
+            <Search searchText={searchText} />
           )}
         </StHeaderSearchLabel>
       </form>

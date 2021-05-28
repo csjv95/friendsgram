@@ -94,7 +94,8 @@ const StNavLink = styled(NavLink)`
 `;
 
 const MyProfile = ({ followingList, followerList }) => {
-  const match = useParams();
+  const params = useParams();
+  const match = params.username; 
   const [matchUser, setMatchUser] = useState("");
   const [myPostData, setMyPostData] = useState([]);
   const { name, displayName, photoURL, introduction } = matchUser;

@@ -6,7 +6,7 @@ export const getMyPost = async (setMyPostData, match) => {
 
   const user = firebaseStore
     .collection("users")
-    .where("displayName", "==", match.username);
+    .where("displayName", "==", match);
 
   await user
     .get()

@@ -5,7 +5,7 @@ const getMatchUserData = async (match, setMatchUser) => {
 
   const user = firebaseStore
     .collection("users")
-    .where("displayName", "==", match.username);
+    .where("displayName", "==", match);
 
   await user
     .get()

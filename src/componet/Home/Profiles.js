@@ -4,6 +4,7 @@ import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 
 const StProfile = styled.li`
   margin: 1em 0;
+  padding : ${({padding}) => padding};
   display: flex;
   align-items: center;
 `;
@@ -17,6 +18,7 @@ const StProfileInfo = styled.ul`
 
 const StProfileBtn = styled.button`
   padding: 0.5em;
+  display : ${({display}) => display};
   border-radius: 0.2em;
   font-weight: 600;
   background-color: ${({ theme }) => theme.colors.blue};
@@ -34,17 +36,19 @@ const StProfileNicname = styled.li`
 `;
 
 const Profiles = ({
+  listPadding,
   imgHeight,
   btnText,
   photoURL,
   displayName,
   name,
+  btnDisplay,
   onBtnClick,
   uid,
   followingList,
 }) => {
   return (
-    <StProfile data-uid={uid}>
+    <StProfile data-uid={uid} padding={listPadding} >
       <StProfileImg src={photoURL} alt="my" height={imgHeight} />
       <StProfileInfo>
         <StProfileId>{name}</StProfileId>
@@ -54,7 +58,7 @@ const Profiles = ({
             following === uid ? <div>팔로잉</div> : <div>팔로우</div>
           ) : <div>{btnText}</div>} */}
       </StProfileInfo>
-      <StProfileBtn onClick={onBtnClick}>{btnText}</StProfileBtn>
+      <StProfileBtn onClick={onBtnClick} display={btnDisplay}>{btnText}</StProfileBtn>
     </StProfile>
   );
 };
