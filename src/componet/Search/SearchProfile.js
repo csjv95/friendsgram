@@ -8,11 +8,13 @@ const SearchProfile = ({ user }) => {
   useEffect(() => {
     getMatchDisplayName(user, setMatchUserData);
   }, [user]);
-
+  
   const onBtnClick = (event) => {
     const value = event.target.name;
     console.log(value);
   };
+  
+  console.log(match.photoURL)
   return (
     <Profiles
       listPadding="0 1em"

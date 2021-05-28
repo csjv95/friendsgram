@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import setFollow from "../../service/follow/setFollow";
 import { changeBtn } from "../../service/follow/changeBtn";
 import { authLogout } from "../../service/auth/authLogout";
+import { Theme } from "../../style/Theme";
 
 const FollowList = styled.ul`
   position: fixed;
@@ -34,21 +35,24 @@ const HomeFollow = ({ userData, usersList, followingList }) => {
     authLogout();
   };
 
-  const onBtnClick = async(event) => {
+  const onBtnClick = async (event) => {
     const targetUser = event.target.parentNode.dataset.uid;
-    console.log('before setFollow',isFollowing);
-    await setFollow(targetUser,followingList,setIsFollowing);
-    console.log('after setfollow',isFollowing);
-    await changeBtn(targetUser,followingList,isFollowing);
+    console.log("before setFollow", isFollowing);
+    await setFollow(targetUser, followingList, setIsFollowing);
+    console.log("after setfollow", isFollowing);
+    await changeBtn(targetUser, followingList, isFollowing);
   };
 
   return (
     <FollowList>
       <Profiles
         imgHeight="4em"
-        btnText="logout"
         photoURL={photoURL}
         displayName={displayName}
+        btnText="logout"
+        btnPadding="0.5em"
+        btnColor={Theme.colors.contentColor}
+        btnBgColor={Theme.colors.blue}
         onBtnClick={onLogout}
         name={name}
       />
@@ -62,10 +66,13 @@ const HomeFollow = ({ userData, usersList, followingList }) => {
         <Profiles
           key={user.uid}
           imgHeight="2em"
-          btnText={isFollowing ? "팔로잉" : "팔로우"}
           photoURL={user.photoURL}
           displayName={user.displayName}
           name={user.name}
+          btnPadding="0.5em"
+          btnColor={Theme.colors.contentColor}
+          btnBgColor={Theme.colors.blue}
+          btnText={isFollowing ? "팔로잉" : "팔로우"}
           onBtnClick={onBtnClick}
           uid={user.uid}
           followingList={followingList}

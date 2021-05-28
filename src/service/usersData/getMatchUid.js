@@ -1,6 +1,6 @@
 import { firebaseStore } from "../firebase";
 
-const getMatchDisplayName = async (match, setMatchUser) => {
+const getMatchUid = async (match, setMatchUser) => {
   const matchUser = [];
   const user = firebaseStore
     .collection("users")
@@ -13,4 +13,4 @@ const getMatchDisplayName = async (match, setMatchUser) => {
   setMatchUser(...matchUser);
 };
 
-export default getMatchDisplayName;
+export default getMatchUid;

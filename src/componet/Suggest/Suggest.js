@@ -4,15 +4,16 @@ import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRout
 import Profiles from "../Home/Profiles";
 import setFollow from "../../service/follow/setFollow";
 import { changeBtn } from "../../service/follow/changeBtn";
+import { Theme } from "../../style/Theme";
 
 const StSuggestContainer = styled.section`
   margin: 0 auto;
 `;
 
 const StSuggetTitle = styled.h1`
-  font-size : 1em;
-  font-weight : 600;
-`
+  font-size: 1em;
+  font-weight: 600;
+`;
 
 const StSugget = styled.ul`
   padding: 1em;
@@ -22,18 +23,18 @@ const StSugget = styled.ul`
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
-const Suggest = ({ usersList,followingList }) => {
+const Suggest = ({ usersList, followingList }) => {
   const [isFollowing, setIsFollowing] = useState("");
 
   //btn 바꾸기
   // when clicked follow btn change word like that following
   const onBtnClick = async (event) => {
     const targetUser = event.target.parentNode.dataset.uid;
-    console.log('before setFollow',isFollowing);
-    await setFollow(targetUser,followingList,setIsFollowing);
-    console.log('after setfollow',isFollowing);
-    await changeBtn(targetUser,followingList,isFollowing);
-  }
+    console.log("before setFollow", isFollowing);
+    await setFollow(targetUser, followingList, setIsFollowing);
+    console.log("after setfollow", isFollowing);
+    await changeBtn(targetUser, followingList, isFollowing);
+  };
 
   return (
     <StMainRouterSection>
@@ -44,10 +45,13 @@ const Suggest = ({ usersList,followingList }) => {
             <Profiles
               key={user.uid}
               imgHeight="3em"
-              btnText="팔로우"
               photoURL={user.photoURL}
               displayName={user.displayName}
               name={user.name}
+              btnPadding="0.5em"
+              btnColor={Theme.colors.contentColor}
+              btnBgColor={Theme.colors.blue}
+              btnText="팔로우"
               onBtnClick={onBtnClick}
               uid={user.uid}
               followingList={followingList}

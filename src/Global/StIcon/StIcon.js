@@ -22,6 +22,7 @@ import { ImageMultiple } from "@styled-icons/fluentui-system-filled/ImageMultipl
 import { Table } from "@styled-icons/fluentui-system-regular/Table";
 import { Tv } from "@styled-icons/boxicons-regular/Tv";
 import { Tag } from "@styled-icons/bootstrap/Tag";
+import { Cancel } from "@styled-icons/material/Cancel";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -144,4 +145,11 @@ export const StTv = styled(Tv)`
 
 export const StTag = styled(Tag)`
   width: ${({ width }) => width}em;
+`;
+
+export const StCancel = styled(Cancel)`
+  width: ${({ width }) => width};
+  background-color : ${({ bgColor }) => bgColor};
+  color : ${({color}) => color};
+  border-radius : ${({borderRadius}) => borderRadius};
 `;

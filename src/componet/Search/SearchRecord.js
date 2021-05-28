@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../../Global/Button/Button";
 import getSearchRecord from "../../service/search/getSearchRecord";
+import searchRecordAllClear from "../../service/search/searchRecordAllClear";
 import { Theme } from "../../style/Theme";
+import RecordProfile from "./RecordProfile";
 
 const StSearchList = styled.ul`
   display: flex;
@@ -10,20 +12,25 @@ const StSearchList = styled.ul`
   align-items: center;
 `;
 
+const StSearchListBottome = styled.ul`
+  display : flex;
+  flex-direction: column;
+`
+
 const StTitle = styled.h1`
   font-size: 1em;
 `;
 
-const SearchRecord = ({ currentEvent, searchText }) => {
+const SearchRecord = () => {
   const [record, setRecord] = useState([]);
-
-  const handleOnClick = () => {
-    console.log(currentEvent);
-  };
 
   useEffect(() => {
     getSearchRecord(setRecord);
   }, []);
+
+  const allClearBtn = () => {
+    searchRecordAllClear();
+  }
 
   return (
     <>
@@ -31,7 +38,7 @@ const SearchRecord = ({ currentEvent, searchText }) => {
         <li>
           <StTitle>최근 검색 항목</StTitle>
         </li>
-        <li>
+        <li onClick={allClearBtn}>
           <Button
             width="7em"
             padding="0.5em"
@@ -42,9 +49,12 @@ const SearchRecord = ({ currentEvent, searchText }) => {
             btnText="모두 지우기"
           />
         </li>
-        {/* 검색 length 만큼 list 뿌리기 */}
-        {/* {console.log(record)} */}
       </StSearchList>
+      <StSearchListBottome>
+          {record.map((user) => (
+            <RecordProfile key={user} user={user} />
+          ))}
+        </StSearchListBottome>
     </>
   );
 };

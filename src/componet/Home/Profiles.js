@@ -4,7 +4,7 @@ import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 
 const StProfile = styled.li`
   margin: 1em 0;
-  padding : ${({padding}) => padding};
+  padding: ${({ padding }) => padding};
   display: flex;
   align-items: center;
 `;
@@ -17,12 +17,13 @@ const StProfileInfo = styled.ul`
 `;
 
 const StProfileBtn = styled.button`
-  padding: 0.5em;
-  display : ${({display}) => display};
+  width: ${({ width }) => width};
+  padding: ${({ padding }) => padding};
+  display: ${({ display }) => display};
   border-radius: 0.2em;
   font-weight: 600;
-  background-color: ${({ theme }) => theme.colors.blue};
-  color: ${({ theme }) => theme.colors.contentColor};
+  background-color: ${({ bgColor }) => bgColor};
+  color: ${({ color }) => color};
 `;
 
 const StProfileId = styled.li`
@@ -42,13 +43,17 @@ const Profiles = ({
   photoURL,
   displayName,
   name,
+  btnWidth,
   btnDisplay,
+  btnPadding,
+  btnBgColor,
+  btnColor,
   onBtnClick,
   uid,
   followingList,
 }) => {
   return (
-    <StProfile data-uid={uid} padding={listPadding} >
+    <StProfile data-uid={uid} padding={listPadding}>
       <StProfileImg src={photoURL} alt="my" height={imgHeight} />
       <StProfileInfo>
         <StProfileId>{name}</StProfileId>
@@ -58,7 +63,16 @@ const Profiles = ({
             following === uid ? <div>팔로잉</div> : <div>팔로우</div>
           ) : <div>{btnText}</div>} */}
       </StProfileInfo>
-      <StProfileBtn onClick={onBtnClick} display={btnDisplay}>{btnText}</StProfileBtn>
+      <StProfileBtn
+        onClick={onBtnClick}
+        width={btnWidth}
+        padding={btnPadding}
+        bgColor={btnBgColor}
+        color={btnColor}
+        display={btnDisplay}
+      >
+        {btnText}
+      </StProfileBtn>
     </StProfile>
   );
 };

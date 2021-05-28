@@ -1,6 +1,6 @@
-import { firebase, firebaseStore, firebaseAuth } from "../firebase";
+import {firebaseAuth, firebaseStore } from "../firebase";
 
-const setSearchRecord = (searchText) => {
+const searchRecordAllClear = () => {
   const currentUserUid = firebaseAuth.currentUser.uid;
 
   const record = firebaseStore
@@ -10,8 +10,8 @@ const setSearchRecord = (searchText) => {
     .doc(currentUserUid);
 
     record.update({
-    record: firebase.firestore.FieldValue.arrayUnion(searchText),
-  });
+      record: []
+    });
 };
 
-export default setSearchRecord;
+export default searchRecordAllClear;
