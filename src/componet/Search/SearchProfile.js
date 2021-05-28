@@ -14,7 +14,6 @@ const SearchProfile = ({ user }) => {
     console.log(value);
   };
   
-  console.log(match.photoURL)
   return (
     <Profiles
       listPadding="0 1em"
