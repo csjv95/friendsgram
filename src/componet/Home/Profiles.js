@@ -37,6 +37,7 @@ const StProfileNicname = styled.li`
 `;
 
 const Profiles = ({
+  profileClick,
   listPadding,
   imgHeight,
   btnText,
@@ -53,7 +54,7 @@ const Profiles = ({
   followingList,
 }) => {
   return (
-    <StProfile data-uid={uid} padding={listPadding}>
+    <StProfile data-uid={uid} padding={listPadding} onClick={profileClick}>
       <StProfileImg src={photoURL} alt="my" height={imgHeight} />
       <StProfileInfo>
         <StProfileId>{name}</StProfileId>
@@ -63,6 +64,7 @@ const Profiles = ({
             following === uid ? <div>팔로잉</div> : <div>팔로우</div>
           ) : <div>{btnText}</div>} */}
       </StProfileInfo>
+
       <StProfileBtn
         onClick={onBtnClick}
         width={btnWidth}

@@ -105,14 +105,13 @@ const StLogoutBtn = styled.button`
 
 const Header = ({ handlePost, userData, usersList }) => {
   const { displayName } = userData;
-  const [search, setSearch] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [search, setSearch] = useState(false); // when clcked the search input box show record
+  const [searchText, setSearchText] = useState(""); //when typing at search input box
   const [profile, setProfile] = useState(false);
 
   const onSearchChange = (event) => {
     const text = event.target.value;
     setSearchText(text);
-    setSearch(false);
   };
 
   const profileOnClick = () => {
@@ -136,7 +135,7 @@ const Header = ({ handlePost, userData, usersList }) => {
 
   const onSearchClick = () => {
     setSearch(!search);
-  }
+  };
 
   return (
     <StHeaderContainer>
@@ -150,11 +149,7 @@ const Header = ({ handlePost, userData, usersList }) => {
             onChange={onSearchChange}
             autoComplete="off"
           />
-        { search || searchText ?
-          <Search
-            searchText={searchText}
-            search={search}
-          /> : false }
+          {search && <Search searchText={searchText} />}
         </StHeaderSearchLabel>
       </form>
 

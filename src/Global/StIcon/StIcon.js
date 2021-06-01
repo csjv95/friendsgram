@@ -22,7 +22,7 @@ import { ImageMultiple } from "@styled-icons/fluentui-system-filled/ImageMultipl
 import { Table } from "@styled-icons/fluentui-system-regular/Table";
 import { Tv } from "@styled-icons/boxicons-regular/Tv";
 import { Tag } from "@styled-icons/bootstrap/Tag";
-import { Cancel } from "@styled-icons/material/Cancel";
+import { Clear } from "@styled-icons/material/Clear";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -147,7 +147,7 @@ export const StTag = styled(Tag)`
   width: ${({ width }) => width}em;
 `;
 
-export const StCancel = styled(Cancel)`
+export const StClear = styled(Clear)`
   width: ${({ width }) => width};
   background-color : ${({ bgColor }) => bgColor};
   color : ${({color}) => color};

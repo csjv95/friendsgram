@@ -5,7 +5,7 @@ import { Theme } from "../../style/Theme";
 import SearchProfile from "./SearchProfile";
 import SearchRecord from "./SearchRecord";
 
-const Search = ({ search, searchText }) => {
+const Search = ({ searchText }) => {
   const [recomendUser, setRecomendUser] = useState([]);
 
   useEffect(() => {
@@ -27,11 +27,13 @@ const Search = ({ search, searchText }) => {
       />
       <StRectangle top="2.5em" left="-5em" width="23em" height="23em">
         {/* 클릭했을때 */}
-        {search && <SearchRecord />}
+        {!searchText && <SearchRecord />}
 
         {/* // 검색할때 */}
         {searchText &&
-          recomendUser.map((user) => <SearchProfile key={user} user={user} />)}
+          recomendUser.map((user) => (
+            <SearchProfile key={user} user={user} />
+          ))}
       </StRectangle>
     </>
   );

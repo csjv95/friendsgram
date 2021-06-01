@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { StCancel } from "../../Global/StIcon/StIcon";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { StClear } from "../../Global/StIcon/StIcon";
 import selectRecordDelete from "../../service/search/selecteRecordDelete";
 import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
 import { Theme } from "../../style/Theme";
 import Profiles from "../Home/Profiles";
+
+const StRecordSection = styled.section`
+  padding : 0 1em;
+  display: flex;
+`;
+
+const StProfileLink = styled(Link)`
+  flex-grow : 1;
+`
 
 const RecordProfile = ({ user }) => {
   const [match, setMatchUserData] = useState([]);
@@ -14,32 +25,32 @@ const RecordProfile = ({ user }) => {
 
   const onDelete = () => {
     const text = match.displayName;
-    console.log(text)
+    console.log(text);
     selectRecordDelete(text);
   };
 
   return (
-    <>
+    <ul>
       {match && (
-        <Profiles
-          listPadding="0 1em"
-          imgHeight="3em"
-          photoURL={match.photoURL}
-          displayName={match.displayName}
-          name={match.name}
-          uid={match.uid}
-          btnText={
-            <StCancel
-              width="2em"
-              color={Theme.colors.contentColor}
-              bgColor={Theme.colors.lightgrey}
-              borderRadius="50%"
+        <StRecordSection>
+          <StProfileLink to={`/${match.displayName}`}>
+            <Profiles
+              listWidth="80%"
+              imgHeight="3em"
+              photoURL={match.photoURL}
+              displayName={match.displayName}
+              name={match.name}
+              uid={match.uid}
+              btnDisplay="none"
             />
-          }
-          onBtnClick={onDelete}
-        />
+          </StProfileLink>
+
+          <button onClick={onDelete}>
+            <StClear width="1.7em" color={Theme.colors.lightgrey} />
+          </button>
+        </StRecordSection>
       )}
-    </>
+    </ul>
   );
 };
 
