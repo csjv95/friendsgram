@@ -25,7 +25,7 @@ const NavRouter = ({ userData, usersList, followingList, followerList }) => {
       <Route path="/edit">
         <Edit userData={userData} />
       </Route>
-      <Route exact path="/:username">
+      <Route path="/:username">
         <MyProfile followingList={followingList} followerList={followerList} />
       </Route>
       <Route render={() => <div>페이지를 찾을 수 없습니다.</div>} />

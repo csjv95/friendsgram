@@ -25,7 +25,7 @@ const StSugget = styled.ul`
 
 const Suggest = ({ usersList, followingList }) => {
   const [isFollowing, setIsFollowing] = useState("");
-
+  
   //btn 바꾸기
   // when clicked follow btn change word like that following
   const onBtnClick = async (event) => {

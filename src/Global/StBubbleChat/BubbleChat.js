@@ -17,7 +17,7 @@ export const StRectangle = styled.section`
   left: ${({left}) => left};
   width: ${({width}) => width};
   height: ${({height}) => height};
-  overflow-y : scroll;
+  overflow-y : auto;
   border-radius: ${({ theme }) => theme.colors.borderRadius};
   background-color: ${({ theme }) => theme.colors.contentColor};
   box-shadow: 3px -2px 7px 1px rgb(236 219 219 / 60%);

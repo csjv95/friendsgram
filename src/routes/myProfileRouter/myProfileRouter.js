@@ -4,9 +4,10 @@ import MyPost from "../../componet/MyPost/MyPost";
 
 const MyProfileRouter = ({matchUser, myPostData}) => {
   const {displayName} = matchUser
+  
   return (
     <Switch>
-      <Route exact path={`/${displayName}`}>
+      <Route path={`/${displayName}`}>
         <MyPost myPostData={myPostData}/>
       </Route>
       <Route path={`/${displayName}/chanel`} >

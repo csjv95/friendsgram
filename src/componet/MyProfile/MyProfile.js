@@ -138,6 +138,7 @@ const MyProfile = ({ followingList, followerList }) => {
           </StInformation>
         </StTopSection>
         <StLine />
+        
         <nav>
           <StNavUl onClick={onLinkClick}>
             <li>

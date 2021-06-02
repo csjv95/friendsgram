@@ -14,9 +14,10 @@ import {
 } from "../StIcon/StIcon";
 import { StProfileImg } from "../StProfileImg/StProfileImg";
 import Search from "../../componet/Search/Search";
-import SearchRecord from "../../componet/Search/SearchRecord";
 import { authLogout } from "../../service/auth/authLogout";
 import setSearchRecord from "../../service/search/setSearchRecord";
+import { StRectangle, StTriangle } from "../StBubbleChat/BubbleChat";
+import { Theme } from "../../style/Theme";
 
 const StHeaderContainer = styled.header`
   width: 100%;
@@ -71,16 +72,8 @@ const StHeaderNavUlLiMy = styled.li`
   height: 1.5em;
 `;
 
-const StMySection = styled.section`
-  position: absolute;
-  top: 2.4em;
-  width: 13em;
-  border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  border-radius: ${({ theme }) => theme.colors.borderRadius};
-  background-color: ${({ theme }) => theme.colors.contentColor};
-`;
-
 const StMyUl = styled.ul`
+  margin: 0.5em 0;
   display: flex;
   flex-direction: column;
 `;
@@ -184,39 +177,50 @@ const Header = ({ handlePost, userData, usersList }) => {
             />
           </StHeaderNavUlLiMy>
         </StHeaderNavul>
+
         {profile && (
-          <StMySection>
-            <StMyUl onClick={profileOnClick}>
-              <StMyLi>
-                <StLink to={`/${displayName}`}>
-                  <StUserCircle width="1.5" />
-                  <div>프로필</div>
-                </StLink>
-              </StMyLi>
-              <StMyLi>
-                <StLink to={`/${displayName}/saved`}>
-                  <StBookmarkIcon width="1.5" />
-                  <div>저장됨</div>
-                </StLink>
-              </StMyLi>
-              <StMyLi>
-                <StLink exact="ture" to="/edit">
-                  <StSettings width="1.5" />
-                  <div>설정</div>
-                </StLink>
-              </StMyLi>
-              <StMyLi>
-                <StLink to="/">
-                  <StTransfer width="1.5" />
-                  <div>계정 전환</div>
-                </StLink>
-              </StMyLi>
-              <StLine />
-              <StMyLi>
-                <StLogoutBtn onClick={onLogout}>로그아웃</StLogoutBtn>
-              </StMyLi>
-            </StMyUl>
-          </StMySection>
+          <>
+            <StTriangle
+              top="2em"
+              left="9.7em"
+              borderTop="1em solid none"
+              borderBottom={`0.8em solid ${Theme.colors.contentColor}`}
+              borderLeft="0.8em solid transparent;"
+              borderRight="0.8em solid transparent;"
+            />
+            <StRectangle top="2.4em" width="13em" height="auto">
+              <StMyUl onClick={profileOnClick}>
+                <StMyLi>
+                  <StLink to={`/${displayName}`}>
+                    <StUserCircle width="1.5" />
+                    <div>프로필</div>
+                  </StLink>
+                </StMyLi>
+                <StMyLi>
+                  <StLink to={`/${displayName}/saved`}>
+                    <StBookmarkIcon width="1.5" />
+                    <div>저장됨</div>
+                  </StLink>
+                </StMyLi>
+                <StMyLi>
+                  <StLink exact="ture" to="/edit">
+                    <StSettings width="1.5" />
+                    <div>설정</div>
+                  </StLink>
+                </StMyLi>
+                <StMyLi>
+                  <StLink to="/">
+                    <StTransfer width="1.5" />
+                    <div>계정 전환</div>
+                  </StLink>
+                </StMyLi>
+                <StLine />
+                <StMyLi>
+                  <StLogoutBtn onClick={onLogout}>로그아웃</StLogoutBtn>
+                </StMyLi>
+              </StMyUl>
+            </StRectangle>
+          </>
         )}
       </StHeaderNav>
     </StHeaderContainer>

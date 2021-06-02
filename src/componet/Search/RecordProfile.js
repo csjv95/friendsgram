@@ -30,7 +30,7 @@ const RecordProfile = ({ user }) => {
   };
 
   return (
-    <ul>
+    <>
       {match && (
         <StRecordSection>
           <StProfileLink to={`/${match.displayName}`}>
@@ -50,7 +50,7 @@ const RecordProfile = ({ user }) => {
           </button>
         </StRecordSection>
       )}
-    </ul>
+    </>
   );
 };
 
