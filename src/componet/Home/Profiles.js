@@ -59,10 +59,6 @@ const Profiles = ({
       <StProfileInfo>
         <StProfileId>{name}</StProfileId>
         <StProfileNicname>{displayName}</StProfileNicname>
-        {/* {followingList.length >= true ?
-          followingList.map((following) =>
-            following === uid ? <div>팔로잉</div> : <div>팔로우</div>
-          ) : <div>{btnText}</div>} */}
       </StProfileInfo>
 
       <StProfileBtn

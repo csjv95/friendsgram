@@ -105,8 +105,6 @@ const MyProfile = ({ followingList, followerList }) => {
     getMyPost(setMyPostData, match);
   }, [match]);
 
-  const onLinkClick = () => {};
-
   return (
     <StMainRouterSection>
       <StpPofileContainer>
@@ -118,6 +116,7 @@ const MyProfile = ({ followingList, followerList }) => {
               <Link to="/edit">
                 <StEditor>프로필 편집</StEditor>
               </Link>
+
               <li>
                 <StSettings width="1" />
               </li>
@@ -140,7 +139,7 @@ const MyProfile = ({ followingList, followerList }) => {
         <StLine />
         
         <nav>
-          <StNavUl onClick={onLinkClick}>
+          <StNavUl>
             <li>
               <StNavLink
                 exact

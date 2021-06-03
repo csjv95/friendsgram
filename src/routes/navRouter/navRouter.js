@@ -20,7 +20,11 @@ const NavRouter = ({ userData, usersList, followingList, followerList }) => {
       <Route path="/direct" component={Direct} />
       <Route path="/post" component={Post} />
       <Route path="/suggest">
-        <Suggest usersList={usersList} followingList={followingList} />
+        <Suggest
+          usersList={usersList}
+          followingList={followingList}
+          followerList={followerList}
+        />
       </Route>
       <Route path="/edit">
         <Edit userData={userData} />

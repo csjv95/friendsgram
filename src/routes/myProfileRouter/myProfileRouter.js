@@ -7,7 +7,7 @@ const MyProfileRouter = ({matchUser, myPostData}) => {
   
   return (
     <Switch>
-      <Route path={`/${displayName}`}>
+      <Route exact path={`/${displayName}`}>
         <MyPost myPostData={myPostData}/>
       </Route>
       <Route path={`/${displayName}/chanel`} >

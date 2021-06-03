@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 import Profiles from "../Home/Profiles";
 import setFollow from "../../service/follow/setFollow";
-import { changeBtn } from "../../service/follow/changeBtn";
 import { Theme } from "../../style/Theme";
+import onSnapshot from "../../service/onSnapshot/onSnapshot";
 
 const StSuggestContainer = styled.section`
   margin: 0 auto;
@@ -23,19 +23,21 @@ const StSugget = styled.ul`
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
-const Suggest = ({ usersList, followingList }) => {
-  const [isFollowing, setIsFollowing] = useState("");
-  
-  //btn 바꾸기
-  // when clicked follow btn change word like that following
+const Suggest = ({ usersList, followingList, followerList }) => {
+  const [isFollowing, setIsFollowing] = useState([]);
+ 
   const onBtnClick = async (event) => {
     const targetUser = event.target.parentNode.dataset.uid;
     console.log("before setFollow", isFollowing);
     await setFollow(targetUser, followingList, setIsFollowing);
     console.log("after setfollow", isFollowing);
-    await changeBtn(targetUser, followingList, isFollowing);
+    onSnapshot(setIsFollowing)
   };
 
+  useEffect(()=> {
+    onSnapshot(setIsFollowing);
+  },[])
+  
   return (
     <StMainRouterSection>
       <StSuggestContainer>
@@ -51,7 +53,7 @@ const Suggest = ({ usersList, followingList }) => {
               btnPadding="0.5em"
               btnColor={Theme.colors.contentColor}
               btnBgColor={Theme.colors.blue}
-              btnText="팔로우"
+              btnText={isFollowing.includes(user.uid) ? "언팔로우" : "팔로우"}
               onBtnClick={onBtnClick}
               uid={user.uid}
               followingList={followingList}
