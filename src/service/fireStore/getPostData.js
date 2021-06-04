@@ -1,9 +1,7 @@
-import { firebaseStore } from "../firebase";
-import { firebaseAuth } from "../firebase";
+import { firebaseStore,firebaseAuth } from "../firebase";
 
 const getPostData = async (setPostData, followingList) => {
-  const user = firebaseAuth.currentUser;
-  const uid = user.uid;
+  const currentUserUid = firebaseAuth.currentUser.uid;
   const getFollowingList = followingList;
   const postData = [];
 
@@ -26,7 +24,7 @@ const getPostData = async (setPostData, followingList) => {
   // 지금 followinglist = [A1f1CPUhmNPYQI8lUfDiVjuhxd43];
   const myPostData = firebaseStore
     .collection("post")
-    .doc(uid)
+    .doc(currentUserUid)
     .collection("my-post");
 
   let data = [];

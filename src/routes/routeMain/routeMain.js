@@ -47,7 +47,7 @@ const RouteMain = () => {
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
   },[]);
-
+  
   const handlePost = () => {
     setPostModal(!postModal);
   };

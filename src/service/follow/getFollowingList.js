@@ -10,7 +10,7 @@ const getFollowingList = async (setFollowingList) => {
   followingData
   .onSnapshot((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      setFollowingList(doc.data().following);      
+      setFollowingList(doc.data().following); 
     });
   })
 }
