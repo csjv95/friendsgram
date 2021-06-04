@@ -23,14 +23,13 @@ const AppContainer = styled.div`
 `;
 
 const RouteMain = () => {
-  // useReducer 써야 될것들 context API
   const post = document.getElementById("post");
   const address = document.getElementById("address");
   const message = document.getElementById("message");
   const [currentUserUid, setCurrentUserUid] = useState("");
   const [userData, setUserData] = useState([]);
   const [usersList, setUsersList] = useState([]);
-  const [followingList, setFollowingList] = useState([]);
+  const [followingList, setFollowingList] = useState([]); //
   const [followerList, setFollowerList] = useState([]);
   const [postModal, setPostModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
@@ -47,16 +46,17 @@ const RouteMain = () => {
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-  }, []);
+  },[]);
 
   const handlePost = () => {
     setPostModal(!postModal);
   };
-
+  
   const handleAddress = () => {
     setAddressModal(!addressModal);
   };
-
+  
+  console.log(followingList)
   return (
     <AppContainer>
       {postModal && (

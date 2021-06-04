@@ -12,7 +12,6 @@ const setFollow = async (targetUser, followingList, setIsFollowing) => {
   // 현재유저의 followingList에 tatgetUser의 uid가 있으면 ture 없으면 false
   const isFollowing = followingList.includes(targetUser);
 
-
   if (isFollowing) {
     // following 삭제
     await currentUserFollow.update({

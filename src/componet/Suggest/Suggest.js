@@ -4,7 +4,6 @@ import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRout
 import Profiles from "../Home/Profiles";
 import setFollow from "../../service/follow/setFollow";
 import { Theme } from "../../style/Theme";
-import onSnapshot from "../../service/onSnapshot/onSnapshot";
 
 const StSuggestContainer = styled.section`
   margin: 0 auto;
@@ -31,13 +30,8 @@ const Suggest = ({ usersList, followingList, followerList }) => {
     console.log("before setFollow", isFollowing);
     await setFollow(targetUser, followingList, setIsFollowing);
     console.log("after setfollow", isFollowing);
-    onSnapshot(setIsFollowing)
   };
 
-  useEffect(()=> {
-    onSnapshot(setIsFollowing);
-  },[])
-  
   return (
     <StMainRouterSection>
       <StSuggestContainer>
@@ -53,7 +47,7 @@ const Suggest = ({ usersList, followingList, followerList }) => {
               btnPadding="0.5em"
               btnColor={Theme.colors.contentColor}
               btnBgColor={Theme.colors.blue}
-              btnText={isFollowing.includes(user.uid) ? "언팔로우" : "팔로우"}
+              btnText={followingList.includes(user.uid) ? "언팔로우" : "팔로우"}
               onBtnClick={onBtnClick}
               uid={user.uid}
               followingList={followingList}
