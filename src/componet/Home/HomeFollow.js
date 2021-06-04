@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Profiles from "./Profiles";
 import { NavLink } from "react-router-dom";
 import setFollow from "../../service/follow/setFollow";
-import { changeBtn } from "../../service/follow/changeBtn";
 import { authLogout } from "../../service/auth/authLogout";
 import { Theme } from "../../style/Theme";
 
@@ -29,7 +28,6 @@ const RecomendBtn = styled.button`
 
 const HomeFollow = ({ userData, usersList, followingList }) => {
   const { displayName, photoURL, name } = userData;
-  const [isFollowing, setIsFollowing] = useState("");
 
   const onLogout = () => {
     authLogout();
@@ -37,10 +35,7 @@ const HomeFollow = ({ userData, usersList, followingList }) => {
 
   const onBtnClick = async (event) => {
     const targetUser = event.target.parentNode.dataset.uid;
-    console.log("before setFollow", isFollowing);
-    await setFollow(targetUser, followingList, setIsFollowing);
-    console.log("after setfollow", isFollowing);
-    await changeBtn(targetUser, followingList, isFollowing);
+    await setFollow(targetUser, followingList);
   };
 
   return (
@@ -72,7 +67,7 @@ const HomeFollow = ({ userData, usersList, followingList }) => {
           btnPadding="0.5em"
           btnColor={Theme.colors.contentColor}
           btnBgColor={Theme.colors.blue}
-          btnText={isFollowing ? "팔로잉" : "팔로우"}
+          btnText={followingList.includes(user.uid) ? "언팔로우" : "팔로우"}
           onBtnClick={onBtnClick}
           uid={user.uid}
           followingList={followingList}

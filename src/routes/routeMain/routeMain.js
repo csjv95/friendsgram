@@ -56,7 +56,6 @@ const RouteMain = () => {
     setAddressModal(!addressModal);
   };
   
-  console.log(followingList)
   return (
     <AppContainer>
       {postModal && (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 import Profiles from "../Home/Profiles";
@@ -23,13 +23,10 @@ const StSugget = styled.ul`
 `;
 
 const Suggest = ({ usersList, followingList, followerList }) => {
-  const [isFollowing, setIsFollowing] = useState([]);
- 
+
   const onBtnClick = async (event) => {
     const targetUser = event.target.parentNode.dataset.uid;
-    console.log("before setFollow", isFollowing);
-    await setFollow(targetUser, followingList, setIsFollowing);
-    console.log("after setfollow", isFollowing);
+    await setFollow(targetUser, followingList);
   };
 
   return (

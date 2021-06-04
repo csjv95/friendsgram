@@ -1,6 +1,6 @@
 import { firebaseStore, firebaseAuth, firebase } from "../firebase";
 
-const setFollow = async (targetUser, followingList, setIsFollowing) => {
+const setFollow = async (targetUser, followingList) => {
   const currentUserUid = firebaseAuth.currentUser.uid;
 
   // 현재 유저의 collection("follow")
