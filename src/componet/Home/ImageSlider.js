@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+import Emty from "../../Global/Emty/Emty";
 import { StLeftArrow, StRightArrow } from "../../Global/StIcon/StIcon";
 
 const ImageWraper = styled.section`
@@ -30,16 +31,24 @@ const Image = styled.img`
 `;
 
 const BtnCotainer = styled.div`
+  position: relative;
   width: 100%;
   padding: 0 1em;
   position: absolute;
   top: 50%;
-  display: flex;
-  justify-content: space-between;
   z-index: 1;
 `;
 
-const Btn = styled.button`
+const BtnBack = styled.button`
+  position: absolute;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  background-color: white;
+`;
+
+const BtnNext = styled.button`
+  position: absolute;
+  right: 1.5em;
   border: 1px solid lightgray;
   border-radius: 50%;
   background-color: white;
@@ -64,12 +73,20 @@ const ImageSlider = ({ imgs }) => {
   return (
     <ImageWraper>
       <BtnCotainer>
-        <Btn onClick={backClick}>
-          <StLeftArrow width="1.5" color="lightgrey" />
-        </Btn>
-        <Btn onClick={nextClick}>
-          <StRightArrow width="1.5" color="lightgrey" />
-        </Btn>
+        {imgIndex === 0 ? (
+          <Emty />
+        ) : (
+          <BtnBack onClick={backClick}>
+            <StLeftArrow width="1.5" color="lightgrey" />
+          </BtnBack>
+        )}
+        {imgIndex === imgs.length - 1 || imgIndex === imgs.length ? (
+          <Emty />
+        ) : (
+          <BtnNext onClick={nextClick}>
+            <StRightArrow width="1.5" color="lightgrey" />
+          </BtnNext>
+        )}
       </BtnCotainer>
       <ImageList ref={ImgRef}>
         {imgs.map((img, index) => (
