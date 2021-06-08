@@ -70,6 +70,7 @@ const RouteMain = () => {
             handlePost={handlePost}
             handleAddress={handleAddress}
             location={location}
+            setLocation={setLocation}
             setProgressBar={setProgressBar}
           />
         </ModalPotal>

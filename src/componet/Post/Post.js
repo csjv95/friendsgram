@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { StCloseIcon, StMap, StUpload } from "../../Global/StIcon/StIcon";
 import ImageSlider from "../Home/ImageSlider";
 import postDataToStore from "../../service/postData/postDataToStore";
 import postDataToStorage from "../../service/postData/postDataToStorage";
 import { getPostId } from "../../service/postData/getPostId";
+import { firebaseStore } from "../../service/firebase";
 
 
-const PostCotainer = styled.section`
+const StPostCotainer = styled.section`
   position: fixed;
   left: 0;
   top: 0;
@@ -20,7 +21,7 @@ const PostCotainer = styled.section`
   z-index: 9999;
 `;
 
-const PostForm = styled.form`
+const StPostForm = styled.form`
   width: 450px;
   display: flex;
   flex-wrap: wrap;
@@ -37,25 +38,37 @@ const PostForm = styled.form`
   }
 `;
 
-const UploadTitle = styled.h1`
+const CloseBtnCotainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: none;
+  & button {
+    font-weight: 600;
+  }
+  & :hover {
+    color: ${({ theme }) => theme.colors.skyblue};
+  }
+`;
+
+const StUploadTitle = styled.h1`
   margin: 0;
   text-align: center;
 `;
 
-const UploadSpace = styled.ul`
+const StUploadSpace = styled.ul`
   display: flex;
   justify-content: space-between;
 `;
 
-const UploadLabelBtn = styled.label`
+const StUploadLabelBtn = styled.label`
   cursor: pointer;
 `;
 
-const UploadInput = styled.input`
+const StUploadInput = styled.input`
   display: none;
 `;
 
-const UploadImg = styled.ul`
+const StUploadImg = styled.ul`
   height: 300px;
   margin: 1em;
   display: flex;
@@ -65,29 +78,29 @@ const UploadImg = styled.ul`
   background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
-const UploadImgPreview = styled.ul`
+const StUploadImgPreview = styled.ul`
   height: 300px;
 `;
 
-const ImageSliderContainer = styled.div`
+const StImageSliderContainer = styled.div`
   width: 100%;
   height: 280px;
 `;
 
-const UploadText = styled.ul`
+const StUploadText = styled.ul`
   display: flex;
   flex-direction: column;
   & > :first-child {
     margin-bottom: 0.3em;
   }
 `;
-const Textarea = styled.textarea`
+const StTextarea = styled.textarea`
   width: 100%;
   height: 4em;
   border: none;
   resize: none;
 `;
-const UploadLocation = styled.ul`
+const StUploadLocation = styled.ul`
   display: flex;
   justify-content: space-between;
   & :nth-child(n + 2) {
@@ -95,16 +108,16 @@ const UploadLocation = styled.ul`
   }
 `;
 
-const ChatAccess = styled.ul`
+const StChatAccess = styled.ul`
   display: flex;
   justify-content: space-between;
 `;
 
-const CheckBoxContainer = styled.div`
+const StCheckBoxContainer = styled.div`
   position: relative;
 `;
 
-const CheckBoxLabel = styled.label`
+const StCheckBoxLabel = styled.label`
   position: absolute;
   top: 0;
   left: 0;
@@ -126,13 +139,13 @@ const CheckBoxLabel = styled.label`
   }
 `;
 
-const CheckBoxInput = styled.input`
+const StCheckBoxInput = styled.input`
   opacity: 0;
   z-index: 1;
   border-radius: 15px;
   width: 42px;
   height: 26px;
-  &:checked + ${CheckBoxLabel} {
+  &:checked + ${StCheckBoxLabel} {
     background: ${({ theme }) => theme.colors.skyblue};
     &::after {
       content: "";
@@ -146,22 +159,23 @@ const CheckBoxInput = styled.input`
   }
 `;
 
-const CloseBtnCotainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  border-bottom: none;
+const StLastContianer = styled.div`
+  display : flex;
+  justify-content :  space-between;
   & button {
+    font-size : 1em;
     font-weight: 600;
   }
   & :hover {
     color: ${({ theme }) => theme.colors.skyblue};
   }
-`;
+`
 
 const Post = ({
   handlePost,
   handleAddress,
   location,
+  setLocation,
   imgs,
   setImgs,
   text,
@@ -176,9 +190,18 @@ const Post = ({
     getPostId(setPostId);
   },[])
 
+
+  const resetState = () => {
+    setImgs([]);
+    setText("");
+    setLocation("");
+    setNoComments(false);
+  }
+
   const onSubmit = () => {
     postDataToStore(text, noComments, location,postId);
     postDataToStorage(imgs,postId,setProgressBar);
+    resetState();
     handlePost();
   };
   
@@ -205,21 +228,21 @@ const Post = ({
     setText(text);
   };
 
-  const onChageChat = () => {
+  const onToggleCheckBox = () => {
     setNoComments(!noComments);
-  };
+  }
 
   return (
-    <PostCotainer>
-      <PostForm onSubmit={preventDefault}>
+    <StPostCotainer>
+      <StPostForm onSubmit={preventDefault}>
         <CloseBtnCotainer>
           <button onClick={handlePost}>
             <StCloseIcon width="1.5" />
           </button>
         </CloseBtnCotainer>
-        <UploadTitle>새 게시물 </UploadTitle>
-        <UploadSpace>
-          <UploadInput
+        <StUploadTitle>새 게시물 </StUploadTitle>
+        <StUploadSpace>
+          <StUploadInput
             type="file"
             id="upload"
             multiple
@@ -227,41 +250,42 @@ const Post = ({
           />
           <li>새로운 파일 업로드</li>
           <li>
-            <UploadLabelBtn htmlFor="upload">
+            <StUploadLabelBtn htmlFor="upload">
               <StUpload width="1.5" />
-            </UploadLabelBtn>
+            </StUploadLabelBtn>
           </li>
-        </UploadSpace>
+        </StUploadSpace>
 
         {imgs ? (
-          <UploadImgPreview>
+          <StUploadImgPreview>
             <li>
-              <ImageSliderContainer>
+              <StImageSliderContainer>
                 <ImageSlider imgs={imgs} />
-              </ImageSliderContainer>
+              </StImageSliderContainer>
             </li>
-          </UploadImgPreview>
+          </StUploadImgPreview>
         ) : (
-          <UploadImg>
+          <StUploadImg>
             <li>
-              <UploadLabelBtn htmlFor="upload">
+              <StUploadLabelBtn htmlFor="upload">
                 <StUpload width="3" margin="1em" />
-              </UploadLabelBtn>
+              </StUploadLabelBtn>
             </li>
             <li>업로드된 사진은 여기에 표시됩니다</li>
-          </UploadImg>
+          </StUploadImg>
         )}
 
-        <UploadText>
+        <StUploadText>
           <li>문구 입력</li>
           <li>
-            <Textarea
+            <StTextarea
               placeholder="문구를 입력해주세요"
               onChange={onChangeText}
+              value={text}
             />
           </li>
-        </UploadText>
-        <UploadLocation>
+        </StUploadText>
+        <StUploadLocation>
           <li>위치추가</li>
           <li>
             {location && <div>{location}</div>}
@@ -269,22 +293,24 @@ const Post = ({
               <StMap width="1.5" />
             </button>
           </li>
-        </UploadLocation>
+        </StUploadLocation>
 
-        <ChatAccess>
+        <StChatAccess>
           <li>댓글 기능</li>
           <li>
-            <CheckBoxContainer onChange={onChageChat}>
-              <CheckBoxInput type="checkbox" id="access" />
-              <CheckBoxLabel htmlFor="access" />
-            </CheckBoxContainer>
+            <StCheckBoxContainer >
+              <StCheckBoxInput type="checkbox" id="access" onChange={onToggleCheckBox} checked={noComments} />
+              <StCheckBoxLabel htmlFor="access" />
+            </StCheckBoxContainer>
           </li>
-        </ChatAccess>
-        <CloseBtnCotainer>
+        </StChatAccess>
+        <StLastContianer>
+          <button onClick={resetState}>reset</button>
           <button onClick={onSubmit}> 업로드</button>
-        </CloseBtnCotainer>
-      </PostForm>
-    </PostCotainer>
+
+        </StLastContianer>
+      </StPostForm>
+    </StPostCotainer>
   );
 };
 
