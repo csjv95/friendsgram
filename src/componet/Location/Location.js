@@ -28,15 +28,15 @@ const BtnContainer = styled.div`
   background-color : white;
 `;
 
-const Address = ({ handleAddress, setLocation }) => {
+const Location = ({ handleLocation, setLocation }) => {
   const handleComplete = (data) => {
     console.log(data.buildingName);
     setLocation(data.buildingName);
-    handleAddress();
+    handleLocation();
   };
 
   const handleClose = () => {
-    handleAddress();
+    handleLocation();
   };
   return (
     <DaumPostcodeCotainer>
@@ -50,4 +50,4 @@ const Address = ({ handleAddress, setLocation }) => {
   );
 };
 
-export default Address;
+export default Location;

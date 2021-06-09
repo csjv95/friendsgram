@@ -96,7 +96,7 @@ const StLogoutBtn = styled.button`
   width: 100%;
 `;
 
-const Header = ({ handlePost, userData, usersList }) => {
+const Header = ({ handleUpload, userData, usersList }) => {
   const { displayName } = userData;
   const [search, setSearch] = useState(false); // when clcked the search input box show record
   const [searchText, setSearchText] = useState(""); //when typing at search input box
@@ -159,7 +159,7 @@ const Header = ({ handlePost, userData, usersList }) => {
             </NavLink>
           </StHeaderNavUlLi>
           <StHeaderNavUlLi>
-            <button onClick={handlePost}>
+            <button onClick={() => {handleUpload()}}>
               <StPlusSquare width="1.5" />
             </button>
           </StHeaderNavUlLi>

@@ -59,7 +59,7 @@ const BtnNext = styled.button`
   background-color: white;
 `;
 
-const StImgCountList = styled.ul`
+const StImgNav = styled.ul`
   display: flex;
   justify-content: center;
 `;
@@ -113,8 +113,9 @@ const ImageSlider = ({ imgs }) => {
           ))}
         </ImageList>
       </ImageWraper>
+      
       {imgs.length > 1 ? (
-        <StImgCountList>
+        <StImgNav>
           {imgs.map((img, index) => (
             <li key={index}>
               <button onClick={() => toGoImg(index)}>
@@ -129,7 +130,7 @@ const ImageSlider = ({ imgs }) => {
               </button>
             </li>
           ))}
-        </StImgCountList>
+        </StImgNav>
       ) : (
         <Emty />
       )}

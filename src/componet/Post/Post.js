@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StCloseIcon, StMap, StUpload } from "../../Global/StIcon/StIcon";
 import ImageSlider from "../Home/ImageSlider";
 import postDataToStore from "../../service/postData/postDataToStore";
 import postDataToStorage from "../../service/postData/postDataToStorage";
 import { getPostId } from "../../service/postData/getPostId";
-import { firebaseStore } from "../../service/firebase";
+
 
 
 const StPostCotainer = styled.section`
@@ -172,8 +172,8 @@ const StLastContianer = styled.div`
 `
 
 const Post = ({
-  handlePost,
-  handleAddress,
+  handleUpload,
+  handleLocation,
   location,
   setLocation,
   imgs,
@@ -202,17 +202,13 @@ const Post = ({
     postDataToStore(text, noComments, location,postId);
     postDataToStorage(imgs,postId,setProgressBar);
     resetState();
-    handlePost();
+    handleUpload();
   };
   
   const preventDefault = (event) => {
     event.preventDefault();
   };
   
-  const handleLocation = () => {
-    handleAddress();
-  };
-
   const onChageInput = (event) => {
     const target = event.target.files; //객체 안에 배열로 구성
     const files = [];
@@ -236,7 +232,7 @@ const Post = ({
     <StPostCotainer>
       <StPostForm onSubmit={preventDefault}>
         <CloseBtnCotainer>
-          <button onClick={handlePost}>
+          <button onClick={()=> {handleUpload()}}>
             <StCloseIcon width="1.5" />
           </button>
         </CloseBtnCotainer>
@@ -289,7 +285,7 @@ const Post = ({
           <li>위치추가</li>
           <li>
             {location && <div>{location}</div>}
-            <button onClick={handleLocation}>
+            <button onClick={()=>{handleLocation()}}>
               <StMap width="1.5" />
             </button>
           </li>

@@ -18,12 +18,18 @@ const StPostImg = styled.img`
   height: 100%;
   border-radius: 0.1em;
 `;
+
 const MyPost = ({myPostData}) => {
+  const onPostClick = () => {
+    // state 바꿔주기
+    console.log('hello');
+  }
+
   return (
     <StPostList>
       {myPostData.map((data, postId) => (
-        <StPostItem key={postId}>
-          <StPostImg src={data.imgsData[0].imgUrl} alt="data" />
+        <StPostItem key={postId} >
+          <StPostImg src={data.imgsData[0].imgUrl} alt="data" onClick={onPostClick}/>
           {data.imgsData.length > 1 && (
             <StImageMultiple
               width="1.4"

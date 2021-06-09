@@ -5,7 +5,7 @@ import NavRouter from "../navRouter/navRouter";
 import styled from "styled-components";
 import Post from "../../componet/Post/Post";
 import ModalPotal from "../../modal/ModalPotal";
-import Address from "../../componet/Address/Adress";
+import Location from "../../componet/Location/Location";
 import getUserData from "../../service/fireStore/getCurrenttUserData";
 import getUsersList from "../../service/fireStore/getUsersList";
 import getFollowingList from "../../service/follow/getFollowingList";
@@ -31,8 +31,8 @@ const RouteMain = () => {
   const [usersList, setUsersList] = useState([]);
   const [followingList, setFollowingList] = useState([]); //
   const [followerList, setFollowerList] = useState([]);
-  const [postModal, setPostModal] = useState(false);
-  const [addressModal, setAddressModal] = useState(false);
+  const [uploadModal, setUploadModal] = useState(false);
+  const [locationModal, setLocationModal] = useState(false);
   const [messageModal, setMessageModal] = useState(false);
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
@@ -48,17 +48,17 @@ const RouteMain = () => {
     getFollowerList(setFollowerList);
   },[]);
   
-  const handlePost = () => {
-    setPostModal(!postModal);
+  const handleUpload = () => {
+    setUploadModal(!uploadModal);
   };
   
-  const handleAddress = () => {
-    setAddressModal(!addressModal);
+  const handleLocation = () => {
+    setLocationModal(!locationModal);
   };
   
   return (
     <AppContainer>
-      {postModal && (
+      {uploadModal && (
         <ModalPotal potalName={post}>
           <Post
             imgs={imgs}
@@ -67,17 +67,17 @@ const RouteMain = () => {
             setText={setText}
             noComments={noComments}
             setNoComments={setNoComments}
-            handlePost={handlePost}
-            handleAddress={handleAddress}
+            handleUpload={handleUpload}
+            handleLocation={handleLocation}
             location={location}
             setLocation={setLocation}
             setProgressBar={setProgressBar}
           />
         </ModalPotal>
       )}
-      {addressModal && (
+      {locationModal && (
         <ModalPotal potalName={address}>
-          <Address handleAddress={handleAddress} setLocation={setLocation} />
+          <Location handleLocation={handleLocation} setLocation={setLocation} />
         </ModalPotal>
       )}
       {messageModal && (
@@ -87,7 +87,7 @@ const RouteMain = () => {
       )}
       {progressBar && <ProgressBar progressBar={progressBar} />}
       <Header
-        handlePost={handlePost}
+        handleUpload={handleUpload}
         userData={userData}
         usersList={usersList}
       />
