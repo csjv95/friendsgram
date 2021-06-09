@@ -7,7 +7,6 @@ import {
   StHeartIcon,
   StSendIcon,
   StBookmarkIcon,
-  StDotIcon,
   StSmileIocn,
   StLine,
 } from "../../Global/StIcon/StIcon";
@@ -60,7 +59,7 @@ const StHomeArticle = styled.article`
 
 const ImageSliderContainer = styled.div`
   width: 37.5em;
-  height: 37.5em;
+  height: 40.5em;
 `;
 
 const StHomeArticleFuntion = styled.section`
@@ -127,7 +126,7 @@ const HomeArticle = ({ article, userData }) => {
       <StLine />
       <StHomeArticle>
         <ImageSliderContainer>
-          <ImageSlider imgWidth="37.5" imgHeight="37.5" imgs={imgs} />
+          <ImageSlider imgs={imgs} />
         </ImageSliderContainer>
         <StLine />
         <StHomeArticleFuntion>

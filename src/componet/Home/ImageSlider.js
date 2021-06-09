@@ -80,7 +80,7 @@ const ImageSlider = ({ imgs }) => {
 
   const toGoImg = (index) => {
     ImgRef.current.style.transform = `translateX(${-100 * index}%)`;
-    setImgIndex(index)
+    setImgIndex(index);
   };
 
   return (
@@ -94,7 +94,7 @@ const ImageSlider = ({ imgs }) => {
               <StLeftArrow width="1.5" color="lightgrey" />
             </BtnBack>
           )}
-          {imgIndex === imgs.length -1 || imgIndex === imgs.length ? (
+          {imgIndex === imgs.length - 1 || imgIndex === imgs.length ? (
             <Emty />
           ) : (
             <BtnNext onClick={nextImg}>
@@ -113,23 +113,26 @@ const ImageSlider = ({ imgs }) => {
           ))}
         </ImageList>
       </ImageWraper>
-
-      <StImgCountList>
-        {imgs.map((img, index) => (
-          <li key={index}>
-            <button onClick={() => toGoImg(index)}>
-              <StDotFill
-                width="1.5em"
-                color={
-                  imgIndex === index
-                    ? Theme.colors.blueviolet
-                    : Theme.colors.lightgrey
-                }
-              />
-            </button>
-          </li>
-        ))}
-      </StImgCountList>
+      {imgs.length > 1 ? (
+        <StImgCountList>
+          {imgs.map((img, index) => (
+            <li key={index}>
+              <button onClick={() => toGoImg(index)}>
+                <StDotFill
+                  width="1.5em"
+                  color={
+                    imgIndex === index
+                      ? Theme.colors.blueviolet
+                      : Theme.colors.lightgrey
+                  }
+                />
+              </button>
+            </li>
+          ))}
+        </StImgCountList>
+      ) : (
+        <Emty />
+      )}
     </>
   );
 };
