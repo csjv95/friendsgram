@@ -69,30 +69,22 @@ const ImageSlider = ({ imgs }) => {
   const [imgIndex, setImgIndex] = useState(0);
 
   const backImg = () => {
-    console.log("back");
-    console.log(`translateX(${-100 * (imgIndex -2)}%)`);
     ImgRef.current.style.transform = `translateX(${-100 * (imgIndex - 1)}%)`;
     setImgIndex(imgIndex - 1);
   };
 
   const nextImg = () => {
-    console.log("next");
-    console.log(`translateX(${-100 * imgIndex}%)`);
     ImgRef.current.style.transform = `translateX(${-100 * (imgIndex + 1)}%)`;
     setImgIndex(imgIndex + 1);
   };
 
   const toGoImg = (index) => {
-    console.log("index", index); // 선택된수
-    console.log("imgIndex", imgIndex); // 현재수
-
     ImgRef.current.style.transform = `translateX(${-100 * index}%)`;
     setImgIndex(index)
   };
 
   return (
     <>
-      {console.log("currentImgIndx", imgIndex)}
       <ImageWraper>
         <BtnCotainer>
           {imgIndex === 0 ? (

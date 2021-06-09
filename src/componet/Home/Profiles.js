@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 
@@ -55,9 +56,9 @@ const Profiles = ({
 }) => {
   return (
     <StProfile data-uid={uid} padding={listPadding} onClick={profileClick}>
-      <StProfileImg src={photoURL} alt="my" height={imgHeight} />
+      <Link to={`/${displayName}`}><StProfileImg src={photoURL} alt="my" height={imgHeight} /></Link>
       <StProfileInfo>
-        <StProfileId>{name}</StProfileId>
+        <StProfileId><Link to={`/${displayName}`}>{name}</Link></StProfileId>
         <StProfileNicname>{displayName}</StProfileNicname>
       </StProfileInfo>
 
