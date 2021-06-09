@@ -143,20 +143,6 @@ const HomeArticle = ({ article, userData }) => {
                 <StSendIcon width="1.5" />
               </StHomeIconBoxLi>
             </StHomeIconBoxUl>
-            <StHomeIconBoxUl>
-              <StHomeIconBoxLi>
-                <StDotIcon />
-              </StHomeIconBoxLi>
-              <StHomeIconBoxLi>
-                <StDotIcon />
-              </StHomeIconBoxLi>
-              <StHomeIconBoxLi>
-                <StDotIcon />
-              </StHomeIconBoxLi>
-              <StHomeIconBoxLi>
-                <StDotIcon />
-              </StHomeIconBoxLi>
-            </StHomeIconBoxUl>
             <StBookmarkIcon width="2" />
           </StHomeIconBox>
           <div>좋아요 136</div>

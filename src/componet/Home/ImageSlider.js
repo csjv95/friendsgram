@@ -1,7 +1,12 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Emty from "../../Global/Emty/Emty";
-import { StLeftArrow, StRightArrow } from "../../Global/StIcon/StIcon";
+import {
+  StDotFill,
+  StLeftArrow,
+  StRightArrow,
+} from "../../Global/StIcon/StIcon";
+import { Theme } from "../../style/Theme";
 
 const ImageWraper = styled.section`
   position: relative;
@@ -54,50 +59,93 @@ const BtnNext = styled.button`
   background-color: white;
 `;
 
+const StImgCountList = styled.ul`
+  display: flex;
+  justify-content: center;
+`;
+
 const ImageSlider = ({ imgs }) => {
   const ImgRef = useRef();
-  const [imgIndex, setImgIndex] = useState(0);
+  const [imgIndex, setImgIndex] = useState(1);
 
-  const backClick = () => {
+  const backImg = () => {
     console.log("back");
-    ImgRef.current.style.transform = `translateX(${-100 * (imgIndex - 1)}%)`;
+    console.log(`translateX(${-100 * (imgIndex -2)}%)`);
+    ImgRef.current.style.transform = `translateX(${-100 * (imgIndex - 2)}%)`;
     setImgIndex(imgIndex - 1);
   };
 
-  const nextClick = () => {
+  const nextImg = () => {
     console.log("next");
-    ImgRef.current.style.transform = `translateX(${-100 * (imgIndex + 1)}%)`;
+    console.log(`translateX(${-100 * imgIndex}%)`);
+    ImgRef.current.style.transform = `translateX(${-100 * imgIndex}%)`;
     setImgIndex(imgIndex + 1);
   };
 
+  const toGoImg = (index) => {
+    console.log("index", index); // 선택된수
+    console.log("imgIndex", imgIndex); // 현재수
+
+    if(index === 1) {
+      ImgRef.current.style.transform = `translateX(${0}%)`;
+    } else if(index === imgIndex) {
+      return console.log('same');
+    }
+    else {
+      ImgRef.current.style.transform = `translateX(${-100 * (index-1)}%)`;
+    }
+    setImgIndex(index)
+  };
+
   return (
-    <ImageWraper>
-      <BtnCotainer>
-        {imgIndex === 0 ? (
-          <Emty />
-        ) : (
-          <BtnBack onClick={backClick}>
-            <StLeftArrow width="1.5" color="lightgrey" />
-          </BtnBack>
-        )}
-        {imgIndex === imgs.length - 1 || imgIndex === imgs.length ? (
-          <Emty />
-        ) : (
-          <BtnNext onClick={nextClick}>
-            <StRightArrow width="1.5" color="lightgrey" />
-          </BtnNext>
-        )}
-      </BtnCotainer>
-      <ImageList ref={ImgRef}>
+    <>
+      {console.log("currentImgIndx", imgIndex)}
+      <ImageWraper>
+        <BtnCotainer>
+          {imgIndex === 1 ? (
+            <Emty />
+          ) : (
+            <BtnBack onClick={backImg}>
+              <StLeftArrow width="1.5" color="lightgrey" />
+            </BtnBack>
+          )}
+          {imgIndex === imgs.length ? (
+            <Emty />
+          ) : (
+            <BtnNext onClick={nextImg}>
+              <StRightArrow width="1.5" color="lightgrey" />
+            </BtnNext>
+          )}
+        </BtnCotainer>
+
+        <ImageList ref={ImgRef}>
+          {imgs.map((img, index) => (
+            <ImageItem key={index}>
+              <ImgWrapper>
+                <Image src={img.imgUrl} alt="pic" />
+              </ImgWrapper>
+            </ImageItem>
+          ))}
+        </ImageList>
+      </ImageWraper>
+
+      <StImgCountList>
         {imgs.map((img, index) => (
-          <ImageItem key={index}>
-            <ImgWrapper>
-              <Image src={img.imgUrl} alt="pic" />
-            </ImgWrapper>
-          </ImageItem>
+          <li key={index + 1}>
+            <button onClick={() => toGoImg(index + 1)}>
+              <StDotFill
+                width="1.5em"
+                color={
+                  imgIndex === index + 1
+                    ? Theme.colors.blueviolet
+                    : Theme.colors.lightgrey
+                }
+              />
+            </button>
+          </li>
         ))}
-      </ImageList>
-    </ImageWraper>
+      </StImgCountList>
+    </>
   );
 };
 

@@ -23,6 +23,7 @@ import { Table } from "@styled-icons/fluentui-system-regular/Table";
 import { Tv } from "@styled-icons/boxicons-regular/Tv";
 import { Tag } from "@styled-icons/bootstrap/Tag";
 import { Clear } from "@styled-icons/material/Clear";
+import { DotFill } from "@styled-icons/octicons/DotFill";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -49,14 +50,6 @@ export const StBookmarkIcon = styled(Bookmark)`
 
 export const StMenuIcon = styled(DotsHorizontalRounded)`
   width: ${({ width }) => width}em;
-`;
-export const StDotIcon = styled.button`
-  width: 0.4em;
-  height: 0.4em;
-  display: inline-block;
-  border-radius: 50%;
-
-  background-color: #d3d3d3;
 `;
 
 export const StSmileIocn = styled(Smile)`
@@ -149,7 +142,13 @@ export const StTag = styled(Tag)`
 
 export const StClear = styled(Clear)`
   width: ${({ width }) => width};
-  background-color : ${({ bgColor }) => bgColor};
-  color : ${({color}) => color};
-  border-radius : ${({borderRadius}) => borderRadius};
+  color: ${({ color }) => color};
+  border-radius: ${({ borderRadius }) => borderRadius};
+  background-color: ${({ bgColor }) => bgColor};
+`;
+
+export const StDotFill = styled(DotFill)`
+  width: ${({ width }) => width};
+  color: ${({ color }) => color};
+  background-color: ${({ bgColor }) => bgColor};
 `;
