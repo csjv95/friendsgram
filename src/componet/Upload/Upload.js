@@ -171,7 +171,7 @@ const StLastContianer = styled.div`
   }
 `
 
-const Post = ({
+const Upload = ({
   handleUpload,
   handleLocation,
   location,
@@ -310,4 +310,4 @@ const Post = ({
   );
 };
 
-export default Post;
+export default Upload;

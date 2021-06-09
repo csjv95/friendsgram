@@ -3,7 +3,7 @@ import Header from "../../Global/Header/Header";
 import MainFooter from "../../Global/MainFooter/MainFooter";
 import NavRouter from "../navRouter/navRouter";
 import styled from "styled-components";
-import Post from "../../componet/Post/Post";
+import Upload from "../../componet/Upload/Upload";
 import ModalPotal from "../../modal/ModalPotal";
 import Location from "../../componet/Location/Location";
 import getUserData from "../../service/fireStore/getCurrenttUserData";
@@ -23,7 +23,7 @@ const AppContainer = styled.div`
 `;
 
 const RouteMain = () => {
-  const post = document.getElementById("post");
+  const upload = document.getElementById("upload");
   const address = document.getElementById("address");
   const message = document.getElementById("message");
   const [currentUserUid, setCurrentUserUid] = useState("");
@@ -59,8 +59,8 @@ const RouteMain = () => {
   return (
     <AppContainer>
       {uploadModal && (
-        <ModalPotal potalName={post}>
-          <Post
+        <ModalPotal potalName={upload}>
+          <Upload
             imgs={imgs}
             setImgs={setImgs}
             text={text}

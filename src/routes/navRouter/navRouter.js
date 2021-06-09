@@ -4,7 +4,7 @@ import Direct from "../../componet/Direct/Direct";
 import Edit from "../../componet/Edit/Edit";
 import Home from "../../componet/Home/Home";
 import MyProfile from "../../componet/MyProfile/MyProfile";
-import Post from "../../componet/Post/Post";
+import Upload from "../../componet/Upload/Upload";
 import Suggest from "../../componet/Suggest/Suggest";
 
 const NavRouter = ({ userData, usersList, followingList, followerList }) => {
@@ -18,7 +18,7 @@ const NavRouter = ({ userData, usersList, followingList, followerList }) => {
         />
       </Route>
       <Route path="/direct" component={Direct} />
-      <Route path="/post" component={Post} />
+      <Route path="/post" component={Upload} />
       <Route path="/suggest">
         <Suggest
           usersList={usersList}
