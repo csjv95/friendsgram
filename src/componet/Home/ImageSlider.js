@@ -66,19 +66,19 @@ const StImgCountList = styled.ul`
 
 const ImageSlider = ({ imgs }) => {
   const ImgRef = useRef();
-  const [imgIndex, setImgIndex] = useState(1);
+  const [imgIndex, setImgIndex] = useState(0);
 
   const backImg = () => {
     console.log("back");
     console.log(`translateX(${-100 * (imgIndex -2)}%)`);
-    ImgRef.current.style.transform = `translateX(${-100 * (imgIndex - 2)}%)`;
+    ImgRef.current.style.transform = `translateX(${-100 * (imgIndex - 1)}%)`;
     setImgIndex(imgIndex - 1);
   };
 
   const nextImg = () => {
     console.log("next");
     console.log(`translateX(${-100 * imgIndex}%)`);
-    ImgRef.current.style.transform = `translateX(${-100 * imgIndex}%)`;
+    ImgRef.current.style.transform = `translateX(${-100 * (imgIndex + 1)}%)`;
     setImgIndex(imgIndex + 1);
   };
 
@@ -86,14 +86,7 @@ const ImageSlider = ({ imgs }) => {
     console.log("index", index); // 선택된수
     console.log("imgIndex", imgIndex); // 현재수
 
-    if(index === 1) {
-      ImgRef.current.style.transform = `translateX(${0}%)`;
-    } else if(index === imgIndex) {
-      return console.log('same');
-    }
-    else {
-      ImgRef.current.style.transform = `translateX(${-100 * (index-1)}%)`;
-    }
+    ImgRef.current.style.transform = `translateX(${-100 * index}%)`;
     setImgIndex(index)
   };
 
@@ -102,14 +95,14 @@ const ImageSlider = ({ imgs }) => {
       {console.log("currentImgIndx", imgIndex)}
       <ImageWraper>
         <BtnCotainer>
-          {imgIndex === 1 ? (
+          {imgIndex === 0 ? (
             <Emty />
           ) : (
             <BtnBack onClick={backImg}>
               <StLeftArrow width="1.5" color="lightgrey" />
             </BtnBack>
           )}
-          {imgIndex === imgs.length ? (
+          {imgIndex === imgs.length -1 || imgIndex === imgs.length ? (
             <Emty />
           ) : (
             <BtnNext onClick={nextImg}>
@@ -131,12 +124,12 @@ const ImageSlider = ({ imgs }) => {
 
       <StImgCountList>
         {imgs.map((img, index) => (
-          <li key={index + 1}>
-            <button onClick={() => toGoImg(index + 1)}>
+          <li key={index}>
+            <button onClick={() => toGoImg(index)}>
               <StDotFill
                 width="1.5em"
                 color={
-                  imgIndex === index + 1
+                  imgIndex === index
                     ? Theme.colors.blueviolet
                     : Theme.colors.lightgrey
                 }
