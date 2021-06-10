@@ -10,7 +10,7 @@ import {
   StSmileIocn,
   StLine,
 } from "../../Global/StIcon/StIcon";
-import ImageSlider from "./ImageSlider";
+import ImageSlider from "../../Global/ImageSlider/ImageSlider";
 import time from "../../service/time/time";
 import getMatchUid from "../../service/usersData/getMatchUid";
 

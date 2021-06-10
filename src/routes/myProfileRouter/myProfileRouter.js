@@ -2,13 +2,13 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import MyPost from "../../componet/MyPost/MyPost";
 
-const MyProfileRouter = ({matchUser, myPostData}) => {
+const MyProfileRouter = ({matchUser, myPostData,handlePost}) => {
   const {displayName} = matchUser
   
   return (
     <Switch>
       <Route exact path={`/${displayName}`}>
-        <MyPost myPostData={myPostData}/>
+        <MyPost myPostData={myPostData} handlePost={handlePost}/>
       </Route>
       <Route path={`/${displayName}/chanel`} >
         <div>chanel</div>

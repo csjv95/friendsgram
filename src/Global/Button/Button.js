@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const StButton = styled.button`
+export const StButton = styled.button`
   width: ${({ width }) => width};
   padding: ${({ padding }) => padding};
   border-radius: 0.2em;

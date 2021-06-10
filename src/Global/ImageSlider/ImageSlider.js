@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import Emty from "../../Global/Emty/Emty";
+import Emty from "../Emty/Emty";
 import {
   StDotFill,
   StLeftArrow,
   StRightArrow,
-} from "../../Global/StIcon/StIcon";
+} from "../StIcon/StIcon";
 import { Theme } from "../../style/Theme";
 
 const ImageWraper = styled.section`
@@ -32,7 +32,7 @@ const ImgWrapper = styled.div`
 
 const Image = styled.img`
   max-width: 100%;
-  max-height: 100%;
+  min-height: 100%;
 `;
 
 const BtnCotainer = styled.div`
@@ -82,7 +82,7 @@ const ImageSlider = ({ imgs }) => {
     ImgRef.current.style.transform = `translateX(${-100 * index}%)`;
     setImgIndex(index);
   };
-
+  
   return (
     <>
       <ImageWraper>

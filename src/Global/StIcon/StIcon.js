@@ -24,6 +24,8 @@ import { Tv } from "@styled-icons/boxicons-regular/Tv";
 import { Tag } from "@styled-icons/bootstrap/Tag";
 import { Clear } from "@styled-icons/material/Clear";
 import { DotFill } from "@styled-icons/octicons/DotFill";
+import { ArrowIosBackOutline } from "@styled-icons/evaicons-outline/ArrowIosBackOutline";
+import {ArrowIosForwardOutline} from"@styled-icons/evaicons-outline/ArrowIosForwardOutline";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -152,3 +154,15 @@ export const StDotFill = styled(DotFill)`
   color: ${({ color }) => color};
   background-color: ${({ bgColor }) => bgColor};
 `;
+
+export const StArrowLeft = styled(ArrowIosBackOutline)`
+  width: ${({ width }) => width};
+  color: ${({ color }) => color};
+  background-color: ${({ bgColor }) => bgColor};
+`;
+
+export const StArrowRight = styled(ArrowIosForwardOutline)`
+  width: ${({ width }) => width};
+  color: ${({ color }) => color};
+  background-color: ${({ bgColor }) => bgColor};
+`

@@ -13,6 +13,7 @@ import getFollowerList from "../../service/follow/getFollowerList";
 import { authGetUid } from "../../service/auth/authGetUid";
 import ProgressBar from "../../componet/ProgressBar/ProgressBar";
 import Message from "../../Global/Message/Message";
+// import Post from "../../componet/Post/Post";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -26,6 +27,7 @@ const RouteMain = () => {
   const upload = document.getElementById("upload");
   const address = document.getElementById("address");
   const message = document.getElementById("message");
+  // const post = document.getElementById("post");
   const [currentUserUid, setCurrentUserUid] = useState("");
   const [userData, setUserData] = useState([]);
   const [usersList, setUsersList] = useState([]);
@@ -34,6 +36,7 @@ const RouteMain = () => {
   const [uploadModal, setUploadModal] = useState(false);
   const [locationModal, setLocationModal] = useState(false);
   const [messageModal, setMessageModal] = useState(false);
+  // const [postModal, setPostModal] = useState(false);
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
   const [text, setText] = useState("");
@@ -55,6 +58,14 @@ const RouteMain = () => {
   const handleLocation = () => {
     setLocationModal(!locationModal);
   };
+
+  const handleMessage = () => {
+    setMessageModal(!message);
+  }
+
+  // const handlePost = () => {
+  //   setPostModal(!postModal);
+  // }
   
   return (
     <AppContainer>
@@ -85,6 +96,11 @@ const RouteMain = () => {
           <Message />
         </ModalPotal>
       )}
+      {/* {postModal && (
+        <ModalPotal potalName={post}>
+          <Post handlePost={handlePost} myPostData/>
+        </ModalPotal>
+      )} */}
       {progressBar && <ProgressBar progressBar={progressBar} />}
       <Header
         handleUpload={handleUpload}
@@ -97,6 +113,7 @@ const RouteMain = () => {
         followingList={followingList}
         followerList={followerList}
         currentUserUid={currentUserUid}
+        // handlePost={handlePost}
       />
       <MainFooter />
     </AppContainer>

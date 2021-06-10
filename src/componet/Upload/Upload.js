@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StCloseIcon, StMap, StUpload } from "../../Global/StIcon/StIcon";
-import ImageSlider from "../Home/ImageSlider";
+import ImageSlider from "../../Global/ImageSlider/ImageSlider";
 import postDataToStore from "../../service/postData/postDataToStore";
 import postDataToStorage from "../../service/postData/postDataToStorage";
 import { getPostId } from "../../service/postData/getPostId";
-
-
 
 const StPostCotainer = styled.section`
   position: fixed;
@@ -160,16 +158,16 @@ const StCheckBoxInput = styled.input`
 `;
 
 const StLastContianer = styled.div`
-  display : flex;
-  justify-content :  space-between;
+  display: flex;
+  justify-content: space-between;
   & button {
-    font-size : 1em;
+    font-size: 1em;
     font-weight: 600;
   }
   & :hover {
     color: ${({ theme }) => theme.colors.skyblue};
   }
-`
+`;
 
 const Upload = ({
   handleUpload,
@@ -184,31 +182,30 @@ const Upload = ({
   setNoComments,
   setProgressBar,
 }) => {
-  const [postId,setPostId] = useState("");
+  const [postId, setPostId] = useState("");
 
-  useEffect(()=> {
+  useEffect(() => {
     getPostId(setPostId);
-  },[])
-
+  }, []);
 
   const resetState = () => {
     setImgs([]);
     setText("");
     setLocation("");
     setNoComments(false);
-  }
+  };
 
   const onSubmit = () => {
-    postDataToStore(text, noComments, location,postId);
-    postDataToStorage(imgs,postId,setProgressBar);
+    postDataToStore(text, noComments, location, postId);
+    postDataToStorage(imgs, postId, setProgressBar);
     resetState();
     handleUpload();
   };
-  
+
   const preventDefault = (event) => {
     event.preventDefault();
   };
-  
+
   const onChageInput = (event) => {
     const target = event.target.files; //객체 안에 배열로 구성
     const files = [];
@@ -226,13 +223,13 @@ const Upload = ({
 
   const onToggleCheckBox = () => {
     setNoComments(!noComments);
-  }
+  };
 
   return (
     <StPostCotainer>
       <StPostForm onSubmit={preventDefault}>
         <CloseBtnCotainer>
-          <button onClick={()=> {handleUpload()}}>
+          <button onClick={handleUpload}>
             <StCloseIcon width="1.5" />
           </button>
         </CloseBtnCotainer>
@@ -240,19 +237,27 @@ const Upload = ({
         <StUploadSpace>
           <StUploadInput
             type="file"
-            id="upload"
+            id="files"
             multiple
             onChange={onChageInput}
           />
           <li>새로운 파일 업로드</li>
           <li>
-            <StUploadLabelBtn htmlFor="upload">
+            <StUploadLabelBtn htmlFor="files">
               <StUpload width="1.5" />
             </StUploadLabelBtn>
           </li>
         </StUploadSpace>
-
-        {imgs ? (
+        {imgs.length === 0 ? (
+          <StUploadImg>
+            <li>
+              <StUploadLabelBtn htmlFor="files">
+                <StUpload width="3" margin="1em" />
+              </StUploadLabelBtn>
+            </li>
+            <li>업로드된 사진은 여기에 표시됩니다</li>
+          </StUploadImg>
+        ) : (
           <StUploadImgPreview>
             <li>
               <StImageSliderContainer>
@@ -260,15 +265,6 @@ const Upload = ({
               </StImageSliderContainer>
             </li>
           </StUploadImgPreview>
-        ) : (
-          <StUploadImg>
-            <li>
-              <StUploadLabelBtn htmlFor="upload">
-                <StUpload width="3" margin="1em" />
-              </StUploadLabelBtn>
-            </li>
-            <li>업로드된 사진은 여기에 표시됩니다</li>
-          </StUploadImg>
         )}
 
         <StUploadText>
@@ -285,7 +281,11 @@ const Upload = ({
           <li>위치추가</li>
           <li>
             {location && <div>{location}</div>}
-            <button onClick={()=>{handleLocation()}}>
+            <button
+              onClick={() => {
+                handleLocation();
+              }}
+            >
               <StMap width="1.5" />
             </button>
           </li>
@@ -294,8 +294,13 @@ const Upload = ({
         <StChatAccess>
           <li>댓글 기능</li>
           <li>
-            <StCheckBoxContainer >
-              <StCheckBoxInput type="checkbox" id="access" onChange={onToggleCheckBox} checked={noComments} />
+            <StCheckBoxContainer>
+              <StCheckBoxInput
+                type="checkbox"
+                id="access"
+                onChange={onToggleCheckBox}
+                checked={noComments}
+              />
               <StCheckBoxLabel htmlFor="access" />
             </StCheckBoxContainer>
           </li>
@@ -303,7 +308,6 @@ const Upload = ({
         <StLastContianer>
           <button onClick={resetState}>reset</button>
           <button onClick={onSubmit}> 업로드</button>
-
         </StLastContianer>
       </StPostForm>
     </StPostCotainer>
