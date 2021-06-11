@@ -13,6 +13,13 @@ import {
 import ImageSlider from "../../Global/ImageSlider/ImageSlider";
 import time from "../../service/time/time";
 import getMatchUid from "../../service/usersData/getMatchUid";
+import {
+  StPostHeader,
+  StProfileContainer,
+  StProfileId,
+  StProfileInfo,
+  StProfileLocation,
+} from "../../Global/StPost/StPost";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -21,36 +28,6 @@ const StArticleItem = styled.li`
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 0.2rem;
   background-color: ${({ theme }) => theme.colors.contentColor};
-`;
-
-const StArticleHeader = styled.header`
-  padding: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const StHeaderProfileCotainer = styled.div`
-  height: 2.5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StProfileInfo = styled.div`
-  margin-left: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-`;
-
-const StProfileId = styled.span`
-  font-weight: 600;
-`;
-
-const StprofileLoction = styled.span`
-  margin-top: 0.2em;
-  font-size: 0.4em;
 `;
 
 const StHomeArticle = styled.article`
@@ -95,15 +72,11 @@ const StCommentsArea = styled.textarea`
   margin: 0 1em;
   padding: 1.3em 0.5em 0.5em 0.5em;
   flex-grow: 1;
-  border: none;
-  resize: none;
-  outline: none;
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
 const HomeArticle = ({ article, userData }) => {
-  const { imgsData, noComments, timestamp, text, location,uid } =
-    article;
+  const { imgsData, noComments, timestamp, text, location, uid } = article;
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const { photoURL } = userData;
   const [match, setMatchUser] = useState({});
@@ -113,17 +86,28 @@ const HomeArticle = ({ article, userData }) => {
   }, [uid]);
   return (
     <StArticleItem>
-      <StArticleHeader>
-        <StHeaderProfileCotainer>
+      <StPostHeader
+        padding="1em"
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <StProfileContainer
+          height="2.5em"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
           <StProfileImg src={photoURL} alt="my profile img" height="100%" />
-          <StProfileInfo>
+          <StProfileInfo margin="0 0 0 1em" display="flex" flexDirection="column">
             <StProfileId>{match.displayName}</StProfileId>
-            <StprofileLoction>{location}</StprofileLoction>
+            <StProfileLocation>{location}</StProfileLocation>
           </StProfileInfo>
-        </StHeaderProfileCotainer>
-        <StMenuIcon width="1.5" />
-      </StArticleHeader>
-      <StLine />
+        </StProfileContainer>
+        <button>
+          <StMenuIcon width="1.5" />
+        </button>
+      </StPostHeader>
       <StHomeArticle>
         <ImageSliderContainer>
           <ImageSlider imgs={imgs} />

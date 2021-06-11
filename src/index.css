@@ -35,6 +35,12 @@ a {
   color:  #000000;
 }
 
+textarea {
+  border: none;
+  resize: none;
+  outline: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

@@ -8,7 +8,6 @@ import {
 } from "../../Global/StModal/StModal";
 import { Theme } from "../../style/Theme";
 
-
 const Post = ({ handlePost, myPostData }) => {
   const onCloseModal = () => {
     handlePost();
@@ -24,14 +23,6 @@ const Post = ({ handlePost, myPostData }) => {
         <StClear width="2.5em" color={Theme.colors.contentColor} />
       </StModalBtn>
 
-      <StModalBtn position="absolute" top="34em" left="1em" onClick={onCloseModal}>
-        <StArrowLeft width="2.5em" color={Theme.colors.black} />
-      </StModalBtn>
-
-      <StModalBtn position="absolute" top="34em" right="1em" onClick={onCloseModal}>
-        <StArrowRight width="2.5em" color={Theme.colors.black} />
-      </StModalBtn>
-
       {myPostData.map((post) => (
         <StModalMain
           key={post.postId}
@@ -39,7 +30,24 @@ const Post = ({ handlePost, myPostData }) => {
           height="37em"
           display="flex"
         >
-          <PostRow post={post}/>
+          <PostRow post={post} />
+          <StModalBtn
+            position="absolute"
+            top="23em"
+            left="-3em"
+            onClick={onCloseModal}
+          >
+            <StArrowLeft width="3em" color={Theme.colors.borderColor} />
+          </StModalBtn>
+
+          <StModalBtn
+            position="absolute"
+            top="23em"
+            right="-3em"
+            onClick={onCloseModal}
+          >
+            <StArrowRight width="3em" color={Theme.colors.borderColor} />
+          </StModalBtn>
         </StModalMain>
       ))}
     </StModalContainer>

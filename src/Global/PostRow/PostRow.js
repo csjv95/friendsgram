@@ -1,8 +1,29 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import time from "../../service/time/time";
 import getUserData from "../../service/usersData/getUserData";
+import { Theme } from "../../style/Theme";
 import ImageSlider from "../ImageSlider/ImageSlider";
-import { StPostHeader, StProfileContainer, StProfileId, StProfileInfo, StProfileLocation } from "../StPost/StPost";
+import {
+  StBookmarkIcon,
+  StChatbubbleIcon,
+  StHeartIcon,
+  StMenuIcon,
+  StSendIcon,
+  StSmileIocn,
+} from "../StIcon/StIcon";
+import {
+  StPostHeader,
+  StProfileContainer,
+  StProfileId,
+  StProfileInfo,
+  StProfileLocation,
+  StCommentsArea,
+  StPostText,
+  StPostFunction,
+  StFunctionList,
+  StComments,
+} from "../StPost/StPost";
 import { StProfileImg } from "../StProfileImg/StProfileImg";
 
 const StPostArticle = styled.article`
@@ -12,18 +33,28 @@ const StPostArticle = styled.article`
 
 const StPostAside = styled.aside`
   width: 35%;
+  display: flex;
+  flex-direction: column;
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
 const PostRow = ({ post }) => {
-  const { uid } = post;
+  const { uid, text, timestamp } = post;
   const [userData, setUserData] = useState([]);
-  const { photoURL ,displayName,location} = userData;
+  const { photoURL, displayName, location } = userData;
+
+  const functionList = [
+    <StHeartIcon width="2em" />,
+    <StChatbubbleIcon width="2em" />,
+    <StSendIcon width="2em" />,
+    <StBookmarkIcon width="2em" />,
+  ];
+
   useEffect(() => {
     getUserData(uid, setUserData);
   }, [uid]);
 
-  console.log(userData);
+  
   return (
     <>
       <StPostArticle>
@@ -39,16 +70,59 @@ const PostRow = ({ post }) => {
           <StProfileContainer
             height="2.5em"
             display="flex"
+            flexDirection="column"
             justifyContent="center"
             alignItems="center"
           >
             <StProfileImg src={photoURL} alt="profile img" height="100%" />
-            <StProfileInfo margin="0 0 0 1em" display="flex" flexDirection> 
+            <StProfileInfo margin="0 0 0 1em" display="flex" flexDirection="column">
               <StProfileId>{displayName}</StProfileId>
               <StProfileLocation>{location}</StProfileLocation>
             </StProfileInfo>
           </StProfileContainer>
+          <button>
+            <StMenuIcon width="1.5em" />
+          </button>
         </StPostHeader>
+        <StPostText
+          flexGrow="1"
+          borderBottom={`1px solid ${Theme.colors.borderColor}`}
+        >
+          {text}
+          댓글
+        </StPostText>
+
+        <StPostFunction
+          padding="1em"
+          display="flex"
+          borderBottom={`1px solid ${Theme.colors.borderColor}`}
+        >
+          <StFunctionList>
+            {functionList.map((icon) => (
+              <li>
+                <button>{icon}</button>
+              </li>
+            ))}
+          </StFunctionList>
+          <div>좋아요114</div>
+          <div>{time(timestamp)}</div>
+        </StPostFunction>
+
+        <StComments
+          padding="0.5em 1em"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <StSmileIocn width="1.5em" />
+          <StCommentsArea
+            placeholder="댓글 달기..."
+            margin="0 1em"
+            padding="1em 0 0 0 "
+            flexGrow="1"
+          />
+          <button>게시</button>
+        </StComments>
       </StPostAside>
     </>
   );

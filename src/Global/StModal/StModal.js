@@ -15,6 +15,7 @@ export const StModalContainer = styled.section`
 `;
 
 export const StModalMain = styled.div`
+  position :relative;
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   display: ${({ display }) => display};
