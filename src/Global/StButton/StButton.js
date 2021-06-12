@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export const StButton = styled.button`
+const StButtonStyle = styled.button`
   width: ${({ width }) => width};
   padding: ${({ padding }) => padding};
   border-radius: 0.2em;
@@ -11,7 +11,7 @@ export const StButton = styled.button`
   color: ${({ color }) => color};
 `;
 
-const Button = ({
+const StButton = ({
   width,
   padding,
   fontSize,
@@ -20,8 +20,9 @@ const Button = ({
   color,
   btnText,
 }) => {
+  
   return (
-    <StButton
+    <StButtonStyle
       width={width}
       padding={padding}
       fontSize={fontSize}
@@ -30,8 +31,8 @@ const Button = ({
       color={color}
     >
       {btnText}
-    </StButton>
+    </StButtonStyle>
   );
 };
 
-export default Button;
+export default StButton;

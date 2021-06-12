@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Button from "../../Global/Button/Button";
+import StButton from "../../Global/StButton/StButton";
 import {
   StEditMain,
   StImgSection,
@@ -122,7 +122,7 @@ const ChangePw = ({ userData }) => {
             />
           </StIputContainer>
         </StSetContainer>
-        <Button width="10em" padding="0.5em" btnText="비밀번호 변경" />
+        <StButton width="10em" padding="0.5em" btnText="비밀번호 변경" />
       </StChangeForm>
     </StEditMain>
   );

@@ -1,11 +1,7 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import Emty from "../Emty/Emty";
-import {
-  StDotFill,
-  StLeftArrow,
-  StRightArrow,
-} from "../StIcon/StIcon";
+import Empty from "../Empty/Empty";
+import { StDotFill, StLeftArrow, StRightArrow } from "../StIcon/StIcon";
 import { Theme } from "../../style/Theme";
 
 const ImageWraper = styled.section`
@@ -23,11 +19,6 @@ const ImageList = styled.ul`
 const ImageItem = styled.li`
   min-width: 100%;
   min-height: 100%;
-`;
-
-const ImgWrapper = styled.div`
-  width: 100%;
-  height: 100%;
 `;
 
 const Image = styled.img`
@@ -82,20 +73,20 @@ const ImageSlider = ({ imgs }) => {
     ImgRef.current.style.transform = `translateX(${-100 * index}%)`;
     setImgIndex(index);
   };
-  
+
   return (
     <>
       <ImageWraper>
         <BtnCotainer>
           {imgIndex === 0 ? (
-            <Emty />
+            <Empty />
           ) : (
             <BtnBack onClick={backImg}>
               <StLeftArrow width="1.5" color="lightgrey" />
             </BtnBack>
           )}
           {imgIndex === imgs.length - 1 || imgIndex === imgs.length ? (
-            <Emty />
+            <Empty />
           ) : (
             <BtnNext onClick={nextImg}>
               <StRightArrow width="1.5" color="lightgrey" />
@@ -106,14 +97,12 @@ const ImageSlider = ({ imgs }) => {
         <ImageList ref={ImgRef}>
           {imgs.map((img, index) => (
             <ImageItem key={index}>
-              <ImgWrapper>
-                <Image src={img.imgUrl} alt="pic" />
-              </ImgWrapper>
+              <Image src={img.imgUrl} alt="pic" />
             </ImageItem>
           ))}
         </ImageList>
       </ImageWraper>
-      
+
       {imgs.length > 1 ? (
         <StImgNav>
           {imgs.map((img, index) => (
@@ -132,7 +121,7 @@ const ImageSlider = ({ imgs }) => {
           ))}
         </StImgNav>
       ) : (
-        <Emty />
+        <Empty />
       )}
     </>
   );

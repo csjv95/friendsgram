@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Button from "../../Global/Button/Button";
+import StButton from "../../Global/StButton/StButton";
 import getSearchRecord from "../../service/search/getSearchRecord";
 import searchRecordAllClear from "../../service/search/searchRecordAllClear";
 import { Theme } from "../../style/Theme";
@@ -39,7 +39,7 @@ const SearchRecord = () => {
           <StTitle>최근 검색 항목</StTitle>
         </li>
         <li onClick={allClearBtn}>
-          <Button
+          <StButton
             width="7em"
             padding="0.5em"
             fontSize="0.9em"

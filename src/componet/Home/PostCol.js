@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
+import ImageSlider from "../../Global/ImageSlider/ImageSlider";
+import time from "../../service/time/time";
+import getMatchUid from "../../service/usersData/getMatchUid";
+import { Theme } from "../../style/Theme";
+
 import {
   StMenuIcon,
   StChatbubbleIcon,
@@ -9,9 +14,6 @@ import {
   StBookmarkIcon,
   StSmileIocn,
 } from "../../Global/StIcon/StIcon";
-import ImageSlider from "../../Global/ImageSlider/ImageSlider";
-import time from "../../service/time/time";
-import getMatchUid from "../../service/usersData/getMatchUid";
 import {
   StFunctionList,
   StPostFunction,
@@ -23,7 +25,6 @@ import {
   StComments,
   StCommentsArea,
 } from "../../Global/StPost/StPost";
-import { Theme } from "../../style/Theme";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -95,8 +96,8 @@ const PostCol = ({ article, userData }) => {
 
         <StPostFunction padding="1em">
           <StFunctionList margin="0 0 0.5em 0 ">
-            {functionList.map((ftn) => (
-              <li>
+            {functionList.map((ftn, index) => (
+              <li key={index}>
                 <button>{ftn}</button>
               </li>
             ))}
@@ -122,7 +123,7 @@ const PostCol = ({ article, userData }) => {
               padding="1em 0 0 0 "
               flexGrow="1"
             />
-            <button>게시</button>
+            <button>제출</button>
           </StComments>
         )}
       </StHomeArticle>

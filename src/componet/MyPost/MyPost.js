@@ -27,15 +27,21 @@ const StPostImg = styled.img`
 const MyPost = ({ myPostData }) => {
   const post = document.getElementById("post");
   const [postModal, setPostModal] = useState(false);
-
-  const handlePost = () => {
+  const [postId, setPostId] = useState("");
+  const handlePost = (postId) => {
     setPostModal(!postModal);
   };
 
   return (
     <StPostList>
       {myPostData.map((data, postId) => (
-        <StPostItem key={postId} onClick={handlePost}>
+        <StPostItem
+          key={postId}
+          onClick={() => {
+            handlePost();
+            setPostId(postId);
+          }}
+        >
           <StPostImg src={data.imgsData[0].imgUrl} alt="data" />
           {data.imgsData.length > 1 && (
             <StImageMultiple
@@ -50,7 +56,7 @@ const MyPost = ({ myPostData }) => {
       ))}
       {postModal && (
         <ModalPotal potalName={post}>
-          <Post handlePost={handlePost} myPostData={myPostData} />
+          <Post handlePost={handlePost} myPostData={myPostData} postId={postId}/>
         </ModalPotal>
       )}
     </StPostList>

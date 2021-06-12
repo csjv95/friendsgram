@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../../../Global/Button/Button";
+import StButton from "../../../Global/StButton/StButton";
 import {
   StEditMain,
   StImgSection,
@@ -222,7 +222,7 @@ const ChangeEdit = ({ userData }) => {
             />
           </StIputContainer>
         </StSetContainer>
-        <Button btnText="제출" width="4em" padding="0.1em" onClick={onSubmit} />
+        <StButton btnText="제출" width="4em" padding="0.1em" onClick={onSubmit} />
       </StChangeForm>
     </StEditMain>
   );

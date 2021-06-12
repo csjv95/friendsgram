@@ -28,11 +28,12 @@ import { StProfileImg } from "../StProfileImg/StProfileImg";
 
 const StPostArticle = styled.article`
   width: 65%;
-  height: 100%;
+  height: 97%;  //밑에 nav보이기 위해서
 `;
 
 const StPostAside = styled.aside`
   width: 35%;
+  height: 97%;  //밑에 nav보이기 위해서
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.contentColor};
@@ -97,8 +98,8 @@ const PostRow = ({ post }) => {
 
         <StPostFunction padding="1em" display="flex">
           <StFunctionList margin="0 0 0.5em 0 ">
-            {functionList.map((ftn) => (
-              <li>
+            {functionList.map((ftn,index) => (
+              <li key={index}>
                 <button>{ftn}</button>
               </li>
             ))}
