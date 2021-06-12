@@ -29,7 +29,7 @@ export const StProfileId = styled.span`
 
 export const StProfileLocation = styled.span`
   margin: ${({ margin }) => margin};
-  font-size: ${(fontSize) => fontSize};
+  font-size: ${({fontSize}) => fontSize};
 `;
 
 export const StPostText = styled.div`
@@ -49,6 +49,7 @@ export const StPostFunction = styled.section`
 
 export const StFunctionList = styled.ul`
   width: 100%;
+  margin: ${({margin}) => margin};
   display: flex;
   justify-content:center;
   align-items : center;
@@ -69,6 +70,7 @@ export const StComments = styled.form`
   display: ${({ display }) => display};
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: ${({ alignItems }) => alignItems};
+  border-top: ${({borderTop}) => borderTop};
 `;
 
 export const StCommentsArea = styled.textarea`

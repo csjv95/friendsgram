@@ -8,18 +8,22 @@ import {
   StSendIcon,
   StBookmarkIcon,
   StSmileIocn,
-  StLine,
 } from "../../Global/StIcon/StIcon";
 import ImageSlider from "../../Global/ImageSlider/ImageSlider";
 import time from "../../service/time/time";
 import getMatchUid from "../../service/usersData/getMatchUid";
 import {
+  StFunctionList,
+  StPostFunction,
   StPostHeader,
   StProfileContainer,
   StProfileId,
   StProfileInfo,
   StProfileLocation,
+  StComments,
+  StCommentsArea,
 } from "../../Global/StPost/StPost";
+import { Theme } from "../../style/Theme";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -39,47 +43,18 @@ const ImageSliderContainer = styled.div`
   height: 40.5em;
 `;
 
-const StHomeArticleFuntion = styled.section`
-  padding: 0.5em;
-  & > :nth-child(n) {
-    margin-bottom: 0.3em;
-  }
-`;
-
-const StHomeIconBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const StHomeIconBoxUl = styled.ul`
-  display: flex;
-`;
-
-const StHomeIconBoxLi = styled.li`
-  margin-right: 0.8em;
-`;
-
-const StComments = styled.form`
-  padding: 0 0.5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid ${({ theme }) => theme.colors.borderColor};
-`;
-
-const StCommentsArea = styled.textarea`
-  margin: 0 1em;
-  padding: 1.3em 0.5em 0.5em 0.5em;
-  flex-grow: 1;
-  background-color: ${({ theme }) => theme.colors.contentColor};
-`;
-
-const HomeArticle = ({ article, userData }) => {
+const PostCol = ({ article, userData }) => {
+  const [match, setMatchUser] = useState({});
   const { imgsData, noComments, timestamp, text, location, uid } = article;
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const { photoURL } = userData;
-  const [match, setMatchUser] = useState({});
+
+  const functionList = [
+    <StHeartIcon width="2em" />,
+    <StChatbubbleIcon width="2em" />,
+    <StSendIcon width="2em" />,
+    <StBookmarkIcon width="2em" />,
+  ];
 
   useEffect(() => {
     getMatchUid(uid, setMatchUser);
@@ -99,43 +74,54 @@ const HomeArticle = ({ article, userData }) => {
           alignItems="center"
         >
           <StProfileImg src={photoURL} alt="my profile img" height="100%" />
-          <StProfileInfo margin="0 0 0 1em" display="flex" flexDirection="column">
-            <StProfileId>{match.displayName}</StProfileId>
-            <StProfileLocation>{location}</StProfileLocation>
+          <StProfileInfo
+            margin="0 0 0 1em"
+            display="flex"
+            flexDirection="column"
+          >
+            <StProfileId fontWeight="600">{match.displayName}</StProfileId>
+            <StProfileLocation fontSize="0.7em">{location}</StProfileLocation>
           </StProfileInfo>
         </StProfileContainer>
         <button>
           <StMenuIcon width="1.5" />
         </button>
       </StPostHeader>
+
       <StHomeArticle>
         <ImageSliderContainer>
           <ImageSlider imgs={imgs} />
         </ImageSliderContainer>
-        <StLine />
-        <StHomeArticleFuntion>
-          <StHomeIconBox>
-            <StHomeIconBoxUl>
-              <StHomeIconBoxLi>
-                <StHeartIcon width="1.5" />
-              </StHomeIconBoxLi>
-              <StHomeIconBoxLi>
-                <StChatbubbleIcon width="1.5" />
-              </StHomeIconBoxLi>
-              <StHomeIconBoxLi>
-                <StSendIcon width="1.5" />
-              </StHomeIconBoxLi>
-            </StHomeIconBoxUl>
-            <StBookmarkIcon width="2" />
-          </StHomeIconBox>
+
+        <StPostFunction padding="1em">
+          <StFunctionList margin="0 0 0.5em 0 ">
+            {functionList.map((ftn) => (
+              <li>
+                <button>{ftn}</button>
+              </li>
+            ))}
+          </StFunctionList>
           <div>좋아요 136</div>
+          <div>comment</div>
           <div>{text}</div>
           <div>{time(timestamp)}</div>
-        </StHomeArticleFuntion>
+        </StPostFunction>
+
         {!noComments && (
-          <StComments>
-            <StSmileIocn width="1.5" />
-            <StCommentsArea placeholder="댓글 달기..."></StCommentsArea>
+          <StComments
+            padding="0.5em 1em"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            borderTop={`1px solid ${Theme.colors.borderColor}`}
+          >
+            <StSmileIocn width="1.5em" />
+            <StCommentsArea
+              placeholder="댓글 달기..."
+              margin="0 1em"
+              padding="1em 0 0 0 "
+              flexGrow="1"
+            />
             <button>게시</button>
           </StComments>
         )}
@@ -144,4 +130,4 @@ const HomeArticle = ({ article, userData }) => {
   );
 };
 
-export default HomeArticle;
+export default PostCol;

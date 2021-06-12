@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 import getPostData from "../../service/fireStore/getPostData";
-import HomeArticle from "./HomeArticle";
+import PostCol from "./PostCol";
 import HomeFollow from "./HomeFollow";
 
 const StHomeContainer = styled.section`
@@ -33,7 +33,7 @@ const Home = ({ userData, usersList, followingList }) => {
       <StHomeContainer>
         <StArticleList>
           {postData.map((article, index) => (
-            <HomeArticle key={index} article={article} userData={userData} followingList={followingList} />
+            <PostCol key={index} article={article} userData={userData} followingList={followingList} />
           ))}
         </StArticleList>
         <StFollowerCotainer>

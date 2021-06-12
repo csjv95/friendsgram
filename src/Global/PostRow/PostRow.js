@@ -54,7 +54,6 @@ const PostRow = ({ post }) => {
     getUserData(uid, setUserData);
   }, [uid]);
 
-  
   return (
     <>
       <StPostArticle>
@@ -75,7 +74,11 @@ const PostRow = ({ post }) => {
             alignItems="center"
           >
             <StProfileImg src={photoURL} alt="profile img" height="100%" />
-            <StProfileInfo margin="0 0 0 1em" display="flex" flexDirection="column">
+            <StProfileInfo
+              margin="0 0 0 1em"
+              display="flex"
+              flexDirection="column"
+            >
               <StProfileId>{displayName}</StProfileId>
               <StProfileLocation>{location}</StProfileLocation>
             </StProfileInfo>
@@ -92,15 +95,11 @@ const PostRow = ({ post }) => {
           댓글
         </StPostText>
 
-        <StPostFunction
-          padding="1em"
-          display="flex"
-          borderBottom={`1px solid ${Theme.colors.borderColor}`}
-        >
-          <StFunctionList>
-            {functionList.map((icon) => (
+        <StPostFunction padding="1em" display="flex">
+          <StFunctionList margin="0 0 0.5em 0 ">
+            {functionList.map((ftn) => (
               <li>
-                <button>{icon}</button>
+                <button>{ftn}</button>
               </li>
             ))}
           </StFunctionList>
@@ -113,6 +112,7 @@ const PostRow = ({ post }) => {
           display="flex"
           justifyContent="center"
           alignItems="center"
+          borderTop={`1px solid ${Theme.colors.borderColor}`}
         >
           <StSmileIocn width="1.5em" />
           <StCommentsArea
