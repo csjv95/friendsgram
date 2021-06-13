@@ -47,25 +47,29 @@ const ImageSliderContainer = styled.div`
   height: 40.5em;
 `;
 
-const PostCol = ({ article, userData }) => {
+const PostCol = ({ article, userData,currentUserUid }) => {
   const [match, setMatchUser] = useState({});
   const { imgsData, noComments, timestamp, text, location, uid, postId } =
     article;
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const { photoURL } = userData;
   const [heartData, setHeartData] = useState([]);
-
-  const functionList = [
-    <StHeartIcon width="2em" />,
-    <StChatbubbleIcon width="2em" />,
-    <StSendIcon width="2em" />,
-    <StBookmarkIcon width="2em" />,
-  ];
+ 
 
   useEffect(() => {
     getMatchUid(uid, setMatchUser);
     getHeart(postId, setHeartData);
   }, [uid, postId]);
+
+  
+
+  const functionList = [
+    {icon : heartData.includes(currentUserUid) ? <StHeartFill width="2em" color="red"/> : <StHeartIcon width="2em" />},
+    {icon :<StChatbubbleIcon width="2em" />},
+    {icon : <StSendIcon width="2em" />},
+    {icon :<StBookmarkIcon width="2em" />},
+  ];
+ 
 
   const clickHeart = () => {
     setHeart(postId, heartData);
@@ -124,7 +128,7 @@ const PostCol = ({ article, userData }) => {
                     selectFnc(index);
                   }}
                 >
-                  {ftn}
+                  {ftn.icon}
                 </button>
               </li>
             ))}
@@ -134,7 +138,7 @@ const PostCol = ({ article, userData }) => {
           <div>{text}</div>
           <div>{time(timestamp)}</div>
         </StPostFunction>
-        {console.log(functionList)}
+        
         {!noComments && (
           <StComments
             padding="0.5em 1em"

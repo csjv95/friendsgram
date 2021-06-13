@@ -7,7 +7,7 @@ import MyProfile from "../../componet/MyProfile/MyProfile";
 import Upload from "../../componet/Upload/Upload";
 import Suggest from "../../componet/Suggest/Suggest";
 
-const NavRouter = ({ userData, usersList, followingList, followerList }) => {
+const NavRouter = ({ userData, usersList, followingList, followerList,currentUserUid }) => {
   return (
     <Switch>
       <Route exact path="/">
@@ -15,6 +15,7 @@ const NavRouter = ({ userData, usersList, followingList, followerList }) => {
           userData={userData}
           usersList={usersList}
           followingList={followingList}
+          currentUserUid={currentUserUid}
         />
       </Route>
       <Route path="/direct" component={Direct} />
