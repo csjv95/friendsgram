@@ -3,8 +3,10 @@ import { HomeAlt } from "@styled-icons/boxicons-regular/HomeAlt";
 import { Send } from "@styled-icons/feather/Send";
 import { Compass2 } from "@styled-icons/icomoon/Compass2";
 import { Heart } from "@styled-icons/bootstrap/Heart";
+import { HeartFill } from "@styled-icons/bootstrap/HeartFill";
 import { Chatbubble } from "@styled-icons/ionicons-outline/Chatbubble";
 import { Bookmark } from "@styled-icons/bootstrap/Bookmark";
+import { BookmarkFill } from "@styled-icons/bootstrap/BookmarkFill";
 import { DotsHorizontalRounded } from "@styled-icons/boxicons-regular/DotsHorizontalRounded";
 import { Smile } from "@styled-icons/feather/Smile";
 import { FacebookSquare } from "@styled-icons/boxicons-logos/FacebookSquare";
@@ -25,7 +27,7 @@ import { Tag } from "@styled-icons/bootstrap/Tag";
 import { Clear } from "@styled-icons/material/Clear";
 import { DotFill } from "@styled-icons/octicons/DotFill";
 import { ArrowIosBackOutline } from "@styled-icons/evaicons-outline/ArrowIosBackOutline";
-import {ArrowIosForwardOutline} from"@styled-icons/evaicons-outline/ArrowIosForwardOutline";
+import { ArrowIosForwardOutline } from "@styled-icons/evaicons-outline/ArrowIosForwardOutline";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -43,12 +45,23 @@ export const StHeartIcon = styled(Heart)`
   width: ${({ width }) => width}em;
 `;
 
+export const StHeartFill = styled(HeartFill)`
+  width: ${({ width }) => width}em;
+  color: ${({ color }) => color};
+`;
+
 export const StChatbubbleIcon = styled(Chatbubble)`
   width: ${({ width }) => width}em;
 `;
+
 export const StBookmarkIcon = styled(Bookmark)`
   width: ${({ width }) => width}em;
 `;
+
+export const StBookmarkFill = styled(BookmarkFill)`
+ width: ${({ width }) => width}em;
+  color: ${({ color }) => color};
+`
 
 export const StMenuIcon = styled(DotsHorizontalRounded)`
   width: ${({ width }) => width}em;
@@ -165,4 +178,4 @@ export const StArrowRight = styled(ArrowIosForwardOutline)`
   width: ${({ width }) => width};
   color: ${({ color }) => color};
   background-color: ${({ bgColor }) => bgColor};
-`
+`;

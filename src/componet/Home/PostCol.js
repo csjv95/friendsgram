@@ -10,6 +10,7 @@ import {
   StMenuIcon,
   StChatbubbleIcon,
   StHeartIcon,
+  StHeartFill,
   StSendIcon,
   StBookmarkIcon,
   StSmileIocn,
@@ -25,6 +26,8 @@ import {
   StComments,
   StCommentsArea,
 } from "../../Global/StPost/StPost";
+import getHeart from "../../service/heart/getHeart";
+import setHeart from "../../service/heart/setHeart";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -46,9 +49,11 @@ const ImageSliderContainer = styled.div`
 
 const PostCol = ({ article, userData }) => {
   const [match, setMatchUser] = useState({});
-  const { imgsData, noComments, timestamp, text, location, uid } = article;
+  const { imgsData, noComments, timestamp, text, location, uid, postId } =
+    article;
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const { photoURL } = userData;
+  const [heartData, setHeartData] = useState([]);
 
   const functionList = [
     <StHeartIcon width="2em" />,
@@ -59,7 +64,23 @@ const PostCol = ({ article, userData }) => {
 
   useEffect(() => {
     getMatchUid(uid, setMatchUser);
-  }, [uid]);
+    getHeart(postId, setHeartData);
+  }, [uid, postId]);
+
+  const clickHeart = () => {
+    setHeart(postId, heartData);
+  };
+
+  const selectFnc = (index) => {
+    if (index === 0) {
+      clickHeart();
+    } else if (index === 3) {
+      console.log("bookMark");
+    } else {
+      return;
+    }
+  };
+
   return (
     <StArticleItem>
       <StPostHeader
@@ -98,16 +119,22 @@ const PostCol = ({ article, userData }) => {
           <StFunctionList margin="0 0 0.5em 0 ">
             {functionList.map((ftn, index) => (
               <li key={index}>
-                <button>{ftn}</button>
+                <button
+                  onClick={() => {
+                    selectFnc(index);
+                  }}
+                >
+                  {ftn}
+                </button>
               </li>
             ))}
           </StFunctionList>
-          <div>좋아요 136</div>
+          <div>{`좋아요 ${heartData.length}개`}</div>
           <div>comment</div>
           <div>{text}</div>
           <div>{time(timestamp)}</div>
         </StPostFunction>
-
+        {console.log(functionList)}
         {!noComments && (
           <StComments
             padding="0.5em 1em"

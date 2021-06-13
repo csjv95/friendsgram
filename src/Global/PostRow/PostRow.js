@@ -43,7 +43,7 @@ const PostRow = ({ post }) => {
   const { uid, text, timestamp } = post;
   const [userData, setUserData] = useState([]);
   const { photoURL, displayName, location } = userData;
-
+  
   const functionList = [
     <StHeartIcon width="2em" />,
     <StChatbubbleIcon width="2em" />,

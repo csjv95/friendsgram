@@ -16,3 +16,4 @@ const getFollowingList = async (setFollowingList) => {
 }
 
 export default getFollowingList;
+
