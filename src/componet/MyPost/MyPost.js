@@ -28,6 +28,7 @@ const MyPost = ({ myPostData }) => {
   const post = document.getElementById("post");
   const [postModal, setPostModal] = useState(false);
   const [postId, setPostId] = useState("");
+  
   const handlePost = (postId) => {
     setPostModal(!postModal);
   };

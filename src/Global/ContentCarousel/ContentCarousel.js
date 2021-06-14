@@ -46,15 +46,14 @@ const ContentCarousel = ({ content, postId }) => {
     }%)`;
     setCurContent(curContent + 1);
   };
-
-  const ClickContent = () => {
-    contentRef.current.style.transform = `translateX(${-100 * postId}%)`;
-    setCurContent(postId);
-  };
-  
+ 
   useEffect(() => {
+    const ClickContent = () => {
+      contentRef.current.style.transform = `translateX(${-100 * postId}%)`;
+      setCurContent(postId);
+    };
     ClickContent();
-  },[]);
+  },[postId]);
 
   return (
     <StCarouselContainer>

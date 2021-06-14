@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
+import EmptyPage from "../../Global/EmptyPage/EmptyPage";
 import {
   StBookmarkIcon,
   StLine,
@@ -95,103 +96,112 @@ const StNavLink = styled(NavLink)`
 
 const MyProfile = ({ followingList, followerList }) => {
   const params = useParams();
-  const match = params.username; 
+  const match = params.username;
   const [matchUser, setMatchUser] = useState("");
   const [myPostData, setMyPostData] = useState([]);
-  const { name, displayName, photoURL, introduction } = matchUser;
-  
+
   useEffect(() => {
     getMatchDisplayName(match, setMatchUser);
-    getMyPost(setMyPostData, match);
+    getMyPost(setMyPostData, match)
   }, [match]);
 
   return (
-    <StMainRouterSection>
-      <StpPofileContainer>
-        <StTopSection>
-          <StProfileImg src={photoURL} alt="my-profile-img" height="10em" />
-          <StInformation>
-            <StInfoTop>
-              <li>{displayName}</li>
-              <Link to="/edit">
-                <StEditor>프로필 편집</StEditor>
-              </Link>
+    <>
+      {matchUser ? (
+        <StMainRouterSection>
+          <StpPofileContainer>
+            <StTopSection>
+              <StProfileImg
+                src={matchUser.photoURL}
+                alt="my-profile-img"
+                height="10em"
+              />
+              <StInformation>
+                <StInfoTop>
+                  <li>{matchUser.displayName}</li>
+                  <Link to="/edit">
+                    <StEditor>프로필 편집</StEditor>
+                  </Link>
 
-              <li>
-                <StSettings width="1" />
-              </li>
-            </StInfoTop>
-            <StInfoMid>
-              <li>게시물 {myPostData.length}</li>
-              <li>팔로워 {followingList.length}</li>
-              <li>팔로우 {followerList.length}</li>
-            </StInfoMid>
-            <StInfoBottom>
-              <li>{name}</li>
-              {introduction ? (
-                <li>{introduction}</li>
-              ) : (
-                <div>나를 소개해주세요</div>
-              )}
-            </StInfoBottom>
-          </StInformation>
-        </StTopSection>
-        <StLine />
-        
-        <nav>
-          <StNavUl>
-            <li>
-              <StNavLink
-                exact
-                to={`/${displayName}`}
-                activeStyle={{
-                  borderTop: "1px solid",
-                }}
-              >
-                <StTable width="1" />
-                <div>게시물</div>
-              </StNavLink>
-            </li>
-            <li>
-              <StNavLink
-                to={`/${displayName}/chanel`}
-                activeStyle={{
-                  borderTop: "1px solid",
-                }}
-              >
-                <StTv width="1" />
-                <div>IGTV</div>
-              </StNavLink>
-            </li>
-            <li>
-              <StNavLink
-                to={`/${displayName}/saved`}
-                activeStyle={{
-                  borderTop: "1px solid",
-                }}
-              >
-                <StBookmarkIcon width="1" />
-                <div>저장됨</div>
-              </StNavLink>
-            </li>
-            <li>
-              <StNavLink
-                to={`/${displayName}/tagged`}
-                activeStyle={{
-                  borderTop: "1px solid",
-                }}
-              >
-                <StTag width="1" />
-                <div>태그됨</div>
-              </StNavLink>
-            </li>
-          </StNavUl>
-        </nav>
-        <section>
-          <MyProfileRouter matchUser={matchUser} myPostData={myPostData} />
-        </section>
-      </StpPofileContainer>
-    </StMainRouterSection>
+                  <li>
+                    <StSettings width="1" />
+                  </li>
+                </StInfoTop>
+                <StInfoMid>
+                  <li>게시물 {myPostData.length}</li>
+                  <li>팔로워 {followingList.length}</li>
+                  <li>팔로우 {followerList.length}</li>
+                </StInfoMid>
+                <StInfoBottom>
+                  <li>{matchUser.name}</li>
+                  {matchUser.introduction ? (
+                    <li>{matchUser.introduction}</li>
+                  ) : (
+                    <div>나를 소개해주세요</div>
+                  )}
+                </StInfoBottom>
+              </StInformation>
+            </StTopSection>
+            <StLine />
+
+            <nav>
+              <StNavUl>
+                <li>
+                  <StNavLink
+                    exact
+                    to={`/${matchUser.displayName}`}
+                    activeStyle={{
+                      borderTop: "1px solid",
+                    }}
+                  >
+                    <StTable width="1" />
+                    <div>게시물</div>
+                  </StNavLink>
+                </li>
+                <li>
+                  <StNavLink
+                    to={`/${matchUser.displayName}/chanel`}
+                    activeStyle={{
+                      borderTop: "1px solid",
+                    }}
+                  >
+                    <StTv width="1" />
+                    <div>IGTV</div>
+                  </StNavLink>
+                </li>
+                <li>
+                  <StNavLink
+                    to={`/${matchUser.displayName}/saved`}
+                    activeStyle={{
+                      borderTop: "1px solid",
+                    }}
+                  >
+                    <StBookmarkIcon width="1" />
+                    <div>저장됨</div>
+                  </StNavLink>
+                </li>
+                <li>
+                  <StNavLink
+                    to={`/${matchUser.displayName}/tagged`}
+                    activeStyle={{
+                      borderTop: "1px solid",
+                    }}
+                  >
+                    <StTag width="1" />
+                    <div>태그됨</div>
+                  </StNavLink>
+                </li>
+              </StNavUl>
+            </nav>
+            <section>
+              <MyProfileRouter matchUser={matchUser} myPostData={myPostData} />
+            </section>
+          </StpPofileContainer>
+        </StMainRouterSection>
+      ) : (
+        <EmptyPage />
+      )}
+    </>
   );
 };
 

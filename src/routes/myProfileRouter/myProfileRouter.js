@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import MyPost from "../../componet/MyPost/MyPost";
 
 const MyProfileRouter = ({matchUser, myPostData,handlePost}) => {
-  const {displayName} = matchUser
+  const {displayName,uid} = matchUser
   
   return (
     <Switch>

@@ -6,6 +6,7 @@ import Home from "../../componet/Home/Home";
 import MyProfile from "../../componet/MyProfile/MyProfile";
 import Upload from "../../componet/Upload/Upload";
 import Suggest from "../../componet/Suggest/Suggest";
+import EmptyPage from "../../Global/EmptyPage/EmptyPage";
 
 const NavRouter = ({ userData, usersList, followingList, followerList,currentUserUid }) => {
   return (
@@ -33,7 +34,7 @@ const NavRouter = ({ userData, usersList, followingList, followerList,currentUse
       <Route path="/:username">
         <MyProfile followingList={followingList} followerList={followerList} />
       </Route>
-      <Route render={() => <div>페이지를 찾을 수 없습니다.</div>} />
+      <Route render={() => <EmptyPage />} />
     </Switch>
   );
 };
