@@ -5,15 +5,13 @@ const setHeart = async (postId, heartData) => {
   const heart = firebaseStore.collection("heart").doc(postId);
   const isHeart = heartData.includes(currentUserUid);
 
-  if (isHeart) {
-    heart.update({
-      uid: firebase.firestore.FieldValue.arrayRemove(currentUserUid),
-    });
-  } else {
-    heart.update({
-      uid: firebase.firestore.FieldValue.arrayUnion(currentUserUid),
-    });
-  }
+  isHeart
+    ? heart.update({
+        uid: firebase.firestore.FieldValue.arrayRemove(currentUserUid),
+      })
+    : heart.update({
+        uid: firebase.firestore.FieldValue.arrayUnion(currentUserUid),
+      });
 };
 
 export default setHeart;

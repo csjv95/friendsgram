@@ -10,8 +10,8 @@ const colors = {
   blue: "#6666f9",
   blueviolet : "#8a2be2",
   skyblue : "#87ceeb",
-  black: "#000000",
-  
+  red : "#ed4956",
+  black: "#262626",
 };
 
 export const Theme = {

@@ -31,6 +31,7 @@ const StPostForm = styled.form`
     padding: 0.5em 1em;
     font-weight: 600;
   }
+
   & > :nth-child(n + 2) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
   }
@@ -67,7 +68,7 @@ const StUploadInput = styled.input`
 `;
 
 const StUploadImg = styled.ul`
-  height: 300px;
+  height: 19em;
   margin: 1em;
   display: flex;
   flex-direction: column;
@@ -77,12 +78,12 @@ const StUploadImg = styled.ul`
 `;
 
 const StUploadImgPreview = styled.ul`
-  height: 300px;
+  height: 20em;
 `;
 
 const StImageSliderContainer = styled.div`
   width: 100%;
-  height: 280px;
+  height: 18em;
 `;
 
 const StUploadText = styled.ul`
@@ -98,6 +99,7 @@ const StTextarea = styled.textarea`
   border: none;
   resize: none;
 `;
+
 const StUploadLocation = styled.ul`
   display: flex;
   justify-content: space-between;

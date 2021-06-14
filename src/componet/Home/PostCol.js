@@ -14,6 +14,7 @@ import {
   StSendIcon,
   StBookmarkIcon,
   StSmileIocn,
+  StBookmarkFill,
 } from "../../Global/StIcon/StIcon";
 import {
   StFunctionList,
@@ -28,6 +29,8 @@ import {
 } from "../../Global/StPost/StPost";
 import getHeart from "../../service/heart/getHeart";
 import setHeart from "../../service/heart/setHeart";
+import getBookMark from "../../service/bookMark/getBookMark";
+import setBookMark from "../../service/bookMark/setBookMark";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -54,32 +57,34 @@ const PostCol = ({ article, userData,currentUserUid }) => {
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const { photoURL } = userData;
   const [heartData, setHeartData] = useState([]);
+  const [bookMarkData,setBookMarkData] =useState([]);
  
-
   useEffect(() => {
     getMatchUid(uid, setMatchUser);
     getHeart(postId, setHeartData);
+    getBookMark(postId,setBookMarkData);
   }, [uid, postId]);
 
-  
-
   const functionList = [
-    {icon : heartData.includes(currentUserUid) ? <StHeartFill width="2em" color="red"/> : <StHeartIcon width="2em" />},
-    {icon :<StChatbubbleIcon width="2em" />},
-    {icon : <StSendIcon width="2em" />},
-    {icon :<StBookmarkIcon width="2em" />},
+    {icon : heartData.includes(currentUserUid) ? <StHeartFill width="2" color={Theme.colors.red}/> : <StHeartIcon width="2" />},
+    {icon : <StChatbubbleIcon width="2" />},
+    {icon : <StSendIcon width="2" />},
+    {icon : bookMarkData.includes(currentUserUid) ? <StBookmarkFill width="2" color={Theme.colors.black}/> : <StBookmarkIcon width="2" />},
   ];
  
-
   const clickHeart = () => {
     setHeart(postId, heartData);
   };
+
+  const clickBookMark = () => {
+    setBookMark(postId,bookMarkData);
+  }
 
   const selectFnc = (index) => {
     if (index === 0) {
       clickHeart();
     } else if (index === 3) {
-      console.log("bookMark");
+      clickBookMark();
     } else {
       return;
     }
