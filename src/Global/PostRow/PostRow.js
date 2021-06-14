@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import getBookMark from "../../service/bookMark/getBookMark";
+import setBookMark from "../../service/bookMark/setBookMark";
+import getHeart from "../../service/heart/getHeart";
+import setHeart from "../../service/heart/setHeart";
 import time from "../../service/time/time";
 import getUserData from "../../service/usersData/getUserData";
 import { Theme } from "../../style/Theme";
 import ImageSlider from "../ImageSlider/ImageSlider";
 import {
   StBookmarkIcon,
+  StBookmarkFill,
   StChatbubbleIcon,
   StHeartIcon,
+  StHeartFill,
   StMenuIcon,
   StSendIcon,
   StSmileIocn,
@@ -28,32 +34,54 @@ import { StProfileImg } from "../StProfileImg/StProfileImg";
 
 const StPostArticle = styled.article`
   width: 65%;
-  height: 97%;  //밑에 nav보이기 위해서
+  height: 96%;  //밑에 nav보이기 위해서
 `;
 
 const StPostAside = styled.aside`
   width: 35%;
-  height: 97%;  //밑에 nav보이기 위해서
+  height: 96%;  //밑에 nav보이기 위해서
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
-const PostRow = ({ post }) => {
-  const { uid, text, timestamp } = post;
+const PostRow = ({ post,currentUserUid}) => {
+  const { uid, text, timestamp,postId } = post;
   const [userData, setUserData] = useState([]);
   const { photoURL, displayName, location } = userData;
+  const [heartData, setHeartData] = useState([]);
+  const [bookMarkData,setBookMarkData] =useState([]);
   
-  const functionList = [
-    <StHeartIcon width="2em" />,
-    <StChatbubbleIcon width="2em" />,
-    <StSendIcon width="2em" />,
-    <StBookmarkIcon width="2em" />,
-  ];
-
   useEffect(() => {
     getUserData(uid, setUserData);
-  }, [uid]);
+    getHeart(postId,setHeartData);
+    getBookMark(postId,setBookMarkData)
+  }, [uid,postId]);
+
+  const functionList = [
+    {icon : heartData.includes(currentUserUid) ? <StHeartFill width="2" color={Theme.colors.red}/> : <StHeartIcon width="2" />},
+    {icon : <StChatbubbleIcon width="2" />},
+    {icon : <StSendIcon width="2" />},
+    {icon : bookMarkData.includes(currentUserUid) ? <StBookmarkFill width="2" color={Theme.colors.black}/> : <StBookmarkIcon width="2" />},
+  ];
+
+  const clickHeart = () => {
+    setHeart(postId, heartData);
+  };
+
+  const clickBookMark = () => {
+    setBookMark(postId,bookMarkData);
+  }
+
+  const selectFnc = (index) => {
+    if (index === 0) {
+      clickHeart();
+    } else if (index === 3) {
+      clickBookMark();
+    } else {
+      return;
+    }
+  };
 
   return (
     <>
@@ -98,13 +126,19 @@ const PostRow = ({ post }) => {
 
         <StPostFunction padding="1em" display="flex">
           <StFunctionList margin="0 0 0.5em 0 ">
-            {functionList.map((ftn,index) => (
+          {functionList.map((ftn, index) => (
               <li key={index}>
-                <button>{ftn}</button>
+                <button
+                  onClick={() => {
+                    selectFnc(index);
+                  }}
+                >
+                  {ftn.icon}
+                </button>
               </li>
             ))}
           </StFunctionList>
-          <div>좋아요114</div>
+          <div>{`좋아요 ${heartData.length}개`}</div>
           <div>{time(timestamp)}</div>
         </StPostFunction>
 

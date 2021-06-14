@@ -32,7 +32,7 @@ const NavRouter = ({ userData, usersList, followingList, followerList,currentUse
         <Edit userData={userData} />
       </Route>
       <Route path="/:username">
-        <MyProfile followingList={followingList} followerList={followerList} />
+        <MyProfile followingList={followingList} followerList={followerList} currentUserUid={currentUserUid}/>
       </Route>
       <Route render={() => <EmptyPage />} />
     </Switch>

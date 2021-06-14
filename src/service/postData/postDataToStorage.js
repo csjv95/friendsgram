@@ -49,7 +49,7 @@ const postDataToStorage = async (imgs, postId, setProgressBar) => {
             });
           //porogressBar reset
           setProgressBar(0);
-          reload(1500);
+          
         }
       );
     });

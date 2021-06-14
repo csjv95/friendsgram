@@ -27,6 +27,7 @@ const Home = ({ userData, usersList, followingList, currentUserUid }) => {
   useEffect(() => {
     getPostData(setPostData, followingList);
   }, [followingList]);
+  
   return (
     <StMainRouterSection>
       <StHomeContainer>

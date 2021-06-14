@@ -29,7 +29,7 @@ const StCarouselItem = styled.li`
   height: 100%;
 `;
 
-const ContentCarousel = ({ content, postId }) => {
+const ContentCarousel = ({ content, postId,currentUserUid }) => {
   const [curContent, setCurContent] = useState(0);
   const contentRef = useRef();
 
@@ -62,7 +62,7 @@ const ContentCarousel = ({ content, postId }) => {
           {content.map((content) => (
             <StCarouselItem key={content.postId}>
               <StModalMain width="60em" height="37em" display="flex">
-                <PostRow post={content} />
+                <PostRow post={content} currentUserUid={currentUserUid} />
               </StModalMain>
             </StCarouselItem>
           ))}

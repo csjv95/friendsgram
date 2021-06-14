@@ -94,7 +94,7 @@ const StNavLink = styled(NavLink)`
   }
 `;
 
-const MyProfile = ({ followingList, followerList }) => {
+const MyProfile = ({ followingList, followerList,currentUserUid}) => {
   const params = useParams();
   const match = params.username;
   const [matchUser, setMatchUser] = useState("");
@@ -194,7 +194,7 @@ const MyProfile = ({ followingList, followerList }) => {
               </StNavUl>
             </nav>
             <section>
-              <MyProfileRouter matchUser={matchUser} myPostData={myPostData} />
+              <MyProfileRouter matchUser={matchUser} myPostData={myPostData} currentUserUid={currentUserUid}/>
             </section>
           </StpPofileContainer>
         </StMainRouterSection>

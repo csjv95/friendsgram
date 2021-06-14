@@ -5,6 +5,7 @@ const getPostData = async (setPostData, followingList) => {
   const getFollowingList = followingList;
   const postData = [];
 
+  
   getFollowingList.map(async (following) => {
     const followingPostData = firebaseStore
       .collection("post")

@@ -24,7 +24,7 @@ const StPostImg = styled.img`
   border-radius: 0.1em;
 `;
 
-const MyPost = ({ myPostData }) => {
+const MyPost = ({ myPostData,currentUserUid }) => {
   const post = document.getElementById("post");
   const [postModal, setPostModal] = useState(false);
   const [postId, setPostId] = useState("");
@@ -57,7 +57,7 @@ const MyPost = ({ myPostData }) => {
       ))}
       {postModal && (
         <ModalPotal potalName={post}>
-          <Post handlePost={handlePost} myPostData={myPostData} postId={postId}/>
+          <Post handlePost={handlePost} myPostData={myPostData} postId={postId} currentUserUid={currentUserUid}/>
         </ModalPotal>
       )}
     </StPostList>
