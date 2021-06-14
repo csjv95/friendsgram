@@ -29,7 +29,7 @@ const ChangeEdit = ({ userData }) => {
   } = userData;
 
   const [reUserData, setReUserData] = useState({});
-
+  console.log(reUserData.email)
   const onChangeInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
