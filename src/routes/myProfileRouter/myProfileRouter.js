@@ -10,7 +10,7 @@ const MyProfileRouter = ({
   currentUserUid,
 }) => {
   const { displayName } = matchUser;
-
+  
   return (
     <Switch>
       <Route exact path={`/${displayName}`}>

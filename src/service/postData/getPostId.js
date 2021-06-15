@@ -1,12 +1,9 @@
-import { firebaseStore, firebaseAuth } from "../firebase";
+import { firebaseStore } from "../firebase";
 
 export const getPostId = (setPostId) => {
-  const currentUserUid = firebaseAuth.currentUser.uid;
   const postId = firebaseStore
     .collection("post")
-    .doc(currentUserUid)
-    .collection("my-post")
-    .doc().id;
+    .doc().id
 
     setPostId(postId);
 };

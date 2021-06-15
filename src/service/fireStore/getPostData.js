@@ -5,15 +5,13 @@ const getPostData = async (setPostData, followingList) => {
   const getFollowingList = followingList;
   const postData = [];
 
-  
   getFollowingList.map(async (following) => {
     const followingPostData = firebaseStore
       .collection("post")
-      .doc(following)
-      .collection("my-post");
+      .where("uid","==",following)
 
     let data = [];
-
+    
     await followingPostData.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         data.push(doc.data());
@@ -25,8 +23,7 @@ const getPostData = async (setPostData, followingList) => {
   // 지금 followinglist = [A1f1CPUhmNPYQI8lUfDiVjuhxd43];
   const myPostData = firebaseStore
     .collection("post")
-    .doc(currentUserUid)
-    .collection("my-post");
+    .where("uid","==",currentUserUid)
 
   let data = [];
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import getMyBookMarkPostId from '../../service/bookMark/getMyBookMarkPostId';
+import getMyBookMarkPostId from '../../service/bookMark/getBookMarkPostId';
 
 const Saved = () => {
   const [bookMarkPosts, setBookMarkPosts] =useState([]);

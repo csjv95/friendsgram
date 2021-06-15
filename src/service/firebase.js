@@ -15,11 +15,11 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-
 const firebaseStore = firebaseApp.firestore();
 const firebaseAuth = firebaseApp.auth();
 const firebaseDatabase = firebaseApp.database();
 const firebaseStorage = firebaseApp.storage();
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
 
 export {
   firebase,

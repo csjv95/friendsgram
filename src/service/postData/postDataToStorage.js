@@ -37,8 +37,6 @@ const postDataToStorage = async (imgs, postId, setProgressBar) => {
 
           await firebaseStore
             .collection("post")
-            .doc(currentUserUid)
-            .collection("my-post")
             .doc(postId)
             .update({
               imgsData: firebase.firestore.FieldValue.arrayUnion({
@@ -49,7 +47,7 @@ const postDataToStorage = async (imgs, postId, setProgressBar) => {
             });
           //porogressBar reset
           setProgressBar(0);
-          
+          reload(1500);
         }
       );
     });

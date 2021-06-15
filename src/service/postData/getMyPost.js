@@ -1,6 +1,7 @@
-import { firebaseStore } from "../firebase";
+import { firebaseStore,firebaseAuth } from "../firebase";
 
 export const getMyPost = async (setMyPostData, match) => {
+  const currentUserUid = firebaseAuth.currentUser.uid;
   const postData = [];
   const matchUser = [];
 
@@ -14,8 +15,7 @@ export const getMyPost = async (setMyPostData, match) => {
 
   const myPost = firebaseStore
     .collection("post")
-    .doc(...matchUser)
-    .collection("my-post");
+    .where("uid","==",...matchUser)
 
   await myPost.get().then((post) => {
     post.forEach((data) => postData.push(data.data()));
@@ -24,5 +24,6 @@ export const getMyPost = async (setMyPostData, match) => {
   postData.sort((a, b) => {
     return b.timestamp - a.timestamp;
   });
+  
   setMyPostData(postData);
 };
