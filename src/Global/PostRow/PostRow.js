@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import getBookMark from "../../service/bookMark/getBookMark";
+import getBookMarkUid from "../../service/bookMark/getBookMarkUid";
 import setBookMark from "../../service/bookMark/setBookMark";
 import getHeart from "../../service/heart/getHeart";
 import setHeart from "../../service/heart/setHeart";
@@ -55,7 +55,7 @@ const PostRow = ({ post,currentUserUid}) => {
   useEffect(() => {
     getUserData(uid, setUserData);
     getHeart(postId,setHeartData);
-    getBookMark(postId,setBookMarkData)
+    getBookMarkUid(postId,setBookMarkData)
   }, [uid,postId]);
 
   const functionList = [

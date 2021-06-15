@@ -2,13 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const StEmty = styled.div`
-  width : 0;
-  height : 0;
-`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+  clip-path: polygon(0 0, 0 0, 0 0);
+`;
+
 const Empty = () => {
-  return (
-    <StEmty />
-  )
-}
+  return <StEmty />;
+};
 
 export default Empty;

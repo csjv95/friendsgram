@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
 import EmptyPage from "../../Global/EmptyPage/EmptyPage";
+import Empty from "../../Global/Empty/Empty";
 import {
   StBookmarkIcon,
   StLine,
@@ -94,7 +95,7 @@ const StNavLink = styled(NavLink)`
   }
 `;
 
-const MyProfile = ({ followingList, followerList,currentUserUid}) => {
+const MyProfile = ({ followingList, followerList, currentUserUid }) => {
   const params = useParams();
   const match = params.username;
   const [matchUser, setMatchUser] = useState("");
@@ -102,7 +103,7 @@ const MyProfile = ({ followingList, followerList,currentUserUid}) => {
 
   useEffect(() => {
     getMatchDisplayName(match, setMatchUser);
-    getMyPost(setMyPostData, match)
+    getMyPost(setMyPostData, match);
   }, [match]);
 
   return (
@@ -169,17 +170,21 @@ const MyProfile = ({ followingList, followerList,currentUserUid}) => {
                     <div>IGTV</div>
                   </StNavLink>
                 </li>
-                <li>
-                  <StNavLink
-                    to={`/${matchUser.displayName}/saved`}
-                    activeStyle={{
-                      borderTop: "1px solid",
-                    }}
-                  >
-                    <StBookmarkIcon width="1" />
-                    <div>저장됨</div>
-                  </StNavLink>
-                </li>
+                {currentUserUid === matchUser.uid ? (
+                  <li>
+                    <StNavLink
+                      to={`/${matchUser.displayName}/saved`}
+                      activeStyle={{
+                        borderTop: "1px solid",
+                      }}
+                    >
+                      <StBookmarkIcon width="1" />
+                      <div>저장됨</div>
+                    </StNavLink>
+                  </li>
+                ) : (
+                  <Empty />
+                )}
                 <li>
                   <StNavLink
                     to={`/${matchUser.displayName}/tagged`}
@@ -194,7 +199,11 @@ const MyProfile = ({ followingList, followerList,currentUserUid}) => {
               </StNavUl>
             </nav>
             <section>
-              <MyProfileRouter matchUser={matchUser} myPostData={myPostData} currentUserUid={currentUserUid}/>
+              <MyProfileRouter
+                matchUser={matchUser}
+                myPostData={myPostData}
+                currentUserUid={currentUserUid}
+              />
             </section>
           </StpPofileContainer>
         </StMainRouterSection>

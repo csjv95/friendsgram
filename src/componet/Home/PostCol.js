@@ -29,7 +29,7 @@ import {
 } from "../../Global/StPost/StPost";
 import getHeart from "../../service/heart/getHeart";
 import setHeart from "../../service/heart/setHeart";
-import getBookMark from "../../service/bookMark/getBookMark";
+import getBookMarkUid from "../../service/bookMark/getBookMarkUid";
 import setBookMark from "../../service/bookMark/setBookMark";
 
 const StArticleItem = styled.li`
@@ -62,7 +62,7 @@ const PostCol = ({ article, userData,currentUserUid }) => {
   useEffect(() => {
     getMatchUid(uid, setMatchUser);
     getHeart(postId, setHeartData);
-    getBookMark(postId,setBookMarkData);
+    getBookMarkUid(postId,setBookMarkData);
   }, [uid, postId]);
 
   const functionList = [
