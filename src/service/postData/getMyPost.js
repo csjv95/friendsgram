@@ -1,7 +1,6 @@
-import { firebaseStore,firebaseAuth } from "../firebase";
+import { firebaseStore } from "../firebase";
 
 export const getMyPost = async (setMyPostData, match) => {
-  const currentUserUid = firebaseAuth.currentUser.uid;
   const postData = [];
   const matchUser = [];
 

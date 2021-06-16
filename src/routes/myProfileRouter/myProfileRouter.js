@@ -8,9 +8,10 @@ const MyProfileRouter = ({
   myPostData,
   handlePost,
   currentUserUid,
+  bookMarkPostId,
+  bookMarkPost,
 }) => {
   const { displayName } = matchUser;
-  
   return (
     <Switch>
       <Route exact path={`/${displayName}`}>
@@ -24,7 +25,7 @@ const MyProfileRouter = ({
         <div>chanel</div>
       </Route>
       <Route path={`/${displayName}/saved`}>
-        <Saved />
+        <Saved bookMarkPostId={bookMarkPostId} bookMarkPost={bookMarkPost}/>
       </Route>
       <Route path={`/${displayName}/tagged`}>
         <div>tagged</div>

@@ -8,7 +8,7 @@ import Upload from "../../componet/Upload/Upload";
 import Suggest from "../../componet/Suggest/Suggest";
 import EmptyPage from "../../Global/EmptyPage/EmptyPage";
 
-const NavRouter = ({ userData, usersList, followingList, followerList,currentUserUid }) => {
+const NavRouter = ({ userData, usersList, followingList, followerList,currentUserUid,bookMarkPostId }) => {
   return (
     <Switch>
       <Route exact path="/">
@@ -32,7 +32,7 @@ const NavRouter = ({ userData, usersList, followingList, followerList,currentUse
         <Edit userData={userData} />
       </Route>
       <Route path="/:username">
-        <MyProfile followingList={followingList} followerList={followerList} currentUserUid={currentUserUid}/>
+        <MyProfile followingList={followingList} followerList={followerList} currentUserUid={currentUserUid} bookMarkPostId={bookMarkPostId}/>
       </Route>
       <Route render={() => <EmptyPage />} />
     </Switch>

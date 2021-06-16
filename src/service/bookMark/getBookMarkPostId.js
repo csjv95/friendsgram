@@ -1,20 +1,19 @@
 import { firebaseStore, firebaseAuth } from "../firebase";
 
-const getMyBookMarkPostId = async (setBookMarkPosts) => {
+const getBookMarkPostId = async (setBookMarkPostId) => {
   const currentUserUid = firebaseAuth.currentUser.uid;
+  const myBookMarkMap = [];
 
   const bookmarkCollection = firebaseStore
     .collection("bookMark")
     .where("uid", "array-contains", currentUserUid);
 
-  const myBookMarkMap = [];
-
- await bookmarkCollection.get().then(item => {
-    item.forEach(doc => {
+  await bookmarkCollection.get().then((item) => {
+    item.forEach((doc) => {
       myBookMarkMap.push(doc.data().postId);
-    })
-  })
-  setBookMarkPosts(myBookMarkMap)
+    });
+  });
+  setBookMarkPostId(myBookMarkMap);
 };
 
-export default getMyBookMarkPostId;
+export default getBookMarkPostId;

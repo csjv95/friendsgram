@@ -159,7 +159,11 @@ const Header = ({ handleUpload, userData, usersList }) => {
             </NavLink>
           </StHeaderNavUlLi>
           <StHeaderNavUlLi>
-            <button onClick={() => {handleUpload()}}>
+            <button
+              onClick={() => {
+                handleUpload();
+              }}
+            >
               <StPlusSquare width="1.5" />
             </button>
           </StHeaderNavUlLi>

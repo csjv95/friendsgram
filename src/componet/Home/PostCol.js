@@ -64,7 +64,7 @@ const PostCol = ({ article, userData,currentUserUid }) => {
     getHeart(postId, setHeartData);
     getBookMarkUid(postId,setBookMarkData);
   }, [uid, postId]);
-  console.log(imgsData)
+
   const functionList = [
     {icon : heartData.includes(currentUserUid) ? <StHeartFill width="2" color={Theme.colors.red}/> : <StHeartIcon width="2" />},
     {icon : <StChatbubbleIcon width="2" />},

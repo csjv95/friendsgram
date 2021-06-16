@@ -1,8 +1,19 @@
-import { firebaseStore, firebaseAuth } from "../firebase"; 
+import { firebaseStore } from "../firebase";
 
-const getBookMarkPost = (postId) => {
+const getBookMarkPost = async (bookMarkPostId, setBookMarkPost) => {
+  const sum = [];
+  await bookMarkPostId.map((postId) =>
+    firebaseStore
+      .collection("post")
+      .where("postId", "==", postId)
+      .get()
+      .then((item) => {
+        item.forEach((doc) => {
+          sum.push(doc.data());
+        });
+      })
+  );
+  setBookMarkPost(sum);
+};
 
-  const BookMarkPosts = firebaseStore.collection('')
-}
-
-export default getBookMarkPost
+export default getBookMarkPost;

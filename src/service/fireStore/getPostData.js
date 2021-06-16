@@ -20,7 +20,6 @@ const getPostData = async (setPostData, followingList) => {
     postData.push(...data);
   });
 
-  // 지금 followinglist = [A1f1CPUhmNPYQI8lUfDiVjuhxd43];
   const myPostData = firebaseStore
     .collection("post")
     .where("uid","==",currentUserUid)
@@ -33,12 +32,12 @@ const getPostData = async (setPostData, followingList) => {
     });
   });
   postData.push(...data);
-
+  
   // sort를 이용해서 timestamp로 내림차순으로 정렬
   postData.sort((a,b) => {
     return b.timestamp - a.timestamp;
   })
-
+  
   setPostData(postData);
 };
 

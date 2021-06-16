@@ -6,13 +6,13 @@ import Profiles from "../Home/Profiles";
 
 const SearchProfile = ({ user }) => {
   const [match, setMatchUserData] = useState([]);
-  
+
   useEffect(() => {
     getMatchDisplayName(user, setMatchUserData);
   }, [user]);
 
   const onClick = () => {
-    setSearchRecord(match.displayName)
+    setSearchRecord(match.displayName);
   };
 
   return (

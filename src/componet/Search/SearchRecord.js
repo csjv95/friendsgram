@@ -13,9 +13,9 @@ const StSearchList = styled.ul`
 `;
 
 const StSearchListBottome = styled.ul`
-  display : flex;
+  display: flex;
   flex-direction: column;
-`
+`;
 
 const StTitle = styled.h1`
   font-size: 1em;
@@ -30,7 +30,7 @@ const SearchRecord = () => {
 
   const allClearBtn = () => {
     searchRecordAllClear();
-  }
+  };
 
   return (
     <>
@@ -51,10 +51,10 @@ const SearchRecord = () => {
         </li>
       </StSearchList>
       <StSearchListBottome>
-          {record.map((user) => (
-            <RecordProfile key={user} user={user} />
-          ))}
-        </StSearchListBottome>
+        {record.map((user) => (
+          <RecordProfile key={user} user={user} />
+        ))}
+      </StSearchListBottome>
     </>
   );
 };

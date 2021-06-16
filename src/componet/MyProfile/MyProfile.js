@@ -16,6 +16,7 @@ import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import MyProfileRouter from "../../routes/myProfileRouter/myProfileRouter";
 import { getMyPost } from "../../service/postData/getMyPost";
 import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
+import getBookMarkPost from "../../service/bookMark/getBookMarkPost";
 
 const StpPofileContainer = styled.section`
   margin: 0 auto;
@@ -95,17 +96,20 @@ const StNavLink = styled(NavLink)`
   }
 `;
 
-const MyProfile = ({ followingList, followerList, currentUserUid }) => {
+const MyProfile = ({ followingList, followerList, currentUserUid,bookMarkPostId }) => {
   const params = useParams();
   const match = params.username;
   const [matchUser, setMatchUser] = useState("");
   const [myPostData, setMyPostData] = useState([]);
+  const [bookMarkPost, setBookMarkPost] = useState([]);
 
   useEffect(() => {
     getMatchDisplayName(match, setMatchUser);
     getMyPost(setMyPostData, match);
-  }, [match]);
+    getBookMarkPost(bookMarkPostId,setBookMarkPost);
+  }, [match,bookMarkPostId]);
 
+  
   return (
     <>
       {matchUser ? (
@@ -203,6 +207,8 @@ const MyProfile = ({ followingList, followerList, currentUserUid }) => {
                 matchUser={matchUser}
                 myPostData={myPostData}
                 currentUserUid={currentUserUid}
+                bookMarkPostId={bookMarkPostId}
+                bookMarkPost={bookMarkPost}
               />
             </section>
           </StpPofileContainer>
