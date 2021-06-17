@@ -40,7 +40,7 @@ const MyPost = ({ myPostData, currentUserUid,handlePost,postModal,post }) => {
         <ModalPotal potalName={post}>
           <Post
             handlePost={handlePost}
-            content={myPostData}
+            myPostData={myPostData}
             postId={postId}
             currentUserUid={currentUserUid}
           />

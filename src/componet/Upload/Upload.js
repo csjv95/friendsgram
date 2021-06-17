@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StCloseIcon, StMap, StUpload } from "../../Global/StIcon/StIcon";
 import ImageSlider from "../../Global/ImageSlider/ImageSlider";

@@ -116,10 +116,11 @@ const MyProfile = ({
     getBookMarkPost(bookMarkPostId, setBookMarkPost);
   }, [match, bookMarkPostId]);
 
+  console.log(myPostData);
   const handlePost = () => {
     setPostModal(!postModal);
   };
-
+  
   return (
     <>
       {matchUser ? (

@@ -10,7 +10,6 @@ const MyProfileRouter = ({
   postModal,
   handlePost,
   currentUserUid,
-  bookMarkPostId,
   bookMarkPost,
 }) => {
   const { displayName } = matchUser;
@@ -34,7 +33,6 @@ const MyProfileRouter = ({
           postModal={postModal}
           handlePost={handlePost}
           bookMarkPost={bookMarkPost}
-          currentUserUid={currentUserUid}
         />
       </Route>
       <Route path={`/${displayName}/tagged`}>

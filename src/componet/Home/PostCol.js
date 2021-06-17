@@ -60,8 +60,8 @@ const PostCol = ({ article, userData,currentUserUid }) => {
   const [bookMarkData,setBookMarkData] =useState([]);
  
   useEffect(() => {
-    getMatchUid(uid, setMatchUser);
     getHeart(postId, setHeartData);
+    getMatchUid(uid, setMatchUser);
     getBookMarkUid(postId,setBookMarkData);
   }, [uid, postId]);
 

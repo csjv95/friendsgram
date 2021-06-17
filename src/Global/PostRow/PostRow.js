@@ -55,8 +55,9 @@ const PostRow = ({ post,currentUserUid}) => {
   useEffect(() => {
     getUserData(uid, setUserData);
     getHeart(postId,setHeartData);
-    getBookMarkUid(postId,setBookMarkData)
+    getBookMarkUid(postId,setBookMarkData);
   }, [uid,postId]);
+  
 
   const functionList = [
     {icon : heartData.includes(currentUserUid) ? <StHeartFill width="2" color={Theme.colors.red}/> : <StHeartIcon width="2" />},
@@ -64,7 +65,7 @@ const PostRow = ({ post,currentUserUid}) => {
     {icon : <StSendIcon width="2" />},
     {icon : bookMarkData.includes(currentUserUid) ? <StBookmarkFill width="2" color={Theme.colors.black}/> : <StBookmarkIcon width="2" />},
   ];
-
+  
   const clickHeart = () => {
     setHeart(postId, heartData);
   };

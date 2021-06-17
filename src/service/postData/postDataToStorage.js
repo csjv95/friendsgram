@@ -45,7 +45,6 @@ const postDataToStorage = async (imgs, postId, setProgressBar) => {
                 imgUrl,
               }),
             });
-          //porogressBar reset
           setProgressBar(0);
           reload(1500);
         }

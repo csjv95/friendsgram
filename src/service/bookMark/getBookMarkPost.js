@@ -2,6 +2,7 @@ import { firebaseStore } from "../firebase";
 
 const getBookMarkPost = async (bookMarkPostId, setBookMarkPost) => {
   const sum = [];
+  
   await bookMarkPostId.map((postId) =>
     firebaseStore
       .collection("post")

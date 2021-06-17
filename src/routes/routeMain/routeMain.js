@@ -14,6 +14,7 @@ import { authGetUid } from "../../service/auth/authGetUid";
 import ProgressBar from "../../componet/ProgressBar/ProgressBar";
 import Message from "../../Global/Message/Message";
 import getBookMarkPostId from "../../service/bookMark/getBookMarkPostId";
+import PostMenu from "../../componet/PostMenu/PostMenu";
 // import Post from "../../componet/Post/Post";
 
 const AppContainer = styled.div`
@@ -28,16 +29,18 @@ const RouteMain = () => {
   const upload = document.getElementById("upload");
   const address = document.getElementById("address");
   const message = document.getElementById("message");
+  const postMenu = document.getElementById("postMenu");
   // const post = document.getElementById("post");
   const [currentUserUid, setCurrentUserUid] = useState("");
   const [userData, setUserData] = useState([]);
   const [usersList, setUsersList] = useState([]);
   const [followingList, setFollowingList] = useState([]); //
   const [followerList, setFollowerList] = useState([]);
-  const [bookMarkPostId ,setBookMarkPostId] =useState([]);
+  const [bookMarkPostId, setBookMarkPostId] = useState([]);
   const [uploadModal, setUploadModal] = useState(false);
   const [locationModal, setLocationModal] = useState(false);
   const [messageModal, setMessageModal] = useState(false);
+  const [postMenuModal, setPostMenuModal] = useState(true);
   // const [postModal, setPostModal] = useState(false);
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
@@ -51,25 +54,29 @@ const RouteMain = () => {
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-    getBookMarkPostId(setBookMarkPostId)
-  },[]);
-  
+    getBookMarkPostId(setBookMarkPostId);
+  }, []);
+
   const handleUpload = () => {
     setUploadModal(!uploadModal);
   };
-  
+
   const handleLocation = () => {
     setLocationModal(!locationModal);
   };
 
   const handleMessage = () => {
     setMessageModal(!message);
-  }
+  };
+
+  const handlePostMenu = () => {
+    setPostMenuModal(!postMenuModal);
+  };
 
   // const handlePost = () => {
   //   setPostModal(!postModal);
   // }
-  
+
   return (
     <AppContainer>
       {uploadModal && (
@@ -104,6 +111,12 @@ const RouteMain = () => {
           <Post handlePost={handlePost} myPostData/>
         </ModalPotal>
       )} */}
+
+      {postMenuModal && (
+        <ModalPotal potalName={postMenu}>
+         <PostMenu />
+        </ModalPotal>
+      )}
       {progressBar && <ProgressBar progressBar={progressBar} />}
       <Header
         handleUpload={handleUpload}
