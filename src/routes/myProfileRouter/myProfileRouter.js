@@ -4,8 +4,10 @@ import MyPost from "../../componet/MyPost/MyPost";
 import Saved from "../../componet/Saved/Saved";
 
 const MyProfileRouter = ({
+  post,
   matchUser,
   myPostData,
+  postModal,
   handlePost,
   currentUserUid,
   bookMarkPostId,
@@ -16,7 +18,9 @@ const MyProfileRouter = ({
     <Switch>
       <Route exact path={`/${displayName}`}>
         <MyPost
+          post={post}
           myPostData={myPostData}
+          postModal={postModal}
           handlePost={handlePost}
           currentUserUid={currentUserUid}
         />
@@ -25,7 +29,13 @@ const MyProfileRouter = ({
         <div>chanel</div>
       </Route>
       <Route path={`/${displayName}/saved`}>
-        <Saved bookMarkPostId={bookMarkPostId} bookMarkPost={bookMarkPost}/>
+        <Saved
+          post={post}
+          postModal={postModal}
+          handlePost={handlePost}
+          bookMarkPost={bookMarkPost}
+          currentUserUid={currentUserUid}
+        />
       </Route>
       <Route path={`/${displayName}/tagged`}>
         <div>tagged</div>

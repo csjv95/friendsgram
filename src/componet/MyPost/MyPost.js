@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { StImageMultiple } from "../../Global/StIcon/StIcon";
 import ModalPotal from "../../modal/ModalPotal";
 import Post from "../Post/Post";
@@ -10,23 +9,17 @@ import {
   StPostImg,
 } from "../../Global/StMyProfileRoute/StMyProfileRoute";
 
-const MyPost = ({ myPostData, currentUserUid }) => {
-  const post = document.getElementById("post");
-  const [postModal, setPostModal] = useState(false);
+const MyPost = ({ myPostData, currentUserUid,handlePost,postModal,post }) => {
   const [postId, setPostId] = useState("");
-
-  const handlePost = () => {
-    setPostModal(!postModal);
-  };
 
   return (
     <StPostList>
-      {myPostData.map((data) => (
+      {myPostData.map((data,postId) => (
         <StPostItem
-          key={data.postId}
+          key={postId}
           onClick={() => {
             handlePost();
-            setPostId(data.postId);
+            setPostId(postId);
           }}
         >
           <StPostButton>
@@ -47,7 +40,7 @@ const MyPost = ({ myPostData, currentUserUid }) => {
         <ModalPotal potalName={post}>
           <Post
             handlePost={handlePost}
-            myPostData={myPostData}
+            content={myPostData}
             postId={postId}
             currentUserUid={currentUserUid}
           />
