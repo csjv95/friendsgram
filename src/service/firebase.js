@@ -19,7 +19,7 @@ const firebaseStore = firebaseApp.firestore();
 const firebaseAuth = firebaseApp.auth();
 const firebaseDatabase = firebaseApp.database();
 const firebaseStorage = firebaseApp.storage();
-
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
 export {
   firebase,
   firebaseApp,

@@ -1,11 +1,16 @@
-import {firebaseStore} from "../firebase";
+import { firebaseStore } from "../firebase";
 
-const getBookMark = (postId,setBookMarkData) => {
-  const bookMark = firebaseStore.collection("bookMark").doc(postId);
+const getBookMarkUid = (postId, setBookMarkData) => {
+  const bookMark = firebaseStore
+    .collection("bookMark")
+    .doc(postId)
+    .onSnapshot((bookMark) => {
+      setBookMarkData(bookMark.data().uid);
+    });
 
-  bookMark.onSnapshot((bookMark) => {
-    setBookMarkData(bookMark.data().uid);
-  })
-}
+  return () => {
+    bookMark();
+  };
+};
 
-export default getBookMark;
+export default getBookMarkUid;

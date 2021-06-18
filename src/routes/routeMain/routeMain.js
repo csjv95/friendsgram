@@ -40,7 +40,7 @@ const RouteMain = () => {
   const [uploadModal, setUploadModal] = useState(false);
   const [locationModal, setLocationModal] = useState(false);
   const [messageModal, setMessageModal] = useState(false);
-  const [postMenuModal, setPostMenuModal] = useState(true);
+  const [postMenuModal, setPostMenuModal] = useState(false);
   // const [postModal, setPostModal] = useState(false);
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
@@ -114,10 +114,12 @@ const RouteMain = () => {
 
       {postMenuModal && (
         <ModalPotal potalName={postMenu}>
-         <PostMenu />
+         <PostMenu handlePostMenu={handlePostMenu}/>
         </ModalPotal>
       )}
+      
       {progressBar && <ProgressBar progressBar={progressBar} />}
+
       <Header
         handleUpload={handleUpload}
         userData={userData}
@@ -130,6 +132,7 @@ const RouteMain = () => {
         followerList={followerList}
         currentUserUid={currentUserUid}
         bookMarkPostId={bookMarkPostId}
+        handlePostMenu={handlePostMenu}
         // handlePost={handlePost}
       />
       <MainFooter />

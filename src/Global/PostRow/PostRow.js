@@ -34,45 +34,61 @@ import { StProfileImg } from "../StProfileImg/StProfileImg";
 
 const StPostArticle = styled.article`
   width: 65%;
-  height: 96%;  //밑에 nav보이기 위해서
+  height: 96%; //밑에 nav보이기 위해서
 `;
 
 const StPostAside = styled.aside`
   width: 35%;
-  height: 96%;  //밑에 nav보이기 위해서
+  height: 96%; //밑에 nav보이기 위해서
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
-const PostRow = ({ post,currentUserUid}) => {
-  const { uid, text, timestamp,postId } = post;
+const PostRow = ({ post, currentUserUid }) => {
+  const { uid, text, timestamp, postId } = post;
   const [userData, setUserData] = useState([]);
   const { photoURL, displayName, location } = userData;
   const [heartData, setHeartData] = useState([]);
-  const [bookMarkData,setBookMarkData] =useState([]);
-  
+  const [bookMarkData, setBookMarkData] = useState([]);
+
   useEffect(() => {
     getUserData(uid, setUserData);
-    getHeart(postId,setHeartData);
-    getBookMarkUid(postId,setBookMarkData);
-  }, [uid,postId]);
-  
+    const heart = getHeart(postId, setHeartData);
+    const bookMark = getBookMarkUid(postId, setBookMarkData);
+
+    return () => {
+      heart();
+      bookMark();
+    };
+  }, [uid, postId]);
 
   const functionList = [
-    {icon : heartData.includes(currentUserUid) ? <StHeartFill width="2" color={Theme.colors.red}/> : <StHeartIcon width="2" />},
-    {icon : <StChatbubbleIcon width="2" />},
-    {icon : <StSendIcon width="2" />},
-    {icon : bookMarkData.includes(currentUserUid) ? <StBookmarkFill width="2" color={Theme.colors.black}/> : <StBookmarkIcon width="2" />},
+    {
+      icon: heartData.includes(currentUserUid) ? (
+        <StHeartFill width="2" color={Theme.colors.red} />
+      ) : (
+        <StHeartIcon width="2" />
+      ),
+    },
+    { icon: <StChatbubbleIcon width="2" /> },
+    { icon: <StSendIcon width="2" /> },
+    {
+      icon: bookMarkData.includes(currentUserUid) ? (
+        <StBookmarkFill width="2" color={Theme.colors.black} />
+      ) : (
+        <StBookmarkIcon width="2" />
+      ),
+    },
   ];
-  
+
   const clickHeart = () => {
     setHeart(postId, heartData);
   };
 
   const clickBookMark = () => {
-    setBookMark(postId,bookMarkData);
-  }
+    setBookMark(postId, bookMarkData);
+  };
 
   const selectFnc = (index) => {
     if (index === 0) {
@@ -127,7 +143,7 @@ const PostRow = ({ post,currentUserUid}) => {
 
         <StPostFunction padding="1em" display="flex">
           <StFunctionList margin="0 0 0.5em 0 ">
-          {functionList.map((ftn, index) => (
+            {functionList.map((ftn, index) => (
               <li key={index}>
                 <button
                   onClick={() => {

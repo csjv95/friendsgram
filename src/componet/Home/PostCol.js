@@ -50,35 +50,54 @@ const ImageSliderContainer = styled.div`
   height: 40.5em;
 `;
 
-const PostCol = ({ article, userData,currentUserUid }) => {
+const PostCol = ({ article, userData, currentUserUid, handlePostMenu }) => {
   const [match, setMatchUser] = useState({});
   const { imgsData, noComments, timestamp, text, location, uid, postId } =
     article;
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const { photoURL } = userData;
   const [heartData, setHeartData] = useState([]);
-  const [bookMarkData,setBookMarkData] =useState([]);
- 
-  useEffect(() => {
-    getHeart(postId, setHeartData);
-    getMatchUid(uid, setMatchUser);
-    getBookMarkUid(postId,setBookMarkData);
-  }, [uid, postId]);
+  const [bookMarkData, setBookMarkData] = useState([]);
 
+  // post 현재 uid 가져오기 article = uid
+  useEffect(() => {
+    const heart = getHeart(postId, setHeartData);
+    getMatchUid(uid, setMatchUser);
+    const bookMark = getBookMarkUid(postId, setBookMarkData);
+    
+    return () => {
+      heart();
+      bookMark();
+    };
+  }, [uid, postId]);
+  
+  
   const functionList = [
-    {icon : heartData.includes(currentUserUid) ? <StHeartFill width="2" color={Theme.colors.red}/> : <StHeartIcon width="2" />},
-    {icon : <StChatbubbleIcon width="2" />},
-    {icon : <StSendIcon width="2" />},
-    {icon : bookMarkData.includes(currentUserUid) ? <StBookmarkFill width="2" color={Theme.colors.black}/> : <StBookmarkIcon width="2" />},
+    {
+      icon: heartData.includes(currentUserUid) ? (
+        <StHeartFill width="2" color={Theme.colors.red} />
+      ) : (
+        <StHeartIcon width="2" />
+      ),
+    },
+    { icon: <StChatbubbleIcon width="2" /> },
+    { icon: <StSendIcon width="2" /> },
+    {
+      icon: bookMarkData.includes(currentUserUid) ? (
+        <StBookmarkFill width="2" color={Theme.colors.black} />
+      ) : (
+        <StBookmarkIcon width="2" />
+      ),
+    },
   ];
- 
+
   const clickHeart = () => {
     setHeart(postId, heartData);
   };
 
   const clickBookMark = () => {
-    setBookMark(postId,bookMarkData);
-  }
+    setBookMark(postId, bookMarkData);
+  };
 
   const selectFnc = (index) => {
     if (index === 0) {
@@ -114,7 +133,7 @@ const PostCol = ({ article, userData,currentUserUid }) => {
             <StProfileLocation fontSize="0.7em">{location}</StProfileLocation>
           </StProfileInfo>
         </StProfileContainer>
-        <button>
+        <button onClick={handlePostMenu}>
           <StMenuIcon width="1.5" />
         </button>
       </StPostHeader>
@@ -143,7 +162,7 @@ const PostCol = ({ article, userData,currentUserUid }) => {
           <div>{text}</div>
           <div>{time(timestamp)}</div>
         </StPostFunction>
-        
+
         {!noComments && (
           <StComments
             padding="0.5em 1em"

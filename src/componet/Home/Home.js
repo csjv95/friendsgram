@@ -21,13 +21,19 @@ const StFollowerCotainer = styled.section`
   justify-content: center;
 `;
 
-const Home = ({ userData, usersList, followingList, currentUserUid }) => {
+const Home = ({
+  userData,
+  usersList,
+  followingList,
+  currentUserUid,
+  handlePostMenu,
+}) => {
   const [postData, setPostData] = useState([]);
 
   useEffect(() => {
     getPostData(setPostData, followingList);
   }, [followingList]);
-  
+
   return (
     <StMainRouterSection>
       <StHomeContainer>
@@ -39,6 +45,7 @@ const Home = ({ userData, usersList, followingList, currentUserUid }) => {
               userData={userData}
               followingList={followingList}
               currentUserUid={currentUserUid}
+              handlePostMenu={handlePostMenu}
             />
           ))}
         </StArticleList>

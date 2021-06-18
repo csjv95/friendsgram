@@ -59,7 +59,7 @@ const ContentCarousel = ({ content, postId,currentUserUid }) => {
     <StCarouselContainer>
       <StCarouselSection>
         <StCarouselList ref={contentRef}>
-          {content.map((content) => (
+          {content && content.map((content) => (
             <StCarouselItem key={content.postId}>
               <StModalMain width="60em" height="37em" display="flex">
                 <PostRow post={content} currentUserUid={currentUserUid} />

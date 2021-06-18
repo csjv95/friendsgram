@@ -11,6 +11,7 @@ import Post from "../Post/Post";
 
 const Saved = ({ bookMarkPost, handlePost, postModal, post,currentUserUid }) => {
   const [postId, setPostId] = useState([]);
+  console.log("bookMarkPost",bookMarkPost)
 
   return (
     <StPostList>

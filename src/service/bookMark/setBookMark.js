@@ -3,8 +3,9 @@ import { firebaseStore, firebaseAuth, firebase } from "../firebase";
 const setBookMark = (postId, bookMarkData) => {
   const currentUserUid = firebaseAuth.currentUser.uid;
   const bookMark = firebaseStore.collection("bookMark").doc(postId);
-  const isBookMark = bookMarkData.includes(currentUserUid);
+  const isBookMark = bookMarkData.includes(currentUserUid); // true or false
 
+  console.log('bookMarkData',bookMarkData)
   isBookMark
     ? bookMark.update({
       uid: firebase.firestore.FieldValue.arrayRemove(currentUserUid),
