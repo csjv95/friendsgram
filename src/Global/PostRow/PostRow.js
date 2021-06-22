@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import getBookMarkUid from "../../service/bookMark/getBookMarkUid";
+import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import setBookMark from "../../service/bookMark/setBookMark";
 import getHeart from "../../service/heart/getHeart";
 import setHeart from "../../service/heart/setHeart";
@@ -50,12 +50,12 @@ const PostRow = ({ post, currentUserUid }) => {
   const [userData, setUserData] = useState([]);
   const { photoURL, displayName, location } = userData;
   const [heartData, setHeartData] = useState([]);
-  const [bookMarkData, setBookMarkData] = useState([]);
+  const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
 
   useEffect(() => {
     getUserData(uid, setUserData);
     const heart = getHeart(postId, setHeartData);
-    const bookMark = getBookMarkUid(postId, setBookMarkData);
+    const bookMark = getBookMarkPostIds(postId, setBookMarkPostIds);
 
     return () => {
       heart();
@@ -65,7 +65,7 @@ const PostRow = ({ post, currentUserUid }) => {
 
   const functionList = [
     {
-      icon: heartData.includes(currentUserUid) ? (
+      icon: heartData.includes(postId) ? (
         <StHeartFill width="2" color={Theme.colors.red} />
       ) : (
         <StHeartIcon width="2" />
@@ -74,7 +74,7 @@ const PostRow = ({ post, currentUserUid }) => {
     { icon: <StChatbubbleIcon width="2" /> },
     { icon: <StSendIcon width="2" /> },
     {
-      icon: bookMarkData.includes(currentUserUid) ? (
+      icon: bookMarkPostIds.includes(postId) ? (
         <StBookmarkFill width="2" color={Theme.colors.black} />
       ) : (
         <StBookmarkIcon width="2" />
@@ -87,7 +87,7 @@ const PostRow = ({ post, currentUserUid }) => {
   };
 
   const clickBookMark = () => {
-    setBookMark(postId, bookMarkData);
+    setBookMark(postId, bookMarkPostIds);
   };
 
   const selectFnc = (index) => {

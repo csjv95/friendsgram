@@ -11,7 +11,7 @@ import {
 
 const MyPost = ({ myPostData, currentUserUid,handlePost,postModal,post }) => {
   const [postId, setPostId] = useState("");
-
+  
   return (
     <StPostList>
       {myPostData.map((data,postId) => (
@@ -40,7 +40,7 @@ const MyPost = ({ myPostData, currentUserUid,handlePost,postModal,post }) => {
         <ModalPotal potalName={post}>
           <Post
             handlePost={handlePost}
-            myPostData={myPostData}
+            content={myPostData}
             postId={postId}
             currentUserUid={currentUserUid}
           />

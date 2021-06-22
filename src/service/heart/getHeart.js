@@ -1,11 +1,12 @@
-import { firebaseStore } from "../firebase";
+import { firebaseStore,firebaseAuth } from "../firebase";
 
-const getHeart = (postId, setHeartData) => {
+const getHeart = (setHeartData) => {
+  const currentUserUid = firebaseAuth.currentUser.uid;
   const heart = firebaseStore
     .collection("heart")
-    .doc(postId)
+    .doc(currentUserUid)
     .onSnapshot((heart) => {
-      setHeartData(heart.data().uid);
+      setHeartData(heart.data().postId);
     });
     
   return () => {

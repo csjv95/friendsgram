@@ -13,8 +13,8 @@ import getFollowerList from "../../service/follow/getFollowerList";
 import { authGetUid } from "../../service/auth/authGetUid";
 import ProgressBar from "../../componet/ProgressBar/ProgressBar";
 import Message from "../../Global/Message/Message";
-import getBookMarkPostId from "../../service/bookMark/getBookMarkPostId";
 import PostMenu from "../../componet/PostMenu/PostMenu";
+import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 // import Post from "../../componet/Post/Post";
 
 const AppContainer = styled.div`
@@ -36,7 +36,7 @@ const RouteMain = () => {
   const [usersList, setUsersList] = useState([]);
   const [followingList, setFollowingList] = useState([]); //
   const [followerList, setFollowerList] = useState([]);
-  const [bookMarkPostId, setBookMarkPostId] = useState([]);
+  const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
   const [uploadModal, setUploadModal] = useState(false);
   const [locationModal, setLocationModal] = useState(false);
   const [messageModal, setMessageModal] = useState(false);
@@ -54,7 +54,10 @@ const RouteMain = () => {
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-    getBookMarkPostId(setBookMarkPostId);
+    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
+    return () => {
+      bookMark();
+    };
   }, []);
 
   const handleUpload = () => {
@@ -114,10 +117,10 @@ const RouteMain = () => {
 
       {postMenuModal && (
         <ModalPotal potalName={postMenu}>
-         <PostMenu handlePostMenu={handlePostMenu}/>
+          <PostMenu handlePostMenu={handlePostMenu} />
         </ModalPotal>
       )}
-      
+
       {progressBar && <ProgressBar progressBar={progressBar} />}
 
       <Header
@@ -131,8 +134,8 @@ const RouteMain = () => {
         followingList={followingList}
         followerList={followerList}
         currentUserUid={currentUserUid}
-        bookMarkPostId={bookMarkPostId}
         handlePostMenu={handlePostMenu}
+        bookMarkPostIds={bookMarkPostIds}
         // handlePost={handlePost}
       />
       <MainFooter />

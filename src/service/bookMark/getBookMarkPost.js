@@ -1,20 +1,22 @@
 import { firebaseStore } from "../firebase";
 
-const getBookMarkPost = async (bookMarkPostId, setBookMarkPost) => {
+const getBookMarkPost = async (bookMarkPostIds, setBookMarkPosts) => {
   const sum = [];
- 
-  await bookMarkPostId.map((postId) =>
-    firebaseStore
-      .collection("post")
-      .where("postId", "==", postId)
-      .get()
-      .then((item) => {
-        item.forEach((doc) => {
-          sum.push(doc.data());
+
+  firebaseStore.collection("bookMark").onSnapshot(
+    bookMarkPostIds.map(async (postId) => {
+      await firebaseStore
+        .collection("post")
+        .where("postId", "==", postId)
+        .get()
+        .then((item) => {
+          item.forEach((doc) => {
+            sum.push(doc.data());
+          });
+          setBookMarkPosts(sum);
         });
-      })
+    })
   );
-  setBookMarkPost(sum);
 };
 
 export default getBookMarkPost;

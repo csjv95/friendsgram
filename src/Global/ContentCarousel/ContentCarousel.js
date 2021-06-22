@@ -32,7 +32,7 @@ const StCarouselItem = styled.li`
 const ContentCarousel = ({ content, postId,currentUserUid }) => {
   const [curContent, setCurContent] = useState(0);
   const contentRef = useRef();
-
+  console.log(content)
   const backContent = () => {
     contentRef.current.style.transform = `translateX(${
       -100 * (curContent - 1)

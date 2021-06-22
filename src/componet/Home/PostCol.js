@@ -29,7 +29,7 @@ import {
 } from "../../Global/StPost/StPost";
 import getHeart from "../../service/heart/getHeart";
 import setHeart from "../../service/heart/setHeart";
-import getBookMarkUid from "../../service/bookMark/getBookMarkUid";
+import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import setBookMark from "../../service/bookMark/setBookMark";
 
 const StArticleItem = styled.li`
@@ -57,24 +57,23 @@ const PostCol = ({ article, userData, currentUserUid, handlePostMenu }) => {
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const { photoURL } = userData;
   const [heartData, setHeartData] = useState([]);
-  const [bookMarkData, setBookMarkData] = useState([]);
+  const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
 
-  // post 현재 uid 가져오기 article = uid
   useEffect(() => {
-    const heart = getHeart(postId, setHeartData);
     getMatchUid(uid, setMatchUser);
-    const bookMark = getBookMarkUid(postId, setBookMarkData);
-    
+    const heart = getHeart(setHeartData);
+    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
+
     return () => {
       heart();
       bookMark();
     };
-  }, [uid, postId]);
-  
-  
+
+  }, [uid]);
+
   const functionList = [
     {
-      icon: heartData.includes(currentUserUid) ? (
+      icon: heartData.includes(postId) ? (
         <StHeartFill width="2" color={Theme.colors.red} />
       ) : (
         <StHeartIcon width="2" />
@@ -83,7 +82,7 @@ const PostCol = ({ article, userData, currentUserUid, handlePostMenu }) => {
     { icon: <StChatbubbleIcon width="2" /> },
     { icon: <StSendIcon width="2" /> },
     {
-      icon: bookMarkData.includes(currentUserUid) ? (
+      icon: bookMarkPostIds.includes(postId) ? (
         <StBookmarkFill width="2" color={Theme.colors.black} />
       ) : (
         <StBookmarkIcon width="2" />
@@ -96,7 +95,7 @@ const PostCol = ({ article, userData, currentUserUid, handlePostMenu }) => {
   };
 
   const clickBookMark = () => {
-    setBookMark(postId, bookMarkData);
+    setBookMark(postId, bookMarkPostIds);
   };
 
   const selectFnc = (index) => {

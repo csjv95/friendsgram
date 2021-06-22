@@ -17,6 +17,7 @@ import MyProfileRouter from "../../routes/myProfileRouter/myProfileRouter";
 import { getMyPost } from "../../service/postData/getMyPost";
 import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
 import getBookMarkPost from "../../service/bookMark/getBookMarkPost";
+import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 
 const StpPofileContainer = styled.section`
   margin: 0 auto;
@@ -97,30 +98,29 @@ const StNavLink = styled(NavLink)`
 `;
 
 const MyProfile = ({
+  bookMarkPostIds,
   followingList,
   followerList,
   currentUserUid,
-  bookMarkPostId,
 }) => {
   const post = document.getElementById("post");
   const params = useParams();
   const match = params.username;
   const [matchUser, setMatchUser] = useState("");
   const [myPostData, setMyPostData] = useState([]);
-  const [bookMarkPost, setBookMarkPost] = useState([]);
+  const [bookMarkPosts, setBookMarkPosts] = useState();
   const [postModal, setPostModal] = useState(false);
 
   useEffect(() => {
     getMatchDisplayName(match, setMatchUser);
     getMyPost(setMyPostData, match);
-    getBookMarkPost(bookMarkPostId, setBookMarkPost);
-  }, [match, bookMarkPostId]);
+    getBookMarkPost(bookMarkPostIds, setBookMarkPosts);
+  }, [match, bookMarkPostIds]);
 
   const handlePost = () => {
     setPostModal(!postModal);
   };
   
-  console.log("bookMarkPost",bookMarkPost)
   return (
     <>
       {matchUser ? (
@@ -219,10 +219,10 @@ const MyProfile = ({
                 matchUser={matchUser}
                 myPostData={myPostData}
                 currentUserUid={currentUserUid}
-                bookMarkPostId={bookMarkPostId}
-                bookMarkPost={bookMarkPost}
+                bookMarkPostIds={bookMarkPostIds}
                 postModal={postModal}
                 handlePost={handlePost}
+                bookMarkPosts={bookMarkPosts}
               />
             </section>
           </StpPofileContainer>
