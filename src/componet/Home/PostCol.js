@@ -31,6 +31,7 @@ import getHeart from "../../service/heart/getHeart";
 import setHeart from "../../service/heart/setHeart";
 import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import setBookMark from "../../service/bookMark/setBookMark";
+import getHeartLength from "../../service/heart/getHeartLength";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -50,27 +51,35 @@ const ImageSliderContainer = styled.div`
   height: 40.5em;
 `;
 
-const PostCol = ({ article, userData, currentUserUid, handlePostMenu }) => {
+const PostCol = ({
+  article,
+  userData,
+  currentUserUid,
+  handlePostMenu,
+  setClickedPostId,
+  setClickedPostUid,
+}) => {
   const [match, setMatchUser] = useState({});
   const { imgsData, noComments, timestamp, text, location, uid, postId } =
     article;
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const { photoURL } = userData;
   const [heartData, setHeartData] = useState([]);
+  const [heartLength, setHeartLength] = useState([]);
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
 
   useEffect(() => {
     getMatchUid(uid, setMatchUser);
     const heart = getHeart(setHeartData);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
-
+    const heartLength = getHeartLength(postId, setHeartLength);
+    
     return () => {
       heart();
       bookMark();
+      heartLength();
     };
-
-  }, [uid]);
-
+  }, [uid, postId]);
   const functionList = [
     {
       icon: heartData.includes(postId) ? (
@@ -132,7 +141,11 @@ const PostCol = ({ article, userData, currentUserUid, handlePostMenu }) => {
             <StProfileLocation fontSize="0.7em">{location}</StProfileLocation>
           </StProfileInfo>
         </StProfileContainer>
-        <button onClick={handlePostMenu}>
+        <button onClick={()=> {
+          handlePostMenu()
+          setClickedPostId(postId)
+          setClickedPostUid(uid)
+        }}>
           <StMenuIcon width="1.5" />
         </button>
       </StPostHeader>
@@ -156,7 +169,7 @@ const PostCol = ({ article, userData, currentUserUid, handlePostMenu }) => {
               </li>
             ))}
           </StFunctionList>
-          <div>{`좋아요 ${heartData.length}개`}</div>
+          <div>{`좋아요 ${heartLength.length}개`}</div>
           <div>comment</div>
           <div>{text}</div>
           <div>{time(timestamp)}</div>

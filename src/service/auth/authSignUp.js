@@ -1,5 +1,4 @@
-import { firebaseAuth } from "../firebase";
-import { firebaseStore } from "../firebase";
+import { firebaseAuth, firebaseStore } from "../firebase";
 
 const authSignUp = async (userData, follow, history) => {
   const {
@@ -21,6 +20,18 @@ const authSignUp = async (userData, follow, history) => {
     //프로필업데이트
     const user = firebaseAuth.currentUser;
     const uid = user.uid;
+    const heart = firebaseStore.collection("heart").doc(uid);
+    const bookMark = firebaseStore.collection("bookMark").doc(uid);
+
+    await heart.set({
+      uid,
+      postId: [],
+    });
+
+    await bookMark.set({
+      uid,
+      postId: [],
+    });
 
     await user.updateProfile({
       name,

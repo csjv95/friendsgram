@@ -1,6 +1,6 @@
 import { firebaseStore } from "../firebase";
 
-const getBookMarkPost = async (bookMarkPostIds, setBookMarkPosts) => {
+const getBookMarkPost = (bookMarkPostIds, setBookMarkPosts) => {
   const sum = [];
 
   firebaseStore.collection("bookMark").onSnapshot(

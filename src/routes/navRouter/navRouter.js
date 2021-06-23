@@ -16,6 +16,8 @@ const NavRouter = ({
   currentUserUid,
   handlePostMenu,
   bookMarkPostIds,
+  setClickedPostId,
+  setClickedPostUid,
 }) => {
   return (
     <Switch>
@@ -26,6 +28,8 @@ const NavRouter = ({
           followingList={followingList}
           currentUserUid={currentUserUid}
           handlePostMenu={handlePostMenu}
+          setClickedPostId={setClickedPostId}
+          setClickedPostUid={setClickedPostUid}
         />
       </Route>
       <Route path="/direct" component={Direct} />

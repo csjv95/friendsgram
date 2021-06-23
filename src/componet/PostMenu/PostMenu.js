@@ -1,9 +1,17 @@
 import React from "react";
-import styled from "styled-components";
 import { StModalContainer, StModalMain } from "../../Global/StModal/StModal";
+import deletePost from "../../service/postData/deletePost";
 import { Theme } from "../../style/Theme";
 
-const PostMenu = ({handlePostMenu}) => {
+const PostMenu = ({
+  handlePostMenu,
+  clickedPostId,
+  clickedPostUid,
+  currentUserUid,
+}) => {
+  const delPost = () => {
+    deletePost(clickedPostId);
+  };
   return (
     <StModalContainer
       display="flex"
@@ -17,14 +25,22 @@ const PostMenu = ({handlePostMenu}) => {
         border={`1px solid ${Theme.colors.borderColor}`}
         borderRadius={Theme.colors.borderRadius}
       >
-        {/* 현재 유저의 게시물일때 */}
-        <ul>
-          <li><button onClick={handlePostMenu}>취소</button></li>
-        </ul>
-        {/* 현재 유저의 게시물이 아닐때 */}
-        <ul>
-          <li><button>취소</button></li>
-        </ul>
+        {currentUserUid === clickedPostUid ? (
+          <ul>
+            <li>
+              <button onClick={delPost}>삭제</button>
+            </li>
+            <li>
+              <button onClick={handlePostMenu}>취소</button>
+            </li>
+          </ul>
+        ) : (
+          <ul>
+            <li>
+              <button onClick={handlePostMenu}>취소</button>
+            </li>
+          </ul>
+        )}
       </StModalMain>
     </StModalContainer>
   );

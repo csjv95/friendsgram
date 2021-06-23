@@ -27,6 +27,8 @@ const Home = ({
   followingList,
   currentUserUid,
   handlePostMenu,
+  setClickedPostId,
+  setClickedPostUid
 }) => {
   const [postData, setPostData] = useState([]);
 
@@ -46,6 +48,8 @@ const Home = ({
               followingList={followingList}
               currentUserUid={currentUserUid}
               handlePostMenu={handlePostMenu}
+              setClickedPostId={setClickedPostId}
+              setClickedPostUid={setClickedPostUid}
             />
           ))}
         </StArticleList>

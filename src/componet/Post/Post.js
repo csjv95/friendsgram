@@ -8,7 +8,6 @@ const Post = ({ handlePost, content,postId,currentUserUid }) => {
   const onCloseModal = () => {
     handlePost();
   };
-  console.log(content)
   return (
     <StModalContainer
       display="flex"

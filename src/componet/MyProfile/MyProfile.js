@@ -17,7 +17,7 @@ import MyProfileRouter from "../../routes/myProfileRouter/myProfileRouter";
 import { getMyPost } from "../../service/postData/getMyPost";
 import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
 import getBookMarkPost from "../../service/bookMark/getBookMarkPost";
-import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
+
 
 const StpPofileContainer = styled.section`
   margin: 0 auto;
@@ -115,6 +115,7 @@ const MyProfile = ({
     getMatchDisplayName(match, setMatchUser);
     getMyPost(setMyPostData, match);
     getBookMarkPost(bookMarkPostIds, setBookMarkPosts);
+
   }, [match, bookMarkPostIds]);
 
   const handlePost = () => {

@@ -54,21 +54,21 @@ const PostRow = ({ post, currentUserUid }) => {
 
   useEffect(() => {
     getUserData(uid, setUserData);
-    const heart = getHeart(postId, setHeartData);
-    const bookMark = getBookMarkPostIds(postId, setBookMarkPostIds);
+    const heart = getHeart(setHeartData);
+    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
 
     return () => {
       heart();
       bookMark();
     };
-  }, [uid, postId]);
+  }, [uid]);
 
   const functionList = [
     {
       icon: heartData.includes(postId) ? (
         <StHeartFill width="2" color={Theme.colors.red} />
       ) : (
-        <StHeartIcon width="2" />
+        <StHeartIcon width="2"   />
       ),
     },
     { icon: <StChatbubbleIcon width="2" /> },

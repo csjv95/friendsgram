@@ -34,8 +34,10 @@ const RouteMain = () => {
   const [currentUserUid, setCurrentUserUid] = useState("");
   const [userData, setUserData] = useState([]);
   const [usersList, setUsersList] = useState([]);
-  const [followingList, setFollowingList] = useState([]); //
+  const [followingList, setFollowingList] = useState([]);
   const [followerList, setFollowerList] = useState([]);
+  const [clickedPostId, setClickedPostId] = useState("");
+  const [clickedPostUid, setClickedPostUid] = useState("");
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
   const [uploadModal, setUploadModal] = useState(false);
   const [locationModal, setLocationModal] = useState(false);
@@ -55,6 +57,7 @@ const RouteMain = () => {
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
+
     return () => {
       bookMark();
     };
@@ -117,7 +120,12 @@ const RouteMain = () => {
 
       {postMenuModal && (
         <ModalPotal potalName={postMenu}>
-          <PostMenu handlePostMenu={handlePostMenu} />
+          <PostMenu
+            handlePostMenu={handlePostMenu}
+            clickedPostId={clickedPostId}
+            clickedPostUid={clickedPostUid}
+            currentUserUid={currentUserUid}
+          />
         </ModalPotal>
       )}
 
@@ -136,6 +144,8 @@ const RouteMain = () => {
         currentUserUid={currentUserUid}
         handlePostMenu={handlePostMenu}
         bookMarkPostIds={bookMarkPostIds}
+        setClickedPostId={setClickedPostId}
+        setClickedPostUid={setClickedPostUid}
         // handlePost={handlePost}
       />
       <MainFooter />

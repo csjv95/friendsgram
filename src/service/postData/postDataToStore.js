@@ -6,25 +6,15 @@ const postDataToStore = (text, noComments, location, postId) => {
   const currentUser = firebaseAuth.currentUser;
   const uid = currentUser.uid;
   const postData = firebaseStore.collection("post").doc(postId);
-  const heart = firebaseStore.collection("heart").doc(uid);
-  const bookMark = firebaseStore.collection("bookMark").doc(uid);
-
-  heart.set({
-    uid,
-    postId: [],
-  });
-
-  bookMark.set({
-    uid,
-    postId: [],
-  });
-
+ 
   postData.set({
     postId,
     imgsData: [],
     text,
     noComments,
     location,
+    heart: [],
+    bookmark: [],
     timestamp,
     uid,
   });
