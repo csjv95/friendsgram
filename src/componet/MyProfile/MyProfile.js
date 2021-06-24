@@ -17,6 +17,9 @@ import MyProfileRouter from "../../routes/myProfileRouter/myProfileRouter";
 import { getMyPost } from "../../service/postData/getMyPost";
 import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
 import getBookMarkPost from "../../service/bookMark/getBookMarkPost";
+import StButton from "../../Global/StButton/StButton";
+import { Theme } from "../../style/Theme";
+import setFollow from "../../service/follow/setFollow";
 
 const StpPofileContainer = styled.section`
   margin: 0 auto;
@@ -123,6 +126,10 @@ const MyProfile = ({
     setPostModal(!postModal);
   };
 
+  const followBtn = () => {
+    setFollow(currentUserUid, followingList);
+  };
+
   return (
     <>
       {matchUser ? (
@@ -137,9 +144,35 @@ const MyProfile = ({
               <StInformation>
                 <StInfoTop>
                   <li>{matchUser.displayName}</li>
-                  <Link to="/edit">
-                    <StEditor>프로필 편집</StEditor>
-                  </Link>
+
+                  {matchUser.uid === currentUserUid ? (
+                    <li>
+                      <Link to="/edit">
+                        <StButton
+                          width="100%"
+                          padding="0.4em"
+                          border={`1px solid ${Theme.colors.borderColor}`}
+                          fontWeight="600"
+                          btnText="프로필 편집"
+                        />
+                      </Link>
+                    </li>
+                  ) : (
+                    <li onClick={followBtn}>
+                      <StButton
+                        padding="0.4em 1.8em"
+                        fontSize="0.5em"
+                        fontWeight="600"
+                        color={Theme.colors.contentColor}
+                        bgColor={Theme.colors.btnColor}
+                        btnText={
+                          followingList.includes(currentUserUid)
+                            ? "언팔로우"
+                            : "팔로우"
+                        }
+                      />
+                    </li>
+                  )}
 
                   <li>
                     <StSettings width="1" />

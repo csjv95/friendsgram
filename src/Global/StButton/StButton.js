@@ -4,6 +4,7 @@ import styled from "styled-components";
 const StButtonStyle = styled.button`
   width: ${({ width }) => width};
   padding: ${({ padding }) => padding};
+  border : ${({border}) => border};
   border-radius: 0.2em;
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
@@ -14,17 +15,19 @@ const StButtonStyle = styled.button`
 const StButton = ({
   width,
   padding,
+  border,
   fontSize,
   fontWeight,
   bgColor,
   color,
   btnText,
 }) => {
-  
+ 
   return (
     <StButtonStyle
       width={width}
       padding={padding}
+      border={border}
       fontSize={fontSize}
       fontWeight={fontWeight}
       bgColor={bgColor}
