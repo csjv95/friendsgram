@@ -51,7 +51,7 @@ const PostMenu = ({
   ];
 
   const delPost = () => {
-    deletePost(clickedPostId);
+    deletePost(clickedPostId, handlePostMenu);
   };
 
   const selectFnc = (ftn) => {

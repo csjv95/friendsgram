@@ -1,6 +1,7 @@
 import { firebase, firebaseStore } from "../firebase";
+import reload from "../reload/reload";
 
-const deletePost = async (postId) => {
+const deletePost = async (postId, handlePostMenu) => {
   const delPost = firebaseStore.collection("post").doc(postId);
   const heart = [];
   const bookmark = [];
@@ -31,6 +32,7 @@ const deletePost = async (postId) => {
     });
     // post 지우기
     await delPost.delete();
+    await handlePostMenu();
   } catch (error) {
     alert(error.message);
   }
