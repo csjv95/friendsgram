@@ -1,5 +1,6 @@
 const colors = {
   backgroundColor: "#fafafa",
+  modalBgColor: "rgba(125, 125, 125, 0.7)",
   contentColor: "#ffffff",
   logoColor: "#000000",
   borderColor: "#dbdbdb",
@@ -15,6 +16,17 @@ const colors = {
   btnColor: "#0095f6",
 };
 
+const fonts = {
+  bold: 600,
+};
+
+const borders = {
+  radius: "0.2em",
+  modalRadius: "1em",
+};
+
 export const Theme = {
   colors,
+  fonts,
+  borders,
 };

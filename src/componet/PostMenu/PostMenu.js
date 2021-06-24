@@ -55,7 +55,6 @@ const PostMenu = ({
   };
 
   const selectFnc = (ftn) => {
-    console.log(ftn);
     if (ftn === "del") {
       delPost();
     } else if (ftn === "cancel") {

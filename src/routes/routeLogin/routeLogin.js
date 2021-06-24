@@ -10,8 +10,8 @@ const RouteLogin = ({setLogin}) => {
       <Route path="/" exact >
         <Login setLogin={setLogin}/>
         </Route>
-      <Route path="/facebook" component={FacebookLogin} />
       <Route path="/signup" component={SignUp} />
+      <Route path="/facebook" component={FacebookLogin} />
     </Switch>
   );
 };

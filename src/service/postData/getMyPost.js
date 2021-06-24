@@ -12,17 +12,18 @@ export const getMyPost = async (setMyPostData, match) => {
     .get()
     .then((user) => user.forEach((data) => matchUser.push(data.data().uid)));
 
-  const myPost = firebaseStore
-    .collection("post")
-    .where("uid","==",...matchUser)
-
-  await myPost.get().then((post) => {
-    post.forEach((data) => postData.push(data.data()));
-  });
+  matchUser.length !== 0 &&
+    (await firebaseStore
+      .collection("post")
+      .where("uid", "==", ...matchUser)
+      .get()
+      .then((post) => {
+        post.forEach((data) => postData.push(data.data()));
+      }));
 
   postData.sort((a, b) => {
     return b.timestamp - a.timestamp;
   });
-  
+
   setMyPostData(postData);
 };

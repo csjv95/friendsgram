@@ -54,13 +54,6 @@ const StInfoTop = styled.ul`
   }
 `;
 
-const StEditor = styled.button`
-  padding: 0.4em;
-  border: 1px solid ${({ theme }) => theme.colors.borderColor};
-  border-radius: 0.2em;
-  font-weight: 600;
-`;
-
 const StInfoMid = styled.ul`
   display: flex;
   & > :nth-child(n) {
@@ -144,7 +137,6 @@ const MyProfile = ({
               <StInformation>
                 <StInfoTop>
                   <li>{matchUser.displayName}</li>
-
                   {matchUser.uid === currentUserUid ? (
                     <li>
                       <Link to="/edit">
@@ -173,7 +165,6 @@ const MyProfile = ({
                       />
                     </li>
                   )}
-
                   <li>
                     <StSettings width="1" />
                   </li>

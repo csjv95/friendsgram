@@ -33,6 +33,7 @@ const deletePost = async (postId, handlePostMenu) => {
     // post 지우기
     await delPost.delete();
     await handlePostMenu();
+    reload(1500);
   } catch (error) {
     alert(error.message);
   }

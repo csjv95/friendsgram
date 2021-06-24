@@ -5,7 +5,7 @@ const setBookMark = (postId, bookMarkPostIds) => {
   const bookMark = firebaseStore.collection("bookMark").doc(currentUserUid);
   const whoBookMark = firebaseStore.collection("post").doc(postId);
   const isBookMark = bookMarkPostIds.includes(postId);
-
+  
   if (isBookMark) {
     bookMark.update({
       postId: firebase.firestore.FieldValue.arrayRemove(postId),

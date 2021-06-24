@@ -13,7 +13,7 @@ function App() {
   
   return (
     <>
-      {isLogin === true ? (
+      {isLogin ? (
         <RouteMain setLogin={setLogin} />
       ) : (
         <RouteLogin setLogin={setLogin} />

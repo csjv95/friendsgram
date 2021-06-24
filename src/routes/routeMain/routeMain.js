@@ -15,6 +15,7 @@ import ProgressBar from "../../componet/ProgressBar/ProgressBar";
 import Message from "../../Global/Message/Message";
 import PostMenu from "../../componet/PostMenu/PostMenu";
 import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
+import FollowView from "../../componet/FollowView/FollowView";
 // import Post from "../../componet/Post/Post";
 
 const AppContainer = styled.div`
@@ -30,6 +31,7 @@ const RouteMain = () => {
   const address = document.getElementById("address");
   const message = document.getElementById("message");
   const postMenu = document.getElementById("postMenu");
+  const follow = document.getElementById("follow");
   // const post = document.getElementById("post");
   const [currentUserUid, setCurrentUserUid] = useState("");
   const [userData, setUserData] = useState([]);
@@ -43,6 +45,7 @@ const RouteMain = () => {
   const [locationModal, setLocationModal] = useState(false);
   const [messageModal, setMessageModal] = useState(false);
   const [postMenuModal, setPostMenuModal] = useState(false);
+  const [followModal, setFollowModal] = useState(true);
   // const [postModal, setPostModal] = useState(false);
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
@@ -79,6 +82,10 @@ const RouteMain = () => {
     setPostMenuModal(!postMenuModal);
   };
 
+  const handleFollow = () => {
+    setFollowModal(!followModal);
+  };
+
   // const handlePost = () => {
   //   setPostModal(!postModal);
   // }
@@ -102,21 +109,18 @@ const RouteMain = () => {
           />
         </ModalPotal>
       )}
+
       {locationModal && (
         <ModalPotal potalName={address}>
           <Location handleLocation={handleLocation} setLocation={setLocation} />
         </ModalPotal>
       )}
+
       {messageModal && (
         <ModalPotal potalName={message}>
           <Message />
         </ModalPotal>
       )}
-      {/* {postModal && (
-        <ModalPotal potalName={post}>
-          <Post handlePost={handlePost} myPostData/>
-        </ModalPotal>
-      )} */}
 
       {postMenuModal && (
         <ModalPotal potalName={postMenu}>
@@ -128,6 +132,22 @@ const RouteMain = () => {
           />
         </ModalPotal>
       )}
+
+      {followModal && (
+        <ModalPotal potalName={follow}>
+          <FollowView
+            followerList={followerList}
+            followingList={followingList}
+            handleFollow={handleFollow}
+          />
+        </ModalPotal>
+      )}
+
+      {/* {postModal && (
+        <ModalPotal potalName={post}>
+          <Post handlePost={handlePost} myPostData/>
+        </ModalPotal>
+      )} */}
 
       {progressBar && <ProgressBar progressBar={progressBar} />}
 

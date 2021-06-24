@@ -10,7 +10,7 @@ export const StModalContainer = styled.section`
   flex-direction: ${({ flexDirectioin }) => flexDirectioin};
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: ${({ alignItems }) => alignItems};
-  background-color: rgba(125, 125, 125, 0.7);
+  background-color: ${({theme}) => theme.colors.modalBgColor};
   z-index: 9999;
 `;
 

@@ -73,14 +73,14 @@ const PostCol = ({
     const heart = getHeart(setHeartData);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
     const heartLength = getHeartLength(postId, setHeartLength);
-    
+
     return () => {
       heart();
       bookMark();
       heartLength();
     };
   }, [uid, postId]);
-  
+
   const functionList = [
     {
       icon: heartData.includes(postId) ? (
@@ -142,11 +142,13 @@ const PostCol = ({
             <StProfileLocation fontSize="0.7em">{location}</StProfileLocation>
           </StProfileInfo>
         </StProfileContainer>
-        <button onClick={()=> {
-          handlePostMenu()
-          setClickedPostId(postId)
-          setClickedPostUid(uid)
-        }}>
+        <button
+          onClick={() => {
+            handlePostMenu();
+            setClickedPostId(postId);
+            setClickedPostUid(uid);
+          }}
+        >
           <StMenuIcon width="1.5" />
         </button>
       </StPostHeader>

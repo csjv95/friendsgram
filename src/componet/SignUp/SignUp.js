@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import googleAuth from "../../service/google_auth";
 import { Link, useHistory } from "react-router-dom";
 
@@ -24,10 +24,11 @@ import {
 
 const SignUp = () => {
   const history = useHistory();
-  const [follow, setFollow] = useState({
-    follower: [],
-    following: [],
-  });
+  const [follow, setFollow] = useState({});
+
+  useEffect(() => {
+    setFollow({ follower: [], following: [] });
+  }, []);
 
   const [userData, setUserData] = useState({
     email: "",
