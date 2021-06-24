@@ -29,10 +29,17 @@ const StCarouselItem = styled.li`
   height: 100%;
 `;
 
-const ContentCarousel = ({ content, postId,currentUserUid }) => {
+const ContentCarousel = ({
+  content,
+  postId,
+  currentUserUid,
+  handlePostMenu,
+  setClickedPostId,
+  setClickedPostUid,
+}) => {
   const [curContent, setCurContent] = useState(0);
   const contentRef = useRef();
-  console.log(content)
+
   const backContent = () => {
     contentRef.current.style.transform = `translateX(${
       -100 * (curContent - 1)
@@ -46,26 +53,33 @@ const ContentCarousel = ({ content, postId,currentUserUid }) => {
     }%)`;
     setCurContent(curContent + 1);
   };
- 
+
   useEffect(() => {
     const ClickContent = () => {
       contentRef.current.style.transform = `translateX(${-100 * postId}%)`;
       setCurContent(postId);
     };
     ClickContent();
-  },[postId]);
+  }, [postId]);
 
   return (
     <StCarouselContainer>
       <StCarouselSection>
         <StCarouselList ref={contentRef}>
-          {content && content.map((content) => (
-            <StCarouselItem key={content.postId}>
-              <StModalMain width="60em" height="37em" display="flex">
-                <PostRow post={content} currentUserUid={currentUserUid} />
-              </StModalMain>
-            </StCarouselItem>
-          ))}
+          {content &&
+            content.map((content) => (
+              <StCarouselItem key={content.postId}>
+                <StModalMain width="60em" height="37em" display="flex">
+                  <PostRow
+                    post={content}
+                    currentUserUid={currentUserUid}
+                    handlePostMenu={handlePostMenu}
+                    setClickedPostId={setClickedPostId}
+                    setClickedPostUid={setClickedPostUid}
+                  />
+                </StModalMain>
+              </StCarouselItem>
+            ))}
         </StCarouselList>
       </StCarouselSection>
 

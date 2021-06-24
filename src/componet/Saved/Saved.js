@@ -14,7 +14,10 @@ const Saved = ({
   postModal,
   post,
   currentUserUid,
-  bookMarkPosts
+  bookMarkPosts,
+  handlePostMenu,
+  setClickedPostId,
+  setClickedPostUid,
 }) => {
   const [postId, setPostId] = useState([]);
 
@@ -51,6 +54,9 @@ const Saved = ({
             content={bookMarkPosts}
             postId={postId}
             currentUserUid={currentUserUid}
+            handlePostMenu={handlePostMenu}
+            setClickedPostId={setClickedPostId}
+            setClickedPostUid={setClickedPostUid}
           />
         </ModalPotal>
       )}

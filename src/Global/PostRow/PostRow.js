@@ -3,6 +3,7 @@ import styled from "styled-components";
 import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import setBookMark from "../../service/bookMark/setBookMark";
 import getHeart from "../../service/heart/getHeart";
+import getHeartLength from "../../service/heart/getHeartLength";
 import setHeart from "../../service/heart/setHeart";
 import time from "../../service/time/time";
 import getUserData from "../../service/usersData/getUserData";
@@ -35,6 +36,8 @@ import { StProfileImg } from "../StProfileImg/StProfileImg";
 const StPostArticle = styled.article`
   width: 65%;
   height: 96%; //밑에 nav보이기 위해서
+  border-right : 1px solid ${({ theme }) => theme.colors.borderColor};
+  background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
 const StPostAside = styled.aside`
@@ -45,30 +48,39 @@ const StPostAside = styled.aside`
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
-const PostRow = ({ post, currentUserUid }) => {
+const PostRow = ({
+  post,
+  currentUserUid,
+  handlePostMenu,
+  setClickedPostId,
+  setClickedPostUid,
+}) => {
   const { uid, text, timestamp, postId } = post;
   const [userData, setUserData] = useState([]);
   const { photoURL, displayName, location } = userData;
   const [heartData, setHeartData] = useState([]);
+  const [heartLength, setHeartLength] = useState([]);
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
 
   useEffect(() => {
     getUserData(uid, setUserData);
     const heart = getHeart(setHeartData);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
+    const heartLength = getHeartLength(postId, setHeartLength);
 
     return () => {
       heart();
       bookMark();
+      heartLength();
     };
-  }, [uid]);
+  }, [uid, postId]);
 
   const functionList = [
     {
       icon: heartData.includes(postId) ? (
         <StHeartFill width="2" color={Theme.colors.red} />
       ) : (
-        <StHeartIcon width="2"   />
+        <StHeartIcon width="2" />
       ),
     },
     { icon: <StChatbubbleIcon width="2" /> },
@@ -129,7 +141,13 @@ const PostRow = ({ post, currentUserUid }) => {
               <StProfileLocation>{location}</StProfileLocation>
             </StProfileInfo>
           </StProfileContainer>
-          <button>
+          <button
+            onClick={() => {
+              handlePostMenu();
+              setClickedPostId(postId);
+              setClickedPostUid(uid);
+            }}
+          >
             <StMenuIcon width="1.5em" />
           </button>
         </StPostHeader>
@@ -155,7 +173,7 @@ const PostRow = ({ post, currentUserUid }) => {
               </li>
             ))}
           </StFunctionList>
-          <div>{`좋아요 ${heartData.length}개`}</div>
+          <div>{`좋아요 ${heartLength.length}개`}</div>
           <div>{time(timestamp)}</div>
         </StPostFunction>
 

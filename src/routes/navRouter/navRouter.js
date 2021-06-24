@@ -50,6 +50,9 @@ const NavRouter = ({
           followerList={followerList}
           currentUserUid={currentUserUid}
           bookMarkPostIds={bookMarkPostIds}
+          handlePostMenu={handlePostMenu}
+          setClickedPostId={setClickedPostId}
+          setClickedPostUid={setClickedPostUid}
         />
       </Route>
       <Route render={() => <EmptyPage />} />

@@ -80,6 +80,7 @@ const PostCol = ({
       heartLength();
     };
   }, [uid, postId]);
+  
   const functionList = [
     {
       icon: heartData.includes(postId) ? (

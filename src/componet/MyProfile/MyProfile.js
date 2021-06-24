@@ -18,7 +18,6 @@ import { getMyPost } from "../../service/postData/getMyPost";
 import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
 import getBookMarkPost from "../../service/bookMark/getBookMarkPost";
 
-
 const StpPofileContainer = styled.section`
   margin: 0 auto;
 `;
@@ -102,6 +101,9 @@ const MyProfile = ({
   followingList,
   followerList,
   currentUserUid,
+  handlePostMenu,
+  setClickedPostId,
+  setClickedPostUid,
 }) => {
   const post = document.getElementById("post");
   const params = useParams();
@@ -115,13 +117,12 @@ const MyProfile = ({
     getMatchDisplayName(match, setMatchUser);
     getMyPost(setMyPostData, match);
     getBookMarkPost(bookMarkPostIds, setBookMarkPosts);
-
   }, [match, bookMarkPostIds]);
 
   const handlePost = () => {
     setPostModal(!postModal);
   };
-  
+
   return (
     <>
       {matchUser ? (
@@ -224,6 +225,9 @@ const MyProfile = ({
                 postModal={postModal}
                 handlePost={handlePost}
                 bookMarkPosts={bookMarkPosts}
+                handlePostMenu={handlePostMenu}
+                setClickedPostId={setClickedPostId}
+                setClickedPostUid={setClickedPostUid}
               />
             </section>
           </StpPofileContainer>

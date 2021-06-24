@@ -9,12 +9,21 @@ import {
   StPostImg,
 } from "../../Global/StMyProfileRoute/StMyProfileRoute";
 
-const MyPost = ({ myPostData, currentUserUid,handlePost,postModal,post }) => {
+const MyPost = ({
+  myPostData,
+  currentUserUid,
+  handlePost,
+  postModal,
+  post,
+  handlePostMenu,
+  setClickedPostId,
+  setClickedPostUid,
+}) => {
   const [postId, setPostId] = useState("");
-  
+
   return (
     <StPostList>
-      {myPostData.map((data,postId) => (
+      {myPostData.map((data, postId) => (
         <StPostItem
           key={postId}
           onClick={() => {
@@ -43,6 +52,9 @@ const MyPost = ({ myPostData, currentUserUid,handlePost,postModal,post }) => {
             content={myPostData}
             postId={postId}
             currentUserUid={currentUserUid}
+            handlePostMenu={handlePostMenu}
+            setClickedPostId={setClickedPostId}
+            setClickedPostUid={setClickedPostUid}
           />
         </ModalPotal>
       )}

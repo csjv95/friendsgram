@@ -11,6 +11,9 @@ const MyProfileRouter = ({
   handlePost,
   currentUserUid,
   bookMarkPosts,
+  handlePostMenu,
+  setClickedPostId,
+  setClickedPostUid,
 }) => {
   const { displayName } = matchUser;
   return (
@@ -22,6 +25,9 @@ const MyProfileRouter = ({
           postModal={postModal}
           handlePost={handlePost}
           currentUserUid={currentUserUid}
+          handlePostMenu={handlePostMenu}
+          setClickedPostId={setClickedPostId}
+          setClickedPostUid={setClickedPostUid}
         />
       </Route>
       <Route path={`/${displayName}/chanel`}>
@@ -33,6 +39,9 @@ const MyProfileRouter = ({
           postModal={postModal}
           handlePost={handlePost}
           bookMarkPosts={bookMarkPosts}
+          handlePostMenu={handlePostMenu}
+          setClickedPostId={setClickedPostId}
+          setClickedPostUid={setClickedPostUid}
         />
       </Route>
       <Route path={`/${displayName}/tagged`}>
