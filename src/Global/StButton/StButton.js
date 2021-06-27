@@ -21,10 +21,12 @@ const StButton = ({
   bgColor,
   color,
   btnText,
+  onClick,
 }) => {
  
   return (
     <StButtonStyle
+      onClick={onClick}
       width={width}
       padding={padding}
       border={border}

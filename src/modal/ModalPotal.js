@@ -6,7 +6,6 @@ const ModalPotal = ({ children,potalName }) => {
     const name = potalName;
     return name;
   }
-  console.log(potalName,children);
   return ReactDOM.createPortal(children,potal());
 };
 

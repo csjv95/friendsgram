@@ -21,6 +21,7 @@ const StProfileBtn = styled.button`
   width: ${({ width }) => width};
   padding: ${({ padding }) => padding};
   display: ${({ display }) => display};
+  border: ${({border})=> border};
   border-radius: 0.2em;
   font-weight: 600;
   background-color: ${({ bgColor }) => bgColor};
@@ -50,15 +51,19 @@ const Profiles = ({
   btnPadding,
   btnBgColor,
   btnColor,
+  btnBorder,
   onBtnClick,
   uid,
-  followingList,
 }) => {
   return (
     <StProfile data-uid={uid} padding={listPadding} onClick={profileClick}>
-      <Link to={`/${displayName}`}><StProfileImg src={photoURL} alt="my" height={imgHeight} /></Link>
+      <Link to={`/${displayName}`}>
+        <StProfileImg src={photoURL} alt="my" height={imgHeight} />
+      </Link>
       <StProfileInfo>
-        <StProfileId><Link to={`/${displayName}`}>{name}</Link></StProfileId>
+        <StProfileId>
+          <Link to={`/${displayName}`}>{name}</Link>
+        </StProfileId>
         <StProfileNicname>{displayName}</StProfileNicname>
       </StProfileInfo>
 
@@ -69,6 +74,7 @@ const Profiles = ({
         bgColor={btnBgColor}
         color={btnColor}
         display={btnDisplay}
+        border={btnBorder}
       >
         {btnText}
       </StProfileBtn>

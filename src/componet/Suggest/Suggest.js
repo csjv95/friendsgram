@@ -23,12 +23,12 @@ const StSugget = styled.ul`
 `;
 
 const Suggest = ({ usersList, followingList, followerList }) => {
-
+  
   const onBtnClick = async (event) => {
     const targetUser = event.target.parentNode.dataset.uid;
     await setFollow(targetUser, followingList);
   };
-
+  
   return (
     <StMainRouterSection>
       <StSuggestContainer>
@@ -47,7 +47,6 @@ const Suggest = ({ usersList, followingList, followerList }) => {
               btnText={followingList.includes(user.uid) ? "언팔로우" : "팔로우"}
               onBtnClick={onBtnClick}
               uid={user.uid}
-              followingList={followingList}
             />
           ))}
         </StSugget>
