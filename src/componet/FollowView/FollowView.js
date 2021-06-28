@@ -8,13 +8,23 @@ import setFollow from "../../service/follow/setFollow";
 import StButton from "../../Global/StButton/StButton";
 import { StClear } from "../../Global/StIcon/StIcon";
 import UserList from "../../Global/UserList/UserList";
+
 const FollowView = ({ followerList, followingList, handleFollow }) => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     getUsersData(followingList, setUserData);
   }, [followingList]);
-  console.log("userData1",userData)
+
+  useEffect(() => {
+    console.log("userData", userData);
+  }, [userData]);
+
+  const followBtnClick = async (event) => {
+    const targetUser = event.target.parentNode.dataset.uid;
+    await setFollow(targetUser, followingList);
+  };
+
   return (
     <StModalContainer
       display="flex"
@@ -38,7 +48,25 @@ const FollowView = ({ followerList, followingList, handleFollow }) => {
               btnText={<StClear width="2em" />}
             />
           </StItem>
-          <UserList userData={userData} followingList={followingList} />
+          {/* <UserList userData={userData} followingList={followingList} /> */}
+          {userData &&
+            userData.map((user) => (
+              <Profiles
+                key={user.uid}
+                displayName={user.displayName}
+                photoURL={user.photoURL}
+                imgHeight="2em"
+                name={user.name}
+                uid={user.uid}
+                btnPadding="0.5em 1em"
+                btnBgColor={Theme.colors.contentColor}
+                btnBorder={`1px solid ${Theme.colors.borderColor}`}
+                onBtnClick={followBtnClick}
+                btnText={
+                  followingList.includes(user.uid) ? "언팔로우" : "팔로우"
+                }
+              />
+            ))}
         </StList>
       </StModalMain>
     </StModalContainer>

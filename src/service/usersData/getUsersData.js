@@ -1,18 +1,21 @@
 import { firebaseStore } from "../firebase";
 
 const getUsersData = async (users, setData) => {
-  const data = [];
+  const result = [];
 
-  await users.map(async (user) => {
-    await firebaseStore
-      .collection("users")
-      .where("uid", "==", user)
-      .get()
-      .then((field) => {
-        field.forEach(async (item) => data.push(item.data()));
-      });
-      setData(data);
-    });
+  users.map(
+    async (user) =>
+      await firebaseStore
+        .collection("users")
+        .where("uid", "==", user)
+        .get()
+        .then((data) =>
+          data.forEach((item) => {
+            result.push(item.data());
+          })
+        )
+  );
+  setData(result); // []
 };
 
 export default getUsersData;
