@@ -1,21 +1,21 @@
 import { firebaseStore } from "../firebase";
 
 const getUsersData = async (users, setData) => {
-  const result = [];
+  
+  const usersArr = users.map(async (user) => {
+    const data = [];
+    const followingUsers = firebaseStore
+      .collection("users")
+      .where("uid", "==", user)
+      .get();
 
-  users.map(
-    async (user) =>
-      await firebaseStore
-        .collection("users")
-        .where("uid", "==", user)
-        .get()
-        .then((data) =>
-          data.forEach((item) => {
-            result.push(item.data());
-          })
-        )
-  );
-  setData(result); // []
+    (await followingUsers).docs.forEach((doc) => data.push(doc.data()));
+    return data;
+  });
+
+  const promiseAll = await Promise.all(usersArr);
+  const result = promiseAll.flatMap((p) => p);
+  setData(result);
 };
 
 export default getUsersData;
