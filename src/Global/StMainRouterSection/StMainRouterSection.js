@@ -5,5 +5,13 @@ export const StMainRouterSection = styled.section`
   padding-top: 4em;
   display: flex;
   flex-wrap: wrap;
-  background-color: ${({ theme }) => theme.colors.backgroundColor};;
+  background-color: ${({ theme }) => theme.colors.backgroundColor}; ;
+`;
+
+export const StSectionControl = styled.section`
+  flex-grow: 1;
+  padding-top: ${({ paddingTop }) => paddingTop};
+  display: flex;
+  flex-wrap: wrap;
+  background-color: ${({ backgroundColor }) => backgroundColor}; ;
 `;

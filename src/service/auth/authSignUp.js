@@ -22,6 +22,7 @@ const authSignUp = async (userData, follow, history) => {
     const uid = user.uid;
     const heart = firebaseStore.collection("heart").doc(uid);
     const bookMark = firebaseStore.collection("bookMark").doc(uid);
+    const timestamp = Date.now();
 
     await heart.set({
       uid,
@@ -56,6 +57,7 @@ const authSignUp = async (userData, follow, history) => {
       webSite,
       phoneNum,
       gen,
+      timestamp,
       uid,
     });
 

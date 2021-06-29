@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
+import { StSectionControl } from "../../Global/StMainRouterSection/StMainRouterSection";
 import Profiles from "../Home/Profiles";
 import setFollow from "../../service/follow/setFollow";
 import { Theme } from "../../style/Theme";
@@ -15,25 +15,35 @@ const StSuggetTitle = styled.h1`
 `;
 
 const StSugget = styled.ul`
-  padding: 1em;
-  width: 600px;
+  padding: ${({ padding }) => padding};
+  width: ${({ width }) => width};
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
-const Suggest = ({ usersList, followingList, followerList }) => {
-  
+const Suggest = ({
+  usersList,
+  followingList,
+  followerList,
+  StSectionPaddingTop,
+  StSectionBackgroundColor,
+  StlistWidth,
+  StListPadding,
+}) => {
   const onBtnClick = async (event) => {
     const targetUser = event.target.parentNode.dataset.uid;
     await setFollow(targetUser, followingList);
   };
-  
+
   return (
-    <StMainRouterSection>
+    <StSectionControl
+      paddingTop={StSectionPaddingTop}
+      backgroundColor={StSectionBackgroundColor}
+    >
       <StSuggestContainer>
         <StSuggetTitle>회원님을 위한 추천</StSuggetTitle>
-        <StSugget>
+        <StSugget width={StlistWidth} padding={StListPadding}>
           {usersList.map((user) => (
             <Profiles
               key={user.uid}
@@ -51,7 +61,7 @@ const Suggest = ({ usersList, followingList, followerList }) => {
           ))}
         </StSugget>
       </StSuggestContainer>
-    </StMainRouterSection>
+    </StSectionControl>
   );
 };
 

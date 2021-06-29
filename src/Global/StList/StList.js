@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
 export const StList = styled.ul`
+  display: ${({ display }) => display};
+  flex-direction: ${({ flexDirection }) => flexDirection};
+  justify-content: ${({ justifyContent }) => justifyContent};
+  align-items: ${({ alignItems }) => alignItems};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
+  overflow-y: ${({ overFlowY }) => overFlowY};
 `;
 
 export const StItem = styled.li`
@@ -15,4 +20,17 @@ export const StItem = styled.li`
   display: ${({ display }) => display};
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: ${({ alignItems }) => alignItems};
+  text-align: ${({ textAlign }) => textAlign};
+  border-bottom: ${({ borderBottom }) => borderBottom};
+  overflow-y: ${({ overFlowY }) => overFlowY};
+`;
+
+export const StTitle = styled.h1`
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
+  margin: ${({ margin }) => margin};
+  padding: ${({ padding }) => padding};
+  font-size: ${({ fontSize }) => fontSize};
+  font-weight: ${({ fontWeight }) => fontWeight};
+  color: ${({ color }) => color};
 `;

@@ -138,6 +138,7 @@ const RouteMain = () => {
           <FollowView
             followerList={followerList}
             followingList={followingList}
+            usersList={usersList}
             handleFollow={handleFollow}
           />
         </ModalPotal>

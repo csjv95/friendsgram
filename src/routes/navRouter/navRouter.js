@@ -7,6 +7,7 @@ import MyProfile from "../../componet/MyProfile/MyProfile";
 import Upload from "../../componet/Upload/Upload";
 import Suggest from "../../componet/Suggest/Suggest";
 import EmptyPage from "../../Global/EmptyPage/EmptyPage";
+import { Theme } from "../../style/Theme";
 
 const NavRouter = ({
   userData,
@@ -39,6 +40,10 @@ const NavRouter = ({
           usersList={usersList}
           followingList={followingList}
           followerList={followerList}
+          StSectionPaddingTop="4em"
+          StSectionBackgroundColor={Theme.colors.backgroundColor}
+          StlistWidth="38em"
+          StListPadding="1em"
         />
       </Route>
       <Route path="/edit">

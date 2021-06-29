@@ -2,9 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 const StButtonStyle = styled.button`
+  position: ${({ position }) => position};
+  top: ${({ top }) => top};
+  bottom: ${({ bottom }) => bottom};
+  right: ${({ right }) => right};
+  left: ${({ left }) => left};
   width: ${({ width }) => width};
   padding: ${({ padding }) => padding};
-  border : ${({border}) => border};
+  border: ${({ border }) => border};
   border-radius: 0.2em;
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
@@ -13,6 +18,11 @@ const StButtonStyle = styled.button`
 `;
 
 const StButton = ({
+  position,
+  top,
+  bottom,
+  right,
+  left,
   width,
   padding,
   border,
@@ -23,10 +33,14 @@ const StButton = ({
   btnText,
   onClick,
 }) => {
- 
   return (
     <StButtonStyle
       onClick={onClick}
+      position={position}
+      top={top}
+      bottom={bottom}
+      right={right}
+      left={left}
       width={width}
       padding={padding}
       border={border}

@@ -1,4 +1,4 @@
-import { firebaseStore,firebaseAuth } from "../firebase";
+import { firebaseStore, firebaseAuth } from "../firebase";
 
 const getPostData = async (setPostData, followingList) => {
   const currentUserUid = firebaseAuth.currentUser.uid;
@@ -8,10 +8,10 @@ const getPostData = async (setPostData, followingList) => {
   getFollowingList.map(async (following) => {
     const followingPostData = firebaseStore
       .collection("post")
-      .where("uid","==",following)
+      .where("uid", "==", following);
 
-    let data = [];
-    
+    const data = [];
+
     await followingPostData.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         data.push(doc.data());
@@ -22,9 +22,9 @@ const getPostData = async (setPostData, followingList) => {
 
   const myPostData = firebaseStore
     .collection("post")
-    .where("uid","==",currentUserUid)
+    .where("uid", "==", currentUserUid);
 
-  let data = [];
+  const data = [];
 
   await myPostData.get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -32,11 +32,11 @@ const getPostData = async (setPostData, followingList) => {
     });
   });
   postData.push(...data);
-  
+
   // sort를 이용해서 timestamp로 내림차순으로 정렬
-  postData.sort((a,b) => {
+  postData.sort((a, b) => {
     return b.timestamp - a.timestamp;
-  })
+  });
   
   setPostData(postData);
 };

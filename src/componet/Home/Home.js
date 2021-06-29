@@ -35,7 +35,7 @@ const Home = ({
   useEffect(() => {
     getPostData(setPostData, followingList);
   }, [followingList]);
-
+  
   return (
     <StMainRouterSection>
       <StHomeContainer>
