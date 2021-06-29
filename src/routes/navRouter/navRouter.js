@@ -16,9 +16,11 @@ const NavRouter = ({
   followerList,
   currentUserUid,
   handlePostMenu,
+  handleFollow,
   bookMarkPostIds,
   setClickedPostId,
   setClickedPostUid,
+  setIsFollow
 }) => {
   return (
     <Switch>
@@ -56,8 +58,10 @@ const NavRouter = ({
           currentUserUid={currentUserUid}
           bookMarkPostIds={bookMarkPostIds}
           handlePostMenu={handlePostMenu}
+          handleFollow={handleFollow}
           setClickedPostId={setClickedPostId}
           setClickedPostUid={setClickedPostUid}
+          setIsFollow={setIsFollow}
         />
       </Route>
       <Route render={() => <EmptyPage />} />

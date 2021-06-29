@@ -14,9 +14,10 @@ const FollowView = ({
   followingList,
   usersList,
   handleFollow,
+  isFollow,
 }) => {
   const [userData, setUserData] = useState([]);
-
+  console.log(isFollow)
   useEffect(() => {
     getUsersData(followingList, setUserData);
   }, [followingList]);
@@ -51,7 +52,7 @@ const FollowView = ({
             textAlign="center"
             borderBottom={`1px solid ${Theme.colors.borderColor}`}
           >
-            <StTitle>팔로우</StTitle>
+            <StTitle>{isFollow === "팔로워" ? isFollow : isFollow}</StTitle>
             <StButton
               onClick={handleFollow}
               position="absolute"
@@ -61,6 +62,7 @@ const FollowView = ({
               btnText={<StClear width="2em" />}
             />
           </StItem>
+
           <StItem width="100%" height="100%" padding="0 1em" overFlowY="auto">
             <StList
               display="flex"

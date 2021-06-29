@@ -98,8 +98,10 @@ const MyProfile = ({
   followerList,
   currentUserUid,
   handlePostMenu,
+  handleFollow,
   setClickedPostId,
   setClickedPostUid,
+  setIsFollow,
 }) => {
   const post = document.getElementById("post");
   const params = useParams();
@@ -171,8 +173,26 @@ const MyProfile = ({
                 </StInfoTop>
                 <StInfoMid>
                   <li>게시물 {myPostData.length}</li>
-                  <li>팔로워 {followingList.length}</li>
-                  <li>팔로우 {followerList.length}</li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        setIsFollow("팔로워");
+                        handleFollow();
+                      }}
+                    >
+                      팔로워 {followingList.length}
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        setIsFollow("팔로우");
+                        handleFollow();
+                      }}
+                    >
+                      팔로우 {followerList.length}
+                    </button>
+                  </li>
                 </StInfoMid>
                 <StInfoBottom>
                   <li>{matchUser.name}</li>

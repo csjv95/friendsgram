@@ -32,6 +32,7 @@ const RouteMain = () => {
   const message = document.getElementById("message");
   const postMenu = document.getElementById("postMenu");
   const follow = document.getElementById("follow");
+  const [isFollow, setIsFollow] =useState("")
   // const post = document.getElementById("post");
   const [currentUserUid, setCurrentUserUid] = useState("");
   const [userData, setUserData] = useState([]);
@@ -45,7 +46,7 @@ const RouteMain = () => {
   const [locationModal, setLocationModal] = useState(false);
   const [messageModal, setMessageModal] = useState(false);
   const [postMenuModal, setPostMenuModal] = useState(false);
-  const [followModal, setFollowModal] = useState(true);
+  const [followModal, setFollowModal] = useState(false);
   // const [postModal, setPostModal] = useState(false);
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
@@ -140,6 +141,7 @@ const RouteMain = () => {
             followingList={followingList}
             usersList={usersList}
             handleFollow={handleFollow}
+            isFollow={isFollow}
           />
         </ModalPotal>
       )}
@@ -164,9 +166,12 @@ const RouteMain = () => {
         followerList={followerList}
         currentUserUid={currentUserUid}
         handlePostMenu={handlePostMenu}
+        handleFollow={handleFollow}
         bookMarkPostIds={bookMarkPostIds}
         setClickedPostId={setClickedPostId}
         setClickedPostUid={setClickedPostUid}
+
+        setIsFollow={setIsFollow}
         // handlePost={handlePost}
       />
       <MainFooter />
