@@ -17,10 +17,12 @@ const FollowView = ({
   isFollow,
 }) => {
   const [userData, setUserData] = useState([]);
-  console.log(isFollow)
+
   useEffect(() => {
-    getUsersData(followingList, setUserData);
-  }, [followingList]);
+    isFollow === "팔로우"
+      ? getUsersData(followingList, setUserData)
+      : getUsersData(followerList, setUserData);
+  }, [isFollow, followingList, followerList]);
 
   const followBtnClick = async (event) => {
     const targetUser = event.target.parentNode.dataset.uid;
@@ -83,7 +85,13 @@ const FollowView = ({
                     btnBgColor={Theme.colors.contentColor}
                     btnBorder={`1px solid ${Theme.colors.borderColor}`}
                     onBtnClick={followBtnClick}
-                    btnText="삭제"
+                    btnText={
+                      isFollow === "팔로우"
+                        ? "삭제"
+                        : followingList.includes(user.uid)
+                        ? "언팔로우"
+                        : "팔로우"
+                    }
                   />
                 ))}
               {userData.length < 4 && (

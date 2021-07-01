@@ -5,7 +5,8 @@ const getFollowerList = async (setFollowerList) => {
   const currentUserUid = firebaseAuth.currentUser.uid;
   const followerData = firebaseStore.collection("follow").where("uid", "==", currentUserUid);
 
-  await followerData.get().then((querySnapshot) => {
+  followerData
+  .onSnapshot((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       setFollowerList(doc.data().follower);
     });

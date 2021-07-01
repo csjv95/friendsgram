@@ -180,7 +180,7 @@ const MyProfile = ({
                         handleFollow();
                       }}
                     >
-                      팔로워 {followingList.length}
+                      팔로워 {followerList.length}
                     </button>
                   </li>
                   <li>
@@ -190,7 +190,7 @@ const MyProfile = ({
                         handleFollow();
                       }}
                     >
-                      팔로우 {followerList.length}
+                      팔로우 {followingList.length}
                     </button>
                   </li>
                 </StInfoMid>
