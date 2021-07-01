@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import DirectRouter from "../../routes/directRouter/directRouter";
+import StButton from "../../Global/StButton/StButton";
+import { StPencilSquare } from "../../Global/StIcon/StIcon";
+import { StList, StItem } from "../../Global/StList/StList";
+import { Theme } from "../../style/Theme";
 
 const StDirectContainer = styled.section`
   width: 900px;
@@ -28,7 +32,8 @@ const StUserName = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};;
+  font-size: 1em;
+  font-weight: 600;
 `;
 
 const StFriendsList = styled.ul`
@@ -48,20 +53,37 @@ const DirectUserInfo = styled.ul`
   flex-direction: column;
 `;
 
-const Direct = (props) => {
+const Direct = ({ userData }) => {
   const users = [
     { username: "SJ" },
     { username: "Reem" },
     { username: "Sandra" },
   ];
 
-  console.log(props)
-
   return (
     <StMainRouterSection>
       <StDirectContainer>
         <StDirectFriends>
-          <StUserName>my name</StUserName>
+          <StList
+            display="flex"
+            borderBottom={`1px solid ${Theme.colors.borderColor}`}
+          >
+            <StItem
+              flexGrow="1"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              {userData.displayName}
+            </StItem>
+            <StItem>
+              <StButton
+                padding="1em"
+                btnText={<StPencilSquare width="2em" />}
+              />
+            </StItem>
+          </StList>
+
           <StFriendsList>
             {users.map((user, index) => (
               <Link key={index} to={`/direct/${user.username}`}>

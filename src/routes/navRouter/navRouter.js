@@ -35,7 +35,9 @@ const NavRouter = ({
           setClickedPostUid={setClickedPostUid}
         />
       </Route>
-      <Route path="/direct" component={Direct} />
+      <Route path="/direct">
+        <Direct userData={userData}/>
+        </Route>
       <Route path="/post" component={Upload} />
       <Route path="/suggest">
         <Suggest

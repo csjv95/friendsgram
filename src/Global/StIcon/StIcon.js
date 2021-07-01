@@ -28,6 +28,7 @@ import { Clear } from "@styled-icons/material/Clear";
 import { DotFill } from "@styled-icons/octicons/DotFill";
 import { ArrowIosBackOutline } from "@styled-icons/evaicons-outline/ArrowIosBackOutline";
 import { ArrowIosForwardOutline } from "@styled-icons/evaicons-outline/ArrowIosForwardOutline";
+import { PencilSquare } from "@styled-icons/bootstrap/PencilSquare";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -59,9 +60,9 @@ export const StBookmarkIcon = styled(Bookmark)`
 `;
 
 export const StBookmarkFill = styled(BookmarkFill)`
- width: ${({ width }) => width}em;
+  width: ${({ width }) => width}em;
   color: ${({ color }) => color};
-`
+`;
 
 export const StMenuIcon = styled(DotsHorizontalRounded)`
   width: ${({ width }) => width}em;
@@ -176,6 +177,13 @@ export const StArrowLeft = styled(ArrowIosBackOutline)`
 
 export const StArrowRight = styled(ArrowIosForwardOutline)`
   width: ${({ width }) => width};
+  color: ${({ color }) => color};
+  background-color: ${({ bgColor }) => bgColor};
+`;
+
+export const StPencilSquare = styled(PencilSquare)`
+  width: ${({ width }) => width};
+  padding :${({ padding }) => padding};
   color: ${({ color }) => color};
   background-color: ${({ bgColor }) => bgColor};
 `;
