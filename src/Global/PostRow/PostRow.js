@@ -36,7 +36,7 @@ import { StProfileImg } from "../StProfileImg/StProfileImg";
 const StPostArticle = styled.article`
   width: 65%;
   height: 96%; //밑에 nav보이기 위해서
-  border-right : 1px solid ${({ theme }) => theme.colors.borderColor};
+  border-right: 1px solid ${({ theme }) => theme.colors.borderColor};
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
@@ -55,9 +55,9 @@ const PostRow = ({
   setClickedPostId,
   setClickedPostUid,
 }) => {
-  const { uid, text, timestamp, postId } = post;
+  const { uid, text, timestamp, postId, displayName } = post;
   const [userData, setUserData] = useState([]);
-  const { photoURL, displayName, location } = userData;
+  const { photoURL, location } = userData;
   const [heartData, setHeartData] = useState([]);
   const [heartLength, setHeartLength] = useState([]);
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
@@ -67,7 +67,6 @@ const PostRow = ({
     const heart = getHeart(setHeartData);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
     const heartLength = getHeartLength(postId, setHeartLength);
-
     return () => {
       heart();
       bookMark();

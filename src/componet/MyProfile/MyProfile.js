@@ -173,25 +173,29 @@ const MyProfile = ({
                 </StInfoTop>
                 <StInfoMid>
                   <li>게시물 {myPostData.length}</li>
-                  <li>
-                    <button
-                      onClick={() => {
-                        setIsFollow("팔로워");
-                        handleFollow();
-                      }}
-                    >
-                      팔로워 {followerList.length}
-                    </button>
+                  <li
+                    onClick={() => {
+                      setIsFollow("팔로워");
+                      handleFollow();
+                    }}
+                  >
+                    <StButton
+                      width="100%"
+                      fontSize="1em"
+                      btnText={`팔로워 ${followerList.length}`}
+                    />
                   </li>
-                  <li>
-                    <button
-                      onClick={() => {
-                        setIsFollow("팔로우");
-                        handleFollow();
-                      }}
-                    >
-                      팔로우 {followingList.length}
-                    </button>
+                  <li
+                    onClick={() => {
+                      setIsFollow("팔로우");
+                      handleFollow();
+                    }}
+                  >
+                    <StButton
+                      width="100%"
+                      fontSize="1em"
+                      btnText={`팔로우 ${followingList.length}`}
+                    />
                   </li>
                 </StInfoMid>
                 <StInfoBottom>

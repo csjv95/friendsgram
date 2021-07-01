@@ -8,6 +8,7 @@ const StButtonStyle = styled.button`
   right: ${({ right }) => right};
   left: ${({ left }) => left};
   width: ${({ width }) => width};
+  height: ${({ height }) => height};
   padding: ${({ padding }) => padding};
   border: ${({ border }) => border};
   border-radius: 0.2em;
@@ -24,6 +25,7 @@ const StButton = ({
   right,
   left,
   width,
+  height,
   padding,
   border,
   fontSize,
@@ -42,6 +44,7 @@ const StButton = ({
       right={right}
       left={left}
       width={width}
+      height={height}
       padding={padding}
       border={border}
       fontSize={fontSize}

@@ -4,8 +4,8 @@ const getBookMarkPost = (bookMarkPostIds, setBookMarkPosts) => {
   const sum = [];
 
   firebaseStore.collection("bookMark").onSnapshot(
-    bookMarkPostIds.map(async (postId) => {
-      await firebaseStore
+    bookMarkPostIds.map((postId) =>
+      firebaseStore
         .collection("post")
         .where("postId", "==", postId)
         .get()
@@ -14,8 +14,8 @@ const getBookMarkPost = (bookMarkPostIds, setBookMarkPosts) => {
             sum.push(doc.data());
           });
           setBookMarkPosts(sum);
-        });
-    })
+        })
+    )
   );
 };
 

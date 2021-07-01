@@ -32,6 +32,7 @@ import setHeart from "../../service/heart/setHeart";
 import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import setBookMark from "../../service/bookMark/setBookMark";
 import getHeartLength from "../../service/heart/getHeartLength";
+import { Link } from "react-router-dom";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -60,8 +61,16 @@ const PostCol = ({
   setClickedPostUid,
 }) => {
   const [match, setMatchUser] = useState({});
-  const { imgsData, noComments, timestamp, text, location, uid, postId } =
-    article;
+  const {
+    imgsData,
+    noComments,
+    timestamp,
+    text,
+    location,
+    uid,
+    postId,
+    displayName,
+  } = article;
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const { photoURL } = userData;
   const [heartData, setHeartData] = useState([]);
@@ -73,7 +82,7 @@ const PostCol = ({
     const heart = getHeart(setHeartData);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
     const heartLength = getHeartLength(postId, setHeartLength);
-
+    
     return () => {
       heart();
       bookMark();
@@ -138,7 +147,10 @@ const PostCol = ({
             display="flex"
             flexDirection="column"
           >
-            <StProfileId fontWeight="600">{match.displayName}</StProfileId>
+            <StProfileId fontWeight="600">
+              <Link to={displayName}> {match.displayName}</Link>
+            </StProfileId>
+
             <StProfileLocation fontSize="0.7em">{location}</StProfileLocation>
           </StProfileInfo>
         </StProfileContainer>
