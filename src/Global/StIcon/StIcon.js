@@ -29,6 +29,8 @@ import { DotFill } from "@styled-icons/octicons/DotFill";
 import { ArrowIosBackOutline } from "@styled-icons/evaicons-outline/ArrowIosBackOutline";
 import { ArrowIosForwardOutline } from "@styled-icons/evaicons-outline/ArrowIosForwardOutline";
 import { PencilSquare } from "@styled-icons/bootstrap/PencilSquare";
+import { CheckboxBlankCircle } from "@styled-icons/remix-line/CheckboxBlankCircle";
+import { Check } from "@styled-icons/boxicons-regular/Check";
 
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
@@ -183,7 +185,22 @@ export const StArrowRight = styled(ArrowIosForwardOutline)`
 
 export const StPencilSquare = styled(PencilSquare)`
   width: ${({ width }) => width};
-  padding :${({ padding }) => padding};
+  padding: ${({ padding }) => padding};
+  color: ${({ color }) => color};
+  background-color: ${({ bgColor }) => bgColor};
+`;
+
+export const StUnChecked = styled(CheckboxBlankCircle)`
+  width: ${({ width }) => width};
+  padding: ${({ padding }) => padding};
+  color: ${({ color }) => color};
+  background-color: ${({ bgColor }) => bgColor};
+`;
+
+export const StChecked = styled(Check)`
+  width: ${({ width }) => width};
+  padding: ${({ padding }) => padding};
+  border-radius: ${({ borderRadius }) => borderRadius};
   color: ${({ color }) => color};
   background-color: ${({ bgColor }) => bgColor};
 `;

@@ -16,6 +16,7 @@ import Message from "../../Global/Message/Message";
 import PostMenu from "../../componet/PostMenu/PostMenu";
 import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import FollowView from "../../componet/FollowView/FollowView";
+import Send from "../../componet/Send/Send";
 // import Post from "../../componet/Post/Post";
 
 const AppContainer = styled.div`
@@ -32,7 +33,8 @@ const RouteMain = () => {
   const message = document.getElementById("message");
   const postMenu = document.getElementById("postMenu");
   const follow = document.getElementById("follow");
-  const [isFollow, setIsFollow] =useState("")
+  const send = document.getElementById("send");
+  const [isFollow, setIsFollow] = useState("");
   // const post = document.getElementById("post");
   const [currentUserUid, setCurrentUserUid] = useState("");
   const [userData, setUserData] = useState([]);
@@ -47,6 +49,7 @@ const RouteMain = () => {
   const [messageModal, setMessageModal] = useState(false);
   const [postMenuModal, setPostMenuModal] = useState(false);
   const [followModal, setFollowModal] = useState(false);
+  const [sendModal, setSendModal] = useState(false);
   // const [postModal, setPostModal] = useState(false);
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
@@ -85,6 +88,10 @@ const RouteMain = () => {
 
   const handleFollow = () => {
     setFollowModal(!followModal);
+  };
+
+  const handleSend = () => {
+    setSendModal(!sendModal);
   };
 
   // const handlePost = () => {
@@ -146,6 +153,12 @@ const RouteMain = () => {
         </ModalPotal>
       )}
 
+      {sendModal && (
+        <ModalPotal potalName={send}>
+          <Send handleSend={handleSend} />
+        </ModalPotal>
+      )}
+
       {/* {postModal && (
         <ModalPotal potalName={post}>
           <Post handlePost={handlePost} myPostData/>
@@ -167,10 +180,10 @@ const RouteMain = () => {
         currentUserUid={currentUserUid}
         handlePostMenu={handlePostMenu}
         handleFollow={handleFollow}
+        handleSend={handleSend}
         bookMarkPostIds={bookMarkPostIds}
         setClickedPostId={setClickedPostId}
         setClickedPostUid={setClickedPostUid}
-
         setIsFollow={setIsFollow}
         // handlePost={handlePost}
       />

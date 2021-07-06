@@ -53,7 +53,7 @@ const DirectUserInfo = styled.ul`
   flex-direction: column;
 `;
 
-const Direct = ({ userData }) => {
+const Direct = ({ userData,handleSend }) => {
   const users = [
     { username: "SJ" },
     { username: "Reem" },
@@ -76,7 +76,7 @@ const Direct = ({ userData }) => {
             >
               {userData.displayName}
             </StItem>
-            <StItem>
+            <StItem onClick={handleSend}>
               <StButton
                 padding="1em"
                 btnText={<StPencilSquare width="2em" />}
