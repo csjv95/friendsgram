@@ -1,35 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { StUnChecked, StChecked } from "../../Global/StIcon/StIcon";
 import setSearchRecord from "../../service/search/setSearchRecord";
 import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
-import { Theme } from "../../style/Theme";
 import Profiles from "../Home/Profiles";
+import CheckBoxProfile from "../Profile/CheckBoxProfile";
 
-const SearchProfile = ({ user, isCheckBox, checkUser, setCheckUser }) => {
+const SearchProfile = ({
+  user,
+  isCheckBox,
+  checkUser,
+  setCheckUser,
+  check,
+  changeCheck,
+  setCheck,
+}) => {
   const [match, setMatchUserData] = useState([]);
-  const [check, setcheck] = useState(false);
 
   useEffect(() => {
     getMatchDisplayName(user, setMatchUserData);
   }, [user]);
 
   const onClick = () => {
-    checkUser ? console.log("DM") : setSearchRecord(match.displayName);
+    setSearchRecord(match.displayName);
   };
 
-  const checkBoxClick = () => {
-    setcheck(!check);
+  const checkBoxClick = (e) => {
+    setCheck(!check);
+
     checkUser.includes(match.displayName)
       ? setCheckUser(checkUser.filter((user) => user !== match.displayName))
       : setCheckUser([...checkUser, match.displayName]);
   };
-
+  // console.log("users", checkUser);
+  console.log(check);
   return (
     <>
       {isCheckBox ? (
-        <Profiles
-          profileClick={onClick}
+        <CheckBoxProfile
+          profileClick={checkBoxClick}
           listPadding="0 1em"
           imgHeight="3em"
           photoURL={match.photoURL}
@@ -37,6 +45,7 @@ const SearchProfile = ({ user, isCheckBox, checkUser, setCheckUser }) => {
           name={match.name}
           btnDisplay="none"
           uid={match.uid}
+          check={check}
         />
       ) : (
         <Link to={`/${match.displayName}`}>
@@ -51,24 +60,6 @@ const SearchProfile = ({ user, isCheckBox, checkUser, setCheckUser }) => {
             uid={match.uid}
           />
         </Link>
-      )}
-
-      {isCheckBox && (
-        <>
-          <input type="checkbox" id="check" style={{ display: "none" }} />
-          <label htmlFor="check" onClick={checkBoxClick}>
-            {check ? (
-              <StChecked
-                width="2em"
-                borderRadius="50%"
-                color={Theme.colors.contentColor}
-                bgColor={Theme.colors.skyblue}
-              />
-            ) : (
-              <StUnChecked width="2em" color={Theme.colors.borderColor} />
-            )}
-          </label>
-        </>
       )}
     </>
   );

@@ -6,22 +6,18 @@ import {
   StModalMain,
 } from "../../Global/StModal/StModal";
 import { Theme } from "../../style/Theme";
-import {
-  StDiv,
-  StHeader,
-  StMain,
-  StInput,
-  StSpan,
-} from "../../Global/StTags/StTags";
+import { StDiv, StHeader, StMain, StInput } from "../../Global/StTags/StTags";
 import StButton from "../../Global/StButton/StButton";
 import { getSearch } from "../../service/search/getSearch";
 import SearchProfile from "../Search/SearchProfile";
+import { StList } from "../../Global/StList/StList";
 
 const Send = ({ handleSend }) => {
   const [inputText, setInputText] = useState(null);
   const [recomendUser, setRecomendUser] = useState([]);
   const [checkUser, setCheckUser] = useState([]);
   const isCheckBox = true;
+  const [check, setCheck] = useState(false);
 
   useEffect(() => {
     getSearch(inputText, setRecomendUser);
@@ -30,6 +26,15 @@ const Send = ({ handleSend }) => {
   const inputChangeText = (event) => {
     const text = event.target.value;
     setInputText(text);
+  };
+
+  const changeCheck = () => {
+    setCheck(!check);
+  }
+
+  const del = (user) => {
+    setCheckUser(checkUser.filter((r) => r !== user));
+    changeCheck();
   };
 
   return (
@@ -82,12 +87,14 @@ const Send = ({ handleSend }) => {
                 bgColor={Theme.colors.skyblue}
                 color={Theme.colors.skyblueInnerText}
                 btnText={user}
-                // btnText={`${user} ${(<StClear width="1em" />)}`} ?
+                onClick={() => {
+                  del(user);
+                }}
               />
             ))}
           </StDiv>
 
-          <StDiv padding="1em" fontWeight="600">
+          <StList padding="1em" fontWeight="600" height="40em" overFlowY="auto">
             추천
             {inputText &&
               recomendUser.map((user) => (
@@ -97,9 +104,12 @@ const Send = ({ handleSend }) => {
                   isCheckBox={isCheckBox}
                   checkUser={checkUser}
                   setCheckUser={setCheckUser}
+                  setCheck={setCheck}
+                  check={check}
+                  changeCheck={changeCheck}
                 />
               ))}
-          </StDiv>
+          </StList>
         </StMain>
       </StModalMain>
     </StModalContainer>

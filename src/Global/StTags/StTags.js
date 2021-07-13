@@ -34,6 +34,7 @@ export const StDiv = styled.div`
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
   color: ${({ color }) => color};
+  overflow: ${({ overFlow }) => overFlow};
 `;
 
 export const StSpan = styled.span`
@@ -55,10 +56,19 @@ export const StInput = styled.input`
   height: ${({ height }) => height};
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
+  display: ${({ display }) => display};
   border: ${({ border }) => border};
   border-radius: ${({ borderRadius }) => borderRadius};
   border-bottom: ${({ borderBottom }) => borderBottom};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
   color: ${({ color }) => color};
+`;
+
+export const StLabel = styled.label`
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
+  margin: ${({ margin }) => margin};
+  padding: ${({ padding }) => padding};
+  display: ${({ display }) => display};
 `;

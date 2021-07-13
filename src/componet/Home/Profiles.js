@@ -21,7 +21,7 @@ const StProfileBtn = styled.button`
   width: ${({ width }) => width};
   padding: ${({ padding }) => padding};
   display: ${({ display }) => display};
-  border: ${({border})=> border};
+  border: ${({ border }) => border};
   border-radius: 0.2em;
   font-weight: 600;
   background-color: ${({ bgColor }) => bgColor};
