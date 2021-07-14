@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import { StUnChecked, StChecked } from "../../Global/StIcon/StIcon";
 import { Theme } from "../../style/Theme";
-import { StInput } from "../../Global/StTags/StTags";
+import { StInput, StLabel, StSpan } from "../../Global/StTags/StTags";
 const StProfile = styled.li`
   margin: 1em 0;
   padding: ${({ padding }) => padding};
@@ -44,24 +44,38 @@ const CheckBoxProfile = ({
 
       <StProfileInfo>
         <StProfileId>
-          <span>{name}</span>
+          <StSpan>{name}</StSpan>
         </StProfileId>
         <StProfileNicname>{displayName}</StProfileNicname>
       </StProfileInfo>
 
-      <StInput type="checkbox" id="view" display="none" />
-      <label htmlFor="view">
+      <StInput
+        type="checkbox"
+        id={uid}
+        checked={check}
+        onChange={profileClick}
+      />
+      <StLabel htmlFor={uid}>
         {check ? (
           <StChecked
+            onClick={(e) => {
+              e.preventDefault();
+            }}
             width="2em"
             borderRadius="50%"
             color={Theme.colors.contentColor}
             bgColor={Theme.colors.skyblue}
           />
         ) : (
-          <StUnChecked width="2em" color={Theme.colors.borderColor} />
+          <StUnChecked
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+            width="2em"
+            color={Theme.colors.borderColor}
+          />
         )}
-      </label>
+      </StLabel>
     </StProfile>
   );
 };

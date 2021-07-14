@@ -26,16 +26,6 @@ const StDirectChat = styled.section`
   width: 60%;
 `;
 
-const StUserName = styled.div`
-  width: 100%;
-  padding: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1em;
-  font-weight: 600;
-`;
-
 const StFriendsList = styled.ul`
   display: flex;
   flex-direction: column;
@@ -53,7 +43,7 @@ const DirectUserInfo = styled.ul`
   flex-direction: column;
 `;
 
-const Direct = ({ userData,handleSend }) => {
+const Direct = ({ userData, handleSend }) => {
   const users = [
     { username: "SJ" },
     { username: "Reem" },

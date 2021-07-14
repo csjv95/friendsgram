@@ -17,7 +17,7 @@ const Send = ({ handleSend }) => {
   const [recomendUser, setRecomendUser] = useState([]);
   const [checkUser, setCheckUser] = useState([]);
   const isCheckBox = true;
-  const [check, setCheck] = useState(false);
+  // const [check, setCheck] = useState(false);
 
   useEffect(() => {
     getSearch(inputText, setRecomendUser);
@@ -28,13 +28,8 @@ const Send = ({ handleSend }) => {
     setInputText(text);
   };
 
-  const changeCheck = () => {
-    setCheck(!check);
-  }
-
-  const del = (user) => {
+  const deleteCheckUser = (user) => {
     setCheckUser(checkUser.filter((r) => r !== user));
-    changeCheck();
   };
 
   return (
@@ -88,7 +83,7 @@ const Send = ({ handleSend }) => {
                 color={Theme.colors.skyblueInnerText}
                 btnText={user}
                 onClick={() => {
-                  del(user);
+                  deleteCheckUser(user);
                 }}
               />
             ))}
@@ -104,9 +99,9 @@ const Send = ({ handleSend }) => {
                   isCheckBox={isCheckBox}
                   checkUser={checkUser}
                   setCheckUser={setCheckUser}
-                  setCheck={setCheck}
-                  check={check}
-                  changeCheck={changeCheck}
+                  // setCheck={setCheck}
+                  // check={check}
+                  // changeCheck={changeCheck}
                 />
               ))}
           </StList>

@@ -5,16 +5,9 @@ import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
 import Profiles from "../Home/Profiles";
 import CheckBoxProfile from "../Profile/CheckBoxProfile";
 
-const SearchProfile = ({
-  user,
-  isCheckBox,
-  checkUser,
-  setCheckUser,
-  check,
-  changeCheck,
-  setCheck,
-}) => {
+const SearchProfile = ({ user, isCheckBox, checkUser, setCheckUser }) => {
   const [match, setMatchUserData] = useState([]);
+  const [check, setCheck] = useState(false);
 
   useEffect(() => {
     getMatchDisplayName(user, setMatchUserData);
@@ -24,15 +17,22 @@ const SearchProfile = ({
     setSearchRecord(match.displayName);
   };
 
-  const checkBoxClick = (e) => {
-    setCheck(!check);
-
-    checkUser.includes(match.displayName)
-      ? setCheckUser(checkUser.filter((user) => user !== match.displayName))
-      : setCheckUser([...checkUser, match.displayName]);
+  const checkBoxClick = () => {
+    console.log("hello");
+    // setCheck(!check);
+    // console.log("users", checkUser);
+    // checkUser.includes(match.displayName)
+    //   ? setCheckUser(checkUser.filter((user) => user !== match.displayName))
+    //   : setCheckUser([...checkUser, match.displayName]);
+    if (checkUser.includes(match.displayName)) {
+      setCheckUser(checkUser.filter((user) => user !== match.displayName));
+      setCheck(false);
+    } else {
+      setCheckUser([...checkUser, match.displayName]);
+      setCheck(true);
+    }
   };
-  // console.log("users", checkUser);
-  console.log(check);
+
   return (
     <>
       {isCheckBox ? (
