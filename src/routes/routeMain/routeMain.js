@@ -17,6 +17,7 @@ import PostMenu from "../../componet/PostMenu/PostMenu";
 import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import FollowView from "../../componet/FollowView/FollowView";
 import Send from "../../componet/Send/Send";
+import getMessageToken from "../../service/message/getMessageToken";
 // import Post from "../../componet/Post/Post";
 
 const AppContainer = styled.div`
@@ -63,6 +64,7 @@ const RouteMain = () => {
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
+    // getMessageToken();
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
 
     return () => {

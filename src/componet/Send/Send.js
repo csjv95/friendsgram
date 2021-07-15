@@ -17,7 +17,6 @@ const Send = ({ handleSend }) => {
   const [recomendUser, setRecomendUser] = useState([]);
   const [checkUser, setCheckUser] = useState([]);
   const isCheckBox = true;
-  // const [check, setCheck] = useState(false);
 
   useEffect(() => {
     getSearch(inputText, setRecomendUser);
@@ -55,7 +54,7 @@ const Send = ({ handleSend }) => {
             <StClear width="2em" />
           </StModalBtn>
           <h1>새로운 메세지</h1>
-          <StButton btnText="다음" />
+          <StButton btnText="다음"/>
         </StHeader>
 
         <StMain>
@@ -99,9 +98,6 @@ const Send = ({ handleSend }) => {
                   isCheckBox={isCheckBox}
                   checkUser={checkUser}
                   setCheckUser={setCheckUser}
-                  // setCheck={setCheck}
-                  // check={check}
-                  // changeCheck={changeCheck}
                 />
               ))}
           </StList>

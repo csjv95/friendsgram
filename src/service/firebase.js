@@ -3,6 +3,7 @@ import "firebase/firestore";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/storage";
+import "firebase/messaging";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -19,7 +20,13 @@ const firebaseStore = firebaseApp.firestore();
 const firebaseAuth = firebaseApp.auth();
 const firebaseDatabase = firebaseApp.database();
 const firebaseStorage = firebaseApp.storage();
-firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+const firebaseMessaging = firebaseApp.messaging();
+firebaseMessaging
+  .getToken()
+  .then((token) => console.log(token))
+  .catch((e) => console.log(e));
+firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+
 export {
   firebase,
   firebaseApp,
@@ -27,4 +34,5 @@ export {
   firebaseAuth,
   firebaseDatabase,
   firebaseStorage,
+  firebaseMessaging,
 };

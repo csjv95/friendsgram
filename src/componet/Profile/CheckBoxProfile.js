@@ -38,7 +38,6 @@ const CheckBoxProfile = ({
   displayName,
   name,
   uid,
-  check,
   checkUser,
   match,
 }) => {

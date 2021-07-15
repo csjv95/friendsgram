@@ -19,18 +19,9 @@ const SearchProfile = ({ user, isCheckBox, checkUser, setCheckUser }) => {
 
   const checkBoxClick = () => {
     setCheck(!check);
-    console.log("users", checkUser);
-    
     checkUser.includes(match.displayName)
       ? setCheckUser(checkUser.filter((user) => user !== match.displayName))
       : setCheckUser([...checkUser, match.displayName]);
-    // if (checkUser.includes(match.displayName)) {
-    //   setCheckUser(checkUser.filter((user) => user !== match.displayName));
-    //   setCheck(false);
-    // } else {
-    //   setCheckUser([...checkUser, match.displayName]);
-    //   setCheck(true);
-    // }
   };
 
   return (
@@ -43,9 +34,7 @@ const SearchProfile = ({ user, isCheckBox, checkUser, setCheckUser }) => {
           photoURL={match.photoURL}
           displayName={match.displayName}
           name={match.name}
-          btnDisplay="none"
           uid={match.uid}
-          check={check}
           checkUser={checkUser}
           match={match}
         />
