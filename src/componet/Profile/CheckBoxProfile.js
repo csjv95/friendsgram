@@ -4,6 +4,8 @@ import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import { StUnChecked, StChecked } from "../../Global/StIcon/StIcon";
 import { Theme } from "../../style/Theme";
 import { StInput, StLabel, StSpan } from "../../Global/StTags/StTags";
+import { useEffect } from "react";
+
 const StProfile = styled.li`
   margin: 1em 0;
   padding: ${({ padding }) => padding};
@@ -37,6 +39,8 @@ const CheckBoxProfile = ({
   name,
   uid,
   check,
+  checkUser,
+  match,
 }) => {
   return (
     <StProfile data-uid={uid} padding={listPadding} onClick={profileClick}>
@@ -49,17 +53,13 @@ const CheckBoxProfile = ({
         <StProfileNicname>{displayName}</StProfileNicname>
       </StProfileInfo>
 
-      <StInput
-        type="checkbox"
-        id={uid}
-        checked={check}
-        onChange={profileClick}
-      />
+      <StInput type="checkbox" id={uid} display="none" />
       <StLabel htmlFor={uid}>
-        {check ? (
+        {checkUser.includes(match.displayName) ? (
           <StChecked
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={(event) => {
+              event.preventDefault();
+              // 이벤트 방지
             }}
             width="2em"
             borderRadius="50%"
@@ -68,8 +68,9 @@ const CheckBoxProfile = ({
           />
         ) : (
           <StUnChecked
-            onClick={(e) => {
-              e.stopPropagation();
+            onClick={(event) => {
+              event.preventDefault();
+              // 이벤트 방지
             }}
             width="2em"
             color={Theme.colors.borderColor}

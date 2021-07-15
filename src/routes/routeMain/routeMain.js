@@ -12,7 +12,7 @@ import getFollowingList from "../../service/follow/getFollowingList";
 import getFollowerList from "../../service/follow/getFollowerList";
 import { authGetUid } from "../../service/auth/authGetUid";
 import ProgressBar from "../../componet/ProgressBar/ProgressBar";
-import Message from "../../Global/Message/Message";
+// import Message from "../../Global/Message/Message";
 import PostMenu from "../../componet/PostMenu/PostMenu";
 import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import FollowView from "../../componet/FollowView/FollowView";
@@ -30,7 +30,7 @@ const AppContainer = styled.div`
 const RouteMain = () => {
   const upload = document.getElementById("upload");
   const address = document.getElementById("address");
-  const message = document.getElementById("message");
+  // const message = document.getElementById("message");
   const postMenu = document.getElementById("postMenu");
   const follow = document.getElementById("follow");
   const send = document.getElementById("send");
@@ -46,7 +46,7 @@ const RouteMain = () => {
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
   const [uploadModal, setUploadModal] = useState(false);
   const [locationModal, setLocationModal] = useState(false);
-  const [messageModal, setMessageModal] = useState(false);
+  // const [messageModal, setMessageModal] = useState(false);
   const [postMenuModal, setPostMenuModal] = useState(false);
   const [followModal, setFollowModal] = useState(false);
   const [sendModal, setSendModal] = useState(false);
@@ -78,9 +78,9 @@ const RouteMain = () => {
     setLocationModal(!locationModal);
   };
 
-  const handleMessage = () => {
-    setMessageModal(!message);
-  };
+  // const handleMessage = () => {
+  //   setMessageModal(!message);
+  // };
 
   const handlePostMenu = () => {
     setPostMenuModal(!postMenuModal);
@@ -124,11 +124,11 @@ const RouteMain = () => {
         </ModalPotal>
       )}
 
-      {messageModal && (
+      {/* {messageModal && (
         <ModalPotal potalName={message}>
           <Message />
         </ModalPotal>
-      )}
+      )} */}
 
       {postMenuModal && (
         <ModalPotal potalName={postMenu}>

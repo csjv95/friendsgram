@@ -132,7 +132,7 @@ const Header = ({ handleUpload, userData, usersList }) => {
 
   return (
     <StHeaderContainer>
-      <StHeaderLogo href="/">Instagram</StHeaderLogo>
+      <StHeaderLogo href="/">Friendsgram</StHeaderLogo>
       <form onSubmit={onSearchSubmit}>
         <StHeaderSearchLabel htmlFor="search" onClick={onSearchClick}>
           <StHeaderSearch
