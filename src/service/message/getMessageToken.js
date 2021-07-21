@@ -2,15 +2,9 @@ import { firebaseMessaging } from "../firebase";
 
 const getMessageToken = () => {
   firebaseMessaging
-    .requestPermission()
-    .then(() => {
-      console.log("have permistion");
-      return firebaseMessaging.getToken();
+    .getToken({
+      vapidKey: process.env.REACT_APP_FIREBASE_MESSAGEING_TOKEN,
     })
-    .then((token) => console.log(token))
-    .catch((e) => console.log(e));
-  firebaseMessaging
-    .getToken({ vapidKey: "<YOUR_PUBLIC_VAPID_KEY_HERE>" })
     .then((currentToken) => {
       if (currentToken) {
         // Send the token to your server and update the UI if necessary

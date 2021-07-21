@@ -64,7 +64,7 @@ const RouteMain = () => {
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-    // getMessageToken();
+    getMessageToken();
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
 
     return () => {

@@ -21,10 +21,7 @@ const firebaseAuth = firebaseApp.auth();
 const firebaseDatabase = firebaseApp.database();
 const firebaseStorage = firebaseApp.storage();
 const firebaseMessaging = firebaseApp.messaging();
-firebaseMessaging
-  .getToken()
-  .then((token) => console.log(token))
-  .catch((e) => console.log(e));
+
 firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
 
 export {
