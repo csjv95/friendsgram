@@ -1,6 +1,7 @@
 {
   "name": "instargram_graph",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "dependencies": {
     "@react-firebase/auth": "^0.2.10",
@@ -47,5 +48,5 @@
   },
   "devDependencies": {
     "eslint-plugin-react-hooks": "^4.2.0"
-  }
+  }  
 }

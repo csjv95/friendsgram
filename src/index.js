@@ -7,12 +7,10 @@ import { Theme } from "./style/Theme";
 import { ThemeProvider } from "styled-components";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider theme={Theme}>
-        <App />
-      </ThemeProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <ThemeProvider theme={Theme}>
+      <App />
+    </ThemeProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
