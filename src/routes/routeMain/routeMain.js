@@ -57,21 +57,22 @@ const RouteMain = () => {
   const [text, setText] = useState("");
   const [noComments, setNoComments] = useState(false);
   const [progressBar, setProgressBar] = useState(0);
-
+  const [token, setToken] = useState("");
+  
   useEffect(() => {
     authGetUid(setCurrentUserUid);
     getUserData(setUserData);
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-    getMessageToken();
+    getMessageToken(setToken);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
 
     return () => {
       bookMark();
     };
   }, []);
-
+  console.log(token)
   const handleUpload = () => {
     setUploadModal(!uploadModal);
   };

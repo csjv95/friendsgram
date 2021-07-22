@@ -4,7 +4,6 @@ import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import { StUnChecked, StChecked } from "../../Global/StIcon/StIcon";
 import { Theme } from "../../style/Theme";
 import { StInput, StLabel, StSpan } from "../../Global/StTags/StTags";
-import { useEffect } from "react";
 
 const StProfile = styled.li`
   margin: 1em 0;

@@ -39,26 +39,7 @@
     <title>Friendsgram</title>
   </head>
   <body>
-    <script>
-      var worker = new Worker("./firebase-messaging-sw.js");
-
-      worker.addEventListener(
-        "message",
-        function (e) {
-          console.log("Worker said: ", e.data);
-        },
-        false
-      );
-
-      worker.postMessage("Hello World");
-    </script>
-    <!-- <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("./firebase-messaging-sw.js");
-        });
-      }
-    </script> -->
+    <!-- <script src="./firebase-messaging-sw.js" type="javascript/worker"></script> -->
     <div id="root"></div>
     <div id="upload"></div>
     <div id="address"></div>
