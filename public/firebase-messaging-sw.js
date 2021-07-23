@@ -1,15 +1,6 @@
-// Give the service worker access to Firebase Messaging.
-// Note that you can only use Firebase Messaging here. Other Firebase libraries
-
-import { firebaseStore } from "../src/service/firebase";
-
-// are not available in the service worker.
 importScripts("https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/8.7.0/firebase-messaging.js");
 
-// Initialize the Firebase app in the service worker by passing in
-// your app's Firebase config object.
-// https://firebase.google.com/docs/web/setup#config-object
 firebase.initializeApp({
   apiKey: "AIzaSyDADottT7ntCj8zHBCw8zlSn3TIgbhMD7w",
   authDomain: "instargram-graph.firebaseapp.com",
@@ -26,17 +17,19 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage((payload) => {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  // firebaseStore.collection("directMessage").doc(payload.data.)
-  console.log(payload.data)
+  console.log(
+    "[firebase-messaging-sw.js] Received background message ",
+    payload
+  );
+
   // Customize notification here
-  const notificationTitle = 'Background Message Title';
+  const { data, notification } = payload;
+  const id = Object.values(data)[4];
+  const notificationTitle = notification.title;
   const notificationOptions = {
-    body: 'Background Message body.',
-    icon: '/firebase-logo.png'
+    body: notification.body,
+    id,
+    icon: "/firebase-logo.png",
   };
-
-  self.registration.showNotification(notificationTitle,
-    notificationOptions);
+  self.registration.showNotification(notificationTitle, notificationOptions);
 });
-
