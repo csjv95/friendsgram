@@ -24,11 +24,11 @@ messaging.onBackgroundMessage((payload) => {
 
   // Customize notification here
   const { data, notification } = payload;
-  const id = Object.values(data)[4];
+  // const id = Object.values(data)[4];
   const notificationTitle = notification.title;
   const notificationOptions = {
     body: notification.body,
-    id,
+    // id,
     icon: "/firebase-logo.png",
   };
   self.registration.showNotification(notificationTitle, notificationOptions);
