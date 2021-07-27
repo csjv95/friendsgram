@@ -18,6 +18,7 @@ import { authLogout } from "../../service/auth/authLogout";
 import setSearchRecord from "../../service/search/setSearchRecord";
 import { StRectangle, StTriangle } from "../StBubbleChat/BubbleChat";
 import { Theme } from "../../style/Theme";
+import sendMessage from "../../service/message/sendMessage";
 
 const StHeaderContainer = styled.header`
   width: 100%;
@@ -180,6 +181,13 @@ const Header = ({ handleUpload, userData, usersList }) => {
               onClick={profileOnClick}
             />
           </StHeaderNavUlLiMy>
+          <button
+            onClick={() => {
+              sendMessage();
+            }}
+          >
+            hello
+          </button>
         </StHeaderNavul>
 
         {profile && (
