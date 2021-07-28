@@ -94,9 +94,11 @@ Let's start~!
 
 ## Problems and Resolutions
 
-1. useEffect & useState rander
-   - Problem
-     setState를 이용하여 state의 값을 변경해줬는데도 변화가 없어 확인 결과 [] 이 담겨있고 this value was evaluated upon first expanding. it may have changed since then라고 적혀있다
+1. Problems (useEffect & useState rander)
+
+   > Problem  
+   >  setState를 이용하여 state의 값을 변경해줬는데도 변화가 없어 확인 결과 [] 이 담겨있고 this value was evaluated upon first expanding. it may have changed since then라고 적혀있다
+
 ```
 // FollowView.js
 const FollowView = ({ followerList, followingList, handleFollow }) => {
@@ -201,7 +203,45 @@ const getUsersData = async (users, setData) => {
 };
 ```
 
-1. Problems
+2. Problems (Access-Control-Allow-Origin issue)
+
+- Problem
+
+  1. 클라이언트에서 외부 API 서버로 요청을 보내서 CROS 발생
+  2. 외부 API를 사용해서 내가 서버를 제어 할수 없어서 HTTP 응답해더인 Aceess-Control-Allow-Origin을 설정을할 수 없음
+
+  > CORS (Cross Origin Resource Sharing) 현재 APP or 도메인 페이지에서 다른 웹페이지 도메인으로 리소스가 요청되는 경우입니다 보안상 이유로 제한되게 되어있습니다
+
+- solution
+
+```
+const sendMessage = (message, token) => {
+//ajax,fetch,axios같은 클라이언트에서 말고  서버에서 node로 집적 통신 하면 괜찮아진다
+// firebase에서 지원
+const request = require("request");
+const options = {
+  uri: "https://fcm.googleapis.com/fcm/send",
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+    Authorization: process.env.REACT_APP_FIREBASE_MESSAGEING_KEY,
+  },
+  json: {
+    to: token,
+    notification: {
+      title: "you got a new massage",
+      body: message,
+    },
+  },
+};
+request.post(options, function (err, httpResponse, body) {
+  console.log('body',body)
+  console.log("httpResponse",httpResponse)
+});
+};
+export default sendMessage;
+
+```
 
 ## Acknowledgements
 
