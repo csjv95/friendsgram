@@ -1,6 +1,10 @@
-import { firebaseAuth, firebaseStore } from "../firebase";
+import { firebaseAuth, firebaseStore, firebaseMessaging } from "../firebase";
 
 const authSignUp = async (userData, follow, history) => {
+  const token = firebaseMessaging.getToken({
+    vapidKey: process.env.REACT_APP_FIREBASE_MESSAGEING_TOKEN,
+  });
+
   const {
     email,
     name,
@@ -47,19 +51,23 @@ const authSignUp = async (userData, follow, history) => {
     });
 
     // DB에 넣기 userdata
-    await firebaseStore.collection("users").doc(uid).set({
-      email,
-      name,
-      displayName,
-      password,
-      photoURL: "/imgs/defaultUserImg.png",
-      introduction,
-      webSite,
-      phoneNum,
-      gen,
-      timestamp,
-      uid,
-    });
+    await firebaseStore
+      .collection("users")
+      .doc(uid)
+      .set({
+        email,
+        name,
+        displayName,
+        password,
+        photoURL: "/imgs/defaultUserImg.png",
+        introduction,
+        webSite,
+        phoneNum,
+        gen,
+        timestamp,
+        messageToken: await token,
+        uid,
+      });
 
     await firebaseStore
       .collection("search")

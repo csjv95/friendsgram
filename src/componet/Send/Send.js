@@ -1,35 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { StClear } from "../../Global/StIcon/StIcon";
+import React, { useEffect, useState } from 'react'
+import { StClear } from '../../Global/StIcon/StIcon'
 import {
   StModalBtn,
   StModalContainer,
   StModalMain,
-} from "../../Global/StModal/StModal";
-import { Theme } from "../../style/Theme";
-import { StDiv, StHeader, StMain, StInput } from "../../Global/StTags/StTags";
-import StButton from "../../Global/StButton/StButton";
-import { getSearch } from "../../service/search/getSearch";
-import SearchProfile from "../Search/SearchProfile";
-import { StList } from "../../Global/StList/StList";
+} from '../../Global/StModal/StModal'
+import { Theme } from '../../style/Theme'
+import { StDiv, StHeader, StMain, StInput } from '../../Global/StTags/StTags'
+import StButton from '../../Global/StButton/StButton'
+import { getSearch } from '../../service/search/getSearch'
+import SearchProfile from '../Search/SearchProfile'
+import { StList } from '../../Global/StList/StList'
+import makeMessageRoom from '../../service/message/makeMessageRoom'
+import getMessageRoomId from '../../service/message/getMessageRoomId'
 
 const Send = ({ handleSend }) => {
-  const [inputText, setInputText] = useState(null);
-  const [recomendUser, setRecomendUser] = useState([]);
-  const [checkUser, setCheckUser] = useState([]);
-  const isCheckBox = true;
+  const [inputText, setInputText] = useState(null)
+  const [recomendUser, setRecomendUser] = useState([])
+  const [checkUser, setCheckUser] = useState([])
+  const [roomId, setRoomId] = useState('')
+  const isCheckBox = true
 
   useEffect(() => {
-    getSearch(inputText, setRecomendUser);
-  }, [inputText]);
+    getSearch(inputText, setRecomendUser)
+    getMessageRoomId(setRoomId)
+  }, [inputText])
 
   const inputChangeText = (event) => {
-    const text = event.target.value;
-    setInputText(text);
-  };
+    const text = event.target.value
+    setInputText(text)
+  }
 
   const deleteCheckUser = (user) => {
-    setCheckUser(checkUser.filter((r) => r !== user));
-  };
+    setCheckUser(checkUser.filter((result) => result !== user))
+  }
 
   return (
     <StModalContainer
@@ -54,7 +58,13 @@ const Send = ({ handleSend }) => {
             <StClear width="2em" />
           </StModalBtn>
           <h1>새로운 메세지</h1>
-          <StButton btnText="다음"/>
+          <StButton
+            btnText="다음"
+            onClick={() => {
+              makeMessageRoom(checkUser, roomId)
+              handleSend()
+            }}
+          />
         </StHeader>
 
         <StMain>
@@ -82,7 +92,7 @@ const Send = ({ handleSend }) => {
                 color={Theme.colors.skyblueInnerText}
                 btnText={user}
                 onClick={() => {
-                  deleteCheckUser(user);
+                  deleteCheckUser(user)
                 }}
               />
             ))}
@@ -104,7 +114,7 @@ const Send = ({ handleSend }) => {
         </StMain>
       </StModalMain>
     </StModalContainer>
-  );
-};
+  )
+}
 
-export default Send;
+export default Send

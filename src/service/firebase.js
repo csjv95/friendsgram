@@ -23,7 +23,6 @@ const firebaseStorage = firebaseApp.storage();
 const firebaseMessaging = firebaseApp.messaging();
 firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
 
-
 export {
   firebase,
   firebaseApp,
