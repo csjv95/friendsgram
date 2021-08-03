@@ -1,13 +1,13 @@
 import { firebaseStore } from '../firebase'
-const getUserDataUseDisplayName = async (users, setData) => {
+const getUserDataUseDisplayName = async (setData, users) => {
   const usersArr = users.map(async (user) => {
     const data = []
-    const followingUsers = firebaseStore
+    const displayNames = firebaseStore
       .collection('users')
       .where('displayName', '==', user)
       .get()
 
-    ;(await followingUsers).docs.forEach((doc) => data.push(doc.data()))
+    ;(await displayNames).docs.forEach((doc) => data.push(doc.data()))
     return data
   })
 

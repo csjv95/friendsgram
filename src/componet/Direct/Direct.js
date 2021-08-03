@@ -34,7 +34,7 @@ const StFriendsList = styled.ul`
   flex-direction: column;
 `
 
-const Direct = ({ userData, handleSend }) => {
+const Direct = ({ userData, handleSend, roomId }) => {
   const [chatRooms, setChatRooms] = useState([])
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const Direct = ({ userData, handleSend }) => {
           <StFriendsList>
             {chatRooms &&
               chatRooms.map((user, index) => (
-                <Link key={index} to={`/direct/${user.displayName}`}>
+                <Link key={index} to={`/direct/${roomId}`}>
                   <StProfileChat
                     photoURL={user.photoURL}
                     displayName={user.displayName}

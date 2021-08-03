@@ -6,12 +6,17 @@ const getMessageRoom = async (setChatRooms) => {
   const rule = []
   const rooms = await firebaseStore
     .collection('chatRooms')
-    .where('displayName', 'array-contains', currentUserDisplayName)
+    .where('displayNames', 'array-contains', currentUserDisplayName)
     .get()
 
-  // rooms.forEach((user) => setChatRooms(user.data().displayName))
-  rooms.docs.map((data) => rule.push(data.data().displayName))
-  getUserDataUseDisplayName(...rule, setChatRooms)
+  rooms.docs.map((datas) =>
+    rule.push(
+      datas
+        .data()
+        .displayNames.filter((name) => name !== currentUserDisplayName),
+    ),
+  )
+  getUserDataUseDisplayName(setChatRooms, ...rule)
 }
 
 export default getMessageRoom

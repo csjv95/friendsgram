@@ -7,7 +7,8 @@ const makeMessageRoom = async (checkUser, roomId) => {
     .collection('chatRooms')
     .doc(roomId)
     .set({
-      displayName: firebase.firestore.FieldValue.arrayUnion(
+      roomId,
+      displayNames: firebase.firestore.FieldValue.arrayUnion(
         currentUserDisplayName,
         checkUsers,
       ),

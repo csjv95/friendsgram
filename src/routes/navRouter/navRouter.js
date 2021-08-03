@@ -1,13 +1,13 @@
-import React from "react";
-import { Route, Switch } from "react-router";
-import Direct from "../../componet/Direct/Direct";
-import Edit from "../../componet/Edit/Edit";
-import Home from "../../componet/Home/Home";
-import MyProfile from "../../componet/MyProfile/MyProfile";
-import Upload from "../../componet/Upload/Upload";
-import Suggest from "../../componet/Suggest/Suggest";
-import EmptyPage from "../../Global/EmptyPage/EmptyPage";
-import { Theme } from "../../style/Theme";
+import React from 'react'
+import { Route, Switch } from 'react-router'
+import Direct from '../../componet/Direct/Direct'
+import Edit from '../../componet/Edit/Edit'
+import Home from '../../componet/Home/Home'
+import MyProfile from '../../componet/MyProfile/MyProfile'
+import Upload from '../../componet/Upload/Upload'
+import Suggest from '../../componet/Suggest/Suggest'
+import EmptyPage from '../../Global/EmptyPage/EmptyPage'
+import { Theme } from '../../style/Theme'
 
 const NavRouter = ({
   userData,
@@ -22,6 +22,7 @@ const NavRouter = ({
   setClickedPostId,
   setClickedPostUid,
   setIsFollow,
+  roomId,
 }) => {
   return (
     <Switch>
@@ -37,7 +38,7 @@ const NavRouter = ({
         />
       </Route>
       <Route path="/direct">
-        <Direct userData={userData} handleSend={handleSend} />
+        <Direct userData={userData} handleSend={handleSend} roomId={roomId} />
       </Route>
       <Route path="/post" component={Upload} />
       <Route path="/suggest">
@@ -69,7 +70,7 @@ const NavRouter = ({
       </Route>
       <Route render={() => <EmptyPage />} />
     </Switch>
-  );
-};
+  )
+}
 
-export default NavRouter;
+export default NavRouter

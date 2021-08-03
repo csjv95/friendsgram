@@ -12,18 +12,21 @@ import { getSearch } from '../../service/search/getSearch'
 import SearchProfile from '../Search/SearchProfile'
 import { StList } from '../../Global/StList/StList'
 import makeMessageRoom from '../../service/message/makeMessageRoom'
-import getMessageRoomId from '../../service/message/getMessageRoomId'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const Send = ({ handleSend }) => {
+const StToGoUserLink = styled(Link)`
+  width: 100%;
+`
+
+const Send = ({ handleSend, roomId }) => {
   const [inputText, setInputText] = useState(null)
   const [recomendUser, setRecomendUser] = useState([])
   const [checkUser, setCheckUser] = useState([])
-  const [roomId, setRoomId] = useState('')
   const isCheckBox = true
 
   useEffect(() => {
     getSearch(inputText, setRecomendUser)
-    getMessageRoomId(setRoomId)
   }, [inputText])
 
   const inputChangeText = (event) => {
@@ -59,7 +62,9 @@ const Send = ({ handleSend }) => {
           </StModalBtn>
           <h1>새로운 메세지</h1>
           <StButton
-            btnText="다음"
+            btnText={
+              <StToGoUserLink to={`/direct/${roomId}`}>다음</StToGoUserLink>
+            }
             onClick={() => {
               makeMessageRoom(checkUser, roomId)
               handleSend()

@@ -9,6 +9,7 @@ import { Theme } from '../../../style/Theme'
 const StChat = styled.ul`
   flex-grow: 1;
 `
+
 const StDiv = styled.div`
   padding: 2em;
 `
@@ -41,6 +42,7 @@ const UserChat = () => {
   const textSubmit = (event) => {
     event.preventDefault()
     event.target.childNodes[0].value = ''
+    // chating mock
   }
 
   return (

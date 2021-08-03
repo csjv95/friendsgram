@@ -9,7 +9,7 @@ const DirectRouter = ({ users, handleSend }) => {
       <Route exact path="/direct">
         <EmptyChat handleSend={handleSend} />
       </Route>
-      <Route path="/direct/:username" component={UserChat} />
+      <Route path="/direct/:rommId" component={UserChat} />
       <Route render={() => <div>페이지를 찾을 수 없습니다.</div>} />
     </Switch>
   )
