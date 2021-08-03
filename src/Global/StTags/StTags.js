@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StHeader = styled.header`
   width: ${({ width }) => width};
@@ -9,7 +9,7 @@ export const StHeader = styled.header`
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: ${({ alignItems }) => alignItems};
   border-bottom: ${({ borderBottom }) => borderBottom};
-`;
+`
 
 export const StMain = styled.main`
   width: ${({ width }) => width};
@@ -20,7 +20,7 @@ export const StMain = styled.main`
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: ${({ alignItems }) => alignItems};
   border-bottom: ${({ borderBottom }) => borderBottom};
-`;
+`
 
 export const StDiv = styled.div`
   width: ${({ width }) => width};
@@ -35,7 +35,7 @@ export const StDiv = styled.div`
   font-weight: ${({ fontWeight }) => fontWeight};
   color: ${({ color }) => color};
   overflow: ${({ overFlow }) => overFlow};
-`;
+`
 
 export const StSpan = styled.span`
   width: ${({ width }) => width};
@@ -49,9 +49,10 @@ export const StSpan = styled.span`
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
   color: ${({ color }) => color};
-`;
+`
 
 export const StInput = styled.input`
+  flex-grow: ${({ flexGrow }) => flexGrow};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   margin: ${({ margin }) => margin};
@@ -63,7 +64,8 @@ export const StInput = styled.input`
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
   color: ${({ color }) => color};
-`;
+  outline: ${({ outLine }) => outLine};
+`
 
 export const StLabel = styled.label`
   width: ${({ width }) => width};
@@ -71,4 +73,4 @@ export const StLabel = styled.label`
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
   display: ${({ display }) => display};
-`;
+`

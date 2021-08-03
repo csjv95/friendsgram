@@ -15,7 +15,7 @@ const StDirectContainer = styled.section`
   margin: 0 auto;
   display: flex;
   border: 1px solid lightgray;
-  background-color: ${({ theme }) => theme.colors.backgroundColor};
+  background-color: ${({ theme }) => theme.colors.contentColor};
 `
 
 const StDirectFriends = styled.section`
@@ -25,6 +25,8 @@ const StDirectFriends = styled.section`
 
 const StDirectChat = styled.section`
   width: 60%;
+  display: flex;
+  flex-direction: column;
 `
 
 const StFriendsList = styled.ul`
@@ -39,7 +41,6 @@ const Direct = ({ userData, handleSend }) => {
     getMessageRoom(setChatRooms)
   }, [])
 
-  console.log(chatRooms)
   return (
     <StMainRouterSection>
       <StDirectContainer>
@@ -80,7 +81,7 @@ const Direct = ({ userData, handleSend }) => {
           </StFriendsList>
         </StDirectFriends>
         <StDirectChat>
-          <DirectRouter users={chatRooms} />
+          <DirectRouter users={chatRooms} handleSend={handleSend} />
         </StDirectChat>
       </StDirectContainer>
     </StMainRouterSection>
