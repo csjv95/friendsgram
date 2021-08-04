@@ -36,9 +36,10 @@ const StFriendsList = styled.ul`
 
 const Direct = ({ userData, handleSend, roomId }) => {
   const [chatRooms, setChatRooms] = useState([])
+  const [check, setCheck] = useState('')
 
   useEffect(() => {
-    getMessageRoom(setChatRooms)
+    getMessageRoom(setChatRooms, setCheck, check)
   }, [])
 
   return (

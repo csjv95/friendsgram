@@ -3,20 +3,24 @@ import getUserDataUseDisplayName from '../usersData/getUsersDataUseDisplayName'
 
 const getMessageRoom = async (setChatRooms) => {
   const currentUserDisplayName = firebaseAuth.currentUser.displayName
-  const rule = []
-  const rooms = await firebaseStore
+  const result = []
+  const rooms = firebaseStore
     .collection('chatRooms')
     .where('displayNames', 'array-contains', currentUserDisplayName)
-    .get()
-
-  rooms.docs.map((datas) =>
-    rule.push(
-      datas
-        .data()
-        .displayNames.filter((name) => name !== currentUserDisplayName),
-    ),
-  )
-  getUserDataUseDisplayName(setChatRooms, ...rule)
+    .onSnapshot((qurySnapshot) => {
+      const rule = []
+      qurySnapshot.forEach((doc) => {
+        rule.push(
+          doc
+            .data()
+            .displayNames.filter((name) => name !== currentUserDisplayName),
+        )
+      })
+      result.push(rule.flatMap((re) => re))
+    })
+  // console.log(result)
+  getUserDataUseDisplayName(setChatRooms, result)
 }
 
 export default getMessageRoom
+// .get()
