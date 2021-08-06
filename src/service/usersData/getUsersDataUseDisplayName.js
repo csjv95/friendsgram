@@ -1,6 +1,6 @@
 import { firebaseStore } from '../firebase'
 const getUserDataUseDisplayName = async (setData, users) => {
-  console.log(users)
+  console.log(...users)
   const displayNames = await users.flatMap((name) => name)
   const usersArr = displayNames.map(async (user) => {
     const data = []

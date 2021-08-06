@@ -23,6 +23,7 @@ const NavRouter = ({
   setClickedPostUid,
   setIsFollow,
   roomId,
+  setRoomId,
 }) => {
   return (
     <Switch>
@@ -38,7 +39,12 @@ const NavRouter = ({
         />
       </Route>
       <Route path="/direct">
-        <Direct userData={userData} handleSend={handleSend} roomId={roomId} />
+        <Direct
+          userData={userData}
+          handleSend={handleSend}
+          roomId={roomId}
+          setRoomId={setRoomId}
+        />
       </Route>
       <Route path="/post" component={Upload} />
       <Route path="/suggest">

@@ -17,7 +17,6 @@ import PostMenu from '../../componet/PostMenu/PostMenu'
 import getBookMarkPostIds from '../../service/bookMark/getBookMarkPostIds'
 import FollowView from '../../componet/FollowView/FollowView'
 import Send from '../../componet/Send/Send'
-import getMessageRoomId from '../../service/message/getMessageRoomId'
 // import getMessageToken from "../../service/message/getMessageToken";
 // import Post from "../../componet/Post/Post";
 
@@ -67,7 +66,6 @@ const RouteMain = () => {
     getUsersList(setUsersList)
     getFollowingList(setFollowingList)
     getFollowerList(setFollowerList)
-    getMessageRoomId(setRoomId)
     // getMessageToken(setToken);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds)
 
@@ -161,7 +159,7 @@ const RouteMain = () => {
 
       {sendModal && (
         <ModalPotal potalName={send}>
-          <Send handleSend={handleSend} roomId={roomId} />
+          <Send handleSend={handleSend} roomId={roomId} setRoomId={setRoomId} />
         </ModalPotal>
       )}
 
@@ -194,6 +192,7 @@ const RouteMain = () => {
         setClickedPostUid={setClickedPostUid}
         setIsFollow={setIsFollow}
         roomId={roomId}
+        setRoomId={setRoomId}
         // handlePost={handlePost}
       />
       <MainFooter />

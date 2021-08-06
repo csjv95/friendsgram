@@ -14,12 +14,13 @@ import { StList } from '../../Global/StList/StList'
 import makeMessageRoom from '../../service/message/makeMessageRoom'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import setMessageRoomId from '../../service/message/setMessageRoomId'
 
 const StToGoUserLink = styled(Link)`
   width: 100%;
 `
 
-const Send = ({ handleSend, roomId }) => {
+const Send = ({ handleSend, roomId, setRoomId }) => {
   const [inputText, setInputText] = useState(null)
   const [recomendUser, setRecomendUser] = useState([])
   const [checkUser, setCheckUser] = useState([])
@@ -28,6 +29,10 @@ const Send = ({ handleSend, roomId }) => {
   useEffect(() => {
     getSearch(inputText, setRecomendUser)
   }, [inputText])
+
+  useEffect(() => {
+    setMessageRoomId(setRoomId)
+  }, [setRoomId])
 
   const inputChangeText = (event) => {
     const text = event.target.value
@@ -66,7 +71,7 @@ const Send = ({ handleSend, roomId }) => {
               <StToGoUserLink to={`/direct/${roomId}`}>다음</StToGoUserLink>
             }
             onClick={() => {
-              makeMessageRoom(checkUser, roomId)
+              makeMessageRoom(checkUser, roomId, setRoomId)
               handleSend()
             }}
           />

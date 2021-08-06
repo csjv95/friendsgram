@@ -3,6 +3,7 @@ import { firebase, firebaseAuth, firebaseStore } from '../firebase'
 const makeMessageRoom = async (checkUser, roomId) => {
   const currentUserDisplayName = firebaseAuth.currentUser.displayName
   const checkUsers = checkUser.toString() // 이미 배열이여서 문자로 바꿔줘야함
+
   await firebaseStore
     .collection('chatRooms')
     .doc(roomId)

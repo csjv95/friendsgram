@@ -30,16 +30,21 @@ const StDirectChat = styled.section`
 `
 
 const StFriendsList = styled.ul`
+  height:
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 `
 
 const Direct = ({ userData, handleSend, roomId }) => {
   const [chatRooms, setChatRooms] = useState([])
-  const [check, setCheck] = useState('')
 
   useEffect(() => {
-    getMessageRoom(setChatRooms, setCheck, check)
+    const rooms = getMessageRoom(setChatRooms)
+
+    return () => {
+      rooms()
+    }
   }, [])
 
   return (
