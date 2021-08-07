@@ -30,7 +30,7 @@ const StDirectChat = styled.section`
 `
 
 const StFriendsList = styled.ul`
-  height:
+  height: 40.5em;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -44,8 +44,10 @@ const Direct = ({ userData, handleSend, roomId }) => {
 
     return () => {
       rooms()
+      setChatRooms([])
     }
-  }, [])
+  }, [setChatRooms])
+  // chatRooms.map((e) => e.flatMap((e) => console.log(e)))
 
   return (
     <StMainRouterSection>
@@ -74,13 +76,14 @@ const Direct = ({ userData, handleSend, roomId }) => {
           <StFriendsList>
             {chatRooms &&
               chatRooms.map((user, index) => (
-                <Link key={index} to={`/direct/${roomId}`}>
+                <Link key={index} to={`/direct/${user[1].roomId}`}>
                   <StProfileChat
-                    photoURL={user.photoURL}
-                    displayName={user.displayName}
-                    uid={user.uid}
+                    photoURL={user[0].photoURL}
+                    displayName={user[0].displayName}
+                    uid={user[0].uid}
                     profilePadding="1em"
                     imgHeight="3em"
+                    room={user[1].roomId}
                   />
                 </Link>
               ))}

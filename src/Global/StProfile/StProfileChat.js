@@ -31,12 +31,13 @@ const StProfileChat = ({
   photoURL,
   displayName,
   uid,
+  room,
   profilePadding,
   imgHeight,
   loginState,
 }) => {
   return (
-    <StProfile data-uid={uid} padding={profilePadding}>
+    <StProfile data-uid={uid} data-room={room} padding={profilePadding}>
       <StProfileImg src={photoURL} height={imgHeight} />
       <StProfileInfo>
         <StProfileDisplayName>{displayName}</StProfileDisplayName>

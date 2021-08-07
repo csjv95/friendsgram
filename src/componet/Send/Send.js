@@ -42,7 +42,7 @@ const Send = ({ handleSend, roomId, setRoomId }) => {
   const deleteCheckUser = (user) => {
     setCheckUser(checkUser.filter((result) => result !== user))
   }
-
+  console.log(checkUser)
   return (
     <StModalContainer
       display="flex"

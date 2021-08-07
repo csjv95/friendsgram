@@ -1,21 +1,23 @@
 import { firebaseStore } from '../firebase'
-const getUserDataUseDisplayName = async (users, setData) => {
-  console.log(users)
+
+const getMessageRoomUser = async (users, setChatRooms) => {
   const usersArr = users.map(async (user) => {
     const data = []
     const displayName = firebaseStore
       .collection('users')
-      .where('displayName', '==', user[0])
+      .where('displayName', '==', user.name[0])
       .get()
-    console.log(user)
-    ;(await displayName).docs.forEach((doc) => data.push(doc.data()))
+
+    ;(await displayName).docs.forEach((doc) =>
+      data.push([doc.data(), { roomId: user.roomId }]),
+    )
     return data
   })
 
   const promiseAll = await Promise.all(usersArr)
   const result = promiseAll.flatMap((p) => p)
-  console.log(result)
-  setData(result)
+
+  setChatRooms(result)
 }
 
-export default getUserDataUseDisplayName
+export default getMessageRoomUser

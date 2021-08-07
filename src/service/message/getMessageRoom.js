@@ -1,5 +1,5 @@
 import { firebaseAuth, firebaseStore } from '../firebase'
-import getUserDataUseDisplayName from '../usersData/getUsersDataUseDisplayName'
+import getMessageRoomUser from './getMessageRoomUsers'
 
 const getMessageRoom = async (setChatRooms) => {
   const currentUserDisplayName = firebaseAuth.currentUser.displayName
@@ -9,14 +9,17 @@ const getMessageRoom = async (setChatRooms) => {
     .where('displayNames', 'array-contains', currentUserDisplayName)
     .onSnapshot((doc) => {
       const result = []
+      const solve = []
       doc.forEach((names) =>
-        result.push(
-          names
+        solve.push({
+          name: names
             .data()
             .displayNames.filter((name) => name !== currentUserDisplayName),
-        ),
+          roomId: names.data().roomId,
+        }),
       )
-      getUserDataUseDisplayName(setChatRooms, result)
+      solve.map((re) => result.push(re))
+      getMessageRoomUser(result, setChatRooms)
     })
 
   return () => {
