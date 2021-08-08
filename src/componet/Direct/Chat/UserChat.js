@@ -1,9 +1,11 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import StButton from '../../../Global/StButton/StButton'
 import { StFilePicture, StSmileIocn } from '../../../Global/StIcon/StIcon'
 import { StInput } from '../../../Global/StTags/StTags'
+import getMessage from '../../../service/message/getMessage'
+import sendMessage from '../../../service/message/sendMessage'
 import { Theme } from '../../../style/Theme'
 
 const StChat = styled.ul`
@@ -31,8 +33,13 @@ const StChatForm = styled.form`
 const StFileInput = styled.input`
   display: none;
 `
-const UserChat = () => {
+const UserChat = ({ clickedRoomId }) => {
   const [text, setText] = useState('')
+  const [view, setView] = useState([])
+
+  useEffect(() => {
+    getMessage(clickedRoomId, setView)
+  }, [clickedRoomId])
 
   const textChange = (event) => {
     const text = event.target.value
@@ -42,9 +49,10 @@ const UserChat = () => {
   const textSubmit = (event) => {
     event.preventDefault()
     event.target.childNodes[0].value = ''
-    // chating mock
+    sendMessage(text, clickedRoomId)
+    console.log('sned')
   }
-
+  console.log(view)
   return (
     <>
       <StChat>{text}</StChat>
