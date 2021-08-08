@@ -48,7 +48,7 @@ const Direct = ({ userData, handleSend, roomId }) => {
     }
   }, [setChatRooms])
   // chatRooms.map((e) => e.flatMap((e) => console.log(e)))
-
+  chatRooms.map((item) => console.log(item))
   return (
     <StMainRouterSection>
       <StDirectContainer>
@@ -72,21 +72,33 @@ const Direct = ({ userData, handleSend, roomId }) => {
               />
             </StItem>
           </StList>
-
+          {/* 그룹 채팅일떄 사진 storage에서 가져오기 변수 네이밍 해주기 user[0][1]*/}
           <StFriendsList>
             {chatRooms &&
-              chatRooms.map((user, index) => (
-                <Link key={index} to={`/direct/${user[1].roomId}`}>
-                  <StProfileChat
-                    photoURL={user[0].photoURL}
-                    displayName={user[0].displayName}
-                    uid={user[0].uid}
-                    profilePadding="1em"
-                    imgHeight="3em"
-                    room={user[1].roomId}
-                  />
-                </Link>
-              ))}
+              chatRooms.map((user, index) =>
+                user.length > 1 ? (
+                  <Link key={index} to={`/direct/${user[0][1].roomId}`}>
+                    <StProfileChat
+                      photoURL={user[0][0].photoURL}
+                      displayName="group chat"
+                      profilePadding="1em"
+                      imgHeight="3em"
+                      room={user[0][1].roomId}
+                    />
+                  </Link>
+                ) : (
+                  <Link key={index} to={`/direct/${user[0][1].roomId}`}>
+                    <StProfileChat
+                      photoURL={user[0][0].photoURL}
+                      displayName={user[0][0].displayName}
+                      uid={user[0][0].uid}
+                      profilePadding="1em"
+                      imgHeight="3em"
+                      room={user[0][1].roomId}
+                    />
+                  </Link>
+                ),
+              )}
           </StFriendsList>
         </StDirectFriends>
         <StDirectChat>
