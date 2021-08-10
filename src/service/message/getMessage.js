@@ -1,14 +1,12 @@
 import { firebaseStore } from '../firebase'
 
 const getMessage = (clickedRoomId, setView) => {
-  const texts = [].flatMap((e) => e)
-
   const message = firebaseStore
     .collection('chatRooms')
     .doc(clickedRoomId)
     .collection('message')
-    .orderBy('time', 'asc')
-    .limit(20)
+    .orderBy('time', 'desc')
+    .limit(5)
     .onSnapshot((messages) => {
       const texts = [].flatMap((e) => e)
       messages.docs.forEach((chat) => {

@@ -9,6 +9,7 @@ import { StList, StItem } from '../../Global/StList/StList'
 import { Theme } from '../../style/Theme'
 import getMessageRoom from '../../service/message/getMessageRoom'
 import StProfileChat from '../../Global/StProfile/StProfileChat'
+import getMessage from '../../service/message/getMessage'
 
 const StDirectContainer = styled.section`
   width: 900px;
@@ -30,20 +31,21 @@ const StDirectChat = styled.section`
 `
 
 const StFriendsList = styled.ul`
-  height: 40.5em;
+  height: 36em;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
 `
 
-const Direct = ({ userData, handleSend, roomId }) => {
+const Direct = ({ userData, handleSend, roomId, currentUserUid }) => {
   const [chatRooms, setChatRooms] = useState([])
   const [clickedRoomId, setClickedRoomId] = useState('')
+  // const [view, setView] = useState([])
 
   useEffect(() => {
     getMessageRoom(setChatRooms)
     return () => {
-      setChatRooms([])
+      setChatRooms('')
     }
   }, [clickedRoomId])
 
@@ -77,8 +79,9 @@ const Direct = ({ userData, handleSend, roomId }) => {
                 <Link
                   key={index}
                   to={`/direct/${user[0][1].roomId}`}
-                  onClick={(e) => {
+                  onClick={async (e) => {
                     setClickedRoomId(e.target.dataset.room)
+                    // getMessage(e.target.dataset.room, setView)
                   }}
                 >
                   {user.length > 1 ? (
@@ -108,6 +111,8 @@ const Direct = ({ userData, handleSend, roomId }) => {
             users={chatRooms}
             handleSend={handleSend}
             clickedRoomId={clickedRoomId}
+            currentUserUid={currentUserUid}
+            // view={view}
           />
         </StDirectChat>
       </StDirectContainer>

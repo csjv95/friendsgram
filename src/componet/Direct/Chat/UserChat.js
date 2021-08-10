@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState, useEffect } from 'react'
+import { useParams, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import StButton from '../../../Global/StButton/StButton'
 import { StFilePicture, StSmileIocn } from '../../../Global/StIcon/StIcon'
@@ -10,6 +11,26 @@ import { Theme } from '../../../style/Theme'
 
 const StChat = styled.ul`
   flex-grow: 1;
+  height: 36em;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+`
+
+const StChatMy = styled.li`
+  align-self: flex-end;
+  margin: 0.5em;
+  padding: 0.5em;
+  border: 1px solid black;
+  border-radius: 1em;
+`
+
+const StChatUsers = styled.li`
+  align-self: flex-start;
+  margin: 0.5em;
+  padding: 0.5em;
+  border: 1px solid black;
+  border-radius: 1em;
 `
 
 const StDiv = styled.div`
@@ -33,12 +54,14 @@ const StChatForm = styled.form`
 const StFileInput = styled.input`
   display: none;
 `
-const UserChat = ({ clickedRoomId }) => {
+const UserChat = ({ clickedRoomId, currentUserUid }) => {
   const [text, setText] = useState('')
   const [view, setView] = useState([])
+  const scrollRef = useRef()
+  const path = useParams()
 
   useEffect(() => {
-    getMessage(clickedRoomId, setView)
+    getMessage(path.rommId, setView)
   }, [clickedRoomId])
 
   const textChange = (event) => {
@@ -49,16 +72,27 @@ const UserChat = ({ clickedRoomId }) => {
   const textSubmit = (event) => {
     event.preventDefault()
     event.target.childNodes[0].value = ''
-    sendMessage(text, clickedRoomId)
-    console.log('sned')
+    sendMessage(text, path.rommId)
+    scrollRef.current.lastChild && scrollRef.current.lastChild.focus()
   }
-  console.log(view)
   return (
     <>
-      <StChat>{text}</StChat>
+      <StChat ref={scrollRef}>
+        {view.map((chat) =>
+          chat.uid === currentUserUid ? (
+            <StChatMy key={chat.time}>{chat.text}</StChatMy>
+          ) : (
+            <StChatUsers key={chat.time}>{chat.text}</StChatUsers>
+          ),
+        )}
+      </StChat>
       <StDiv>
         <StChatInputBox onSubmit={textSubmit}>
-          <StButton width="2.5em" btnText={<StSmileIocn />} />
+          <StButton
+            onClick={textSubmit}
+            width="2.5em"
+            btnText={<StSmileIocn />}
+          />
           <StChatForm>
             <StInput
               width="100%"

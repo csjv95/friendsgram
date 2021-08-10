@@ -40,6 +40,7 @@ const NavRouter = ({
       </Route>
       <Route path="/direct">
         <Direct
+          currentUserUid={currentUserUid}
           userData={userData}
           handleSend={handleSend}
           roomId={roomId}
