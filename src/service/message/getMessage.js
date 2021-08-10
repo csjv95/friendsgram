@@ -1,19 +1,22 @@
 import { firebaseStore } from '../firebase'
 
 const getMessage = (clickedRoomId, setView) => {
-  console.log(clickedRoomId)
-  const texts = [].sort((a, b) => b.time - a.time).flatMap((e) => e)
+  const texts = [].flatMap((e) => e)
 
   const message = firebaseStore
     .collection('chatRooms')
     .doc(clickedRoomId)
     .collection('message')
-    .onSnapshot((e) => {
-      e.docs.forEach((l) => {
-        texts.push(l.data())
+    .orderBy('time', 'asc')
+    .limit(20)
+    .onSnapshot((messages) => {
+      const texts = [].flatMap((e) => e)
+      messages.docs.forEach((chat) => {
+        texts.push(chat.data())
       })
       setView(texts)
     })
 }
+// 화면에 받아온 배열,객체를 uid를 이용하여 왼쪽 오른쪽으로 나누기
 
 export default getMessage
