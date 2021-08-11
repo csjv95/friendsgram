@@ -14,7 +14,10 @@ const getMessage = (clickedRoomId, setView) => {
       })
       setView(texts.reverse())
     })
+
+  return () => {
+    message()
+  }
 }
-// 화면에 받아온 배열,객체를 uid를 이용하여 왼쪽 오른쪽으로 나누기
 
 export default getMessage

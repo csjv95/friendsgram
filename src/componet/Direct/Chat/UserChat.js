@@ -61,20 +61,35 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
   const path = useParams()
 
   useEffect(() => {
-    getMessage(path.rommId, setView)
-  }, [clickedRoomId])
+    const messages = getMessage(path.rommId, setView)
+
+    return () => {
+      messages()
+    }
+  }, [path.rommId])
 
   const textChange = (event) => {
     const text = event.target.value
     setText(text)
   }
 
-  const textSubmit = (event) => {
+  const scrollInTo = () => {
+    console.log(scrollRef.current.lastChild)
+    scrollRef.current.lastChild &&
+      scrollRef.current.lastChild.scrollIntoView(
+        { behavior: 'smooth' },
+        { block: 'end' },
+        { inline: 'end ' },
+      )
+  }
+
+  const textSubmit = async (event) => {
     event.preventDefault()
     event.target.childNodes[0].value = ''
-    sendMessage(text, path.rommId)
-    scrollRef.current.lastChild && scrollRef.current.lastChild.focus()
+    await sendMessage(text, path.rommId)
+    scrollInTo()
   }
+
   return (
     <>
       <StChat ref={scrollRef}>
@@ -114,6 +129,7 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
           )}
           {text && (
             <StButton
+              onClick={textSubmit}
               width="4em"
               fontWeight={Theme.fonts.bold}
               color={Theme.colors.skyblueInnerText}
