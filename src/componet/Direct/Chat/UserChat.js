@@ -1,13 +1,15 @@
-import React, { useRef } from 'react'
-import { useState, useEffect } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
-import styled from 'styled-components'
-import StButton from '../../../Global/StButton/StButton'
-import { StFilePicture, StSmileIocn } from '../../../Global/StIcon/StIcon'
-import { StInput } from '../../../Global/StTags/StTags'
-import getMessage from '../../../service/message/getMessage'
-import sendMessage from '../../../service/message/sendMessage'
-import { Theme } from '../../../style/Theme'
+import React, { useRef } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import StButton from "../../../Global/StButton/StButton";
+import { StFilePicture, StSmileIocn } from "../../../Global/StIcon/StIcon";
+import { StInput } from "../../../Global/StTags/StTags";
+import getMessage from "../../../service/message/getMessage";
+import sendMessage from "../../../service/message/sendMessage";
+import chatTimeLine from "../../../service/time/chatTimeLine";
+import localTime from "../../../service/time/localTime";
+import { Theme } from "../../../style/Theme";
 
 const StChat = styled.ul`
   flex-grow: 1;
@@ -15,27 +17,29 @@ const StChat = styled.ul`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-`
+`;
 
-const StChatMy = styled.li`
-  align-self: flex-end;
+const StChatContainer = styled.li`
+  align-self: ${({ alignItems }) => alignItems};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StChatText = styled.span`
   margin: 0.5em;
   padding: 0.5em;
-  border: 1px solid black;
+  border: 1px solid ${Theme.colors.borderColor};
   border-radius: 1em;
-`
+`;
 
-const StChatUsers = styled.li`
-  align-self: flex-start;
-  margin: 0.5em;
-  padding: 0.5em;
-  border: 1px solid black;
-  border-radius: 1em;
-`
+const StChatTime = styled.span`
+  font-size: 0.8em;
+`;
 
 const StDiv = styled.div`
   padding: 2em;
-`
+`;
 
 const StChatInputBox = styled.div`
   padding: 0.5em 1em;
@@ -44,61 +48,68 @@ const StChatInputBox = styled.div`
   align-items: center;
   border: 1px solid ${Theme.colors.borderColor};
   border-radius: 2em;
-`
+`;
 
 const StChatForm = styled.form`
   flex-grow: 1;
   padding: 0 1em;
-`
+`;
 
 const StFileInput = styled.input`
   display: none;
-`
+`;
+
 const UserChat = ({ clickedRoomId, currentUserUid }) => {
-  const [text, setText] = useState('')
-  const [view, setView] = useState([])
-  const scrollRef = useRef()
-  const path = useParams()
+  const [text, setText] = useState("");
+  const [view, setView] = useState([]);
+  const scrollRef = useRef();
+  const path = useParams();
 
   useEffect(() => {
-    const messages = getMessage(path.rommId, setView)
+    const messages = getMessage(path.rommId, setView);
 
     return () => {
-      messages()
-    }
-  }, [path.rommId])
+      messages();
+    };
+  }, [path.rommId]);
 
   const textChange = (event) => {
-    const text = event.target.value
-    setText(text)
-  }
+    const text = event.target.value;
+    setText(text);
+  };
 
   const scrollInTo = () => {
-    console.log(scrollRef.current.lastChild)
+    console.log(scrollRef.current.lastChild);
     scrollRef.current.lastChild &&
       scrollRef.current.lastChild.scrollIntoView(
-        { behavior: 'smooth' },
-        { block: 'end' },
-        { inline: 'end ' },
-      )
-  }
+        { behavior: "smooth" },
+        { block: "end" },
+        { inline: "end " }
+      );
+  };
 
   const textSubmit = async (event) => {
-    event.preventDefault()
-    event.target.childNodes[0].value = ''
-    await sendMessage(text, path.rommId)
-    scrollInTo()
-  }
+    event.preventDefault();
+    event.target.childNodes[0].value = "";
+    await sendMessage(text, path.rommId);
+    scrollInTo();
+  };
 
   return (
     <>
       <StChat ref={scrollRef}>
         {view.map((chat) =>
           chat.uid === currentUserUid ? (
-            <StChatMy key={chat.time}>{chat.text}</StChatMy>
+            <StChatContainer key={chat.time} alignItems="flex-end">
+              <StChatTime>{localTime(chat.time)}</StChatTime>
+              <StChatText>{chat.text}</StChatText>
+            </StChatContainer>
           ) : (
-            <StChatUsers key={chat.time}>{chat.text}</StChatUsers>
-          ),
+            <StChatContainer key={chat.time} alignItems="flex-start">
+              <StChatTime>{localTime(chat.time)}</StChatTime>
+              <StChatText>{chat.text}</StChatText>
+            </StChatContainer>
+          )
         )}
       </StChat>
       <StDiv>
@@ -139,7 +150,7 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
         </StChatInputBox>
       </StDiv>
     </>
-  )
-}
+  );
+};
 
-export default UserChat
+export default UserChat;
