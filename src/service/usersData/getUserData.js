@@ -9,3 +9,5 @@ const getUserData = (uid, setData) => {
 };
 
 export default getUserData;
+
+// 메세지에 사진 넣기

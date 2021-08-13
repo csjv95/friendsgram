@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import StButton from "../../../Global/StButton/StButton";
 import { StFilePicture, StSmileIocn } from "../../../Global/StIcon/StIcon";
+import { StProfileImg } from "../../../Global/StProfileImg/StProfileImg";
 import { StInput } from "../../../Global/StTags/StTags";
 import getMessage from "../../../service/message/getMessage";
 import sendMessage from "../../../service/message/sendMessage";
-import chatTimeLine from "../../../service/time/chatTimeLine";
 import localTime from "../../../service/time/localTime";
 import { Theme } from "../../../style/Theme";
 
@@ -26,8 +26,8 @@ const StChatContainer = styled.li`
   align-items: center;
 `;
 
-const StChatText = styled.span`
-  margin: 0.5em;
+const StChatText = styled.div`
+   margin: 0.5em;
   padding: 0.5em;
   border: 1px solid ${Theme.colors.borderColor};
   border-radius: 1em;
@@ -67,7 +67,6 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
 
   useEffect(() => {
     const messages = getMessage(path.rommId, setView);
-
     return () => {
       messages();
     };
@@ -103,11 +102,13 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
             <StChatContainer key={chat.time} alignItems="flex-end">
               <StChatTime>{localTime(chat.time)}</StChatTime>
               <StChatText>{chat.text}</StChatText>
+              <StProfileImg src={chat.photoURL} height="2em" />
             </StChatContainer>
           ) : (
             <StChatContainer key={chat.time} alignItems="flex-start">
-              <StChatTime>{localTime(chat.time)}</StChatTime>
+              <StProfileImg src={chat.photoURL} height="2em" />
               <StChatText>{chat.text}</StChatText>
+              <StChatTime>{localTime(chat.time)}</StChatTime>
             </StChatContainer>
           )
         )}

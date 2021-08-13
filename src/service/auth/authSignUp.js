@@ -37,6 +37,7 @@ const authSignUp = async (userData, follow, history) => {
     await user.updateProfile({
       name,
       displayName,
+      photoURL: '/imgs/defaultUserImg.png',
     })
 
     // DB에 넣기 follow
@@ -75,7 +76,7 @@ const authSignUp = async (userData, follow, history) => {
     //   state: userData,
     // });
 
-    window.location.href = '/'
+    // window.location.href = '/'
   } catch (error) {
     const errorMessage = error.message
     alert(errorMessage)
