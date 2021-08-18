@@ -66,6 +66,7 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
   const [text, setText] = useState("");
   const [view, setView] = useState([]);
   const scrollRef = useRef();
+  const inputText = useRef();
   const path = useParams();
 
   useEffect(() => {
@@ -91,7 +92,7 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
 
   const textSubmit = async (event) => {
     event.preventDefault();
-    event.target.childNodes[0].value = "";
+    inputText.current.value = "";
     await sendMessage(text, path.rommId);
     scrollInTo();
   };
@@ -124,6 +125,7 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
           />
           <StChatForm>
             <StInput
+              ref={inputText}
               width="100%"
               height="100%"
               padding="0.5em"
