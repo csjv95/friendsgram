@@ -11,10 +11,11 @@ const colors = {
   blue: "#6666f9",
   blueviolet: "#8a2be2",
   skyblue: "#e0f1ff",
-  skyblueInnerText : "#0095f6",
+  skyblueInnerText: "#0095f6",
   red: "#ed4956",
   black: "#262626",
   btnColor: "#0095f6",
+  hoverColor: "#efefef",
 };
 
 const fonts = {

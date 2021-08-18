@@ -33,8 +33,7 @@ const StChatText = styled.div`
   padding: 0.5em;
   border: 1px solid ${Theme.colors.borderColor};
   border-radius: 1em;
-  /* word-break: break-all; */
-  overflow-wrap: break-word;
+  overflow-wrap: break-word; //
 `;
 
 const StChatTime = styled.span`
@@ -82,7 +81,6 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
   };
 
   const scrollInTo = () => {
-    console.log(scrollRef.current.lastChild);
     scrollRef.current.lastChild &&
       scrollRef.current.lastChild.scrollIntoView(
         { behavior: "smooth" },

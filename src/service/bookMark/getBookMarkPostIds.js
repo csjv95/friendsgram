@@ -7,7 +7,7 @@ const getBookMarkPostIds = (setBookMarkPostIds) => {
     .collection("bookMark")
     .doc(currentUserUid)
     .onSnapshot((bookMark) => {
-      bookMark.data().postId && setBookMarkPostIds(bookMark.data().postId);
+      bookMark.data() && setBookMarkPostIds(bookMark.data().postId);
     });
 
   return () => {

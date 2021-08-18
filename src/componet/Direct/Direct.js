@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 import DirectRouter from "../../routes/directRouter/directRouter";
@@ -34,6 +34,15 @@ const StFriendsList = styled.ul`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+`;
+
+const StNavLink = styled(NavLink)`
+  &:hover {
+    background-color: ${Theme.colors.hoverColor};
+  }
+  &.selected {
+    background-color: ${Theme.colors.hoverColor};
+  }
 `;
 
 const Direct = ({ userData, handleSend, roomId, currentUserUid }) => {
@@ -75,12 +84,12 @@ const Direct = ({ userData, handleSend, roomId, currentUserUid }) => {
           <StFriendsList>
             {chatRooms &&
               chatRooms.map((user, index) => (
-                <Link
+                <StNavLink
                   key={index}
                   to={`/direct/${user[0][1].roomId}`}
+                  activeClassName="selected"
                   onClick={async (e) => {
                     setClickedRoomId(e.target.dataset.room);
-                    // getMessage(e.target.dataset.room, setView)
                   }}
                 >
                   {user.length > 1 ? (
@@ -101,7 +110,7 @@ const Direct = ({ userData, handleSend, roomId, currentUserUid }) => {
                       room={user[0][1].roomId}
                     />
                   )}
-                </Link>
+                </StNavLink>
               ))}
           </StFriendsList>
         </StDirectFriends>
