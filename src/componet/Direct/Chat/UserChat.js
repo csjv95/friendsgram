@@ -27,10 +27,14 @@ const StChatContainer = styled.li`
 `;
 
 const StChatText = styled.div`
-   margin: 0.5em;
+  max-width: 10em;
+  height: auto;
+  margin: 0.5em;
   padding: 0.5em;
   border: 1px solid ${Theme.colors.borderColor};
   border-radius: 1em;
+  /* word-break: break-all; */
+  overflow-wrap: break-word;
 `;
 
 const StChatTime = styled.span`
