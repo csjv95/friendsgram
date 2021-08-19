@@ -1,7 +1,7 @@
-import React from 'react'
-import { Route, Switch } from 'react-router'
-import EmptyChat from '../../componet/Direct/Chat/EmptyChat'
-import UserChat from '../../componet/Direct/Chat/UserChat'
+import React from "react";
+import { Route, Switch } from "react-router";
+import EmptyChat from "../../componet/Direct/Chat/EmptyChat";
+import UserChat from "../../componet/Direct/Chat/UserChat";
 
 const DirectRouter = ({
   users,
@@ -9,6 +9,7 @@ const DirectRouter = ({
   clickedRoomId,
   currentUserUid,
   view,
+  setForegroundMessageCount,
 }) => {
   return (
     <Switch>
@@ -19,12 +20,13 @@ const DirectRouter = ({
         <UserChat
           clickedRoomId={clickedRoomId}
           currentUserUid={currentUserUid}
+          setForegroundMessageCount={setForegroundMessageCount}
           view={view}
         />
       </Route>
       <Route render={() => <div>페이지를 찾을 수 없습니다.</div>} />
     </Switch>
-  )
-}
+  );
+};
 
-export default DirectRouter
+export default DirectRouter;

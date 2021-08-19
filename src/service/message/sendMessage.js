@@ -1,4 +1,5 @@
 import { firebaseAuth, firebaseStore } from "../firebase";
+import notificationTo from "./notificationTo";
 
 const sendMessage = async (text, clickedRoomId) => {
   const uid = firebaseAuth.currentUser.uid;
@@ -16,6 +17,8 @@ const sendMessage = async (text, clickedRoomId) => {
       time,
       photoURL,
     });
+
+  notificationTo(text);
 };
 
 export default sendMessage;

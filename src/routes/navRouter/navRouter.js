@@ -1,13 +1,13 @@
-import React from 'react'
-import { Route, Switch } from 'react-router'
-import Direct from '../../componet/Direct/Direct'
-import Edit from '../../componet/Edit/Edit'
-import Home from '../../componet/Home/Home'
-import MyProfile from '../../componet/MyProfile/MyProfile'
-import Upload from '../../componet/Upload/Upload'
-import Suggest from '../../componet/Suggest/Suggest'
-import EmptyPage from '../../Global/EmptyPage/EmptyPage'
-import { Theme } from '../../style/Theme'
+import React from "react";
+import { Route, Switch } from "react-router";
+import Direct from "../../componet/Direct/Direct";
+import Edit from "../../componet/Edit/Edit";
+import Home from "../../componet/Home/Home";
+import MyProfile from "../../componet/MyProfile/MyProfile";
+import Upload from "../../componet/Upload/Upload";
+import Suggest from "../../componet/Suggest/Suggest";
+import EmptyPage from "../../Global/EmptyPage/EmptyPage";
+import { Theme } from "../../style/Theme";
 
 const NavRouter = ({
   userData,
@@ -24,6 +24,7 @@ const NavRouter = ({
   setIsFollow,
   roomId,
   setRoomId,
+  setForegroundMessageCount,
 }) => {
   return (
     <Switch>
@@ -45,6 +46,7 @@ const NavRouter = ({
           handleSend={handleSend}
           roomId={roomId}
           setRoomId={setRoomId}
+          setForegroundMessageCount={setForegroundMessageCount}
         />
       </Route>
       <Route path="/post" component={Upload} />
@@ -77,7 +79,7 @@ const NavRouter = ({
       </Route>
       <Route render={() => <EmptyPage />} />
     </Switch>
-  )
-}
+  );
+};
 
-export default NavRouter
+export default NavRouter;

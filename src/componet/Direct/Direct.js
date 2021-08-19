@@ -45,7 +45,13 @@ const StNavLink = styled(NavLink)`
   }
 `;
 
-const Direct = ({ userData, handleSend, roomId, currentUserUid }) => {
+const Direct = ({
+  userData,
+  handleSend,
+  roomId,
+  currentUserUid,
+  setForegroundMessageCount,
+}) => {
   const [chatRooms, setChatRooms] = useState([]);
   const [clickedRoomId, setClickedRoomId] = useState("");
   // const [view, setView] = useState([])
@@ -120,6 +126,7 @@ const Direct = ({ userData, handleSend, roomId, currentUserUid }) => {
             handleSend={handleSend}
             clickedRoomId={clickedRoomId}
             currentUserUid={currentUserUid}
+            setForegroundMessageCount={setForegroundMessageCount}
             // view={view}
           />
         </StDirectChat>

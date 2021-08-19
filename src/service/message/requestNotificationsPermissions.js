@@ -1,5 +1,6 @@
 import { firebaseMessaging } from "../firebase";
 import saveMessagingDeviceToken from "./saveMessagingDeviceToken";
+
 const requestNotificationsPermissions = () => {
   console.log("Requesting notifications permission...");
   firebaseMessaging

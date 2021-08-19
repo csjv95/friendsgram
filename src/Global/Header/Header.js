@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Link, NavLink } from 'react-router-dom'
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Link, NavLink } from "react-router-dom";
 import {
   StHomeIcon,
   StSendIcon,
@@ -11,14 +11,13 @@ import {
   StSettings,
   StTransfer,
   StLine,
-} from '../StIcon/StIcon'
-import { StProfileImg } from '../StProfileImg/StProfileImg'
-import Search from '../../componet/Search/Search'
-import { authLogout } from '../../service/auth/authLogout'
-import setSearchRecord from '../../service/search/setSearchRecord'
-import { StRectangle, StTriangle } from '../StBubbleChat/BubbleChat'
-import { Theme } from '../../style/Theme'
-
+} from "../StIcon/StIcon";
+import { StProfileImg } from "../StProfileImg/StProfileImg";
+import Search from "../../componet/Search/Search";
+import { authLogout } from "../../service/auth/authLogout";
+import setSearchRecord from "../../service/search/setSearchRecord";
+import { StRectangle, StTriangle } from "../StBubbleChat/BubbleChat";
+import { Theme } from "../../style/Theme";
 
 const StHeaderContainer = styled.header`
   width: 100%;
@@ -33,18 +32,18 @@ const StHeaderContainer = styled.header`
   margin-bottom: 4em;
   background-color: ${({ theme }) => theme.colors.contentColor};
   z-index: 100;
-`
+`;
 
 const StHeaderLogo = styled.a`
-  font-family: 'Cookie', cursive;
+  font-family: "Cookie", cursive;
   font-size: 2em;
   color: ${({ theme }) => theme.colors.logoColor};
   text-decoration: none;
-`
+`;
 
 const StHeaderSearchLabel = styled.label`
   position: relative;
-`
+`;
 
 const StHeaderSearch = styled.input`
   height: 1.2em;
@@ -52,32 +51,32 @@ const StHeaderSearch = styled.input`
   background-color: ${({ theme }) => theme.colors.backgroundColor};
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 0.2em;
-`
+`;
 
 const StHeaderNav = styled.nav`
   position: relative;
-`
+`;
 
 const StHeaderNavul = styled.ul`
   display: flex;
   & > :nth-child(n) {
     margin-right: 1em;
   }
-`
+`;
 
 const StHeaderNavUlLi = styled.li`
   margin-right: 0.2em;
-`
+`;
 
 const StHeaderNavUlLiMy = styled.li`
   height: 1.5em;
-`
+`;
 
 const StMyUl = styled.ul`
   margin: 0.5em 0;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const StMyLi = styled.li`
   padding: 0.2em 0.5em;
@@ -86,22 +85,27 @@ const StMyLi = styled.li`
   &:hover {
     background-color: ${({ theme }) => theme.colors.backgroundColor};
   }
-`
+`;
 
 const StLink = styled(Link)`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 const StLogoutBtn = styled.button`
   width: 100%;
-`
+`;
 
-const Header = ({ handleUpload, userData, usersList }) => {
-  const { displayName } = userData
-  const [search, setSearch] = useState(false) // when clcked the search input box show record
-  const [searchText, setSearchText] = useState('') //when typing at search input box
-  const [profile, setProfile] = useState(false)
+const Header = ({
+  handleUpload,
+  userData,
+  usersList,
+  foregroundMessageCount,
+}) => {
+  const { displayName } = userData;
+  const [search, setSearch] = useState(false); // when clcked the search input box show record
+  const [searchText, setSearchText] = useState(""); //when typing at search input box
+  const [profile, setProfile] = useState(false);
 
   const onSearchChange = (event) => {
     const text = event.target.value;
@@ -109,27 +113,27 @@ const Header = ({ handleUpload, userData, usersList }) => {
   };
 
   const profileOnClick = () => {
-    setProfile(!profile)
-  }
+    setProfile(!profile);
+  };
 
   const onLogout = () => {
-    authLogout()
-  }
+    authLogout();
+  };
 
   const onSearchSubmit = (event) => {
-    event.preventDefault()
-    setSearchRecord(searchText)
-  }
+    event.preventDefault();
+    setSearchRecord(searchText);
+  };
 
   const activeStyle = {
     padding: `0.2em 0.2em 0.3em 0.2em`,
     border: `1px solid`,
     borderRadius: `50%`,
-  }
+  };
 
   const onSearchClick = () => {
-    setSearch(!search)
-  }
+    setSearch(!search);
+  };
   return (
     <StHeaderContainer>
       <StHeaderLogo href="/">Friendsgram</StHeaderLogo>
@@ -155,13 +159,16 @@ const Header = ({ handleUpload, userData, usersList }) => {
           </StHeaderNavUlLi>
           <StHeaderNavUlLi>
             <NavLink exact to="/direct" activeStyle={activeStyle}>
+              <span>
+                {foregroundMessageCount > 0 && foregroundMessageCount}
+              </span>
               <StSendIcon width="1.5" />
             </NavLink>
           </StHeaderNavUlLi>
           <StHeaderNavUlLi>
             <button
               onClick={() => {
-                handleUpload()
+                handleUpload();
               }}
             >
               <StPlusSquare width="1.5" />
@@ -228,6 +235,6 @@ const Header = ({ handleUpload, userData, usersList }) => {
         )}
       </StHeaderNav>
     </StHeaderContainer>
-  )
-}
-export default Header
+  );
+};
+export default Header;

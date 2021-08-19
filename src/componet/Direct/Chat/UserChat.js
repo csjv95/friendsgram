@@ -62,7 +62,11 @@ const StFileInput = styled.input`
   display: none;
 `;
 
-const UserChat = ({ clickedRoomId, currentUserUid }) => {
+const UserChat = ({
+  clickedRoomId,
+  currentUserUid,
+  setForegroundMessageCount,
+}) => {
   const [text, setText] = useState("");
   const [view, setView] = useState([]);
   const scrollRef = useRef();
@@ -93,7 +97,7 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
   const textSubmit = async (event) => {
     event.preventDefault();
     inputText.current.value = "";
-    await sendMessage(text, path.rommId);
+    await sendMessage(text, path.rommId, setForegroundMessageCount);
     scrollInTo();
   };
 
