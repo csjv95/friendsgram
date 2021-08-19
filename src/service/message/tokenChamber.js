@@ -5,16 +5,19 @@ const tokenChamber = async (roomId, setToken) => {
   const users = (
     await firebaseStore.collection("chatRooms").doc(roomId).get()
   ).data().displayNames;
-  const displayNames = await users.filter((e) => e !== currentDisplayName);
+  const displayNames =
+    users && (await users.filter((e) => e !== currentDisplayName));
 
-  const tokens = displayNames.map((name) =>
-    firebaseStore
-      .collection("fcmTokens")
-      .where("displayName", "==", name)
-      .onSnapshot((room) =>
-        room.forEach((item) => setToken(item.data().currentToken))
-      )
-  );
+  const tokens =
+    displayNames &&
+    displayNames.map((name) =>
+      firebaseStore
+        .collection("fcmTokens")
+        .where("displayName", "==", name)
+        .onSnapshot((room) =>
+          room.forEach((item) => setToken(item.data().currentToken))
+        )
+    );
 
   return () => {
     tokens();

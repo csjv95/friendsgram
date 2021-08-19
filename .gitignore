@@ -14,6 +14,9 @@
 # API key
 .env
 
+# firebase-messaging-sw
+public\firebase-messaging-sw.js
+
 # service
 /src/service/firebase.js
 
