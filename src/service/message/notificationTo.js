@@ -1,6 +1,6 @@
 import { firebaseAuth } from "../firebase";
 
-const notificationTo = (message) => {
+const notificationTo = (message, token) => {
   const request = require("request");
   const options = {
     uri: "https://fcm.googleapis.com/fcm/send",
@@ -10,7 +10,7 @@ const notificationTo = (message) => {
       Authorization: process.env.REACT_APP_FIREBASE_MESSAGEING_KEY,
     },
     json: {
-      to: "c9uisua_Arko542k7eseX1:APA91bG2Rg7UMX4SmWB0ZmO1BV5r-s_WnmkPKQI7A8SRT46xoeO2xWmjdJTdlVWK-1oYxo4yHE2BDniMc6_zmd1voUvH3QVTO5mimgG2vaMsreS1ysGxhomsUSNxVG671dJHxGnAJjxv",
+      to: token,
       notification: {
         title: "you got a new massage",
         body: message,

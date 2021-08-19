@@ -10,8 +10,12 @@ const saveMessagingDeviceToken = () => {
         // Saving the Device Token to the datastore.
         firebaseStore
           .collection("fcmTokens")
-          .doc(currentToken)
-          .set({ uid: firebaseAuth.currentUser.uid });
+          .doc(firebaseAuth.currentUser.uid)
+          .set({
+            uid: firebaseAuth.currentUser.uid,
+            displayName: firebaseAuth.currentUser.displayName,
+            currentToken,
+          });
       } else {
         // Need to request permissions to show notifications.
         // requestNotificationsPermissions();
