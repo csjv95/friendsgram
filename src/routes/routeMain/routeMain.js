@@ -17,6 +17,7 @@ import PostMenu from "../../componet/PostMenu/PostMenu";
 import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import FollowView from "../../componet/FollowView/FollowView";
 import Send from "../../componet/Send/Send";
+import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
 import foregroundMessage from "../../service/message/foregroundMessage";
 // import getMessageToken from "../../service/message/getMessageToken";
 // import Post from "../../componet/Post/Post";
@@ -68,6 +69,7 @@ const RouteMain = () => {
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
+    saveMessagingDeviceToken();
     foregroundMessage(setForegroundMessageCount);
     // getMessageToken(setToken);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);

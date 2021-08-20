@@ -1,9 +1,11 @@
 import { firebaseMessaging, firebaseStore, firebaseAuth } from "../firebase";
-import requestNotificationsPermissions from "./requestNotificationsPermissions";
 
 const saveMessagingDeviceToken = () => {
   firebaseMessaging
-    .getToken()
+    .getToken({
+      vapidKey:
+        "BGmrFSxEHeW3NEGKA0SjMgIo5goQDUOYA6tUt3JlPBiK8L1PW4PAL-AlLVjv56_9TYCzuy0TtcBjftzAHiJqZAY",
+    })
     .then(function (currentToken) {
       if (currentToken) {
         console.log("Got FCM device token:", currentToken);
@@ -18,8 +20,8 @@ const saveMessagingDeviceToken = () => {
           });
       } else {
         // Need to request permissions to show notifications.
-        // requestNotificationsPermissions();
-        requestNotificationsPermissions();
+        saveMessagingDeviceToken();
+        console.log("sorry");
       }
     })
     .catch(function (error) {

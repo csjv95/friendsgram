@@ -1,6 +1,6 @@
 import { firebaseAuth } from "../firebase";
 
-const notificationTo = (message, token) => {
+const notificationTo = (message, token, displayName) => {
   const request = require("request");
   const options = {
     uri: "https://fcm.googleapis.com/fcm/send",
@@ -12,11 +12,11 @@ const notificationTo = (message, token) => {
     json: {
       to: token,
       notification: {
-        title: "you got a new massage",
+        title: displayName,
         body: message,
         auth: firebaseAuth.currentUser.displayName,
         icon: firebaseAuth.currentUser.photoURL,
-        click_action: "http://localhost:3000", //"https://instargram-graph.web.app"
+        click_action: "https://instargram-graph.web.app",
       },
     },
   };
