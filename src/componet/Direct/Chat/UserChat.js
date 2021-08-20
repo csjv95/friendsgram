@@ -6,6 +6,7 @@ import StButton from "../../../Global/StButton/StButton";
 import { StFilePicture, StSmileIocn } from "../../../Global/StIcon/StIcon";
 import { StProfileImg } from "../../../Global/StProfileImg/StProfileImg";
 import { StInput } from "../../../Global/StTags/StTags";
+import foregroundMessage from "../../../service/message/foregroundMessage";
 import getMessage from "../../../service/message/getMessage";
 import sendMessage from "../../../service/message/sendMessage";
 import tokenChamber from "../../../service/message/tokenChamber";
@@ -63,7 +64,11 @@ const StFileInput = styled.input`
   display: none;
 `;
 
-const UserChat = ({ clickedRoomId, currentUserUid }) => {
+const UserChat = ({
+  clickedRoomId,
+  currentUserUid,
+  setForegroundMessageCount,
+}) => {
   const [text, setText] = useState("");
   const [view, setView] = useState([]);
   const scrollRef = useRef();
@@ -71,17 +76,16 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
   const path = useParams();
   const roomId = path.rommId;
   const [token, setToken] = useState([]);
-  console.log(path);
 
   useEffect(() => {
     const messages = getMessage(roomId, setView);
-    const chamber = tokenChamber(roomId, setToken);
-
+    tokenChamber(roomId, setToken); //const chamber =
+    // foregroundMessage(setForegroundMessageCount, roomId);
     return () => {
       messages();
       // chamber();
     };
-  }, [roomId]);
+  }, [roomId, setForegroundMessageCount]);
 
   const textChange = (event) => {
     const text = event.target.value;

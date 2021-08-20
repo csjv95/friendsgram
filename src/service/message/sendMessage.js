@@ -17,9 +17,10 @@ const sendMessage = async (text, clickedRoomId, token) => {
       uid,
       time,
       photoURL,
+      clickedRoomId,
     });
 
-  notificationTo(text, token, displayName);
+  notificationTo(text, token, displayName, clickedRoomId);
 };
 
 export default sendMessage;

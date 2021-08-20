@@ -19,6 +19,7 @@ import FollowView from "../../componet/FollowView/FollowView";
 import Send from "../../componet/Send/Send";
 import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
 import foregroundMessage from "../../service/message/foregroundMessage";
+import { useLocation, useParams } from "react-router-dom";
 // import getMessageToken from "../../service/message/getMessageToken";
 // import Post from "../../componet/Post/Post";
 
@@ -61,7 +62,9 @@ const RouteMain = () => {
   const [progressBar, setProgressBar] = useState(0);
   const [roomId, setRoomId] = useState("");
   const [token, setToken] = useState("");
+  // 메세지 카운트
   const [foregroundMessageCount, setForegroundMessageCount] = useState(0);
+  const path = useLocation().pathname;
 
   useEffect(() => {
     authGetUid(setCurrentUserUid);
@@ -69,17 +72,27 @@ const RouteMain = () => {
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-    foregroundMessage(setForegroundMessageCount);
+    foregroundMessage(setForegroundMessageCount, path);
+
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
 
     return () => {
       bookMark();
     };
-  }, []);
+  }, [path]);
 
   useEffect(() => {
     saveMessagingDeviceToken();
   }, [token]);
+
+  // useEffect(() => {
+  //   setForegroundMessageCount((prevNumber) => {
+  //     console.log(roomId);
+  //     const match = path.includes(roomId);
+  //     console.log(match);
+  //     match && console.log(prevNumber * 0);
+  //   });
+  // }, [path, roomId]);
 
   const handleUpload = () => {
     setUploadModal(!uploadModal);

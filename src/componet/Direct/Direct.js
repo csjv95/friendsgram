@@ -87,7 +87,7 @@ const Direct = ({
               />
             </StItem>
           </StList>
-          {/* 그룹 채팅일떄 사진 storage에서 가져오기 변수 네이밍 해주기 user[0][1]*/}
+
           <StFriendsList>
             {chatRooms &&
               chatRooms.map((user, index) => (

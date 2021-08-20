@@ -1,6 +1,6 @@
 import { firebaseAuth } from "../firebase";
 
-const notificationTo = (message, token, displayName) => {
+const notificationTo = (message, token, displayName, clickedRoomId) => {
   const request = require("request");
   const options = {
     uri: "https://fcm.googleapis.com/fcm/send",
@@ -11,6 +11,9 @@ const notificationTo = (message, token, displayName) => {
     },
     json: {
       to: token,
+      data: {
+        roomId: clickedRoomId,
+      },
       notification: {
         title: displayName,
         body: message,

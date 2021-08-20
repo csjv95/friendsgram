@@ -1,9 +1,13 @@
 import { firebaseMessaging } from "../firebase";
 
-const foregroundMessage = (setForegroundMessageCount) => {
+const foregroundMessage = (setForegroundMessageCount, path) => {
+  // 메시지가 읽었는지 기억이 되지않는다
   firebaseMessaging.onMessage((payload) => {
-    console.log("Message received. ", payload);
-    setForegroundMessageCount((prevNumber) => prevNumber + 1);
+    const sendRoomId = payload.data.roomId;
+    const match = path.includes(sendRoomId);
+
+    match === false &&
+      setForegroundMessageCount((prevNumber) => prevNumber + 1);
   });
 };
 
