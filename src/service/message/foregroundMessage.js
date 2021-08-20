@@ -1,13 +1,22 @@
-import { firebaseMessaging } from "../firebase";
+import {
+  firebase,
+  firebaseAuth,
+  firebaseMessaging,
+  firebaseStore,
+} from "../firebase";
 
-const foregroundMessage = (setForegroundMessageCount, path) => {
-  // 메시지가 읽었는지 기억이 되지않는다
+const foregroundMessage = (path) => {
   firebaseMessaging.onMessage((payload) => {
     const sendRoomId = payload.data.roomId;
     const match = path.includes(sendRoomId);
+    const currentUid = firebaseAuth.currentUser.uid;
 
-    match === false &&
-      setForegroundMessageCount((prevNumber) => prevNumber + 1);
+    match
+      ? firebaseStore.collection("unread").doc(currentUid).update({ check: 0 })
+      : firebaseStore
+          .collection("unread")
+          .doc(currentUid)
+          .update({ check: firebase.firestore.FieldValue.increment(1) });
   });
 };
 

@@ -71,6 +71,8 @@ const authSignUp = async (userData, follow, history) => {
         record: [],
       });
 
+    await firebaseStore.collection("unread").doc(uid).set({ check: 0, uid });
+
     // history.push({
     //   pathname: "/",
     //   state: userData,

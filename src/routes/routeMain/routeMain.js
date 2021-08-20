@@ -20,6 +20,7 @@ import Send from "../../componet/Send/Send";
 import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
 import foregroundMessage from "../../service/message/foregroundMessage";
 import { useLocation, useParams } from "react-router-dom";
+import unreadCount from "../../service/message/unreadCount";
 // import getMessageToken from "../../service/message/getMessageToken";
 // import Post from "../../componet/Post/Post";
 
@@ -72,8 +73,8 @@ const RouteMain = () => {
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-    foregroundMessage(setForegroundMessageCount, path);
-
+    foregroundMessage(path);
+    unreadCount(setForegroundMessageCount);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
 
     return () => {
@@ -85,15 +86,7 @@ const RouteMain = () => {
     saveMessagingDeviceToken();
   }, [token]);
 
-  // useEffect(() => {
-  //   setForegroundMessageCount((prevNumber) => {
-  //     console.log(roomId);
-  //     const match = path.includes(roomId);
-  //     console.log(match);
-  //     match && console.log(prevNumber * 0);
-  //   });
-  // }, [path, roomId]);
-
+  console.log(foregroundMessageCount);
   const handleUpload = () => {
     setUploadModal(!uploadModal);
   };
