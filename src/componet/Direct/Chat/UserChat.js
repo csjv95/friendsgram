@@ -71,6 +71,7 @@ const UserChat = ({ clickedRoomId, currentUserUid }) => {
   const path = useParams();
   const roomId = path.rommId;
   const [token, setToken] = useState([]);
+  console.log(path);
 
   useEffect(() => {
     const messages = getMessage(roomId, setView);

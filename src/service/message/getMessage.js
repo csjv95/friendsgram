@@ -21,6 +21,3 @@ const getMessage = (clickedRoomId, setView) => {
 };
 
 export default getMessage;
-// 메세지로 왔을떄 최근에 추가된 메세지로 가기
-// using the useEffect ?
-//시간

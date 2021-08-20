@@ -69,15 +69,17 @@ const RouteMain = () => {
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-    saveMessagingDeviceToken();
     foregroundMessage(setForegroundMessageCount);
-    // getMessageToken(setToken);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
 
     return () => {
       bookMark();
     };
   }, []);
+
+  useEffect(() => {
+    saveMessagingDeviceToken();
+  }, [token]);
 
   const handleUpload = () => {
     setUploadModal(!uploadModal);

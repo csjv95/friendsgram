@@ -12,6 +12,7 @@ import StProfileChat from "../../Global/StProfile/StProfileChat";
 
 const StDirectContainer = styled.section`
   width: 900px;
+  max-height: 40em;
   margin: 0 auto;
   display: flex;
   border: 1px solid lightgray;
@@ -100,7 +101,7 @@ const Direct = ({
                 >
                   {user.length > 1 ? (
                     <StProfileChat
-                      photoURL={user[0][0].photoURL}
+                      photoURL="/imgs/groupChat.jpg"
                       displayName="group chat"
                       profilePadding="1em"
                       imgHeight="3em"
