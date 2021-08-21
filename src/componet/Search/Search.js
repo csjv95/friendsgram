@@ -10,9 +10,6 @@ const Search = ({ searchText }) => {
 
   useEffect(() => {
     getSearch(searchText, setRecomendUser);
-    // return () => {
-    //   getSearch(searchText,setRecomendUser)
-    // }
   }, [searchText]);
 
   return (
@@ -31,9 +28,7 @@ const Search = ({ searchText }) => {
 
         {/* // 검색할때 */}
         {searchText &&
-          recomendUser.map((user) => (
-            <SearchProfile key={user} user={user} />
-          ))}
+          recomendUser.map((user) => <SearchProfile key={user} user={user} />)}
       </StRectangle>
     </>
   );

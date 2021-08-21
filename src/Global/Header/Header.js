@@ -5,7 +5,6 @@ import {
   StHomeIcon,
   StSendIcon,
   StPlusSquare,
-  StHeartIcon,
   StUserCircle,
   StBookmarkIcon,
   StSettings,
@@ -173,11 +172,6 @@ const Header = ({
             >
               <StPlusSquare width="1.5" />
             </button>
-          </StHeaderNavUlLi>
-          <StHeaderNavUlLi>
-            <NavLink exact to="/heart" activeStyle={activeStyle}>
-              <StHeartIcon width="1.5" />
-            </NavLink>
           </StHeaderNavUlLi>
           <StHeaderNavUlLiMy>
             <StProfileImg

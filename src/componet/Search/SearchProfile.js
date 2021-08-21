@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import StProfileNoLink from "../../Global/StProfile/StProfileNoLink";
 import setSearchRecord from "../../service/search/setSearchRecord";
 import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
-import Profiles from "../Home/Profiles";
 import CheckBoxProfile from "../Profile/CheckBoxProfile";
 
 const SearchProfile = ({ user, isCheckBox, checkUser, setCheckUser }) => {
@@ -40,7 +40,7 @@ const SearchProfile = ({ user, isCheckBox, checkUser, setCheckUser }) => {
         />
       ) : (
         <Link to={`/${match.displayName}`}>
-          <Profiles
+          <StProfileNoLink
             profileClick={onClick}
             listPadding="0 1em"
             imgHeight="3em"

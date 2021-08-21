@@ -5,16 +5,16 @@ import { StClear } from "../../Global/StIcon/StIcon";
 import selectRecordDelete from "../../service/search/selecteRecordDelete";
 import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
 import { Theme } from "../../style/Theme";
-import Profiles from "../Home/Profiles";
+import StProfileNoLink from "../../Global/StProfile/StProfileNoLink";
 
 const StRecordSection = styled.section`
-  padding : 0 1em;
+  padding: 0 1em;
   display: flex;
 `;
 
 const StProfileLink = styled(Link)`
-  flex-grow : 1;
-`
+  flex-grow: 1;
+`;
 
 const RecordProfile = ({ user }) => {
   const [match, setMatchUserData] = useState([]);
@@ -34,7 +34,7 @@ const RecordProfile = ({ user }) => {
       {match && (
         <StRecordSection>
           <StProfileLink to={`/${match.displayName}`}>
-            <Profiles
+            <StProfileNoLink
               listWidth="80%"
               imgHeight="3em"
               photoURL={match.photoURL}

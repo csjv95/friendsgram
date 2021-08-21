@@ -22,9 +22,6 @@ const NavRouter = ({
   setClickedPostId,
   setClickedPostUid,
   setIsFollow,
-  roomId,
-  setRoomId,
-  setForegroundMessageCount,
 }) => {
   return (
     <Switch>
@@ -44,9 +41,6 @@ const NavRouter = ({
           currentUserUid={currentUserUid}
           userData={userData}
           handleSend={handleSend}
-          roomId={roomId}
-          setRoomId={setRoomId}
-          setForegroundMessageCount={setForegroundMessageCount}
         />
       </Route>
       <Route path="/post" component={Upload} />

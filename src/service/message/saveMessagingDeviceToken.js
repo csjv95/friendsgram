@@ -8,7 +8,7 @@ const saveMessagingDeviceToken = () => {
     })
     .then(function (currentToken) {
       if (currentToken) {
-        console.log("Got FCM device token:", currentToken);
+        // console.log("Got FCM device token:", currentToken);
         // Saving the Device Token to the datastore.
         firebaseStore
           .collection("fcmTokens")

@@ -67,7 +67,6 @@ const RouteMain = () => {
   // 메세지 카운트
   const [foregroundMessageCount, setForegroundMessageCount] = useState(0);
   const path = useLocation().pathname;
-  const [messageRoomId, setMessageRoomId] = useState("");
 
   useEffect(() => {
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
@@ -88,15 +87,13 @@ const RouteMain = () => {
 
   useEffect(() => {
     const unread = unreadCount(path, setForegroundMessageCount);
-    foregroundMessage(path, setMessageRoomId);
+    foregroundMessage(path);
     readCount(path);
 
     return () => {
       unread();
     };
   }, [path]);
-
-  console.log(foregroundMessageCount);
 
   const handleUpload = () => {
     setUploadModal(!uploadModal);
@@ -216,9 +213,6 @@ const RouteMain = () => {
         setClickedPostId={setClickedPostId}
         setClickedPostUid={setClickedPostUid}
         setIsFollow={setIsFollow}
-        roomId={roomId}
-        setRoomId={setRoomId}
-        setForegroundMessageCount={setForegroundMessageCount}
         // handlePost={handlePost}
       />
       <MainFooter />
