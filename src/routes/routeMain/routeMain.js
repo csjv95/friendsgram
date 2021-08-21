@@ -19,8 +19,9 @@ import FollowView from "../../componet/FollowView/FollowView";
 import Send from "../../componet/Send/Send";
 import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
 import foregroundMessage from "../../service/message/foregroundMessage";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import unreadCount from "../../service/message/unreadCount";
+import readCount from "../../service/message/readCount";
 // import getMessageToken from "../../service/message/getMessageToken";
 // import Post from "../../componet/Post/Post";
 
@@ -66,27 +67,37 @@ const RouteMain = () => {
   // 메세지 카운트
   const [foregroundMessageCount, setForegroundMessageCount] = useState(0);
   const path = useLocation().pathname;
+  const [messageRoomId, setMessageRoomId] = useState("");
 
   useEffect(() => {
+    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
     authGetUid(setCurrentUserUid);
     getUserData(setUserData);
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-    foregroundMessage(path);
-    unreadCount(setForegroundMessageCount);
-    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
 
     return () => {
       bookMark();
     };
-  }, [path]);
+  }, []);
 
   useEffect(() => {
     saveMessagingDeviceToken();
   }, [token]);
 
+  useEffect(() => {
+    const unread = unreadCount(path, setForegroundMessageCount);
+    foregroundMessage(path, setMessageRoomId);
+    readCount(path);
+
+    return () => {
+      unread();
+    };
+  }, [path]);
+
   console.log(foregroundMessageCount);
+
   const handleUpload = () => {
     setUploadModal(!uploadModal);
   };

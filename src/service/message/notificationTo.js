@@ -19,7 +19,7 @@ const notificationTo = (message, token, displayName, clickedRoomId) => {
         body: message,
         auth: firebaseAuth.currentUser.displayName,
         icon: firebaseAuth.currentUser.photoURL,
-        click_action: "https://instargram-graph.web.app",
+        click_action: `https://instargram-graph.web.app/direct/${clickedRoomId}`,
       },
     },
   };
