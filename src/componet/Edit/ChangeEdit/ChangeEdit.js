@@ -15,6 +15,7 @@ import {
 } from "../../../Global/StEditForm/StEditForm";
 import { StProfileImg } from "../../../Global/StProfileImg/StProfileImg";
 import setUserData from "../../../service/usersData/setUserData";
+import setUserProfileImg from "../../../service/usersData/setUserProfileImg";
 
 const ChangeEdit = ({ userData }) => {
   const {
@@ -29,7 +30,7 @@ const ChangeEdit = ({ userData }) => {
   } = userData;
 
   const [reUserData, setReUserData] = useState({});
-  
+
   const onChangeInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -39,6 +40,11 @@ const ChangeEdit = ({ userData }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     setUserData(reUserData);
+  };
+
+  const profileImgChange = (event) => {
+    const img = event.target.files[0];
+    setUserProfileImg(img);
   };
 
   return (
@@ -55,7 +61,7 @@ const ChangeEdit = ({ userData }) => {
           <li>{displayName}</li>
           <li>
             <StImgLabel htmlFor="img">프로필 사진 바꾸기</StImgLabel>
-            <StImgInput type="file" id="img" />
+            <StImgInput type="file" id="img" onChange={profileImgChange} />
           </li>
         </StChnageImgList>
       </StImgSection>
@@ -222,7 +228,12 @@ const ChangeEdit = ({ userData }) => {
             />
           </StIputContainer>
         </StSetContainer>
-        <StButton btnText="제출" width="4em" padding="0.1em" onClick={onSubmit} />
+        <StButton
+          btnText="제출"
+          width="4em"
+          padding="0.1em"
+          onClick={onSubmit}
+        />
       </StChangeForm>
     </StEditMain>
   );

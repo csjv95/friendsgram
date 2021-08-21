@@ -59,9 +59,9 @@ const Login = ({ setLogin }) => {
           />
           <StLoginInput
             type="password"
+            autoComplete="current-password"
             name="pw"
             value={userLoginData.pw}
-            autocomplete="current-password"
             placeholder="비밀번호"
             onChange={inputOnChange}
           />

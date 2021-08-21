@@ -1,16 +1,16 @@
-import { firebaseStore } from '../firebase'
+import { firebaseStore } from "../firebase";
 
 const getMatchDisplayName = async (match, setMatchUser) => {
-  const matchUser = []
+  const matchUser = [];
   const user = firebaseStore
-    .collection('users')
-    .where('displayName', '==', match)
+    .collection("users")
+    .where("displayName", "==", match);
 
   await user
     .get()
-    .then((user) => user.forEach((data) => matchUser.push(data.data())))
+    .then((user) => user.forEach((data) => matchUser.push(data.data())));
 
-  setMatchUser(...matchUser)
-}
+  setMatchUser(...matchUser);
+};
 
-export default getMatchDisplayName
+export default getMatchDisplayName;
