@@ -33,6 +33,7 @@ import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import setBookMark from "../../service/bookMark/setBookMark";
 import getHeartLength from "../../service/heart/getHeartLength";
 import { Link } from "react-router-dom";
+import getUserImg from "../../service/usersData/getUserImg";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -72,7 +73,7 @@ const PostCol = ({
     displayName,
   } = article;
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
-  const { photoURL } = userData;
+  const [photoURL, setPhotoURL] = useState("");
   const [heartData, setHeartData] = useState([]);
   const [heartLength, setHeartLength] = useState([]);
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
@@ -82,13 +83,21 @@ const PostCol = ({
     const heart = getHeart(setHeartData);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
     const heartLength = getHeartLength(postId, setHeartLength);
-    
+
     return () => {
       heart();
       bookMark();
       heartLength();
     };
   }, [uid, postId]);
+
+  useEffect(() => {
+    const profileImg = getUserImg(uid, setPhotoURL);
+
+    return () => {
+      profileImg();
+    };
+  }, [uid, setPhotoURL]);
 
   const functionList = [
     {

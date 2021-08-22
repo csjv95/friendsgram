@@ -67,6 +67,7 @@ const PostRow = ({
     const heart = getHeart(setHeartData);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
     const heartLength = getHeartLength(postId, setHeartLength);
+
     return () => {
       heart();
       bookMark();

@@ -1,7 +1,7 @@
 import { firebaseStore } from "../firebase";
 import { firebaseAuth } from "../firebase";
 
-const getCurrenttUserData = async (setUserData) => {
+const getCurrentUserData = async (setUserData) => {
   const user = firebaseAuth.currentUser;
   const uid = user.uid;
 
@@ -16,4 +16,4 @@ const getCurrenttUserData = async (setUserData) => {
   };
 };
 
-export default getCurrenttUserData;
+export default getCurrentUserData;

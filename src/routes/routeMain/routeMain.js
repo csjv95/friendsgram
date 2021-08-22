@@ -6,7 +6,7 @@ import styled from "styled-components";
 import Upload from "../../componet/Upload/Upload";
 import ModalPotal from "../../modal/ModalPotal";
 import Location from "../../componet/Location/Location";
-import getUserData from "../../service/fireStore/getCurrenttUserData";
+import getUserCurrentUserData from "../../service/fireStore/getCurrentUserData";
 import getUsersList from "../../service/fireStore/getUsersList";
 import getFollowingList from "../../service/follow/getFollowingList";
 import getFollowerList from "../../service/follow/getFollowerList";
@@ -66,7 +66,7 @@ const RouteMain = () => {
 
   useEffect(() => {
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
-    const usersData = getUserData(setUserData);
+    const usersData = getUserCurrentUserData(setUserData);
     authGetUid(setCurrentUserUid);
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
