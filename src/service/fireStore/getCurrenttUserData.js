@@ -7,16 +7,13 @@ const getCurrenttUserData = async (setUserData) => {
 
   const userData = firebaseStore.collection("users").where("uid", "==", uid);
 
-  await userData
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        setUserData(doc.data());
-      });
-    })
-    .catch((error) => {
-      console.log("Error getting documents: ", error);
-    });
+  const data = userData.onSnapshot((user) =>
+    user.forEach((data) => setUserData(data.data()))
+  );
+
+  return () => {
+    data();
+  };
 };
 
 export default getCurrenttUserData;

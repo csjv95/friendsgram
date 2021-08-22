@@ -66,13 +66,14 @@ const RouteMain = () => {
 
   useEffect(() => {
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
+    const usersData = getUserData(setUserData);
     authGetUid(setCurrentUserUid);
-    getUserData(setUserData);
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
 
     return () => {
+      usersData();
       bookMark();
     };
   }, []);
