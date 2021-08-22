@@ -31,4 +31,9 @@ export {
   firebaseDatabase,
   firebaseStorage,
   firebaseMessaging,
-}
+};
+// post img 각자껄로 바꾸기
+
+// 댓글기능 포스트창 관리
+
+// 비밀번호 재설정 메일 보내는걸로 바꾸기 그리고 firebase에서 비번 지우기

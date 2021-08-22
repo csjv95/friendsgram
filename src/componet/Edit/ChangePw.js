@@ -17,7 +17,7 @@ import { Theme } from "../../style/Theme";
 
 const ChangePw = ({ userData }) => {
   const { photoURL, displayName, password } = userData;
-  
+
   const [newPw, setNewPw] = useState({
     lastPw: "",
     newPw: "",

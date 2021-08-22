@@ -13,7 +13,7 @@ const authPwChange = async (newPw) => {
         firebaseStore.collection("users").doc(currentUserUid).update({
           password: checkPw,
         });
-        console.log(checkPw, "비밀번호 변경 완료!");
+        alert("비밀번호 변경 완료");
         reload(1500);
       })
       .catch((error) => alert(error.message));

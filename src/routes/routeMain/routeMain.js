@@ -22,8 +22,6 @@ import foregroundMessage from "../../service/message/foregroundMessage";
 import { useLocation } from "react-router-dom";
 import unreadCount from "../../service/message/unreadCount";
 import readCount from "../../service/message/readCount";
-// import getMessageToken from "../../service/message/getMessageToken";
-// import Post from "../../componet/Post/Post";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -41,7 +39,6 @@ const RouteMain = () => {
   const follow = document.getElementById("follow");
   const send = document.getElementById("send");
   const [isFollow, setIsFollow] = useState("");
-  // const post = document.getElementById("post");
   const [currentUserUid, setCurrentUserUid] = useState("");
   const [userData, setUserData] = useState([]);
   const [usersList, setUsersList] = useState([]);
@@ -56,7 +53,6 @@ const RouteMain = () => {
   const [postMenuModal, setPostMenuModal] = useState(false);
   const [followModal, setFollowModal] = useState(false);
   const [sendModal, setSendModal] = useState(false);
-  // const [postModal, setPostModal] = useState(false);
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
   const [text, setText] = useState("");
@@ -119,10 +115,6 @@ const RouteMain = () => {
     setSendModal(!sendModal);
   };
 
-  // const handlePost = () => {
-  //   setPostModal(!postModal);
-  // }
-
   return (
     <AppContainer>
       {uploadModal && (
@@ -183,12 +175,6 @@ const RouteMain = () => {
           <Send handleSend={handleSend} roomId={roomId} setRoomId={setRoomId} />
         </ModalPotal>
       )}
-
-      {/* {postModal && (
-        <ModalPotal potalName={post}>
-          <Post handlePost={handlePost} myPostData/>
-        </ModalPotal>
-      )} */}
 
       {progressBar && <ProgressBar progressBar={progressBar} />}
 
