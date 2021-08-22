@@ -33,6 +33,7 @@ export const StProfileLocation = styled.span`
 `;
 
 export const StPostText = styled.div`
+  padding: ${({ padding }) => padding};
   flex-grow: ${({ flexGrow }) => flexGrow};
   border-bottom: ${({ borderBottom }) => borderBottom};
   overflow-y: auto;

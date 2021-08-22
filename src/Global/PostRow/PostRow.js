@@ -9,6 +9,7 @@ import time from "../../service/time/time";
 import getUserData from "../../service/usersData/getUserData";
 import { Theme } from "../../style/Theme";
 import ImageSlider from "../ImageSlider/ImageSlider";
+import { useRef } from "react";
 import {
   StBookmarkIcon,
   StBookmarkFill,
@@ -30,8 +31,13 @@ import {
   StPostFunction,
   StFunctionList,
   StComments,
+  StTextContainer,
+  StDisplayName,
+  StJustText,
+  StMoreText,
 } from "../StPost/StPost";
 import { StProfileImg } from "../StProfileImg/StProfileImg";
+import StButton from "../../Global/StButton/StButton";
 
 const StPostArticle = styled.article`
   width: 65%;
@@ -61,6 +67,8 @@ const PostRow = ({
   const [heartData, setHeartData] = useState([]);
   const [heartLength, setHeartLength] = useState([]);
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
+  const justTextRef = useRef();
+  const moreTextRef = useRef();
 
   useEffect(() => {
     getUserData(uid, setUserData);
@@ -152,11 +160,39 @@ const PostRow = ({
           </button>
         </StPostHeader>
         <StPostText
+          padding="1em"
           flexGrow="1"
           borderBottom={`1px solid ${Theme.colors.borderColor}`}
         >
-          {text}
-          댓글
+          <StTextContainer>
+            <StDisplayName>{displayName}</StDisplayName>
+            <StJustText ref={justTextRef}>
+              {text.length > 15 ? `${text.slice(0, 16)} ...` : text}
+              <StButton
+                margin="0 0.5em"
+                fontWeight="600"
+                color={Theme.colors.skyblueInnerText}
+                btnText="more"
+                onClick={() => {
+                  justTextRef.current.style.display = "none";
+                  moreTextRef.current.style.display = "block";
+                }}
+              />
+            </StJustText>
+            <StMoreText ref={moreTextRef}>
+              {text}
+              <StButton
+                margin="0 0.5em"
+                fontWeight="600"
+                color={Theme.colors.skyblueInnerText}
+                btnText="close"
+                onClick={() => {
+                  justTextRef.current.style.display = "block";
+                  moreTextRef.current.style.display = "none";
+                }}
+              />
+            </StMoreText>
+          </StTextContainer>
         </StPostText>
 
         <StPostFunction padding="1em" display="flex">
