@@ -32,7 +32,7 @@ export {
   firebaseStorage,
   firebaseMessaging,
 };
-// post img 각자껄로 바꾸기
+// post img 각자껄로 바꾸기 v
 
 // 댓글기능 포스트창 관리
 

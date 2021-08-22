@@ -26,6 +26,10 @@ import {
   StProfileLocation,
   StComments,
   StCommentsArea,
+  StTextContainer,
+  StDisplayName,
+  StJustText,
+  StMoreText,
 } from "../../Global/StPost/StPost";
 import getHeart from "../../service/heart/getHeart";
 import setHeart from "../../service/heart/setHeart";
@@ -34,6 +38,8 @@ import setBookMark from "../../service/bookMark/setBookMark";
 import getHeartLength from "../../service/heart/getHeartLength";
 import { Link } from "react-router-dom";
 import getUserImg from "../../service/usersData/getUserImg";
+import { useRef } from "react";
+import StButton from "../../Global/StButton/StButton";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -49,8 +55,8 @@ const StHomeArticle = styled.article`
 `;
 
 const ImageSliderContainer = styled.div`
-  width: 37.5em;
-  height: 40.5em;
+  max-width: 37.5em;
+  max-height: 40.5em;
 `;
 
 const PostCol = ({
@@ -77,6 +83,8 @@ const PostCol = ({
   const [heartData, setHeartData] = useState([]);
   const [heartLength, setHeartLength] = useState([]);
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
+  const justTextRef = useRef();
+  const moreTextRef = useRef();
 
   useEffect(() => {
     getMatchUid(uid, setMatchUser);
@@ -194,8 +202,38 @@ const PostCol = ({
             ))}
           </StFunctionList>
           <div>{`좋아요 ${heartLength.length}개`}</div>
+
+          <StTextContainer>
+            <StDisplayName>{displayName}</StDisplayName>
+            <StJustText ref={justTextRef}>
+              {text.length > 15 ? `${text.slice(0, 16)} ...` : text}
+              <StButton
+                margin="0 0.5em"
+                fontWeight="600"
+                color={Theme.colors.skyblueInnerText}
+                btnText="more"
+                onClick={() => {
+                  justTextRef.current.style.display = "none";
+                  moreTextRef.current.style.display = "block";
+                }}
+              />
+            </StJustText>
+            <StMoreText ref={moreTextRef}>
+              {text}
+              <StButton
+                margin="0 0.5em"
+                fontWeight="600"
+                color={Theme.colors.skyblueInnerText}
+                btnText="close"
+                onClick={() => {
+                  justTextRef.current.style.display = "block";
+                  moreTextRef.current.style.display = "none";
+                }}
+              />
+            </StMoreText>
+          </StTextContainer>
+
           <div>comment</div>
-          <div>{text}</div>
           <div>{time(timestamp)}</div>
         </StPostFunction>
 

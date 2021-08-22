@@ -55,9 +55,9 @@ const PostRow = ({
   setClickedPostId,
   setClickedPostUid,
 }) => {
-  const { uid, text, timestamp, postId, displayName } = post;
+  const { uid, text, timestamp, postId, displayName, location } = post;
   const [userData, setUserData] = useState([]);
-  const { photoURL, location } = userData;
+  const { photoURL } = userData;
   const [heartData, setHeartData] = useState([]);
   const [heartLength, setHeartLength] = useState([]);
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);

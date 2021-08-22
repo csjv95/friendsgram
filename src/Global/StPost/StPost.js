@@ -18,7 +18,7 @@ export const StProfileContainer = styled.div`
 export const StProfileInfo = styled.div`
   margin: ${({ margin }) => margin};
   display: ${({ display }) => display};
-  flex-direction :${({flexDirection}) => flexDirection};
+  flex-direction: ${({ flexDirection }) => flexDirection};
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: ${({ alignItems }) => alignItems};
 `;
@@ -29,37 +29,38 @@ export const StProfileId = styled.span`
 
 export const StProfileLocation = styled.span`
   margin: ${({ margin }) => margin};
-  font-size: ${({fontSize}) => fontSize};
+  font-size: ${({ fontSize }) => fontSize};
 `;
 
 export const StPostText = styled.div`
   flex-grow: ${({ flexGrow }) => flexGrow};
   border-bottom: ${({ borderBottom }) => borderBottom};
-  overflow-y : auto;
+  overflow-y: auto;
 `;
 
 export const StPostFunction = styled.section`
+  max-width: 37.5em;
   padding: ${({ padding }) => padding};
   display: ${({ display }) => display};
   flex-direction: column;
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: ${({ alignItems }) => alignItems};
-  border-bottom: ${({borderBottom}) => borderBottom};
+  border-bottom: ${({ borderBottom }) => borderBottom};
 `;
 
 export const StFunctionList = styled.ul`
   width: 100%;
-  margin: ${({margin}) => margin};
+  margin: ${({ margin }) => margin};
   display: flex;
-  justify-content:center;
-  align-items : center;
+  justify-content: center;
+  align-items: center;
 
   & > :nth-child(n) {
-    margin-right : 1em;
+    margin-right: 1em;
   }
 
   & > :last-child {
-    margin : 0;
+    margin: 0;
     flex-grow: 1;
     text-align: end;
   }
@@ -70,11 +71,34 @@ export const StComments = styled.form`
   display: ${({ display }) => display};
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: ${({ alignItems }) => alignItems};
-  border-top: ${({borderTop}) => borderTop};
+  border-top: ${({ borderTop }) => borderTop};
 `;
 
 export const StCommentsArea = styled.textarea`
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
   flex-grow: ${({ flexGrow }) => flexGrow};
+`;
+
+export const StTextContainer = styled.div`
+  display: flex;
+`;
+
+export const StDisplayName = styled.span`
+  margin-right: 0.5em;
+  font-weight: 600;
+`;
+
+export const StJustText = styled.div`
+  /* margin: 0 0.5em; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9em;
+`;
+
+export const StMoreText = styled.div`
+  /* margin: 0 0.5em; */
+  display: none;
+  font-size: 0.9em;
 `;
