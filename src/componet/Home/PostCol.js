@@ -40,6 +40,7 @@ import { Link } from "react-router-dom";
 import getUserImg from "../../service/usersData/getUserImg";
 import { useRef } from "react";
 import StButton from "../../Global/StButton/StButton";
+import setComments from "../../service/comments/setComments";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -147,7 +148,9 @@ const PostCol = ({
 
   const sendComment = (event) => {
     event.preventDefault();
-    console.log(event.target.value);
+    // firebase에 저장하기
+    const comment = event.target.value;
+    setComments(uid, postId, comment);
     event.target.value = "";
   };
 
