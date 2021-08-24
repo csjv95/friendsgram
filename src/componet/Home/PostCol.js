@@ -25,6 +25,7 @@ import {
   StProfileInfo,
   StProfileLocation,
   StComments,
+  StComment,
   StCommentsArea,
   StTextContainer,
   StDisplayName,
@@ -41,6 +42,7 @@ import getUserImg from "../../service/usersData/getUserImg";
 import { useRef } from "react";
 import StButton from "../../Global/StButton/StButton";
 import setComments from "../../service/comments/setComments";
+import getComments from "../../service/comments/getComments";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -85,6 +87,7 @@ const PostCol = ({
   const [heartLength, setHeartLength] = useState([]);
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
   const [comment, setComment] = useState("");
+  const [allComment, setAllComment] = useState([]);
   const justTextRef = useRef();
   const moreTextRef = useRef();
 
@@ -108,6 +111,14 @@ const PostCol = ({
       profileImg();
     };
   }, [uid, setPhotoURL]);
+
+  useEffect(() => {
+    const comments = getComments(postId, setAllComment);
+
+    return () => {
+      comments();
+    };
+  }, [postId, uid]);
 
   const functionList = [
     {
@@ -149,8 +160,8 @@ const PostCol = ({
   const sendComment = (event) => {
     event.preventDefault();
     // firebase에 저장하기
-    const comment = event.target.value;
-    setComments(uid, postId, comment);
+    // const comment = event.target.value;
+    setComments(postId, uid, comment);
     event.target.value = "";
   };
 
@@ -225,9 +236,9 @@ const PostCol = ({
             <StDisplayName>{displayName}</StDisplayName>
             <StJustText ref={justTextRef}>
               {text.length > 15 ? (
-                <pre>`${text.slice(0, 16)} ...`</pre>
+                <p>{`${text.slice(0, 16)} ...`}</p>
               ) : (
-                <pre>{text}</pre>
+                <p>{text}</p>
               )}
               {text.length > 15 && (
                 <StButton
@@ -257,7 +268,12 @@ const PostCol = ({
             </StMoreText>
           </StTextContainer>
 
-          <pre>{comment}</pre>
+          {allComment.map((item) => (
+            <StComment
+              key={item.time}
+            >{`${item.displayName} ${item.comment}`}</StComment>
+          ))}
+
           <div>{time(timestamp)}</div>
         </StPostFunction>
 

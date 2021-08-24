@@ -104,3 +104,10 @@ export const StMoreText = styled.div`
   display: none;
   font-size: 0.9em;
 `;
+
+export const StComment = styled.pre`
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+`;
