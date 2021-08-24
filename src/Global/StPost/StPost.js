@@ -83,6 +83,7 @@ export const StCommentsArea = styled.textarea`
 
 export const StTextContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const StDisplayName = styled.span`

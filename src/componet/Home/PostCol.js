@@ -221,7 +221,11 @@ const PostCol = ({
           <StTextContainer>
             <StDisplayName>{displayName}</StDisplayName>
             <StJustText ref={justTextRef}>
-              {text.length > 15 ? `${text.slice(0, 16)} ...` : text}
+              {text.length > 15 ? (
+                <pre>`${text.slice(0, 16)} ...`</pre>
+              ) : (
+                <pre>{text}</pre>
+              )}
               {text.length > 15 && (
                 <StButton
                   margin="0 0.5em"
