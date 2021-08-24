@@ -168,16 +168,18 @@ const PostRow = ({
             <StDisplayName>{displayName}</StDisplayName>
             <StJustText ref={justTextRef}>
               {text.length > 15 ? `${text.slice(0, 16)} ...` : text}
-              <StButton
-                margin="0 0.5em"
-                fontWeight="600"
-                color={Theme.colors.skyblueInnerText}
-                btnText="more"
-                onClick={() => {
-                  justTextRef.current.style.display = "none";
-                  moreTextRef.current.style.display = "block";
-                }}
-              />
+              {text.length > 15 && (
+                <StButton
+                  margin="0 0.5em"
+                  fontWeight="600"
+                  color={Theme.colors.skyblueInnerText}
+                  btnText="more"
+                  onClick={() => {
+                    justTextRef.current.style.display = "none";
+                    moreTextRef.current.style.display = "block";
+                  }}
+                />
+              )}
             </StJustText>
             <StMoreText ref={moreTextRef}>
               {text}

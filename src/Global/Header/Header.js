@@ -187,7 +187,7 @@ const Header = ({
           <>
             <StTriangle
               top="2em"
-              left="9.7em"
+              left="7.7em"
               borderTop="1em solid none"
               borderBottom={`0.8em solid ${Theme.colors.contentColor}`}
               borderLeft="0.8em solid transparent;"

@@ -83,6 +83,7 @@ const PostCol = ({
   const [heartData, setHeartData] = useState([]);
   const [heartLength, setHeartLength] = useState([]);
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
+  const [comment, setComment] = useState("");
   const justTextRef = useRef();
   const moreTextRef = useRef();
 
@@ -141,6 +142,20 @@ const PostCol = ({
       clickBookMark();
     } else {
       return;
+    }
+  };
+
+  const sendComment = (event) => {
+    event.preventDefault();
+    console.log(event.target.value);
+    event.target.value = "";
+  };
+
+  const commentKeyDown = (event) => {
+    if (event.code === "Enter" && event.shiftKey) {
+      setComment(event.target.value, "\n");
+    } else if (event.code === "Enter") {
+      sendComment(event);
     }
   };
 
@@ -207,16 +222,18 @@ const PostCol = ({
             <StDisplayName>{displayName}</StDisplayName>
             <StJustText ref={justTextRef}>
               {text.length > 15 ? `${text.slice(0, 16)} ...` : text}
-              <StButton
-                margin="0 0.5em"
-                fontWeight="600"
-                color={Theme.colors.skyblueInnerText}
-                btnText="more"
-                onClick={() => {
-                  justTextRef.current.style.display = "none";
-                  moreTextRef.current.style.display = "block";
-                }}
-              />
+              {text.length > 15 && (
+                <StButton
+                  margin="0 0.5em"
+                  fontWeight="600"
+                  color={Theme.colors.skyblueInnerText}
+                  btnText="more"
+                  onClick={() => {
+                    justTextRef.current.style.display = "none";
+                    moreTextRef.current.style.display = "block";
+                  }}
+                />
+              )}
             </StJustText>
             <StMoreText ref={moreTextRef}>
               {text}
@@ -233,7 +250,7 @@ const PostCol = ({
             </StMoreText>
           </StTextContainer>
 
-          <div>comment</div>
+          <pre>{comment}</pre>
           <div>{time(timestamp)}</div>
         </StPostFunction>
 
@@ -244,6 +261,7 @@ const PostCol = ({
             justifyContent="center"
             alignItems="center"
             borderTop={`1px solid ${Theme.colors.borderColor}`}
+            onSubmit={sendComment}
           >
             <StSmileIocn width="1.5em" />
             <StCommentsArea
@@ -251,6 +269,8 @@ const PostCol = ({
               margin="0 1em"
               padding="1em 0 0 0 "
               flexGrow="1"
+              onChange={(event) => setComment(event.target.value)}
+              onKeyDown={(event) => commentKeyDown(event)}
             />
             <button>제출</button>
           </StComments>

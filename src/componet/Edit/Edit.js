@@ -24,7 +24,7 @@ const StEditListItem = styled.li`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.backgroundColor};
-    border-left: 2px solid ${({theme})=> theme.colors.borderColor};
+    border-left: 2px solid ${({ theme }) => theme.colors.borderColor};
   }
   .selected {
     font-weight: 600;
