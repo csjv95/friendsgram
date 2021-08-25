@@ -109,7 +109,6 @@ export const StMoreText = styled.div`
 export const StCommentContainer = styled.div`
   padding: ${({ padding }) => padding};
   display: flex;
-  align-items: center;
 `;
 
 export const StComment = styled.pre`

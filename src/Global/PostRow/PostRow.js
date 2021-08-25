@@ -78,8 +78,6 @@ const PostRow = ({
   const [allComment, setAllComment] = useState([]);
   const justTextRef = useRef();
   const moreTextRef = useRef();
-  const justCommentRef = useRef();
-  const moreCommentRef = useRef();
 
   useEffect(() => {
     getUserData(uid, setUserData);
@@ -200,6 +198,7 @@ const PostRow = ({
           borderBottom={`1px solid ${Theme.colors.borderColor}`}
         >
           <StTextContainer>
+            <StProfileImg src={photoURL} height="2.5em" />
             <StDisplayName>{displayName}</StDisplayName>
             <StJustText ref={justTextRef}>
               {text.length > 15 ? `${text.slice(0, 16)} ...` : text}
@@ -232,8 +231,9 @@ const PostRow = ({
           </StTextContainer>
           {allComment.map((item) => (
             <StCommentContainer key={item.time} padding="0.2em 0 0 0">
+              <StProfileImg src={item.photoURL} height="2.5em" />
               <StDisplayName>{item.displayName}</StDisplayName>
-              <StComment ref={justCommentRef}>{item.comment}</StComment>
+              <StComment>{item.comment}</StComment>
             </StCommentContainer>
           ))}
         </StPostText>
