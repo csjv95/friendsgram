@@ -87,7 +87,8 @@ export const StTextContainer = styled.div`
 `;
 
 export const StDisplayName = styled.span`
-  margin-right: 0.5em;
+  margin: 0 0.5em;
+  font-size: 0.8em;
   font-weight: 600;
 `;
 
@@ -96,7 +97,7 @@ export const StJustText = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.9em;
+  font-size: 0.8em;
 `;
 
 export const StMoreText = styled.div`
@@ -106,6 +107,7 @@ export const StMoreText = styled.div`
 `;
 
 export const StCommentContainer = styled.div`
+  padding: ${({ padding }) => padding};
   display: flex;
   align-items: center;
 `;
@@ -113,6 +115,23 @@ export const StCommentContainer = styled.div`
 export const StComment = styled.pre`
   max-width: 100%;
   margin: 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+`;
+
+export const StJustComment = styled.pre`
+  max-width: 100%;
+  margin: 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+`;
+
+export const StMoreComment = styled.pre`
+  max-width: 100%;
+  margin: 0;
+  display: none;
   overflow-x: auto;
   white-space: pre-wrap;
   word-wrap: break-word;

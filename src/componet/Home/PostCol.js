@@ -254,19 +254,7 @@ const PostCol = ({
                 />
               )}
             </StJustText>
-            <StMoreText ref={moreTextRef}>
-              {text}
-              <StButton
-                margin="0 0.5em"
-                fontWeight="600"
-                color={Theme.colors.skyblueInnerText}
-                btnText="close"
-                onClick={() => {
-                  justTextRef.current.style.display = "block";
-                  moreTextRef.current.style.display = "none";
-                }}
-              />
-            </StMoreText>
+            <StMoreText ref={moreTextRef}>{text}</StMoreText>
           </StTextContainer>
 
           {/* allcooment가 3보다 크면 postRow보여주기 */}

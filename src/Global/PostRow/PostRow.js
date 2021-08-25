@@ -35,9 +35,15 @@ import {
   StDisplayName,
   StJustText,
   StMoreText,
+  StCommentContainer,
+  StJustComment,
+  StMoreComment,
+  StComment,
 } from "../StPost/StPost";
 import { StProfileImg } from "../StProfileImg/StProfileImg";
 import StButton from "../../Global/StButton/StButton";
+import setComments from "../../service/comments/setComments";
+import getComments from "../../service/comments/getComments";
 
 const StPostArticle = styled.article`
   width: 65%;
@@ -61,14 +67,19 @@ const PostRow = ({
   setClickedPostId,
   setClickedPostUid,
 }) => {
-  const { uid, text, timestamp, postId, displayName, location } = post;
+  const { uid, text, timestamp, postId, displayName, location, noComments } =
+    post;
   const [userData, setUserData] = useState([]);
   const { photoURL } = userData;
   const [heartData, setHeartData] = useState([]);
   const [heartLength, setHeartLength] = useState([]);
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
+  const [comment, setComment] = useState("");
+  const [allComment, setAllComment] = useState([]);
   const justTextRef = useRef();
   const moreTextRef = useRef();
+  const justCommentRef = useRef();
+  const moreCommentRef = useRef();
 
   useEffect(() => {
     getUserData(uid, setUserData);
@@ -82,6 +93,14 @@ const PostRow = ({
       heartLength();
     };
   }, [uid, postId]);
+
+  useEffect(() => {
+    const comments = getComments(postId, setAllComment);
+
+    return () => {
+      comments();
+    };
+  }, [postId, uid]);
 
   const functionList = [
     {
@@ -117,6 +136,22 @@ const PostRow = ({
       clickBookMark();
     } else {
       return;
+    }
+  };
+
+  const sendComment = (event) => {
+    event.preventDefault();
+    // firebase에 저장하기
+    // const comment = event.target.value;
+    setComments(postId, uid, comment);
+    event.target.value = "";
+  };
+
+  const commentKeyDown = (event) => {
+    if (event.code === "Enter" && event.shiftKey) {
+      setComment(event.target.value, "\n");
+    } else if (event.code === "Enter") {
+      sendComment(event);
     }
   };
 
@@ -195,6 +230,12 @@ const PostRow = ({
               />
             </StMoreText>
           </StTextContainer>
+          {allComment.map((item) => (
+            <StCommentContainer key={item.time} padding="0.2em 0 0 0">
+              <StDisplayName>{item.displayName}</StDisplayName>
+              <StComment ref={justCommentRef}>{item.comment}</StComment>
+            </StCommentContainer>
+          ))}
         </StPostText>
 
         <StPostFunction padding="1em" display="flex">
@@ -215,22 +256,27 @@ const PostRow = ({
           <div>{time(timestamp)}</div>
         </StPostFunction>
 
-        <StComments
-          padding="0.5em 1em"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          borderTop={`1px solid ${Theme.colors.borderColor}`}
-        >
-          <StSmileIocn width="1.5em" />
-          <StCommentsArea
-            placeholder="댓글 달기..."
-            margin="0 1em"
-            padding="1em 0 0 0 "
-            flexGrow="1"
-          />
-          <button>게시</button>
-        </StComments>
+        {!noComments && (
+          <StComments
+            padding="0.5em 1em"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            borderTop={`1px solid ${Theme.colors.borderColor}`}
+            onSubmit={sendComment}
+          >
+            <StSmileIocn width="1.5em" />
+            <StCommentsArea
+              placeholder="댓글 달기..."
+              margin="0 1em"
+              padding="1em 0 0 0 "
+              flexGrow="1"
+              onChange={(event) => setComment(event.target.value)}
+              onKeyDown={(event) => commentKeyDown(event)}
+            />
+            <button>게시</button>
+          </StComments>
+        )}
       </StPostAside>
     </>
   );

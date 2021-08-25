@@ -83,6 +83,7 @@ const Direct = ({ userData, handleSend, currentUserUid }) => {
           </StList>
 
           <StFriendsList>
+            {console.log(chatRooms)}
             {chatRooms &&
               chatRooms.map((user, index) => (
                 <StNavLink
