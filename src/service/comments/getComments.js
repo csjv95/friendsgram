@@ -5,6 +5,8 @@ const getComments = (postId, setComment) => {
     .collection("comments")
     .doc(postId)
     .collection("comment")
+    .orderBy("time", "desc")
+    .limit(10)
     .onSnapshot((doc) => {
       const arr = [];
       doc.forEach((item) => {

@@ -31,6 +31,7 @@ import {
   StDisplayName,
   StJustText,
   StMoreText,
+  StCommentContainer,
 } from "../../Global/StPost/StPost";
 import getHeart from "../../service/heart/getHeart";
 import setHeart from "../../service/heart/setHeart";
@@ -268,10 +269,12 @@ const PostCol = ({
             </StMoreText>
           </StTextContainer>
 
+          {/* allcooment가 3보다 크면 postRow보여주기 */}
           {allComment.map((item) => (
-            <StComment
-              key={item.time}
-            >{`${item.displayName} ${item.comment}`}</StComment>
+            <StCommentContainer key={item.time}>
+              <StDisplayName>{item.displayName}</StDisplayName>
+              <StComment>{item.comment}</StComment>
+            </StCommentContainer>
           ))}
 
           <div>{time(timestamp)}</div>

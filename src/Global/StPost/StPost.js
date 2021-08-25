@@ -105,8 +105,14 @@ export const StMoreText = styled.div`
   font-size: 0.9em;
 `;
 
+export const StCommentContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const StComment = styled.pre`
   max-width: 100%;
+  margin: 0;
   overflow-x: auto;
   white-space: pre-wrap;
   word-wrap: break-word;
