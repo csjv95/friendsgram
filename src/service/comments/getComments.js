@@ -5,14 +5,14 @@ const getComments = (postId, setComment) => {
     .collection("comments")
     .doc(postId)
     .collection("comment")
-    .orderBy("time", "asc")
+    .orderBy("time", "desc")
     .limit(10)
     .onSnapshot((doc) => {
       const arr = [];
       doc.forEach((item) => {
         arr.push(item.data());
       });
-      setComment(arr);
+      setComment(arr.reverse());
     });
 
   return () => {

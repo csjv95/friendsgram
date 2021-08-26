@@ -36,8 +36,6 @@ import {
   StJustText,
   StMoreText,
   StCommentContainer,
-  StJustComment,
-  StMoreComment,
   StComment,
 } from "../StPost/StPost";
 import { StProfileImg } from "../StProfileImg/StProfileImg";

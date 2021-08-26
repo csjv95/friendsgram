@@ -5,6 +5,7 @@ import ImageSlider from "../../Global/ImageSlider/ImageSlider";
 import time from "../../service/time/time";
 import getMatchUid from "../../service/usersData/getMatchUid";
 import { Theme } from "../../style/Theme";
+import Picker from "emoji-picker-react";
 
 import {
   StMenuIcon,
@@ -91,6 +92,9 @@ const PostCol = ({
   const [allComment, setAllComment] = useState([]);
   const justTextRef = useRef();
   const moreTextRef = useRef();
+  const commentRef = useRef();
+  const [viewEomji, setViewEmoji] = useState(false);
+  const [chosenEmoji, setChosenEmoji] = useState(null);
 
   useEffect(() => {
     getMatchUid(uid, setMatchUser);
@@ -163,7 +167,7 @@ const PostCol = ({
     // firebase에 저장하기
     // const comment = event.target.value;
     setComments(postId, uid, comment);
-    event.target.value = "";
+    setComment("");
   };
 
   const commentKeyDown = (event) => {
@@ -172,6 +176,12 @@ const PostCol = ({
     } else if (event.code === "Enter") {
       sendComment(event);
     }
+  };
+
+  const onEmojiClick = async (event, emojiObject) => {
+    const emoji = await emojiObject.emoji;
+    setChosenEmoji(emoji);
+    setComment(comment, emoji);
   };
 
   return (
@@ -270,6 +280,7 @@ const PostCol = ({
 
         {!noComments && (
           <StComments
+            position="relative"
             padding="0.5em 1em"
             display="flex"
             justifyContent="center"
@@ -277,16 +288,35 @@ const PostCol = ({
             borderTop={`1px solid ${Theme.colors.borderColor}`}
             onSubmit={sendComment}
           >
-            <StSmileIocn width="1.5em" />
+            <StButton
+              btnText={<StSmileIocn width="1.5em" />}
+              onClick={() => {
+                setViewEmoji(!viewEomji);
+              }}
+            />
+
+            {viewEomji && (
+              <Picker
+                pickerStyle={{
+                  position: "absolute",
+                  bottom: "60px",
+                  left: "0",
+                }}
+                onEmojiClick={onEmojiClick}
+              />
+            )}
+
             <StCommentsArea
+              ref={commentRef}
               placeholder="댓글 달기..."
               margin="0 1em"
               padding="1em 0 0 0 "
               flexGrow="1"
+              value={comment}
               onChange={(event) => setComment(event.target.value)}
               onKeyDown={(event) => commentKeyDown(event)}
             />
-            <button>제출</button>
+            <button onClick={sendComment}>제출</button>
           </StComments>
         )}
       </StHomeArticle>

@@ -68,6 +68,7 @@ export const StFunctionList = styled.ul`
 `;
 
 export const StComments = styled.form`
+  position : ${({position}) => position};
   padding: ${({ padding }) => padding};
   display: ${({ display }) => display};
   justify-content: ${({ justifyContent }) => justifyContent};
@@ -114,23 +115,6 @@ export const StCommentContainer = styled.div`
 export const StComment = styled.pre`
   max-width: 100%;
   margin: 0;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-`;
-
-export const StJustComment = styled.pre`
-  max-width: 100%;
-  margin: 0;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-`;
-
-export const StMoreComment = styled.pre`
-  max-width: 100%;
-  margin: 0;
-  display: none;
   overflow-x: auto;
   white-space: pre-wrap;
   word-wrap: break-word;

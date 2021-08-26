@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^12.1.10",
     "auth": "^0.0.9",
     "axios": "^0.21.1",
+    "emoji-picker-react": "^3.4.8",
     "firebase": "^8.9.1",
     "firebase-admin": "^9.11.0",
     "global": "^4.4.0",

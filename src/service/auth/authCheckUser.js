@@ -8,7 +8,7 @@ const authCheckUser = (setLogin) => {
     } else {
       // No user is signed in
       console.log("logOut");
-      setLogin(false);
+      // setLogin(false);
     }
   });
 };

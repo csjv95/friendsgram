@@ -52,6 +52,7 @@ const Login = ({ setLogin }) => {
           <StTitle>Instargram</StTitle>
           <StLoginInput
             type="text"
+            autoComplete="current-password"
             name="id"
             value={userLoginData.id}
             placeholder="아이디"
