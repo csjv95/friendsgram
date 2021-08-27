@@ -10,6 +10,8 @@ import getUserData from "../../service/usersData/getUserData";
 import { Theme } from "../../style/Theme";
 import ImageSlider from "../ImageSlider/ImageSlider";
 import { useRef } from "react";
+import Picker from "emoji-picker-react";
+
 import {
   StBookmarkIcon,
   StBookmarkFill,
@@ -76,6 +78,7 @@ const PostRow = ({
   const [allComment, setAllComment] = useState([]);
   const justTextRef = useRef();
   const moreTextRef = useRef();
+  const [viewEomji, setViewEmoji] = useState(false);
 
   useEffect(() => {
     getUserData(uid, setUserData);
@@ -149,6 +152,11 @@ const PostRow = ({
     } else if (event.code === "Enter") {
       sendComment(event);
     }
+  };
+
+  const onEmojiClick = async (event, emojiObject) => {
+    const emoji = await emojiObject.emoji;
+    setComment(comment + emoji);
   };
 
   return (
@@ -256,6 +264,7 @@ const PostRow = ({
 
         {!noComments && (
           <StComments
+            position="relative"
             padding="0.5em 1em"
             display="flex"
             justifyContent="center"
@@ -263,12 +272,31 @@ const PostRow = ({
             borderTop={`1px solid ${Theme.colors.borderColor}`}
             onSubmit={sendComment}
           >
-            <StSmileIocn width="1.5em" />
+            <StButton
+              btnText={<StSmileIocn width="1.5em" />}
+              onClick={(event) => {
+                event.preventDefault();
+                setViewEmoji(!viewEomji);
+              }}
+            />
+
+            {viewEomji && (
+              <Picker
+                pickerStyle={{
+                  position: "absolute",
+                  bottom: "60px",
+                  left: "0",
+                }}
+                onEmojiClick={onEmojiClick}
+              />
+            )}
+
             <StCommentsArea
               placeholder="댓글 달기..."
               margin="0 1em"
               padding="1em 0 0 0 "
               flexGrow="1"
+              value={comment}
               onChange={(event) => setComment(event.target.value)}
               onKeyDown={(event) => commentKeyDown(event)}
             />
