@@ -92,9 +92,7 @@ const PostCol = ({
   const [allComment, setAllComment] = useState([]);
   const justTextRef = useRef();
   const moreTextRef = useRef();
-  const commentRef = useRef();
   const [viewEomji, setViewEmoji] = useState(false);
-  const [chosenEmoji, setChosenEmoji] = useState(null);
 
   useEffect(() => {
     getMatchUid(uid, setMatchUser);
@@ -163,9 +161,8 @@ const PostCol = ({
   };
 
   const sendComment = (event) => {
+    console.log(comment);
     event.preventDefault();
-    // firebase에 저장하기
-    // const comment = event.target.value;
     setComments(postId, uid, comment);
     setComment("");
   };
@@ -180,8 +177,7 @@ const PostCol = ({
 
   const onEmojiClick = async (event, emojiObject) => {
     const emoji = await emojiObject.emoji;
-    setChosenEmoji(emoji);
-    setComment(comment, emoji);
+    setComment(comment + emoji);
   };
 
   return (
@@ -290,7 +286,8 @@ const PostCol = ({
           >
             <StButton
               btnText={<StSmileIocn width="1.5em" />}
-              onClick={() => {
+              onClick={(event) => {
+                event.preventDefault();
                 setViewEmoji(!viewEomji);
               }}
             />
@@ -307,7 +304,6 @@ const PostCol = ({
             )}
 
             <StCommentsArea
-              ref={commentRef}
               placeholder="댓글 달기..."
               margin="0 1em"
               padding="1em 0 0 0 "
