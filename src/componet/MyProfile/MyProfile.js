@@ -102,6 +102,7 @@ const MyProfile = ({
   setClickedPostId,
   setClickedPostUid,
   setIsFollow,
+  handleSend,
 }) => {
   const post = document.getElementById("post");
   const params = useParams();
@@ -276,6 +277,7 @@ const MyProfile = ({
                 handlePostMenu={handlePostMenu}
                 setClickedPostId={setClickedPostId}
                 setClickedPostUid={setClickedPostUid}
+                handleSend={handleSend}
               />
             </section>
           </StpPofileContainer>

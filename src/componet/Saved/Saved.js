@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import {
   StPostList,
   StPostItem,
@@ -18,9 +18,9 @@ const Saved = ({
   handlePostMenu,
   setClickedPostId,
   setClickedPostUid,
+  handleSend,
 }) => {
   const [postId, setPostId] = useState([]);
-
 
   return (
     <StPostList>
@@ -57,6 +57,7 @@ const Saved = ({
             handlePostMenu={handlePostMenu}
             setClickedPostId={setClickedPostId}
             setClickedPostUid={setClickedPostUid}
+            handleSend={handleSend}
           />
         </ModalPotal>
       )}

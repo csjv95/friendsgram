@@ -36,6 +36,7 @@ const ContentCarousel = ({
   handlePostMenu,
   setClickedPostId,
   setClickedPostUid,
+  handleSend,
 }) => {
   const [curContent, setCurContent] = useState(0);
   const contentRef = useRef();
@@ -76,6 +77,7 @@ const ContentCarousel = ({
                     handlePostMenu={handlePostMenu}
                     setClickedPostId={setClickedPostId}
                     setClickedPostUid={setClickedPostUid}
+                    handleSend={handleSend}
                   />
                 </StModalMain>
               </StCarouselItem>

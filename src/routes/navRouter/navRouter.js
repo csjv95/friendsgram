@@ -71,6 +71,7 @@ const NavRouter = ({
           setClickedPostId={setClickedPostId}
           setClickedPostUid={setClickedPostUid}
           setIsFollow={setIsFollow}
+          handleSend={handleSend}
         />
       </Route>
       <Route render={() => <EmptyPage />} />

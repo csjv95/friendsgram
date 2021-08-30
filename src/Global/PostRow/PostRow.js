@@ -66,6 +66,7 @@ const PostRow = ({
   handlePostMenu,
   setClickedPostId,
   setClickedPostUid,
+  handleSend,
 }) => {
   const { uid, text, timestamp, postId, displayName, location, noComments } =
     post;
@@ -131,6 +132,8 @@ const PostRow = ({
   const selectFnc = (index) => {
     if (index === 0) {
       clickHeart();
+    } else if (index === 2) {
+      handleSend();
     } else if (index === 3) {
       clickBookMark();
     } else {

@@ -18,6 +18,7 @@ const MyPost = ({
   handlePostMenu,
   setClickedPostId,
   setClickedPostUid,
+  handleSend,
 }) => {
   const [postId, setPostId] = useState("");
 
@@ -55,6 +56,7 @@ const MyPost = ({
             handlePostMenu={handlePostMenu}
             setClickedPostId={setClickedPostId}
             setClickedPostUid={setClickedPostUid}
+            handleSend={handleSend}
           />
         </ModalPotal>
       )}

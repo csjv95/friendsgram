@@ -12,6 +12,7 @@ const Post = ({
   handlePostMenu,
   setClickedPostId,
   setClickedPostUid,
+  handleSend,
 }) => {
   const onCloseModal = () => {
     handlePost();
@@ -32,6 +33,7 @@ const Post = ({
         handlePostMenu={handlePostMenu}
         setClickedPostId={setClickedPostId}
         setClickedPostUid={setClickedPostUid}
+        handleSend={handleSend}
       />
     </StModalContainer>
   );

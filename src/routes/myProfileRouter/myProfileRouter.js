@@ -14,6 +14,7 @@ const MyProfileRouter = ({
   handlePostMenu,
   setClickedPostId,
   setClickedPostUid,
+  handleSend,
 }) => {
   const { displayName } = matchUser;
   return (
@@ -28,6 +29,7 @@ const MyProfileRouter = ({
           handlePostMenu={handlePostMenu}
           setClickedPostId={setClickedPostId}
           setClickedPostUid={setClickedPostUid}
+          handleSend={handleSend}
         />
       </Route>
       <Route path={`/${displayName}/chanel`}>
@@ -42,6 +44,7 @@ const MyProfileRouter = ({
           handlePostMenu={handlePostMenu}
           setClickedPostId={setClickedPostId}
           setClickedPostUid={setClickedPostUid}
+          handleSend={handleSend}
         />
       </Route>
       <Route path={`/${displayName}/tagged`}>
