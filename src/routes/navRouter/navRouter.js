@@ -34,6 +34,7 @@ const NavRouter = ({
           handlePostMenu={handlePostMenu}
           setClickedPostId={setClickedPostId}
           setClickedPostUid={setClickedPostUid}
+          handleSend={handleSend}
         />
       </Route>
       <Route path="/direct">
@@ -58,6 +59,7 @@ const NavRouter = ({
       <Route path="/edit">
         <Edit userData={userData} />
       </Route>
+
       <Route path="/:username">
         <MyProfile
           followingList={followingList}

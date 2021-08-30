@@ -28,14 +28,15 @@ const Home = ({
   currentUserUid,
   handlePostMenu,
   setClickedPostId,
-  setClickedPostUid
+  setClickedPostUid,
+  handleSend,
 }) => {
   const [postData, setPostData] = useState([]);
 
   useEffect(() => {
     getPostData(setPostData, followingList);
   }, [followingList]);
-  
+
   return (
     <StMainRouterSection>
       <StHomeContainer>
@@ -50,6 +51,7 @@ const Home = ({
               handlePostMenu={handlePostMenu}
               setClickedPostId={setClickedPostId}
               setClickedPostUid={setClickedPostUid}
+              handleSend={handleSend}
             />
           ))}
         </StArticleList>

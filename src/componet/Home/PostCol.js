@@ -71,6 +71,7 @@ const PostCol = ({
   handlePostMenu,
   setClickedPostId,
   setClickedPostUid,
+  handleSend,
 }) => {
   const [match, setMatchUser] = useState({});
   const {
@@ -153,6 +154,9 @@ const PostCol = ({
   const selectFnc = (index) => {
     if (index === 0) {
       clickHeart();
+    } else if (index === 2) {
+      // message 보내기 창
+      handleSend();
     } else if (index === 3) {
       clickBookMark();
     } else {
@@ -264,6 +268,7 @@ const PostCol = ({
           </StTextContainer>
 
           {/* allcooment가 3보다 크면 postRow보여주기 */}
+
           {allComment.map((item) => (
             <StCommentContainer key={item.time}>
               <StDisplayName>{item.displayName}</StDisplayName>

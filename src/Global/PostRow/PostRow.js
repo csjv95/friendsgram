@@ -140,10 +140,8 @@ const PostRow = ({
 
   const sendComment = (event) => {
     event.preventDefault();
-    // firebase에 저장하기
-    // const comment = event.target.value;
     setComments(postId, uid, comment);
-    event.target.value = "";
+    setComment("");
   };
 
   const commentKeyDown = (event) => {

@@ -31,7 +31,7 @@ const AppContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-const RouteMain = () => {
+const RouteMain = ({ setLogin }) => {
   const upload = document.getElementById("upload");
   const address = document.getElementById("address");
   // const message = document.getElementById("message");
