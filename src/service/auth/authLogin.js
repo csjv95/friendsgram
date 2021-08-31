@@ -5,7 +5,7 @@ const authLogin = async (userLoginData, setLogin) => {
   try {
     //이메일 페스워드로 로그인
     await firebaseAuth.signInWithEmailAndPassword(email, password);
-    setLogin(true);
+    // setLogin(true);
   } catch (error) {
     const errorMessage = error.message;
     alert(errorMessage);

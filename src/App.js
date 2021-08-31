@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       {isLogin ? (
-        <RouteMain isLogin={isLogin} setLogin={setLogin} />
+        <RouteMain />
       ) : (
         <RouteLogin isLogin={isLogin} setLogin={setLogin} />
       )}

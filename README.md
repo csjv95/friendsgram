@@ -243,6 +243,10 @@ export default sendMessage;
 
 ```
 
+## version
+1.0.0 => FriendsGram 첫 배포!   
+
+
 ## Acknowledgements
 
 - Google

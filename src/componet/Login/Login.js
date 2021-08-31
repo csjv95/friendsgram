@@ -23,7 +23,7 @@ import {
   StFacebookSquareIcon,
 } from "../../Global/StIcon/StIcon";
 
-const Login = ({ setLogin }) => {
+const Login = () => {
   const [userLoginData, setUserLoginData] = useState({
     id: "",
     pw: "",
@@ -42,7 +42,7 @@ const Login = ({ setLogin }) => {
 
   const onLogin = (event) => {
     event.preventDefault();
-    authLogin(userLoginData, setLogin);
+    authLogin(userLoginData);
   };
 
   return (
