@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import isLogin from "./isLogin";
-
+import modalState from "./modalState";
 const rootReducer = combineReducers({
-  isLogin,
+  //리듀서들
+  modalState,
 });
 
 export default rootReducer;

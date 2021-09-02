@@ -31,7 +31,18 @@ const AppContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-const RouteMain = () => {
+const RouteMain = ({
+  uploadModal,
+  locationModal,
+  postModal,
+  followModal,
+  sendModal,
+  uploadModalChange,
+  locationModalChange,
+  postModalChange,
+  followModalChange,
+  sendModalChange,
+}) => {
   const upload = document.getElementById("upload");
   const address = document.getElementById("address");
   // const message = document.getElementById("message");
@@ -47,12 +58,12 @@ const RouteMain = () => {
   const [clickedPostId, setClickedPostId] = useState("");
   const [clickedPostUid, setClickedPostUid] = useState("");
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
-  const [uploadModal, setUploadModal] = useState(false);
-  const [locationModal, setLocationModal] = useState(false);
+  // const [uploadModal, setUploadModal] = useState(false); //
+  // const [locationModal, setLocationModal] = useState(false);
   // const [messageModal, setMessageModal] = useState(false);
-  const [postMenuModal, setPostMenuModal] = useState(false);
-  const [followModal, setFollowModal] = useState(false);
-  const [sendModal, setSendModal] = useState(false);
+  // const [postMenuModal, setPostMenuModal] = useState(false);
+  // const [followModal, setFollowModal] = useState(false);
+  // const [sendModal, setSendModal] = useState(false);
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
   const [text, setText] = useState("");
@@ -93,11 +104,11 @@ const RouteMain = () => {
   }, [path]);
 
   const handleUpload = () => {
-    setUploadModal(!uploadModal);
+    uploadModalChange();
   };
 
   const handleLocation = () => {
-    setLocationModal(!locationModal);
+    locationModalChange();
   };
 
   // const handleMessage = () => {
@@ -105,15 +116,15 @@ const RouteMain = () => {
   // };
 
   const handlePostMenu = () => {
-    setPostMenuModal(!postMenuModal);
+    postModalChange();
   };
 
   const handleFollow = () => {
-    setFollowModal(!followModal);
+    followModalChange();
   };
 
   const handleSend = () => {
-    setSendModal(!sendModal);
+    sendModalChange();
   };
 
   return (
@@ -148,7 +159,7 @@ const RouteMain = () => {
         </ModalPotal>
       )} */}
 
-      {postMenuModal && (
+      {postModal && (
         <ModalPotal potalName={postMenu}>
           <PostMenu
             handlePostMenu={handlePostMenu}
