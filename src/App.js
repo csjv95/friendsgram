@@ -3,6 +3,7 @@ import { useState } from "react";
 import RouteMain from "./routes/routeMain/routeMain";
 import RouteLogin from "./routes/routeLogin/routeLogin";
 import authCheckUser from "./service/auth/authCheckUser";
+import ContainerRouteMain from "./containers/ContainerRouteMain";
 
 function App() {
   const [isLogin, setLogin] = useState(false);
@@ -14,7 +15,7 @@ function App() {
   return (
     <>
       {isLogin ? (
-        <RouteMain />
+        <ContainerRouteMain />
       ) : (
         <RouteLogin isLogin={isLogin} setLogin={setLogin} />
       )}
