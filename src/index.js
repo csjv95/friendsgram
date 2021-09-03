@@ -5,13 +5,16 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Theme } from "./style/Theme";
 import { ThemeProvider } from "styled-components";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
-
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./redux/modules/rootReducer";
+import logger from "redux-logger";
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(logger))
+); // 미들웨어는 여러개 적용가능
 
 ReactDOM.render(
   <BrowserRouter>

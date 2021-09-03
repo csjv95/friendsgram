@@ -4,11 +4,11 @@ import FacebookLogin from "../../componet/FacebookLogin";
 import SignUp from "../../componet/SignUp/SignUp";
 import Login from "../../componet/Login/Login";
 
-const RouteLogin = ({ isLogin, setLogin }) => {
+const RouteLogin = () => {
   return (
     <Switch>
-      <Route path="/">
-        <Login isLogin={isLogin} setLogin={setLogin} />
+      <Route path="/" exact>
+        <Login />
       </Route>
       <Route path="/signup" component={SignUp} />
       <Route path="/facebook" component={FacebookLogin} />
