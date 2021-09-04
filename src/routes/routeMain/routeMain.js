@@ -58,12 +58,12 @@ const RouteMain = ({
   const [clickedPostId, setClickedPostId] = useState("");
   const [clickedPostUid, setClickedPostUid] = useState("");
   const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
-  // const [uploadModal, setUploadModal] = useState(false); //
+  // const [uploadModal, setUploadModal] = useState(false);
   // const [locationModal, setLocationModal] = useState(false);
-  // const [messageModal, setMessageModal] = useState(false);
   // const [postMenuModal, setPostMenuModal] = useState(false);
   // const [followModal, setFollowModal] = useState(false);
   // const [sendModal, setSendModal] = useState(false);
+  // const [messageModal, setMessageModal] = useState(false); // 아직
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
   const [text, setText] = useState("");
@@ -76,8 +76,9 @@ const RouteMain = ({
   const path = useLocation().pathname;
 
   useEffect(() => {
-    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
     const usersData = getUserCurrentUserData(setUserData);
+    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
+
     authGetUid(setCurrentUserUid);
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);

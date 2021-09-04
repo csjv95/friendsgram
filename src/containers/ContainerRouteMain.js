@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
   changeUploadModal,
   changeLocationModal,
@@ -10,13 +10,17 @@ import {
 import RouteMain from "../routes/routeMain/routeMain";
 
 const ContainerRouteMain = () => {
-  const { upload, location, post, follow, send } = useSelector((state) => ({
-    upload: state.modalState.upload,
-    location: state.modalState.location,
-    post: state.modalState.post,
-    follow: state.modalState.follow,
-    send: state.modalState.send,
-  }));
+  const { upload, location, post, follow, send, see } = useSelector(
+    (state) => ({
+      upload: state.modalState.upload,
+      location: state.modalState.location,
+      post: state.modalState.post,
+      follow: state.modalState.follow,
+      send: state.modalState.send,
+      see: state,
+    }),
+    shallowEqual // useSelector 최적화 방식 1. 한개씩 작성 2. shallowEqaul사용하여 shallow비교
+  );
 
   const dispatch = useDispatch();
   const uploadModalChange = () => dispatch(changeUploadModal());
@@ -25,6 +29,7 @@ const ContainerRouteMain = () => {
   const followModalChange = () => dispatch(changeFollowModal());
   const sendModalChange = () => dispatch(changeSendModal());
 
+  console.log("see", see);
   return (
     <RouteMain
       uploadModal={upload}

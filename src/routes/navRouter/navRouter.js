@@ -8,8 +8,6 @@ import Upload from "../../componet/Upload/Upload";
 import Suggest from "../../componet/Suggest/Suggest";
 import EmptyPage from "../../Global/EmptyPage/EmptyPage";
 import { Theme } from "../../style/Theme";
-import Login from "../../componet/Login/Login";
-import SignUp from "../../componet/SignUp/SignUp";
 
 const NavRouter = ({
   userData,
@@ -39,10 +37,7 @@ const NavRouter = ({
           handleSend={handleSend}
         />
       </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/signup" component={SignUp} />
+
       <Route path="/direct">
         <Direct
           currentUserUid={currentUserUid}
