@@ -76,8 +76,9 @@ const RouteMain = ({
   const path = useLocation().pathname;
 
   useEffect(() => {
-    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
     const usersData = getUserCurrentUserData(setUserData);
+    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
+
     authGetUid(setCurrentUserUid);
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);

@@ -1,8 +1,8 @@
-const CHANGE_UPLOADMODAL = "uploadModal/CHANGE_UPLOADMODAL";
-const CHANGE_LOCATION = "locatioinModal/CHANGE_LOCATIONMODAL";
-const CHANGE_POSTMODAL = "postModal/CHANGE_POSTMODAL";
-const CHANGE_FOLLOW = "followModal/CHANGE_FOLLOW";
-const CHANGE_SEND = "sendModal/CHANGE_SEND";
+const CHANGE_UPLOADMODAL = "modalState/CHANGE_UPLOADMODAL";
+const CHANGE_LOCATION = "modalState/CHANGE_LOCATIONMODAL";
+const CHANGE_POSTMODAL = "modalState/CHANGE_POSTMODAL";
+const CHANGE_FOLLOW = "modalState/CHANGE_FOLLOW";
+const CHANGE_SEND = "modalState/CHANGE_SEND";
 
 export const changeUploadModal = () => ({
   type: CHANGE_UPLOADMODAL,
@@ -36,10 +36,8 @@ export default function modalState(state = initialState, action) {
   switch (action.type) {
     case CHANGE_UPLOADMODAL:
       return {
-        ...state,
         upload: !state.upload,
       };
-
     case CHANGE_LOCATION:
       return {
         ...state,
@@ -60,7 +58,6 @@ export default function modalState(state = initialState, action) {
         ...state,
         send: !state.send,
       };
-
     default:
       return {
         state,
