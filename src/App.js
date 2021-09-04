@@ -14,7 +14,6 @@ function App() {
     const chageLogin = () => dispatch(loginState());
     authCheckUser(chageLogin);
   }, [dispatch]);
-  console.log(isLogin);
 
   return <>{isLogin ? <ContainerRouteMain /> : <RouteLogin />}</>;
 }
