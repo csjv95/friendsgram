@@ -37,19 +37,11 @@ const RouteMain = ({
   postModal,
   followModal,
   sendModal,
-<<<<<<< HEAD
   changeUploadModal,
   changeLocationModal,
   changePostModal,
   changeFollowModal,
   changeSendModal,
-=======
-  uploadModalChange,
-  locationModalChange,
-  postModalChange,
-  followModalChange,
-  sendModalChange,
->>>>>>> 02f91ed1b701c89be29a98a3ce68a387aa0b14c2
 }) => {
   const upload = document.getElementById("upload");
   const address = document.getElementById("address");
@@ -71,11 +63,7 @@ const RouteMain = ({
   // const [postMenuModal, setPostMenuModal] = useState(false);
   // const [followModal, setFollowModal] = useState(false);
   // const [sendModal, setSendModal] = useState(false);
-<<<<<<< HEAD
   // // const [messageModal, setMessageModal] = useState(false);
-=======
-  // const [messageModal, setMessageModal] = useState(false); // 아직
->>>>>>> 02f91ed1b701c89be29a98a3ce68a387aa0b14c2
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
   const [text, setText] = useState("");
@@ -117,19 +105,11 @@ const RouteMain = ({
   }, [path]);
 
   const handleUpload = () => {
-<<<<<<< HEAD
     changeUploadModal();
   };
 
   const handleLocation = () => {
     changeLocationModal();
-=======
-    uploadModalChange();
-  };
-
-  const handleLocation = () => {
-    locationModalChange();
->>>>>>> 02f91ed1b701c89be29a98a3ce68a387aa0b14c2
   };
 
   // const handleMessage = () => {
@@ -137,7 +117,6 @@ const RouteMain = ({
   // };
 
   const handlePostMenu = () => {
-<<<<<<< HEAD
     changePostModal();
   };
 
@@ -147,17 +126,6 @@ const RouteMain = ({
 
   const handleSend = () => {
     changeSendModal();
-=======
-    postModalChange();
-  };
-
-  const handleFollow = () => {
-    followModalChange();
-  };
-
-  const handleSend = () => {
-    sendModalChange();
->>>>>>> 02f91ed1b701c89be29a98a3ce68a387aa0b14c2
   };
 
   return (
