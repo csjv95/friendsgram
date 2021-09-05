@@ -1,24 +1,19 @@
-const ISLOGIN = "isLogin/isLogin";
+const LOGIN = "isLogin/login";
 
-export const loginState = () => ({
-  type: ISLOGIN,
-});
+export const login = () => ({ type: LOGIN });
 
 const initialState = {
   isLogin: false,
 };
 
-export default function isLogin(state = initialState, action) {
+export default function loginState(state = initialState, action) {
   switch (action.type) {
-    case ISLOGIN:
+    case LOGIN:
       return {
         ...state,
-        isLogin: !state.isLogin,
+        isLogin: true,
       };
-
     default:
-      return {
-        state,
-      };
+      return state;
   }
 }

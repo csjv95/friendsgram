@@ -1,66 +1,65 @@
-const CHANGE_UPLOADMODAL = "modalState/CHANGE_UPLOADMODAL";
-const CHANGE_LOCATION = "modalState/CHANGE_LOCATIONMODAL";
-const CHANGE_POSTMODAL = "modalState/CHANGE_POSTMODAL";
-const CHANGE_FOLLOW = "modalState/CHANGE_FOLLOW";
-const CHANGE_SEND = "modalState/CHANGE_SEND";
+const UPLOAD = "modalState/uploadModal";
+const LOCATION = "modalState/locationModal";
+const POST = "modalState/postMenuModal";
+const FOLLOW = "modalState/followModal";
+const SEND = "modalState/sendModal";
 
-export const changeUploadModal = () => ({
-  type: CHANGE_UPLOADMODAL,
+export const changeUploadModalState = () => ({
+  type: UPLOAD,
 });
 
-export const changeLocationModal = () => ({
-  type: CHANGE_LOCATION,
+export const changeLocationModalState = () => ({
+  type: LOCATION,
 });
 
-export const changePostModal = () => ({
-  type: CHANGE_POSTMODAL,
+export const changePostModalState = () => ({
+  type: POST,
 });
 
-export const changeFollowModal = () => ({
-  type: CHANGE_FOLLOW,
+export const changeFollowModalState = () => ({
+  type: FOLLOW,
 });
 
-export const changeSendModal = () => ({
-  type: CHANGE_SEND,
+export const changeSendModalState = () => ({
+  type: SEND,
 });
 
 const initialState = {
-  upload: false,
-  location: false,
-  post: false,
-  follow: false,
-  send: false,
+  uploadModal: false,
+  locationModal: false,
+  postModal: false,
+  followModal: false,
+  sendModal: false,
 };
 
 export default function modalState(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_UPLOADMODAL:
-      return {
-        upload: !state.upload,
-      };
-    case CHANGE_LOCATION:
+    case UPLOAD:
       return {
         ...state,
-        location: !state.location,
+        uploadModal: !state.uploadModal,
       };
-    case CHANGE_POSTMODAL:
+    case LOCATION:
       return {
         ...state,
-        post: !state.post,
+        locationModal: !state.locationModal,
       };
-    case CHANGE_FOLLOW:
+    case POST:
       return {
         ...state,
-        follow: !state.follow,
+        postModal: !state.postModal,
       };
-    case CHANGE_SEND:
+    case FOLLOW:
       return {
         ...state,
-        send: !state.send,
+        followModal: !state.followModal,
+      };
+    case SEND:
+      return {
+        ...state,
+        sendModal: !state.sendModal,
       };
     default:
-      return {
-        state,
-      };
+      return state;
   }
 }

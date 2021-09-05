@@ -1,10 +1,10 @@
 import { firebaseAuth } from "../firebase";
 
-const authCheckUser = (chageLogin) => {
-  firebaseAuth.onAuthStateChanged((user) => {
+const authCheckUser = (changeLoginState) => {
+  firebaseAuth.onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
-      chageLogin();
+      changeLoginState();
     } else {
       // No user is signed in
       console.log("logOut");

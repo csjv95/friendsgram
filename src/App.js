@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
 import RouteLogin from "./routes/routeLogin/routeLogin";
 import authCheckUser from "./service/auth/authCheckUser";
-import ContainerRouteMain from "./containers/ContainerRouteMain";
 import { useDispatch, useSelector } from "react-redux";
-import { loginState } from "./redux/modules/isLogin";
+import { login } from "./redux/modules/isLogin";
+import ContainerRouteMain from "./container/ContainerRouteMain";
 
 function App() {
   const dispatch = useDispatch();
 
-  const { isLogin } = useSelector((state) => state.isLogin);
+  const { isLogin } = useSelector((state) => ({
+    isLogin: state.loginState.isLogin,
+  }));
 
   useEffect(() => {
-    const chageLogin = () => dispatch(loginState());
-    authCheckUser(chageLogin);
+    const changeLoginState = () => dispatch(login());
+    authCheckUser(changeLoginState);
   }, [dispatch]);
 
   return <>{isLogin ? <ContainerRouteMain /> : <RouteLogin />}</>;
