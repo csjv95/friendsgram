@@ -71,11 +71,7 @@ const RouteMain = ({
   // const [postMenuModal, setPostMenuModal] = useState(false);
   // const [followModal, setFollowModal] = useState(false);
   // const [sendModal, setSendModal] = useState(false);
-<<<<<<< HEAD
   // // const [messageModal, setMessageModal] = useState(false);
-=======
-  // const [messageModal, setMessageModal] = useState(false); // 아직
->>>>>>> 02f91ed1b701c89be29a98a3ce68a387aa0b14c2
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
   const [text, setText] = useState("");
