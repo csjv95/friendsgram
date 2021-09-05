@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import RouteMain from "./routes/routeMain/routeMain";
 import RouteLogin from "./routes/routeLogin/routeLogin";
 import authCheckUser from "./service/auth/authCheckUser";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "./redux/modules/isLogin";
+import ContainerRouteMain from "./container/ContainerRouteMain";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,9 +17,7 @@ function App() {
     authCheckUser(changeLoginState);
   }, [dispatch]);
 
-  console.log(isLogin);
-
-  return <>{isLogin ? <RouteMain /> : <RouteLogin />}</>;
+  return <>{isLogin ? <ContainerRouteMain /> : <RouteLogin />}</>;
 }
 
 export default App;
