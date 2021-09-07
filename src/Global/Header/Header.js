@@ -95,12 +95,7 @@ const StLogoutBtn = styled.button`
   width: 100%;
 `;
 
-const Header = ({
-  handleUpload,
-  userData,
-  usersList,
-  foregroundMessageCount,
-}) => {
+const Header = ({ handleUpload, userData, foregroundMessageCount }) => {
   const { displayName } = userData;
   const [search, setSearch] = useState(false); // when clcked the search input box show record
   const [searchText, setSearchText] = useState(""); //when typing at search input box

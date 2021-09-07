@@ -12,13 +12,14 @@ import RouteMain from "../routes/routeMain/routeMain";
 const ContainerRouteMain = () => {
   const dispatch = useDispatch();
 
-  const { uploadModal, locationModal, postModal, followModal, sendModal } =
+  const { uploadModal, locationModal, postModal, followModal, sendModal, see } =
     useSelector((state) => ({
       uploadModal: state.modalState.uploadModal,
       locationModal: state.modalState.locationModal,
       postModal: state.modalState.postModal,
       followModal: state.modalState.followModal,
       sendModal: state.modalState.sendModal,
+      see: state,
     }));
 
   const changeUploadModal = () => dispatch(changeUploadModalState());
@@ -26,7 +27,7 @@ const ContainerRouteMain = () => {
   const changePostModal = () => dispatch(changePostModalState());
   const changeFollowModal = () => dispatch(changeFollowModalState());
   const changeSendModal = () => dispatch(changeSendModalState());
-
+  console.log(see);
   return (
     <RouteMain
       uploadModal={uploadModal}

@@ -1,7 +1,7 @@
 import { firebaseAuth } from "../firebase";
 
 const authCheckUser = (changeLoginState) => {
-  firebaseAuth.onAuthStateChanged(function (user) {
+  firebaseAuth.onAuthStateChanged((user) => {
     if (user) {
       // User is signed in.
       changeLoginState();

@@ -70,7 +70,7 @@ const SignUp = () => {
     <StContainerDiv>
       <StLoginSection>
         <StLoginFormUp onSubmit={handleSubmit}>
-          <StTitle>Instargram</StTitle>
+          <StTitle>Friendsgram</StTitle>
           <StAuthLoginBtn onClick={onClick}>
             <StGoogleSquareIcon width="1.1" />
             Google로 로그인
