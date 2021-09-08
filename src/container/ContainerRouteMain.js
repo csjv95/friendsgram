@@ -28,6 +28,7 @@ const ContainerRouteMain = () => {
   const changeFollowModal = () => dispatch(changeFollowModalState());
   const changeSendModal = () => dispatch(changeSendModalState());
   console.log(see);
+
   return (
     <RouteMain
       uploadModal={uploadModal}
