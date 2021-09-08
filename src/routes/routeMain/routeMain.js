@@ -64,10 +64,13 @@ const RouteMain = ({
   // const [followModal, setFollowModal] = useState(false);
   // const [sendModal, setSendModal] = useState(false);
   // // const [messageModal, setMessageModal] = useState(false);
+
+  //for upload moadl
   const [location, setLocation] = useState("");
   const [imgs, setImgs] = useState([]);
   const [text, setText] = useState("");
   const [noComments, setNoComments] = useState(false);
+
   const [progressBar, setProgressBar] = useState(0);
   const [roomId, setRoomId] = useState("");
   const [token, setToken] = useState("");
@@ -76,7 +79,7 @@ const RouteMain = ({
   const path = useLocation().pathname;
 
   useEffect(() => {
-    const usersData = getUserCurrentUserData(setUserData);
+    const usersData = getUserCurrentUserData();
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
 
     authGetUid(setCurrentUserUid);
@@ -199,6 +202,7 @@ const RouteMain = ({
         setToken={setToken}
         foregroundMessageCount={foregroundMessageCount}
       />
+
       <NavRouter
         userData={userData}
         usersList={usersList}
