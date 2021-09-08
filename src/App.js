@@ -8,12 +8,14 @@ import ContainerRouteMain from "./container/ContainerRouteMain";
 function App() {
   const dispatch = useDispatch();
 
-  const { isLogin } = useSelector((state) => ({
+  const { isLogin, loading } = useSelector((state) => ({
     isLogin: state.loginState.isLogin,
+    loading: state.loginState.loading,
   }));
 
   useEffect(() => {
     const changeLoginState = () => dispatch(login());
+
     authCheckUser(changeLoginState);
   }, [dispatch]);
 

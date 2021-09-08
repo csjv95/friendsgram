@@ -45,9 +45,7 @@ const Home = ({
             <PostCol
               key={index}
               article={article}
-              userData={userData}
               followingList={followingList}
-              currentUserUid={currentUserUid}
               handlePostMenu={handlePostMenu}
               setClickedPostId={setClickedPostId}
               setClickedPostUid={setClickedPostUid}
