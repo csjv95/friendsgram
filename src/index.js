@@ -7,7 +7,7 @@ import { Theme } from "./style/Theme";
 import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import rootReducer from "./redux/modules";
+import rootReducer from "./redux/modules/index";
 import { composeWithDevTools } from "redux-devtools-extension";
 import logger from "redux-logger";
 import ReduxThunk from "redux-thunk";

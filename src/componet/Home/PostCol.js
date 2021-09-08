@@ -66,8 +66,6 @@ const ImageSliderContainer = styled.div`
 
 const PostCol = ({
   article,
-  userData,
-  currentUserUid,
   handlePostMenu,
   setClickedPostId,
   setClickedPostUid,

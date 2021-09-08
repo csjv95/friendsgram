@@ -49,7 +49,7 @@ const Login = () => {
     <StContainerDiv>
       <StLoginSection>
         <StLoginFormUp>
-          <StTitle>Instargram</StTitle>
+          <StTitle>Friendsgram</StTitle>
           <StLoginInput
             type="text"
             autoComplete="current-password"
