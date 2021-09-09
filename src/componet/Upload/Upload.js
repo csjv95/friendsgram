@@ -1,4 +1,4 @@
- import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StCloseIcon, StMap, StUpload } from "../../Global/StIcon/StIcon";
 import ImageSlider from "../../Global/ImageSlider/ImageSlider";
@@ -182,7 +182,7 @@ const Upload = ({
   setText,
   noComments,
   setNoComments,
-  setProgressBar,
+  changeBarState,
 }) => {
   const [postId, setPostId] = useState("");
 
@@ -199,7 +199,7 @@ const Upload = ({
 
   const onSubmit = () => {
     postDataToStore(text, noComments, location, postId);
-    postDataToStorage(imgs, postId, setProgressBar);
+    postDataToStorage(imgs, postId, changeBarState);
     resetState();
     handleUpload();
   };

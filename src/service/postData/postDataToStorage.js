@@ -6,7 +6,7 @@ import {
 } from "../firebase";
 import reload from "../reload/reload";
 
-const postDataToStorage = async (imgs, postId, setProgressBar) => {
+const postDataToStorage = async (imgs, postId, changeBarState) => {
   const currentUserUid = firebaseAuth.currentUser.uid;
   try {
     // storage 업로드
@@ -23,7 +23,8 @@ const postDataToStorage = async (imgs, postId, setProgressBar) => {
           const progress = Math.round(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
-          setProgressBar(progress);
+          changeBarState(progress);
+          console.log(progress);
         },
         (error) => {
           alert(error);
@@ -45,8 +46,8 @@ const postDataToStorage = async (imgs, postId, setProgressBar) => {
                 imgUrl,
               }),
             });
-          setProgressBar(0);
-          reload(1500);
+          changeBarState(0);
+          // reload(1500);
         }
       );
     });

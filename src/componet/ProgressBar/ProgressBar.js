@@ -9,10 +9,10 @@ const StProgressBar = styled.progress`
   z-index: 200;
 `;
 
-const ProgressBar = ({ progressBar }) => {
+const ProgressBar = ({ progressState }) => {
   return (
     <>
-      <StProgressBar max="100" value={progressBar} />
+      <StProgressBar max="100" value={progressState} />
     </>
   );
 };

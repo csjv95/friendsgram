@@ -7,28 +7,36 @@ import {
   changeFollowModalState,
   changeSendModalState,
 } from "../redux/modules/modalState";
+import { barStateAsync } from "../redux/modules/progressBar";
 import RouteMain from "../routes/routeMain/routeMain";
 
 const ContainerRouteMain = () => {
   const dispatch = useDispatch();
 
-  const { uploadModal, locationModal, postModal, followModal, sendModal, see } =
-    useSelector((state) => ({
-      uploadModal: state.modalState.uploadModal,
-      locationModal: state.modalState.locationModal,
-      postModal: state.modalState.postModal,
-      followModal: state.modalState.followModal,
-      sendModal: state.modalState.sendModal,
-      see: state,
-    }));
+  const {
+    uploadModal,
+    locationModal,
+    postModal,
+    followModal,
+    sendModal,
+    progressState,
+  } = useSelector((state) => ({
+    uploadModal: state.modalState.uploadModal,
+    locationModal: state.modalState.locationModal,
+    postModal: state.modalState.postModal,
+    followModal: state.modalState.followModal,
+    sendModal: state.modalState.sendModal,
+    progressState: state.progressBar.progressState,
+  }));
 
   const changeUploadModal = () => dispatch(changeUploadModalState());
   const changeLocationModal = () => dispatch(changeLocationModalState());
   const changePostModal = () => dispatch(changePostModalState());
   const changeFollowModal = () => dispatch(changeFollowModalState());
   const changeSendModal = () => dispatch(changeSendModalState());
-  console.log(see);
-
+  const changeBarState = () => dispatch(barStateAsync());
+  // console.log(progressState);
+  console.log(changeBarState(12));
   return (
     <RouteMain
       uploadModal={uploadModal}
@@ -41,6 +49,8 @@ const ContainerRouteMain = () => {
       changePostModal={changePostModal}
       changeFollowModal={changeFollowModal}
       changeSendModal={changeSendModal}
+      progressState={progressState}
+      changeBarState={changeBarState}
     />
   );
 };

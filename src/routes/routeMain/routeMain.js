@@ -42,6 +42,8 @@ const RouteMain = ({
   changePostModal,
   changeFollowModal,
   changeSendModal,
+  progressState,
+  changeBarState,
 }) => {
   const upload = document.getElementById("upload");
   const address = document.getElementById("address");
@@ -69,7 +71,7 @@ const RouteMain = ({
   const [text, setText] = useState("");
   const [noComments, setNoComments] = useState(false);
 
-  const [progressBar, setProgressBar] = useState(0);
+  // const [progressBar, setProgressBar] = useState(0);
   const [roomId, setRoomId] = useState("");
   const [token, setToken] = useState("");
   // 메세지 카운트
@@ -144,7 +146,7 @@ const RouteMain = ({
             handleLocation={handleLocation}
             location={location}
             setLocation={setLocation}
-            setProgressBar={setProgressBar}
+            changeBarState={changeBarState}
           />
         </ModalPotal>
       )}
@@ -190,7 +192,7 @@ const RouteMain = ({
         </ModalPotal>
       )}
 
-      {progressBar && <ProgressBar progressBar={progressBar} />}
+      {progressState && <ProgressBar progressState={progressState} />}
 
       <Header
         handleUpload={handleUpload}
