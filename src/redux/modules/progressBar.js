@@ -1,11 +1,9 @@
 const PROGRESS_BAR = "progressBar/PROGRESS_BAR";
 
-export const barState = (dispatch, getState) => {
-  dispatch({ type: PROGRESS_BAR });
-  try {
-    console.log(getState().progressBar.progressState);
-  } catch (e) {}
-};
+export const barState = (bar) => ({
+  type: PROGRESS_BAR,
+  bar,
+});
 
 const initialState = {
   progressState: 0,

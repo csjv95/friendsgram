@@ -7,7 +7,7 @@ import {
   changeFollowModalState,
   changeSendModalState,
 } from "../redux/modules/modalState";
-import { barStateAsync } from "../redux/modules/progressBar";
+import { barState } from "../redux/modules/progressBar";
 import RouteMain from "../routes/routeMain/routeMain";
 
 const ContainerRouteMain = () => {
@@ -34,9 +34,8 @@ const ContainerRouteMain = () => {
   const changePostModal = () => dispatch(changePostModalState());
   const changeFollowModal = () => dispatch(changeFollowModalState());
   const changeSendModal = () => dispatch(changeSendModalState());
-  const changeBarState = () => dispatch(barStateAsync());
-  // console.log(progressState);
-  console.log(changeBarState(12));
+  const changeBarState = (bar) => dispatch(barState(bar));
+
   return (
     <RouteMain
       uploadModal={uploadModal}
