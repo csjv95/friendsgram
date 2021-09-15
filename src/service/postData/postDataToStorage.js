@@ -24,7 +24,6 @@ const postDataToStorage = async (imgs, postId, changeBarState) => {
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
           changeBarState(progress);
-          console.log(progress);
         },
         (error) => {
           alert(error);
@@ -47,7 +46,7 @@ const postDataToStorage = async (imgs, postId, changeBarState) => {
               }),
             });
           changeBarState(0);
-          // reload(1500);
+          reload(1500);
         }
       );
     });

@@ -6,7 +6,7 @@ import styled from "styled-components";
 import Upload from "../../componet/Upload/Upload";
 import ModalPotal from "../../modal/ModalPotal";
 import Location from "../../componet/Location/Location";
-import getUserCurrentUserData from "../../service/fireStore/getCurrentUserData";
+// import getUserCurrentUserData from "../../service/fireStore/getCurrentUserData";
 import getUsersList from "../../service/fireStore/getUsersList";
 import getFollowingList from "../../service/follow/getFollowingList";
 import getFollowerList from "../../service/follow/getFollowerList";
@@ -44,6 +44,7 @@ const RouteMain = ({
   changeSendModal,
   progressState,
   changeBarState,
+  userData,
 }) => {
   const upload = document.getElementById("upload");
   const address = document.getElementById("address");
@@ -53,7 +54,7 @@ const RouteMain = ({
   const send = document.getElementById("send");
   const [isFollow, setIsFollow] = useState("");
   const [currentUserUid, setCurrentUserUid] = useState("");
-  const [userData, setUserData] = useState([]);
+  // const [userData, setUserData] = useState([]);
   const [usersList, setUsersList] = useState([]);
   const [followingList, setFollowingList] = useState([]);
   const [followerList, setFollowerList] = useState([]);
@@ -79,7 +80,6 @@ const RouteMain = ({
   const path = useLocation().pathname;
 
   useEffect(() => {
-    const usersData = getUserCurrentUserData(setUserData);
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
 
     authGetUid(setCurrentUserUid);
@@ -88,7 +88,6 @@ const RouteMain = ({
     getFollowerList(setFollowerList);
 
     return () => {
-      usersData();
       bookMark();
     };
   }, []);
