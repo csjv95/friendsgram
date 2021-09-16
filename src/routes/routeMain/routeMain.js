@@ -91,9 +91,9 @@ const RouteMain = ({
     saveMessagingDeviceToken(setToken);
   }, [token]);
 
-  // const handleUpload = () => {
-  //   changeUploadModal();
-  // };
+  const handleUpload = () => {
+    changeUploadModal();
+  };
 
   const handleLocation = () => {
     changeLocationModal();
@@ -126,7 +126,7 @@ const RouteMain = ({
             setText={setText}
             noComments={noComments}
             setNoComments={setNoComments}
-            // handleUpload={handleUpload}
+            handleUpload={handleUpload}
             handleLocation={handleLocation}
             location={location}
             setLocation={setLocation}

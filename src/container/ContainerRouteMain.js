@@ -10,6 +10,8 @@ import {
 import { barState } from "../redux/modules/progressBar";
 import RouteMain from "../routes/routeMain/routeMain";
 import { getUserDataAsync } from "../redux/modules/userData";
+import LoadingSpinner from "../Global/Loading/LoadingSpinner";
+import LoadingPage from "../Global/Loading/LoadingPage";
 
 const ContainerRouteMain = () => {
   const dispatch = useDispatch();
@@ -56,8 +58,7 @@ const ContainerRouteMain = () => {
 
   if (error) return <div>{error}</div>;
   // loading true
-  if (loading)
-    return <div style={{ width: "100rem", height: "500rem" }}>로딩중</div>;
+  if (loading) return <LoadingPage />;
   // no data
   if (!userData) return <div>데이터가 존재하지 않음</div>;
   // data
