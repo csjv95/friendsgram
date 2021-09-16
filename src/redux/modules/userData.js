@@ -7,9 +7,9 @@ const GET_USER_DATA_ERROR = "userData/GET_USER_DATA_ERROR";
 export const getUserDataAsync = () => async (dispatch) => {
   await dispatch({ type: GET_USER_DATA });
   try {
-    getCurrentUserData(dispatch, GET_USER_DATA_SUCCESS);
+    await getCurrentUserData(dispatch, GET_USER_DATA_SUCCESS);
   } catch (error) {
-    await dispatch({ type: GET_USER_DATA_ERROR }, error);
+    await dispatch({ type: GET_USER_DATA_ERROR, error });
   }
 };
 

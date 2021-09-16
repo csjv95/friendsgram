@@ -17,7 +17,6 @@ const ContainerRouteMain = () => {
   useEffect(() => {
     const getUserData = () => dispatch(getUserDataAsync());
     getUserData();
-    console.log("hello");
 
     return () => {
       getUserData();

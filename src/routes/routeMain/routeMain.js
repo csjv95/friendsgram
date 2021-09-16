@@ -18,10 +18,7 @@ import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import FollowView from "../../componet/FollowView/FollowView";
 import Send from "../../componet/Send/Send";
 import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
-import foregroundMessage from "../../service/message/foregroundMessage";
-import { useLocation } from "react-router-dom";
-import unreadCount from "../../service/message/unreadCount";
-import readCount from "../../service/message/readCount";
+import ContainerHeader from "../../container/ContainerHeader";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -76,8 +73,6 @@ const RouteMain = ({
   const [roomId, setRoomId] = useState("");
   const [token, setToken] = useState("");
   // 메세지 카운트
-  const [foregroundMessageCount, setForegroundMessageCount] = useState(0);
-  const path = useLocation().pathname;
 
   useEffect(() => {
     const bookMark = getBookMarkPostIds(setBookMarkPostIds);
@@ -93,22 +88,12 @@ const RouteMain = ({
   }, []);
 
   useEffect(() => {
-    saveMessagingDeviceToken();
+    saveMessagingDeviceToken(setToken);
   }, [token]);
 
-  useEffect(() => {
-    const unread = unreadCount(path, setForegroundMessageCount);
-    foregroundMessage(path);
-    readCount(path);
-
-    return () => {
-      unread();
-    };
-  }, [path]);
-
-  const handleUpload = () => {
-    changeUploadModal();
-  };
+  // const handleUpload = () => {
+  //   changeUploadModal();
+  // };
 
   const handleLocation = () => {
     changeLocationModal();
@@ -141,7 +126,7 @@ const RouteMain = ({
             setText={setText}
             noComments={noComments}
             setNoComments={setNoComments}
-            handleUpload={handleUpload}
+            // handleUpload={handleUpload}
             handleLocation={handleLocation}
             location={location}
             setLocation={setLocation}
@@ -193,14 +178,7 @@ const RouteMain = ({
 
       {progressState && <ProgressBar progressState={progressState} />}
 
-      <Header
-        handleUpload={handleUpload}
-        userData={userData}
-        usersList={usersList}
-        token={token}
-        setToken={setToken}
-        foregroundMessageCount={foregroundMessageCount}
-      />
+      <ContainerHeader />
 
       <NavRouter
         userData={userData}
