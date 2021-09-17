@@ -25,7 +25,6 @@ const Home = ({
   userData,
   usersList,
   followingList,
-  currentUserUid,
   handlePostMenu,
   setClickedPostId,
   setClickedPostUid,

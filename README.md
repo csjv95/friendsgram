@@ -244,8 +244,9 @@ export default sendMessage;
 ```
 
 ## version
-1.0.0 => FriendsGram 첫 배포!   
 
+1.0.0 => FriendsGram 첫 배포!  
+2.0.0 => Redux를 이용해서 데이터 관리
 
 ## Acknowledgements
 

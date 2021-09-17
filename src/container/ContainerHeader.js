@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import Header from "../Global/Header/Header";
+import LoadingPage from "../Global/Loading/LoadingPage";
 import { changeUploadModalState } from "../redux/modules/modalState";
 import { getUnreadAsync } from "../redux/modules/unreadCount";
-import { getUserDataAsync } from "../redux/modules/userData";
 import foregroundMessage from "../service/message/foregroundMessage";
 import readCount from "../service/message/readCount";
 
@@ -36,6 +36,9 @@ const ContainerHeader = () => {
     (state) => state.unread.unread
   );
 
+  if (userDataLoading) return <LoadingPage />;
+  if (userDataError) return <div>{userDataError}</div>;
+  if (unreadLoading) return <LoadingPage />;
   return (
     <Header
       userData={userData}

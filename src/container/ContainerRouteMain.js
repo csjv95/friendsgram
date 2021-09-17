@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  changeUploadModalState,
   changeLocationModalState,
   changePostModalState,
   changeFollowModalState,
@@ -37,7 +36,6 @@ const ContainerRouteMain = () => {
     followModal,
     sendModal,
     progressState,
-    // userData,
   } = useSelector((state) => ({
     uploadModal: state.modalState.uploadModal,
     locationModal: state.modalState.locationModal,
@@ -45,7 +43,6 @@ const ContainerRouteMain = () => {
     followModal: state.modalState.followModal,
     sendModal: state.modalState.sendModal,
     progressState: state.progressBar.progressState,
-    // userData: state.userData.userData.data,
   }));
 
   const {
@@ -56,7 +53,7 @@ const ContainerRouteMain = () => {
 
   if (error) return <div>{error}</div>;
   // loading true
-  if (loading) return <LoadingPage loading={!loading} color={"grey"} />;
+  if (loading) return <LoadingPage />;
   // no data
   if (!userData) return <div>데이터가 존재하지 않음</div>;
   // data

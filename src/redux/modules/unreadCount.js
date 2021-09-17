@@ -7,7 +7,7 @@ const UNREAD_ERROR = "unreadCount/UNREAD_ERROR";
 export const getUnreadAsync = () => async (dispatch) => {
   await dispatch({ type: UNREAD });
   try {
-    await unreadCount(dispatch, UNREAD_SUCCESS);
+    unreadCount(dispatch, UNREAD_SUCCESS);
   } catch (error) {
     await dispatch({ type: UNREAD_ERROR, error });
   }

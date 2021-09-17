@@ -8,6 +8,7 @@ import Upload from "../../componet/Upload/Upload";
 import Suggest from "../../componet/Suggest/Suggest";
 import EmptyPage from "../../Global/EmptyPage/EmptyPage";
 import { Theme } from "../../style/Theme";
+import ContainerEdit from "../../container/ContainerEdit";
 
 const NavRouter = ({
   userData,
@@ -57,15 +58,12 @@ const NavRouter = ({
           StListPadding="1em"
         />
       </Route>
-      <Route path="/edit">
-        <Edit userData={userData} />
-      </Route>
+      <Route path="/edit" component={ContainerEdit} />
 
       <Route path="/:username">
         <MyProfile
           followingList={followingList}
           followerList={followerList}
-          currentUserUid={currentUserUid}
           bookMarkPostIds={bookMarkPostIds}
           handlePostMenu={handlePostMenu}
           handleFollow={handleFollow}
