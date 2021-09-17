@@ -10,7 +10,6 @@ import {
 import { barState } from "../redux/modules/progressBar";
 import RouteMain from "../routes/routeMain/routeMain";
 import { getUserDataAsync } from "../redux/modules/userData";
-import LoadingSpinner from "../Global/Loading/LoadingSpinner";
 import LoadingPage from "../Global/Loading/LoadingPage";
 
 const ContainerRouteMain = () => {
@@ -25,7 +24,6 @@ const ContainerRouteMain = () => {
     };
   }, [dispatch]);
 
-  const changeUploadModal = () => dispatch(changeUploadModalState());
   const changeLocationModal = () => dispatch(changeLocationModalState());
   const changePostModal = () => dispatch(changePostModalState());
   const changeFollowModal = () => dispatch(changeFollowModalState());
@@ -58,7 +56,7 @@ const ContainerRouteMain = () => {
 
   if (error) return <div>{error}</div>;
   // loading true
-  if (loading) return <LoadingPage />;
+  if (loading) return <LoadingPage loading={!loading} color={"grey"} />;
   // no data
   if (!userData) return <div>데이터가 존재하지 않음</div>;
   // data
@@ -70,7 +68,6 @@ const ContainerRouteMain = () => {
       postModal={postModal}
       followModal={followModal}
       sendModal={sendModal}
-      changeUploadModal={changeUploadModal}
       changeLocationModal={changeLocationModal}
       changePostModal={changePostModal}
       changeFollowModal={changeFollowModal}

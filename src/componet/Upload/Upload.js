@@ -231,7 +231,11 @@ const Upload = ({
     <StPostCotainer>
       <StPostForm onSubmit={preventDefault}>
         <CloseBtnCotainer>
-          <button onClick={handleUpload}>
+          <button
+            onClick={() => {
+              handleUpload();
+            }}
+          >
             <StCloseIcon width="1.5" />
           </button>
         </CloseBtnCotainer>

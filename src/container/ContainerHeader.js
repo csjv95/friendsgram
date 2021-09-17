@@ -13,6 +13,8 @@ const ContainerHeader = () => {
   const dispatch = useDispatch();
   const path = useLocation().pathname;
 
+  // useEffect로 userData 가져오기
+
   useEffect(() => {
     const unread = () => dispatch(getUnreadAsync());
     foregroundMessage(path);

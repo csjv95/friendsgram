@@ -22,10 +22,10 @@ const LoadingSpinner = ({ loading, color }) => {
         color={color}
         loading={loading}
         css={override}
-        height={30}
-        width={10}
+        height={15}
+        width={5}
         radius={2}
-        margin={20}
+        margin={2}
       />
     </section>
   );

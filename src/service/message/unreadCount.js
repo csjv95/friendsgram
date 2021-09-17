@@ -10,7 +10,6 @@ const unreadCount = (dipatch, type) => {
       user.forEach((item) => {
         const count = item.data().check;
         dipatch({ type, count });
-        console.log("count", count);
       })
     );
 

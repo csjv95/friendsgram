@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../Global/Header/Header";
 import MainFooter from "../../Global/MainFooter/MainFooter";
 import NavRouter from "../navRouter/navRouter";
 import styled from "styled-components";
-import Upload from "../../componet/Upload/Upload";
 import ModalPotal from "../../modal/ModalPotal";
 import Location from "../../componet/Location/Location";
-// import getUserCurrentUserData from "../../service/fireStore/getCurrentUserData";
 import getUsersList from "../../service/fireStore/getUsersList";
 import getFollowingList from "../../service/follow/getFollowingList";
 import getFollowerList from "../../service/follow/getFollowerList";
@@ -19,6 +16,7 @@ import FollowView from "../../componet/FollowView/FollowView";
 import Send from "../../componet/Send/Send";
 import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
 import ContainerHeader from "../../container/ContainerHeader";
+import ContainerUpload from "../../container/ContainerUpload";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -34,13 +32,11 @@ const RouteMain = ({
   postModal,
   followModal,
   sendModal,
-  changeUploadModal,
   changeLocationModal,
   changePostModal,
   changeFollowModal,
   changeSendModal,
   progressState,
-  changeBarState,
   userData,
 }) => {
   const upload = document.getElementById("upload");
@@ -65,9 +61,9 @@ const RouteMain = ({
   // const [sendModal, setSendModal] = useState(false);
   // // const [messageModal, setMessageModal] = useState(false);
   const [location, setLocation] = useState("");
-  const [imgs, setImgs] = useState([]);
-  const [text, setText] = useState("");
-  const [noComments, setNoComments] = useState(false);
+  // const [imgs, setImgs] = useState([]);
+  // const [text, setText] = useState("");
+  // const [noComments, setNoComments] = useState(false);
 
   // const [progressBar, setProgressBar] = useState(0);
   const [roomId, setRoomId] = useState("");
@@ -91,9 +87,9 @@ const RouteMain = ({
     saveMessagingDeviceToken(setToken);
   }, [token]);
 
-  const handleUpload = () => {
-    changeUploadModal();
-  };
+  // const handleUpload = () => {
+  //   changeUploadModal();
+  // };
 
   const handleLocation = () => {
     changeLocationModal();
@@ -119,19 +115,7 @@ const RouteMain = ({
     <AppContainer>
       {uploadModal && (
         <ModalPotal potalName={upload}>
-          <Upload
-            imgs={imgs}
-            setImgs={setImgs}
-            text={text}
-            setText={setText}
-            noComments={noComments}
-            setNoComments={setNoComments}
-            handleUpload={handleUpload}
-            handleLocation={handleLocation}
-            location={location}
-            setLocation={setLocation}
-            changeBarState={changeBarState}
-          />
+          <ContainerUpload location={location} setLocation={setLocation} />
         </ModalPotal>
       )}
 
