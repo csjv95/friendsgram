@@ -9,6 +9,7 @@ import Suggest from "../../componet/Suggest/Suggest";
 import EmptyPage from "../../Global/EmptyPage/EmptyPage";
 import { Theme } from "../../style/Theme";
 import ContainerEdit from "../../container/ContainerEdit";
+import ContainerHome from "../../container/ContainerHome";
 
 const NavRouter = ({
   userData,
@@ -27,12 +28,18 @@ const NavRouter = ({
   return (
     <Switch>
       <Route exact path="/">
-        <Home
+        {/* <Home
           userData={userData}
           usersList={usersList}
           followingList={followingList}
           currentUserUid={currentUserUid}
           handlePostMenu={handlePostMenu}
+          setClickedPostId={setClickedPostId}
+          setClickedPostUid={setClickedPostUid}
+          handleSend={handleSend}
+        /> */}
+        <ContainerHome
+          followingList={followingList}
           setClickedPostId={setClickedPostId}
           setClickedPostUid={setClickedPostUid}
           handleSend={handleSend}

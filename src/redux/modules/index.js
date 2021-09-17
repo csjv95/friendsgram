@@ -4,6 +4,7 @@ import modalState from "./modalState";
 import progressBar from "./progressBar";
 import userData from "./userData";
 import unread from "./unreadCount";
+import userList from "./userList";
 
 const rootReducer = combineReducers({
   loginState,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   progressBar,
   userData,
   unread,
+  userList,
 });
 
 export default rootReducer;

@@ -1,7 +1,7 @@
 import { firebaseStore } from "../firebase";
 import { firebaseAuth } from "../firebase";
 
-const getUsersList = async (setUsersList) => {
+const getUsersList = async (dispatch, type) => {
   const user = firebaseAuth.currentUser;
   const uid = user.uid;
 
@@ -17,7 +17,7 @@ const getUsersList = async (setUsersList) => {
         list.push(doc.data());
       }
     });
-    setUsersList(list);
+    dispatch({ type, list });
   });
 };
 
