@@ -5,6 +5,8 @@ import progressBar from "./progressBar";
 import userData from "./userData";
 import unread from "./unreadCount";
 import userList from "./userList";
+import followingList from "./followingList";
+import clickPost from "./clickPost";
 
 const rootReducer = combineReducers({
   loginState,
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
   userData,
   unread,
   userList,
+  followingList,
+  clickPost,
 });
 
 export default rootReducer;

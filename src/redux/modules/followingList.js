@@ -1,12 +1,32 @@
-const FLLOWINGLIST = "followingList/FLLOWINGLIST";
-const FLLOWINGLIST_SUCCESS = "followingList/FLLOWINGLIST_SUCCESS";
-const FLLOWINGLIST_ERROR = "followingList/FLLOWINGLIST_ERROR";
+import { firebaseAuth, firebaseStore } from "../../service/firebase";
 
+const FOLLOWINGLIST = "followingList/FOLLOWINGLIST";
+const FOLLOWINGLIST_SUCCESS = "followingList/FOLLOWINGLIST_SUCCESS";
+const FOLLOWINGLIST_ERROR = "followingList/FOLLOWINGLIST_ERROR";
+
+/// followinglist home에서만 해보기
 export const getFollowingListAsync = () => async (dispatch) => {
-  await dispatch({ type: FLLOWINGLIST });
+  await dispatch({ type: FOLLOWINGLIST });
   try {
-    getFollowingListAsync(dispatch, FLLOWINGLIST_SUCCESS);
-  } catch (error) {}
+    // getFollowingListAsync(dispatch, FOLLOWINGLIST_SUCCESS);
+
+    const getFollowingList = () => {
+      const currentUserUid = firebaseAuth.currentUser.uid;
+      const followingData = firebaseStore
+        .collection("follow")
+        .where("uid", "==", currentUserUid);
+
+      followingData.onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const data = doc.data().following;
+          dispatch({ type: FOLLOWINGLIST_SUCCESS, data });
+        });
+      });
+    };
+    getFollowingList();
+  } catch (error) {
+    dispatch({ type: FOLLOWINGLIST_ERROR, error });
+  }
 };
 const initialState = {
   followingList: {
@@ -18,7 +38,7 @@ const initialState = {
 
 export default function followingList(state = initialState, action) {
   switch (action.type) {
-    case FLLOWINGLIST:
+    case FOLLOWINGLIST:
       return {
         ...state,
         followingList: {
@@ -26,7 +46,7 @@ export default function followingList(state = initialState, action) {
         },
       };
 
-    case FLLOWINGLIST_SUCCESS:
+    case FOLLOWINGLIST_SUCCESS:
       return {
         ...state,
         followingList: {
@@ -34,7 +54,7 @@ export default function followingList(state = initialState, action) {
           followingList: action.data,
         },
       };
-    case FLLOWINGLIST_ERROR:
+    case FOLLOWINGLIST_ERROR:
       return {
         ...state,
         followingList: {

@@ -28,7 +28,7 @@ const Home = ({
   handlePostMenu,
   setClickedPostId,
   setClickedPostUid,
-  handleSend,
+  changeSendModal,
 }) => {
   const [postData, setPostData] = useState([]);
 
@@ -48,7 +48,7 @@ const Home = ({
               handlePostMenu={handlePostMenu}
               setClickedPostId={setClickedPostId}
               setClickedPostUid={setClickedPostUid}
-              handleSend={handleSend}
+              changeSendModal={changeSendModal}
             />
           ))}
         </StArticleList>

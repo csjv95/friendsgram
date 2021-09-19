@@ -69,7 +69,7 @@ const PostCol = ({
   handlePostMenu,
   setClickedPostId,
   setClickedPostUid,
-  handleSend,
+  changeSendModal,
 }) => {
   const [match, setMatchUser] = useState({});
   const {
@@ -154,7 +154,7 @@ const PostCol = ({
       clickHeart();
     } else if (index === 2) {
       // message 보내기 창
-      handleSend();
+      changeSendModal();
     } else if (index === 3) {
       clickBookMark();
     } else {

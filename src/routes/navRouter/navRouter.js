@@ -1,8 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router";
 import Direct from "../../componet/Direct/Direct";
-import Edit from "../../componet/Edit/Edit";
-import Home from "../../componet/Home/Home";
 import MyProfile from "../../componet/MyProfile/MyProfile";
 import Upload from "../../componet/Upload/Upload";
 import Suggest from "../../componet/Suggest/Suggest";
@@ -38,12 +36,7 @@ const NavRouter = ({
           setClickedPostUid={setClickedPostUid}
           handleSend={handleSend}
         /> */}
-        <ContainerHome
-          followingList={followingList}
-          setClickedPostId={setClickedPostId}
-          setClickedPostUid={setClickedPostUid}
-          handleSend={handleSend}
-        />
+        <ContainerHome />
       </Route>
 
       <Route path="/direct">
