@@ -1,22 +1,26 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "../componet/Home/Home";
-import { getUserListAsync } from "../redux/modules/userList";
 import LoadingPage from "../Global/Loading/LoadingPage";
 import { changePostModalState } from "../redux/modules/modalState";
 import { getFollowingListAsync } from "../redux/modules/followingList";
 import { clickedPostUid, clickedPostId } from "../redux/modules/clickPost";
 import { changeSendModalState } from "../redux/modules/modalState";
+import getCurrentUserData from "../service/fireStore/getCurrentUserData";
+import getUsersList from "../service/fireStore/getUsersList";
 
 const ContainerHome = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getUserList = () => dispatch(getUserListAsync());
-    const getFollowingList = () => dispatch(getFollowingListAsync());
+    const GET_USER_DATA_SUCCESS = "userData/GET_USER_DATA_SUCCESS";
+    const USERLIST_SUCCESS = "userList/USERLIST_SUCCESS";
 
+    const getUserList = () => dispatch(getFollowingListAsync()); // followinglist 다뿌려지면 아래와같이 바꾸기
+
+    getCurrentUserData(dispatch, GET_USER_DATA_SUCCESS);
+    getUsersList(dispatch, USERLIST_SUCCESS);
     getUserList();
-    getFollowingList();
   }, [dispatch]);
 
   const changePostModal = () => dispatch(changePostModalState());
@@ -25,6 +29,7 @@ const ContainerHome = () => {
   const changeSendModal = () => dispatch(changeSendModalState());
 
   const userData = useSelector((state) => state.userData.userData.data);
+
   const { loading, followingList, error } = useSelector(
     (state) => state.followingList.followingList
   );

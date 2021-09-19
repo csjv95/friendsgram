@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changeLocationModalState,
@@ -8,20 +8,10 @@ import {
 } from "../redux/modules/modalState";
 import { barState } from "../redux/modules/progressBar";
 import RouteMain from "../routes/routeMain/routeMain";
-import { getUserDataAsync } from "../redux/modules/userData";
 import LoadingPage from "../Global/Loading/LoadingPage";
 
 const ContainerRouteMain = () => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const getUserData = () => dispatch(getUserDataAsync());
-    getUserData();
-
-    return () => {
-      getUserData();
-    };
-  }, [dispatch]);
 
   const changeLocationModal = () => dispatch(changeLocationModalState());
   const changePostModal = () => dispatch(changePostModalState());

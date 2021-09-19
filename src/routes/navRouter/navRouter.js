@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import Direct from "../../componet/Direct/Direct";
 import MyProfile from "../../componet/MyProfile/MyProfile";
 import Upload from "../../componet/Upload/Upload";
 import Suggest from "../../componet/Suggest/Suggest";
@@ -11,7 +10,6 @@ import ContainerHome from "../../containers/ContainerHome";
 import ContainerDirect from "../../containers/ContainerDirect";
 
 const NavRouter = ({
-  userData,
   usersList,
   followingList,
   followerList,

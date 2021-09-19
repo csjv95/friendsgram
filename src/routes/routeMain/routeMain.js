@@ -165,7 +165,6 @@ const RouteMain = ({
       <ContainerHeader />
 
       <NavRouter
-        userData={userData}
         usersList={usersList}
         followingList={followingList}
         followerList={followerList}
