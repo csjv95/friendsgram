@@ -23,12 +23,11 @@ const ContainerHome = () => {
   const setClickedPostId = (postId) => dispatch(clickedPostId(postId));
   const setClickedPostUid = (postUid) => dispatch(clickedPostUid(postUid));
   const changeSendModal = () => dispatch(changeSendModalState());
-  const userData = useSelector((state) => state.userData.userData.data);
 
+  const userData = useSelector((state) => state.userData.userData.data);
   const { loading, followingList, error } = useSelector(
     (state) => state.followingList.followingList
   );
-
   const {
     loading: userListLoading,
     data: usersList,
@@ -46,8 +45,8 @@ const ContainerHome = () => {
       usersList={usersList}
       followingList={followingList}
       handlePostMenu={changePostModal}
-      setClickedPostId={setClickedPostId}
-      setClickedPostUid={setClickedPostUid}
+      setClickedPostId={setClickedPostId} //이것들은 데이터 표시를 바꿔줘야함 지금은 저장만한거임
+      setClickedPostUid={setClickedPostUid} //
       changeSendModal={changeSendModal}
     />
   );

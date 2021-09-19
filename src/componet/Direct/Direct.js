@@ -46,10 +46,9 @@ const StNavLink = styled(NavLink)`
   }
 `;
 
-const Direct = ({ userData, handleSend, currentUserUid }) => {
+const Direct = ({ userData, changeSendModal, currentUserUid }) => {
   const [chatRooms, setChatRooms] = useState([]);
   const [clickedRoomId, setClickedRoomId] = useState("");
-  // const [view, setView] = useState([])
 
   useEffect(() => {
     getMessageRoom(setChatRooms);
@@ -74,7 +73,7 @@ const Direct = ({ userData, handleSend, currentUserUid }) => {
             >
               {userData.displayName}
             </StItem>
-            <StItem onClick={handleSend}>
+            <StItem onClick={changeSendModal}>
               <StButton
                 padding="1em"
                 btnText={<StPencilSquare width="2em" />}
@@ -117,7 +116,7 @@ const Direct = ({ userData, handleSend, currentUserUid }) => {
         </StDirectFriends>
         <StDirectChat>
           <DirectRouter
-            handleSend={handleSend}
+            changeSendModal={changeSendModal}
             currentUserUid={currentUserUid}
           />
         </StDirectChat>

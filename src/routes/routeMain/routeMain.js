@@ -15,8 +15,8 @@ import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import FollowView from "../../componet/FollowView/FollowView";
 import Send from "../../componet/Send/Send";
 import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
-import ContainerHeader from "../../container/ContainerHeader";
-import ContainerUpload from "../../container/ContainerUpload";
+import ContainerHeader from "../../containers/ContainerHeader";
+import ContainerUpload from "../../containers/ContainerUpload";
 
 const AppContainer = styled.div`
   width: 100%;

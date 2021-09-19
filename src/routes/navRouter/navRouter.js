@@ -6,8 +6,9 @@ import Upload from "../../componet/Upload/Upload";
 import Suggest from "../../componet/Suggest/Suggest";
 import EmptyPage from "../../Global/EmptyPage/EmptyPage";
 import { Theme } from "../../style/Theme";
-import ContainerEdit from "../../container/ContainerEdit";
-import ContainerHome from "../../container/ContainerHome";
+import ContainerEdit from "../../containers/ContainerEdit";
+import ContainerHome from "../../containers/ContainerHome";
+import ContainerDirect from "../../containers/ContainerDirect";
 
 const NavRouter = ({
   userData,
@@ -40,11 +41,12 @@ const NavRouter = ({
       </Route>
 
       <Route path="/direct">
-        <Direct
+        {/* <Direct
           currentUserUid={currentUserUid}
           userData={userData}
           handleSend={handleSend}
-        />
+        /> */}
+        <ContainerDirect currentUserUid={currentUserUid} />
       </Route>
       <Route path="/post" component={Upload} />
       <Route path="/suggest">

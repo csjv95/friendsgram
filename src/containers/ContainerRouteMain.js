@@ -1,47 +1,77 @@
-import React from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  changeUploadModal,
-  changeLocationModal,
-  changePostModal,
-  changeFollowModal,
-  changeSendModal,
+  changeLocationModalState,
+  changePostModalState,
+  changeFollowModalState,
+  changeSendModalState,
 } from "../redux/modules/modalState";
+import { barState } from "../redux/modules/progressBar";
 import RouteMain from "../routes/routeMain/routeMain";
+import { getUserDataAsync } from "../redux/modules/userData";
+import LoadingPage from "../Global/Loading/LoadingPage";
 
 const ContainerRouteMain = () => {
-  const { upload, location, post, follow, send, see } = useSelector(
-    (state) => ({
-      upload: state.modalState.upload,
-      location: state.modalState.location,
-      post: state.modalState.post,
-      follow: state.modalState.follow,
-      send: state.modalState.send,
-      see: state,
-    }),
-    shallowEqual // useSelector 최적화 방식 1. 한개씩 작성 2. shallowEqaul사용하여 shallow비교
-  );
-
   const dispatch = useDispatch();
-  const uploadModalChange = () => dispatch(changeUploadModal());
-  const locationModalChange = () => dispatch(changeLocationModal());
-  const postModalChange = () => dispatch(changePostModal());
-  const followModalChange = () => dispatch(changeFollowModal());
-  const sendModalChange = () => dispatch(changeSendModal());
 
-  console.log("see", see);
+  useEffect(() => {
+    const getUserData = () => dispatch(getUserDataAsync());
+    getUserData();
+
+    return () => {
+      getUserData();
+    };
+  }, [dispatch]);
+
+  const changeLocationModal = () => dispatch(changeLocationModalState());
+  const changePostModal = () => dispatch(changePostModalState());
+  const changeFollowModal = () => dispatch(changeFollowModalState());
+  const changeSendModal = () => dispatch(changeSendModalState());
+  const changeBarState = (bar) => dispatch(barState(bar));
+
+  const {
+    uploadModal,
+    locationModal,
+    postModal,
+    followModal,
+    sendModal,
+    progressState,
+  } = useSelector((state) => ({
+    uploadModal: state.modalState.uploadModal,
+    locationModal: state.modalState.locationModal,
+    postModal: state.modalState.postModal,
+    followModal: state.modalState.followModal,
+    sendModal: state.modalState.sendModal,
+    progressState: state.progressBar.progressState,
+  }));
+
+  const {
+    data: userData,
+    loading,
+    error,
+  } = useSelector((state) => state.userData.userData);
+
+  if (error) return <div>{error}</div>;
+  // loading true
+  if (loading) return <LoadingPage />;
+  // no data
+  if (!userData) return <div>데이터가 존재하지 않음</div>;
+  // data
+
   return (
     <RouteMain
-      uploadModal={upload}
-      locationModal={location}
-      postModal={post}
-      followModal={follow}
-      sendModal={send}
-      uploadModalChange={uploadModalChange}
-      locationModalChange={locationModalChange}
-      postModalChange={postModalChange}
-      followModalChange={followModalChange}
-      sendModalChange={sendModalChange}
+      uploadModal={uploadModal}
+      locationModal={locationModal}
+      postModal={postModal}
+      followModal={followModal}
+      sendModal={sendModal}
+      changeLocationModal={changeLocationModal}
+      changePostModal={changePostModal}
+      changeFollowModal={changeFollowModal}
+      changeSendModal={changeSendModal}
+      progressState={progressState}
+      changeBarState={changeBarState}
+      userData={userData}
     />
   );
 };

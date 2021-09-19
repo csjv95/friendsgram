@@ -3,7 +3,7 @@ import RouteLogin from "./routes/routeLogin/routeLogin";
 import authCheckUser from "./service/auth/authCheckUser";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "./redux/modules/isLogin";
-import ContainerRouteMain from "./container/ContainerRouteMain";
+import ContainerRouteMain from "./containers/ContainerRouteMain";
 
 function App() {
   const dispatch = useDispatch();

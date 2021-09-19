@@ -3,11 +3,11 @@ import { Route, Switch } from "react-router";
 import EmptyChat from "../../componet/Direct/Chat/EmptyChat";
 import UserChat from "../../componet/Direct/Chat/UserChat";
 
-const DirectRouter = ({ handleSend, currentUserUid }) => {
+const DirectRouter = ({ changeSendModal, currentUserUid }) => {
   return (
     <Switch>
       <Route exact path="/direct">
-        <EmptyChat handleSend={handleSend} />
+        <EmptyChat changeSendModal={changeSendModal} />
       </Route>
       <Route path="/direct/:rommId">
         <UserChat currentUserUid={currentUserUid} />
