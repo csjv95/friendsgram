@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Home from "../componet/Home/Home";
 import LoadingPage from "../Global/Loading/LoadingPage";
 import { changePostModalState } from "../redux/modules/modalState";
-import { getFollowingListAsync } from "../redux/modules/followingList";
 import { clickedPostUid, clickedPostId } from "../redux/modules/clickPost";
 import { changeSendModalState } from "../redux/modules/modalState";
 import getCurrentUserData from "../service/fireStore/getCurrentUserData";
 import getUsersList from "../service/fireStore/getUsersList";
+import getFollowingList from "../service/follow/getFollowingList";
 
 const ContainerHome = () => {
   const dispatch = useDispatch();
@@ -15,12 +15,11 @@ const ContainerHome = () => {
   useEffect(() => {
     const GET_USER_DATA_SUCCESS = "userData/GET_USER_DATA_SUCCESS";
     const USERLIST_SUCCESS = "userList/USERLIST_SUCCESS";
-
-    const getUserList = () => dispatch(getFollowingListAsync()); // followinglist 다뿌려지면 아래와같이 바꾸기
+    const FOLLOWINGLIST_SUCCESS = "followingList/FOLLOWINGLIST_SUCCESS";
 
     getCurrentUserData(dispatch, GET_USER_DATA_SUCCESS);
     getUsersList(dispatch, USERLIST_SUCCESS);
-    getUserList();
+    getFollowingList(dispatch, FOLLOWINGLIST_SUCCESS);
   }, [dispatch]);
 
   const changePostModal = () => dispatch(changePostModalState());
@@ -33,6 +32,7 @@ const ContainerHome = () => {
   const { loading, followingList, error } = useSelector(
     (state) => state.followingList.followingList
   );
+
   const {
     loading: userListLoading,
     data: usersList,

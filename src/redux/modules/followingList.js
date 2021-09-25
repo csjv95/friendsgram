@@ -1,4 +1,4 @@
-import { firebaseAuth, firebaseStore } from "../../service/firebase";
+import getFollowingList from "../../service/follow/getFollowingList";
 
 const FOLLOWINGLIST = "followingList/FOLLOWINGLIST";
 const FOLLOWINGLIST_SUCCESS = "followingList/FOLLOWINGLIST_SUCCESS";
@@ -8,22 +8,7 @@ const FOLLOWINGLIST_ERROR = "followingList/FOLLOWINGLIST_ERROR";
 export const getFollowingListAsync = () => async (dispatch) => {
   await dispatch({ type: FOLLOWINGLIST });
   try {
-    // getFollowingListAsync(dispatch, FOLLOWINGLIST_SUCCESS);
-
-    const getFollowingList = () => {
-      const currentUserUid = firebaseAuth.currentUser.uid;
-      const followingData = firebaseStore
-        .collection("follow")
-        .where("uid", "==", currentUserUid);
-
-      followingData.onSnapshot((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          const data = doc.data().following;
-          dispatch({ type: FOLLOWINGLIST_SUCCESS, data });
-        });
-      });
-    };
-    getFollowingList();
+    getFollowingList(dispatch, FOLLOWINGLIST_SUCCESS);
   } catch (error) {
     dispatch({ type: FOLLOWINGLIST_ERROR, error });
   }

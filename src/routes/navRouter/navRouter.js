@@ -2,12 +2,11 @@ import React from "react";
 import { Route, Switch } from "react-router";
 import MyProfile from "../../componet/MyProfile/MyProfile";
 import Upload from "../../componet/Upload/Upload";
-import Suggest from "../../componet/Suggest/Suggest";
 import EmptyPage from "../../Global/EmptyPage/EmptyPage";
-import { Theme } from "../../style/Theme";
 import ContainerEdit from "../../containers/ContainerEdit";
 import ContainerHome from "../../containers/ContainerHome";
 import ContainerDirect from "../../containers/ContainerDirect";
+import ContainerSuggest from "../../containers/ContainerSuggest";
 
 const NavRouter = ({
   usersList,
@@ -47,7 +46,10 @@ const NavRouter = ({
         <ContainerDirect currentUserUid={currentUserUid} />
       </Route>
       <Route path="/post" component={Upload} />
-      <Route path="/suggest">
+
+      {/* start make suggest an spread make  usersList,followingList,followerList*/}
+
+      {/* <Route path="/suggest">
         <Suggest
           usersList={usersList}
           followingList={followingList}
@@ -57,7 +59,9 @@ const NavRouter = ({
           StlistWidth="38em"
           StListPadding="1em"
         />
-      </Route>
+      </Route> */}
+      <Route path="/suggest" component={ContainerSuggest} />
+
       <Route path="/edit" component={ContainerEdit} />
 
       <Route path="/:username">
