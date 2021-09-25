@@ -17,19 +17,3 @@ const getFollowingList = (dispatch, type) => {
 };
 
 export default getFollowingList;
-// getFollowingListAsync(dispatch, FOLLOWINGLIST_SUCCESS);
-
-// const getFollowingList = () => {
-//   const currentUserUid = firebaseAuth.currentUser.uid;
-//   const followingData = firebaseStore
-//     .collection("follow")
-//     .where("uid", "==", currentUserUid);
-
-//   followingData.onSnapshot((querySnapshot) => {
-//     querySnapshot.forEach((doc) => {
-//       const data = doc.data().following;
-//       dispatch({ type: FOLLOWINGLIST_SUCCESS, data });
-//     });
-//   });
-// };
-// getFollowingList();

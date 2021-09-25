@@ -4,7 +4,6 @@ const FOLLOWINGLIST = "followingList/FOLLOWINGLIST";
 const FOLLOWINGLIST_SUCCESS = "followingList/FOLLOWINGLIST_SUCCESS";
 const FOLLOWINGLIST_ERROR = "followingList/FOLLOWINGLIST_ERROR";
 
-/// followinglist home에서만 해보기
 export const getFollowingListAsync = () => async (dispatch) => {
   await dispatch({ type: FOLLOWINGLIST });
   try {

@@ -25,7 +25,6 @@ const StSugget = styled.ul`
 const Suggest = ({
   usersList,
   followingList,
-  followerList,
   StSectionPaddingTop,
   StSectionBackgroundColor,
   StlistWidth,

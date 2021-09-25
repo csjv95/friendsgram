@@ -32,12 +32,10 @@ const ContainerSuggest = () => {
   if (userListError) return <div>{userListError}</div>;
   if (!usersList) return <LoadingPage />;
 
-  console.log(followingList);
   return (
     <Suggest
       usersList={usersList}
       followingList={followingList}
-      // followerList={followerList}
       StSectionPaddingTop="4em"
       StSectionBackgroundColor={Theme.colors.backgroundColor}
       StlistWidth="38em"
