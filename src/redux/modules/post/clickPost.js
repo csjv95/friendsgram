@@ -12,10 +12,8 @@ export const clickedPostUid = (postUid) => ({
 });
 
 const initialState = {
-  clickPost: {
-    clickPostId: null,
-    clickPostUid: null,
-  },
+  clickPostId: null,
+  clickPostUid: null,
 };
 
 export default function clickPost(state = initialState, action) {
@@ -23,16 +21,12 @@ export default function clickPost(state = initialState, action) {
     case CLICKEDPOSTID:
       return {
         ...state,
-        clickPost: {
-          clickPostId: action.postId,
-        },
+        clickPostId: action.postId,
       };
     case CLICKEDPOSTUID:
       return {
         ...state,
-        clickPost: {
-          clickPostUid: action.postUid,
-        },
+        clickPostUid: action.postUid,
       };
     default:
       return state;

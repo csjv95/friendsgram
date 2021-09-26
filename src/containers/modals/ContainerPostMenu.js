@@ -17,6 +17,9 @@ const ContainerPostMenu = () => {
   const currentUserUid = useSelector(
     (state) => state.currentUserUid.currentUserUid
   );
+  const clickedPostId = useSelector((state) => state.clickPost.clickPostId);
+  const clickedPostUid = useSelector((state) => state.clickPost.clickPostUid);
+
   return (
     <PostMenu
       handlePostMenu={changePostModal}

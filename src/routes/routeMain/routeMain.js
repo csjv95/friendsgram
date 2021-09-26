@@ -7,15 +7,14 @@ import Location from "../../componet/Location/Location";
 import getUsersList from "../../service/fireStore/getUsersList";
 import getFollowingList from "../../service/follow/getFollowingList";
 import getFollowerList from "../../service/follow/getFollowerList";
-import { authGetUid } from "../../service/auth/authGetUid";
 import ProgressBar from "../../componet/ProgressBar/ProgressBar";
 // import Message from "../../Global/Message/Message";
-import PostMenu from "../../componet/PostMenu/PostMenu";
 import FollowView from "../../componet/FollowView/FollowView";
 import Send from "../../componet/Send/Send";
 import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
 import ContainerHeader from "../../containers/ContainerHeader";
-import ContainerUpload from "../../containers/modal/ContainerUpload";
+import ContainerUpload from "../../containers/modals/ContainerUpload";
+import ContainerPostMenu from "../../containers/modals/ContainerPostMenu";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -45,13 +44,13 @@ const RouteMain = ({
   const follow = document.getElementById("follow");
   const send = document.getElementById("send");
   const [isFollow, setIsFollow] = useState("");
-  const [currentUserUid, setCurrentUserUid] = useState("");
+  // const [currentUserUid, setCurrentUserUid] = useState("");
   // const [userData, setUserData] = useState([]);
   const [usersList, setUsersList] = useState([]);
   const [followingList, setFollowingList] = useState([]);
   const [followerList, setFollowerList] = useState([]);
-  const [clickedPostId, setClickedPostId] = useState("");
-  const [clickedPostUid, setClickedPostUid] = useState("");
+  // const [clickedPostId, setClickedPostId] = useState("");
+  // const [clickedPostUid, setClickedPostUid] = useState("");
   // const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
   // const [uploadModal, setUploadModal] = useState(false);
   // const [locationModal, setLocationModal] = useState(false);
@@ -70,7 +69,6 @@ const RouteMain = ({
   // 메세지 카운트
 
   useEffect(() => {
-    authGetUid(setCurrentUserUid);
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
@@ -92,9 +90,9 @@ const RouteMain = ({
   //   setMessageModal(!message);
   // };
 
-  const handlePostMenu = () => {
-    changePostModal();
-  };
+  // const handlePostMenu = () => {
+  //   changePostModal();
+  // };
 
   const handleFollow = () => {
     changeFollowModal();
@@ -126,12 +124,7 @@ const RouteMain = ({
 
       {postModal && (
         <ModalPotal potalName={postMenu}>
-          <PostMenu
-            handlePostMenu={handlePostMenu}
-            clickedPostId={clickedPostId}
-            clickedPostUid={clickedPostUid}
-            currentUserUid={currentUserUid}
-          />
+          <ContainerPostMenu />
         </ModalPotal>
       )}
 
@@ -166,8 +159,8 @@ const RouteMain = ({
         // handleFollow={handleFollow}
         // handleSend={handleSend}
         // bookMarkPostIds={bookMarkPostIds}
-        setClickedPostId={setClickedPostId}
-        setClickedPostUid={setClickedPostUid}
+        // setClickedPostId={setClickedPostId}
+        // setClickedPostUid={setClickedPostUid}
         setIsFollow={setIsFollow}
       />
       <MainFooter />
