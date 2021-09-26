@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import Upload from "../componet/Upload/Upload";
+import Upload from "../../componet/Upload/Upload";
 import {
   changeUploadModalState,
   changeLocationModalState,
-} from "../redux/modules/modals/modalState";
-import { barState } from "../redux/modules/progressBar/progressBar";
+} from "../../redux/modules/modals/modalState";
+import { barState } from "../../redux/modules/progressBar/progressBar";
 
 const ContainerUpload = ({ location, setLocation }) => {
   const dispatch = useDispatch();

@@ -8,12 +8,12 @@ import {
   changeSendModalState,
 } from "../redux/modules/modals/modalState";
 import getBookMarkPostIds from "../service/bookMark/getBookMarkPostIds";
+import { authGetUid } from "../service/auth/authGetUid";
 
 const ContainerMyProfile = ({
   setClickedPostId,
   setClickedPostUid,
   setIsFollow,
-  currentUserUid,
 }) => {
   const dispatch = useDispatch();
 
@@ -21,10 +21,12 @@ const ContainerMyProfile = ({
     const FOLLOWINGLIST_SUCCESS = "followingList/FOLLOWINGLIST_SUCCESS";
     const FOLLOWERLIST_SUCCESS = "follwerList/FOLLOWERLIST_SUCCESS";
     const BOOKMARKPOSTIDS_SUCCESS = "bookMarkPostIds/BOOKMARKPOSTIDS_SUCCESS";
+    const CURRENTUID = "getUid/CURRENTUID";
 
     getFollowingList(dispatch, FOLLOWINGLIST_SUCCESS);
     getFollowerList(dispatch, FOLLOWERLIST_SUCCESS);
     getBookMarkPostIds(dispatch, BOOKMARKPOSTIDS_SUCCESS);
+    authGetUid(dispatch, CURRENTUID);
   }, [dispatch]);
 
   const changePostModal = () => dispatch(changeFollowModalState());
@@ -40,6 +42,9 @@ const ContainerMyProfile = ({
   const bookMarkPostIds = useSelector(
     (state) => state.bookMarkPostIds.bookMarkPostIds.bookMarkPostIds
   );
+  const currentUserUid = useSelector(
+    (state) => state.currentUserUid.currentUserUid
+  );
 
   return (
     <MyProfile
@@ -49,11 +54,11 @@ const ContainerMyProfile = ({
       handlePostMenu={changePostModal}
       handleFollow={changeFollowModal}
       handleSend={changeSendModal}
+      currentUserUid={currentUserUid}
       //
       setClickedPostId={setClickedPostId}
       setClickedPostUid={setClickedPostUid}
       setIsFollow={setIsFollow}
-      currentUserUid={currentUserUid}
     />
   );
 };

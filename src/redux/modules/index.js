@@ -9,6 +9,7 @@ import followingList from "./follow/followingList";
 import followerList from "./follow/followerList";
 import clickPost from "./post/clickPost";
 import bookMarkPostIds from "./bookMark/bookMarkPostIds";
+import currentUserUid from "./auth/currentUserUid";
 
 const rootReducer = combineReducers({
   loginState,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   followerList,
   clickPost,
   bookMarkPostIds,
+  currentUserUid,
 });
 
 export default rootReducer;

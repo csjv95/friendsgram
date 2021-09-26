@@ -10,7 +10,7 @@ const initialState = {
   currentUserUid: null,
 };
 
-export default function getUid(state = initialState, action) {
+export default function currentUserUid(state = initialState, action) {
   switch (action.type) {
     case CURRENTUID:
       return {

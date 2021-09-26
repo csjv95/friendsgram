@@ -28,7 +28,6 @@ const NavRouter = ({
           userData={userData}
           usersList={usersList}
           followingList={followingList}
-          currentUserUid={currentUserUid}
           handlePostMenu={handlePostMenu}
           setClickedPostId={setClickedPostId}
           setClickedPostUid={setClickedPostUid}
@@ -43,7 +42,7 @@ const NavRouter = ({
           userData={userData}
           handleSend={handleSend}
         /> */}
-        <ContainerDirect currentUserUid={currentUserUid} />
+        <ContainerDirect />
       </Route>
       <Route path="/post" component={Upload} />
 
@@ -80,7 +79,6 @@ const NavRouter = ({
           setClickedPostId={setClickedPostId}
           setClickedPostUid={setClickedPostUid}
           setIsFollow={setIsFollow}
-          currentUserUid={currentUserUid}
         />
       </Route>
       <Route render={() => <EmptyPage />} />

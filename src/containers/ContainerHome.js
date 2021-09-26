@@ -34,7 +34,6 @@ const ContainerHome = () => {
   const { loading, followingList, error } = useSelector(
     (state) => state.followingList.followingList
   );
-
   const {
     loading: userListLoading,
     data: usersList,

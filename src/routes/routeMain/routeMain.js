@@ -15,7 +15,7 @@ import FollowView from "../../componet/FollowView/FollowView";
 import Send from "../../componet/Send/Send";
 import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
 import ContainerHeader from "../../containers/ContainerHeader";
-import ContainerUpload from "../../containers/ContainerUpload";
+import ContainerUpload from "../../containers/modal/ContainerUpload";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -158,13 +158,13 @@ const RouteMain = ({
       <ContainerHeader />
 
       <NavRouter
-        usersList={usersList}
-        followingList={followingList}
-        followerList={followerList}
-        currentUserUid={currentUserUid}
-        handlePostMenu={handlePostMenu}
-        handleFollow={handleFollow}
-        handleSend={handleSend}
+        // usersList={usersList}
+        // followingList={followingList}
+        // followerList={followerList}
+        // currentUserUid={currentUserUid}
+        // handlePostMenu={handlePostMenu}
+        // handleFollow={handleFollow}
+        // handleSend={handleSend}
         // bookMarkPostIds={bookMarkPostIds}
         setClickedPostId={setClickedPostId}
         setClickedPostUid={setClickedPostUid}
