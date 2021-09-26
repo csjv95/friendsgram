@@ -10,7 +10,6 @@ const ContainerSuggest = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // followingList,followerList
     const USERLIST_SUCCESS = "userList/USERLIST_SUCCESS";
     const FOLLOWINGLIST_SUCCESS = "followingList/FOLLOWINGLIST_SUCCESS";
 

@@ -12,6 +12,7 @@ export const getFollowingListAsync = () => async (dispatch) => {
     dispatch({ type: FOLLOWINGLIST_ERROR, error });
   }
 };
+
 const initialState = {
   followingList: {
     loading: false,
@@ -38,6 +39,7 @@ export default function followingList(state = initialState, action) {
           followingList: action.data,
         },
       };
+
     case FOLLOWINGLIST_ERROR:
       return {
         ...state,
@@ -45,6 +47,7 @@ export default function followingList(state = initialState, action) {
           error: action.error,
         },
       };
+
     default:
       return state;
   }

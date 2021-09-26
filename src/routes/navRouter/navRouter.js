@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import MyProfile from "../../componet/MyProfile/MyProfile";
 import Upload from "../../componet/Upload/Upload";
 import EmptyPage from "../../Global/EmptyPage/EmptyPage";
 import ContainerEdit from "../../containers/ContainerEdit";
 import ContainerHome from "../../containers/ContainerHome";
 import ContainerDirect from "../../containers/ContainerDirect";
 import ContainerSuggest from "../../containers/ContainerSuggest";
+import ContainerMyProfile from "../../containers/ContainerMyProfile";
 
 const NavRouter = ({
   usersList,
@@ -65,17 +65,18 @@ const NavRouter = ({
       <Route path="/edit" component={ContainerEdit} />
 
       <Route path="/:username">
-        <MyProfile
+        {/* <MyProfile
           followingList={followingList}
           followerList={followerList}
           bookMarkPostIds={bookMarkPostIds}
           handlePostMenu={handlePostMenu}
           handleFollow={handleFollow}
+          handleSend={handleSend}
           setClickedPostId={setClickedPostId}
           setClickedPostUid={setClickedPostUid}
           setIsFollow={setIsFollow}
-          handleSend={handleSend}
-        />
+        /> */}
+        <ContainerMyProfile />
       </Route>
       <Route render={() => <EmptyPage />} />
     </Switch>

@@ -82,6 +82,7 @@ const PostCol = ({
     postId,
     displayName,
   } = article;
+  console.log("article", article.postId);
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const [photoURL, setPhotoURL] = useState("");
   const [heartData, setHeartData] = useState([]);

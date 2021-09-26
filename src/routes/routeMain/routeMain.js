@@ -176,7 +176,6 @@ const RouteMain = ({
         setClickedPostId={setClickedPostId}
         setClickedPostUid={setClickedPostUid}
         setIsFollow={setIsFollow}
-        // handlePost={handlePost}
       />
       <MainFooter />
     </AppContainer>
