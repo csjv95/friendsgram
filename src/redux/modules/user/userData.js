@@ -1,4 +1,4 @@
-import getCurrentUserData from "../../service/fireStore/getCurrentUserData";
+import getCurrentUserData from "../../../service/fireStore/getCurrentUserData";
 
 const GET_USER_DATA = " userData/GET_USER_DATA ";
 const GET_USER_DATA_SUCCESS = "userData/GET_USER_DATA_SUCCESS";

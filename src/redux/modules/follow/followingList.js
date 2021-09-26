@@ -1,4 +1,4 @@
-import getFollowingList from "../../service/follow/getFollowingList";
+import getFollowingList from "../../../service/follow/getFollowingList";
 
 const FOLLOWINGLIST = "followingList/FOLLOWINGLIST";
 const FOLLOWINGLIST_SUCCESS = "followingList/FOLLOWINGLIST_SUCCESS";

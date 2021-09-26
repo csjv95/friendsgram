@@ -1,4 +1,4 @@
-import getUsersList from "../../service/fireStore/getUsersList";
+import getUsersList from "../../../service/fireStore/getUsersList";
 
 const USERLIST = "userList/USERLIST";
 const USERLIST_SUCCESS = "userList/USERLIST_SUCCESS";

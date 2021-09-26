@@ -8,8 +8,8 @@ const getBookMarkPostIds = (dispatch, type) => {
     .doc(currentUserUid)
     .onSnapshot((item) => {
       // bookMark.data() && setBookMarkPostIds(bookMark.data().postId);
-      const bookMark = item.data().postId;
-      dispatch({ type, bookMark });
+      const bookMarks = item.data().postId;
+      dispatch({ type, bookMarks });
     });
 
   return () => {

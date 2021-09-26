@@ -9,8 +9,8 @@ const getFollowerList = (dispatch, type) => {
 
   followerData.onSnapshot((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      const data = doc.data().follower;
-      dispatch({ type, data });
+      const followerList = doc.data().follower;
+      dispatch({ type, followerList });
     });
   });
 };

@@ -5,8 +5,8 @@ import {
   changePostModalState,
   changeFollowModalState,
   changeSendModalState,
-} from "../redux/modules/modalState";
-import { barState } from "../redux/modules/progressBar";
+} from "../redux/modules/modals/modalState";
+import { barState } from "../redux/modules/progressBar/progressBar";
 import RouteMain from "../routes/routeMain/routeMain";
 import LoadingPage from "../Global/Loading/LoadingPage";
 

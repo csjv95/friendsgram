@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import Header from "../Global/Header/Header";
 import LoadingPage from "../Global/Loading/LoadingPage";
-import { changeUploadModalState } from "../redux/modules/modalState";
-import { getUnreadAsync } from "../redux/modules/unreadCount";
+import { changeUploadModalState } from "../redux/modules/modals/modalState";
+import { getUnreadAsync } from "../redux/modules/message/unreadCount";
 import foregroundMessage from "../service/message/foregroundMessage";
 import readCount from "../service/message/readCount";
 

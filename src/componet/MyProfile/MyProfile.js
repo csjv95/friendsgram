@@ -93,16 +93,16 @@ const StNavLink = styled(NavLink)`
 `;
 
 const MyProfile = ({
-  bookMarkPostIds,
   followingList,
   followerList,
   currentUserUid,
+  bookMarkPostIds,
   handlePostMenu,
   handleFollow,
+  handleSend,
   setClickedPostId,
   setClickedPostUid,
   setIsFollow,
-  handleSend,
 }) => {
   const post = document.getElementById("post");
   const params = useParams();

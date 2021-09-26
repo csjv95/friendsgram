@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "../componet/Home/Home";
 import LoadingPage from "../Global/Loading/LoadingPage";
-import { changePostModalState } from "../redux/modules/modalState";
-import { clickedPostUid, clickedPostId } from "../redux/modules/clickPost";
-import { changeSendModalState } from "../redux/modules/modalState";
+import {
+  changePostModalState,
+  changeSendModalState,
+} from "../redux/modules/modals/modalState";
+import { clickedPostUid, clickedPostId } from "../redux/modules/post/clickPost";
 import getCurrentUserData from "../service/fireStore/getCurrentUserData";
 import getUsersList from "../service/fireStore/getUsersList";
 import getFollowingList from "../service/follow/getFollowingList";

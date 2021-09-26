@@ -3,9 +3,17 @@ import MyProfile from "../componet/MyProfile/MyProfile";
 import { useDispatch, useSelector } from "react-redux";
 import getFollowingList from "../service/follow/getFollowingList";
 import getFollowerList from "../service/follow/getFollowerList";
-import { changeFollowModalState } from "../redux/modules/modalState";
+import {
+  changeFollowModalState,
+  changeSendModalState,
+} from "../redux/modules/modals/modalState";
 
-const ContainerMyProfile = () => {
+const ContainerMyProfile = ({
+  setClickedPostId,
+  setClickedPostUid,
+  setIsFollow,
+  currentUserUid,
+}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +24,9 @@ const ContainerMyProfile = () => {
     getFollowerList(dispatch, FOLLOWERLIST_SUCCESS);
   }, [dispatch]);
 
-  const changePostModal = () => dispatch(changeFollowModalState()); //handlePost
+  const changePostModal = () => dispatch(changeFollowModalState());
+  const changeFollowModal = () => dispatch(changeFollowModalState());
+  const changeSendModal = () => dispatch(changeSendModalState());
 
   const followingList = useSelector(
     (state) => state.followingList.followingList.followingList
@@ -24,20 +34,23 @@ const ContainerMyProfile = () => {
   const followerList = useSelector(
     (state) => state.followerList.followerList.followerList
   );
-  // followingList={followingList}
-  //           followerList={followerList}
-  //           bookMarkPostIds={bookMarkPostIds}
-  //           handlePostMenu={handlePostMenu}
-  //           handleFollow={handleFollow}
-  //           setClickedPostId={setClickedPostId}
-  //           setClickedPostUid={setClickedPostUid}
-  //           setIsFollow={setIsFollow}
-  //           handleSend={handleSend}
+  const bookMarkPostIds = useSelector(
+    (state) => state.bookMarkPostIds.bookMarkPostIds.bookMarkPostIds
+  );
+
   return (
     <MyProfile
       followingList={followingList}
       followerList={followerList}
+      bookMarkPostIds={bookMarkPostIds}
       handlePostMenu={changePostModal}
+      handleFollow={changeFollowModal}
+      handleSend={changeSendModal}
+      //
+      setClickedPostId={setClickedPostId}
+      setClickedPostUid={setClickedPostUid}
+      setIsFollow={setIsFollow}
+      currentUserUid={currentUserUid}
     />
   );
 };

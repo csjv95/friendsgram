@@ -4,8 +4,8 @@ import Upload from "../componet/Upload/Upload";
 import {
   changeUploadModalState,
   changeLocationModalState,
-} from "../redux/modules/modalState";
-import { barState } from "../redux/modules/progressBar";
+} from "../redux/modules/modals/modalState";
+import { barState } from "../redux/modules/progressBar/progressBar";
 
 const ContainerUpload = ({ location, setLocation }) => {
   const dispatch = useDispatch();

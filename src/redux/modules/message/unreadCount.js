@@ -1,4 +1,4 @@
-import unreadCount from "../../service/message/unreadCount";
+import unreadCount from "../../../service/message/unreadCount";
 
 const UNREAD = "unreadCount/UNREAD";
 const UNREAD_SUCCESS = "unreadCount/UNREAD_SUCCESS";

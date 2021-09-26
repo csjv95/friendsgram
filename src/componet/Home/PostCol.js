@@ -45,6 +45,7 @@ import { useRef } from "react";
 import StButton from "../../Global/StButton/StButton";
 import setComments from "../../service/comments/setComments";
 import getComments from "../../service/comments/getComments";
+import { useDispatch, useSelector } from "react-redux";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -82,30 +83,34 @@ const PostCol = ({
     postId,
     displayName,
   } = article;
-  console.log("article", article.postId);
+
   const imgs = imgsData; // imageSlider에 매개변수를 img로 사용
   const [photoURL, setPhotoURL] = useState("");
   const [heartData, setHeartData] = useState([]);
   const [heartLength, setHeartLength] = useState([]);
-  const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
+  // const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
   const [comment, setComment] = useState("");
   const [allComment, setAllComment] = useState([]);
   const justTextRef = useRef();
   const moreTextRef = useRef();
   const [viewEomji, setViewEmoji] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    const BOOKMARKPOSTIDS_SUCCESS = "bookMarkPostIds/BOOKMARKPOSTID_SUCCESS";
+
     getMatchUid(uid, setMatchUser);
     const heart = getHeart(setHeartData);
-    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
+    // const bookMark = getBookMarkPostIds(setBookMarkPostIds);
+    getBookMarkPostIds(dispatch, BOOKMARKPOSTIDS_SUCCESS);
     const heartLength = getHeartLength(postId, setHeartLength);
 
     return () => {
       heart();
-      bookMark();
       heartLength();
+      // bookMark();
     };
-  }, [uid, postId]);
+  }, [uid, postId, dispatch]);
 
   useEffect(() => {
     const profileImg = getUserImg(uid, setPhotoURL);
@@ -122,6 +127,12 @@ const PostCol = ({
       comments();
     };
   }, [postId, uid]);
+
+  const bookMarkPostIds = useSelector(
+    (state) => state.bookMarkPostIds.bookMarkPostIds.bookMarkPostIds
+  );
+  // container 만들면 지우기
+  if (!bookMarkPostIds) return <div>hello</div>;
 
   const functionList = [
     {

@@ -1,13 +1,14 @@
 import { combineReducers } from "redux";
-import loginState from "./isLogin";
-import modalState from "./modalState";
-import progressBar from "./progressBar";
-import userData from "./userData";
-import unread from "./unreadCount";
-import userList from "./userList";
-import followingList from "./followingList";
-import followerList from "./followerList";
-import clickPost from "./clickPost";
+import loginState from "./auth/isLogin";
+import modalState from "./modals/modalState";
+import progressBar from "./progressBar/progressBar";
+import userData from "./user/userData";
+import unread from "./message/unreadCount";
+import userList from "./user/userList";
+import followingList from "./follow/followingList";
+import followerList from "./follow/followerList";
+import clickPost from "./post/clickPost";
+import bookMarkPostIds from "./bookMark/bookMarkPostIds";
 
 const rootReducer = combineReducers({
   loginState,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   followingList,
   followerList,
   clickPost,
+  bookMarkPostIds,
 });
 
 export default rootReducer;
