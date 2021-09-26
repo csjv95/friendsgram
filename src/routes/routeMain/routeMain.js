@@ -151,17 +151,17 @@ const RouteMain = ({
       <ContainerHeader />
 
       <NavRouter
-        // usersList={usersList}
-        // followingList={followingList}
-        // followerList={followerList}
-        // currentUserUid={currentUserUid}
-        // handlePostMenu={handlePostMenu}
-        // handleFollow={handleFollow}
-        // handleSend={handleSend}
-        // bookMarkPostIds={bookMarkPostIds}
-        // setClickedPostId={setClickedPostId}
-        // setClickedPostUid={setClickedPostUid}
-        setIsFollow={setIsFollow}
+      // usersList={usersList}
+      // followingList={followingList}
+      // followerList={followerList}
+      // currentUserUid={currentUserUid}
+      // handlePostMenu={handlePostMenu}
+      // handleFollow={handleFollow}
+      // handleSend={handleSend}
+      // bookMarkPostIds={bookMarkPostIds}
+      // setClickedPostId={setClickedPostId}
+      // setClickedPostUid={setClickedPostUid}
+      // setIsFollow={setIsFollow}
       />
       <MainFooter />
     </AppContainer>

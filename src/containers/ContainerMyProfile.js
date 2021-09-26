@@ -10,7 +10,9 @@ import {
 import getBookMarkPostIds from "../service/bookMark/getBookMarkPostIds";
 import { authGetUid } from "../service/auth/authGetUid";
 import { clickedPostId, clickedPostUid } from "../redux/modules/post/clickPost";
-const ContainerMyProfile = ({ setIsFollow }) => {
+import { isFollowState } from "../redux/modules/follow/isFollow";
+
+const ContainerMyProfile = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,6 +32,7 @@ const ContainerMyProfile = ({ setIsFollow }) => {
   const changeSendModal = () => dispatch(changeSendModalState());
   const setClickedPostId = (postId) => dispatch(clickedPostId(postId));
   const setClickedPostUid = (postUid) => dispatch(clickedPostUid(postUid));
+  const setIsFollow = (isFollow) => dispatch(isFollowState(isFollow));
 
   const followingList = useSelector(
     (state) => state.followingList.followingList.followingList
@@ -55,7 +58,6 @@ const ContainerMyProfile = ({ setIsFollow }) => {
       currentUserUid={currentUserUid}
       setClickedPostId={setClickedPostId}
       setClickedPostUid={setClickedPostUid}
-      //
       setIsFollow={setIsFollow}
     />
   );

@@ -75,7 +75,7 @@ const NavRouter = ({
           setClickedPostUid={setClickedPostUid}
           setIsFollow={setIsFollow}
         /> */}
-        <ContainerMyProfile setIsFollow={setIsFollow} />
+        <ContainerMyProfile />
       </Route>
       <Route render={() => <EmptyPage />} />
     </Switch>
