@@ -1,8 +1,8 @@
 import getBookMarkPostIds from "../../../service/bookMark/getBookMarkPostIds";
 
-const BOOKMARKPOSTIDS = "bookMarkPostIds/BOOKMARKPOSTID";
-const BOOKMARKPOSTIDS_SUCCESS = "bookMarkPostIds/BOOKMARKPOSTID_SUCCESS";
-const BOOKMARKPOSTIDS_ERROR = "bookMarkPostIds/BOOKMARKPOSTID_ERROR";
+const BOOKMARKPOSTIDS = "bookMarkPostIds/BOOKMARKPOSTIDS";
+const BOOKMARKPOSTIDS_SUCCESS = "bookMarkPostIds/BOOKMARKPOSTIDS_SUCCESS";
+const BOOKMARKPOSTIDS_ERROR = "bookMarkPostIds/BOOKMARKPOSTIDS_ERROR";
 
 export const getBookMarkPostIdAsync = () => async (dispatch) => {
   await dispatch({ type: BOOKMARKPOSTIDS });

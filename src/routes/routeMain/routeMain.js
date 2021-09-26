@@ -11,7 +11,6 @@ import { authGetUid } from "../../service/auth/authGetUid";
 import ProgressBar from "../../componet/ProgressBar/ProgressBar";
 // import Message from "../../Global/Message/Message";
 import PostMenu from "../../componet/PostMenu/PostMenu";
-import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
 import FollowView from "../../componet/FollowView/FollowView";
 import Send from "../../componet/Send/Send";
 import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
@@ -53,7 +52,7 @@ const RouteMain = ({
   const [followerList, setFollowerList] = useState([]);
   const [clickedPostId, setClickedPostId] = useState("");
   const [clickedPostUid, setClickedPostUid] = useState("");
-  const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
+  // const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
   // const [uploadModal, setUploadModal] = useState(false);
   // const [locationModal, setLocationModal] = useState(false);
   // const [postMenuModal, setPostMenuModal] = useState(false);
@@ -71,16 +70,10 @@ const RouteMain = ({
   // 메세지 카운트
 
   useEffect(() => {
-    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
-
     authGetUid(setCurrentUserUid);
     getUsersList(setUsersList);
     getFollowingList(setFollowingList);
     getFollowerList(setFollowerList);
-
-    return () => {
-      bookMark();
-    };
   }, []);
 
   useEffect(() => {
@@ -172,7 +165,7 @@ const RouteMain = ({
         handlePostMenu={handlePostMenu}
         handleFollow={handleFollow}
         handleSend={handleSend}
-        bookMarkPostIds={bookMarkPostIds}
+        // bookMarkPostIds={bookMarkPostIds}
         setClickedPostId={setClickedPostId}
         setClickedPostUid={setClickedPostUid}
         setIsFollow={setIsFollow}

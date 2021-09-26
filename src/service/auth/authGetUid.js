@@ -1,6 +1,6 @@
 import { firebaseAuth } from "../firebase";
 
-export const authGetUid = (setCurrentUserUid) => {
+export const authGetUid = (dispatch, type) => {
   const currentUserUid = firebaseAuth.currentUser.uid;
-  setCurrentUserUid(currentUserUid);
-}
+  dispatch({ type, currentUserUid });
+};

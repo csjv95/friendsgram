@@ -97,7 +97,7 @@ const PostCol = ({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const BOOKMARKPOSTIDS_SUCCESS = "bookMarkPostIds/BOOKMARKPOSTID_SUCCESS";
+    const BOOKMARKPOSTIDS_SUCCESS = "bookMarkPostIds/BOOKMARKPOSTIDS_SUCCESS";
 
     getMatchUid(uid, setMatchUser);
     const heart = getHeart(setHeartData);

@@ -7,6 +7,7 @@ import {
   changeFollowModalState,
   changeSendModalState,
 } from "../redux/modules/modals/modalState";
+import getBookMarkPostIds from "../service/bookMark/getBookMarkPostIds";
 
 const ContainerMyProfile = ({
   setClickedPostId,
@@ -19,9 +20,11 @@ const ContainerMyProfile = ({
   useEffect(() => {
     const FOLLOWINGLIST_SUCCESS = "followingList/FOLLOWINGLIST_SUCCESS";
     const FOLLOWERLIST_SUCCESS = "follwerList/FOLLOWERLIST_SUCCESS";
+    const BOOKMARKPOSTIDS_SUCCESS = "bookMarkPostIds/BOOKMARKPOSTIDS_SUCCESS";
 
     getFollowingList(dispatch, FOLLOWINGLIST_SUCCESS);
     getFollowerList(dispatch, FOLLOWERLIST_SUCCESS);
+    getBookMarkPostIds(dispatch, BOOKMARKPOSTIDS_SUCCESS);
   }, [dispatch]);
 
   const changePostModal = () => dispatch(changeFollowModalState());
