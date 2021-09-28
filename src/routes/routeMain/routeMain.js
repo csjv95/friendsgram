@@ -15,6 +15,7 @@ import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceT
 import ContainerHeader from "../../containers/ContainerHeader";
 import ContainerUpload from "../../containers/modals/ContainerUpload";
 import ContainerPostMenu from "../../containers/modals/ContainerPostMenu";
+import ContainerFollowView from "../../containers/modals/ContainerFollowView";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -43,12 +44,12 @@ const RouteMain = ({
   const postMenu = document.getElementById("postMenu");
   const follow = document.getElementById("follow");
   const send = document.getElementById("send");
-  const [isFollow, setIsFollow] = useState("");
+  // const [isFollow, setIsFollow] = useState("");
   // const [currentUserUid, setCurrentUserUid] = useState("");
   // const [userData, setUserData] = useState([]);
-  const [usersList, setUsersList] = useState([]);
-  const [followingList, setFollowingList] = useState([]);
-  const [followerList, setFollowerList] = useState([]);
+  // const [usersList, setUsersList] = useState([]);
+  // const [followingList, setFollowingList] = useState([]);
+  // const [followerList, setFollowerList] = useState([]);
   // const [clickedPostId, setClickedPostId] = useState("");
   // const [clickedPostUid, setClickedPostUid] = useState("");
   // const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
@@ -69,9 +70,9 @@ const RouteMain = ({
   // 메세지 카운트
 
   useEffect(() => {
-    getUsersList(setUsersList);
-    getFollowingList(setFollowingList);
-    getFollowerList(setFollowerList);
+    // getUsersList(setUsersList);
+    // getFollowingList(setFollowingList);
+    // getFollowerList(setFollowerList);
   }, []);
 
   useEffect(() => {
@@ -130,13 +131,14 @@ const RouteMain = ({
 
       {followModal && (
         <ModalPotal potalName={follow}>
-          <FollowView
+          {/* <FollowView
             followerList={followerList}
             followingList={followingList}
             usersList={usersList}
             handleFollow={handleFollow}
             isFollow={isFollow}
-          />
+          /> */}
+          <ContainerFollowView />
         </ModalPotal>
       )}
 

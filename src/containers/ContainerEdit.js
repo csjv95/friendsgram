@@ -1,17 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Edit from "../componet/Edit/Edit";
 import LoadingPage from "../Global/Loading/LoadingPage";
+import getCurrentUserData from "../service/fireStore/getCurrentUserData";
 
 const ContainerEdit = () => {
-  // routeMain에서 하지말고 여기서 하기
-  // useEffect(() => {
-  //   const getUserData = () => dispatch(getUserDataAsync());
+  const dispatch = useDispatch();
 
-  //   return () => {
-  //     getUserData();
-  //   };
-  // }, [dispatch]);
+  useEffect(() => {
+    const GET_USER_DATA_SUCCESS = "userData/GET_USER_DATA_SUCCESS";
+
+    getCurrentUserData(dispatch, GET_USER_DATA_SUCCESS);
+  }, [dispatch]);
 
   const {
     data: userData,

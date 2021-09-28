@@ -37,7 +37,7 @@ const getPostData = async (setPostData, followingList) => {
   postData.sort((a, b) => {
     return b.timestamp - a.timestamp;
   });
-  
+
   setPostData(postData);
 };
 

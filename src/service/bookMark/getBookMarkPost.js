@@ -3,7 +3,7 @@ import { firebaseStore } from "../firebase";
 
 const getBookMarkPost = (bookMarkPostIds, setBookMarkPosts) => {
   const sum = [];
-  console.log("here", bookMarkPostIds);
+
   if (!bookMarkPostIds) return <LoadingPage />;
   firebaseStore.collection("bookMark").onSnapshot(
     bookMarkPostIds.map((postId) =>

@@ -7,7 +7,8 @@ const postDataToStore = (text, noComments, location, postId) => {
   const uid = currentUser.uid;
   const displayName = currentUser.displayName;
   const postData = firebaseStore.collection("post").doc(postId);
- 
+  console.log("postId", postId);
+
   postData.set({
     postId,
     imgsData: [],
