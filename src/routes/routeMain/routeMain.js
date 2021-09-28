@@ -16,6 +16,7 @@ import ContainerHeader from "../../containers/ContainerHeader";
 import ContainerUpload from "../../containers/modals/ContainerUpload";
 import ContainerPostMenu from "../../containers/modals/ContainerPostMenu";
 import ContainerFollowView from "../../containers/modals/ContainerFollowView";
+import ContainerSend from "../../containers/modals/ContainerSend";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -65,15 +66,9 @@ const RouteMain = ({
   // const [noComments, setNoComments] = useState(false);
 
   // const [progressBar, setProgressBar] = useState(0);
-  const [roomId, setRoomId] = useState("");
+  // const [roomId, setRoomId] = useState("");
   const [token, setToken] = useState("");
   // 메세지 카운트
-
-  useEffect(() => {
-    // getUsersList(setUsersList);
-    // getFollowingList(setFollowingList);
-    // getFollowerList(setFollowerList);
-  }, []);
 
   useEffect(() => {
     saveMessagingDeviceToken(setToken);
@@ -95,9 +90,9 @@ const RouteMain = ({
   //   changePostModal();
   // };
 
-  const handleFollow = () => {
-    changeFollowModal();
-  };
+  // const handleFollow = () => {
+  //   changeFollowModal();
+  // };
 
   const handleSend = () => {
     changeSendModal();
@@ -144,7 +139,7 @@ const RouteMain = ({
 
       {sendModal && (
         <ModalPotal potalName={send}>
-          <Send handleSend={handleSend} roomId={roomId} setRoomId={setRoomId} />
+          <ContainerSend />
         </ModalPotal>
       )}
 
