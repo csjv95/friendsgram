@@ -4,19 +4,15 @@ import NavRouter from "../navRouter/navRouter";
 import styled from "styled-components";
 import ModalPotal from "../../modal/ModalPotal";
 import Location from "../../componet/Location/Location";
-import getUsersList from "../../service/fireStore/getUsersList";
-import getFollowingList from "../../service/follow/getFollowingList";
-import getFollowerList from "../../service/follow/getFollowerList";
 import ProgressBar from "../../componet/ProgressBar/ProgressBar";
 // import Message from "../../Global/Message/Message";
-import FollowView from "../../componet/FollowView/FollowView";
-import Send from "../../componet/Send/Send";
 import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
 import ContainerHeader from "../../containers/ContainerHeader";
 import ContainerUpload from "../../containers/modals/ContainerUpload";
 import ContainerPostMenu from "../../containers/modals/ContainerPostMenu";
 import ContainerFollowView from "../../containers/modals/ContainerFollowView";
 import ContainerSend from "../../containers/modals/ContainerSend";
+import ContainerLocation from "../../containers/modals/ContainerLocation";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -32,12 +28,12 @@ const RouteMain = ({
   postModal,
   followModal,
   sendModal,
-  changeLocationModal,
-  changePostModal,
-  changeFollowModal,
-  changeSendModal,
   progressState,
-  userData,
+  // changeLocationModal,
+  // changePostModal,
+  // changeFollowModal,
+  // changeSendModal,
+  // userData,
 }) => {
   const upload = document.getElementById("upload");
   const address = document.getElementById("address");
@@ -60,7 +56,7 @@ const RouteMain = ({
   // const [followModal, setFollowModal] = useState(false);
   // const [sendModal, setSendModal] = useState(false);
   // // const [messageModal, setMessageModal] = useState(false);
-  const [location, setLocation] = useState("");
+  // const [location, setLocation] = useState("");
   // const [imgs, setImgs] = useState([]);
   // const [text, setText] = useState("");
   // const [noComments, setNoComments] = useState(false);
@@ -78,9 +74,9 @@ const RouteMain = ({
   //   changeUploadModal();
   // };
 
-  const handleLocation = () => {
-    changeLocationModal();
-  };
+  // const handleLocation = () => {
+  //   changeLocationModal();
+  // };
 
   // const handleMessage = () => {
   //   setMessageModal(!message);
@@ -94,21 +90,21 @@ const RouteMain = ({
   //   changeFollowModal();
   // };
 
-  const handleSend = () => {
-    changeSendModal();
-  };
+  // const handleSend = () => {
+  //   changeSendModal();
+  // };
 
   return (
     <AppContainer>
       {uploadModal && (
         <ModalPotal potalName={upload}>
-          <ContainerUpload location={location} setLocation={setLocation} />
+          <ContainerUpload />
         </ModalPotal>
       )}
 
       {locationModal && (
         <ModalPotal potalName={address}>
-          <Location handleLocation={handleLocation} setLocation={setLocation} />
+          <ContainerLocation />
         </ModalPotal>
       )}
 
