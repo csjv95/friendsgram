@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import googleAuth from "../../service/google_auth";
 import LoginFooter from "../../Global/LoginFooter/LoginFooter";
 import authLogin from "../../service/auth/authLogin";
-
+import { useHistory } from "react-router";
 import {
   StContainerDiv,
   StLoginSection,
@@ -28,6 +28,7 @@ const Login = () => {
     id: "",
     pw: "",
   });
+  const history = useHistory();
 
   const inputOnChange = (event) => {
     const name = event.target.name;
@@ -42,7 +43,7 @@ const Login = () => {
 
   const onLogin = (event) => {
     event.preventDefault();
-    authLogin(userLoginData);
+    authLogin(userLoginData, history);
   };
 
   return (

@@ -22,7 +22,6 @@ const AppContainer = styled.div`
 
 const RouteMain = ({
   isLogin,
-  loading,
   uploadModal,
   locationModal,
   postModal,
@@ -36,7 +35,6 @@ const RouteMain = ({
   const follow = document.getElementById("follow");
   const send = document.getElementById("send");
 
-  if (loading) return <LoadingPage />;
   return (
     <AppContainer>
       {uploadModal && (
@@ -72,7 +70,7 @@ const RouteMain = ({
       {progressState !== 0 && <ProgressBar progressState={progressState} />}
 
       {isLogin && <ContainerHeader />}
-      <NavRouter />
+      <NavRouter isLogin={isLogin} />
       {isLogin && <MainFooter />}
     </AppContainer>
   );

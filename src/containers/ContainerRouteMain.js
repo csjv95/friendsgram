@@ -25,9 +25,6 @@ const ContainerRouteMain = () => {
         // User is signed in.
         dispatch(loginAsync());
         saveMessagingDeviceToken(setToken);
-        history.push({
-          pathname: "/",
-        });
       } else {
         // No user is signed in
         console.log("logOut");

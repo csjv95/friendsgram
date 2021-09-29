@@ -132,7 +132,7 @@ const PostCol = ({
     (state) => state.bookMarkPostIds.bookMarkPostIds.bookMarkPostIds
   );
   // container 만들면 지우기
-  if (!bookMarkPostIds) return <div>hello</div>;
+  if (!bookMarkPostIds) return <div>postCol에 있어</div>;
 
   const functionList = [
     {
