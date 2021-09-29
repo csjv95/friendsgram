@@ -7,9 +7,7 @@ import Login from "../../componet/Login/Login";
 const RouteLogin = () => {
   return (
     <Switch>
-      <Route path="/" exact>
-        <Login />
-      </Route>
+      <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <Route path="/facebook" component={FacebookLogin} />
     </Switch>

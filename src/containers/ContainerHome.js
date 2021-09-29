@@ -51,8 +51,8 @@ const ContainerHome = () => {
       usersList={usersList}
       followingList={followingList}
       handlePostMenu={changePostModal}
-      setClickedPostId={setClickedPostId} //이것들은 데이터 표시를 바꿔줘야함 지금은 저장만한거임
-      setClickedPostUid={setClickedPostUid} //
+      setClickedPostId={setClickedPostId}
+      setClickedPostUid={setClickedPostUid}
       changeSendModal={changeSendModal}
     />
   );

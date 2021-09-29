@@ -1,10 +1,20 @@
 const LOGIN = "isLogin/login";
+const LOGIN_SUCCESS = "isLogin/LOGIN_SUCCESS";
+const LOGIN_ERROR = "isLogin/LOGIN_ERROR";
 
-export const login = () => ({ type: LOGIN });
+export const loginAsync = () => async (dispatch) => {
+  await dispatch({ type: LOGIN });
+  try {
+    dispatch({ type: LOGIN_SUCCESS });
+  } catch (error) {
+    dispatch({ type: LOGIN_ERROR, error });
+  }
+};
 
 const initialState = {
   isLogin: false,
-  loding: true,
+  loading: false,
+  error: null,
 };
 
 const loginState = (state = initialState, action) => {
@@ -12,8 +22,19 @@ const loginState = (state = initialState, action) => {
     case LOGIN:
       return {
         ...state,
-        isLogin: true,
+        loading: true,
+      };
+
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
         loading: false,
+        isLogin: true,
+      };
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        error: action.error,
       };
     default:
       return state;

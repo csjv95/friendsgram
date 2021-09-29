@@ -1,16 +1,17 @@
-import React from "react";
-import MainFooter from "../../Global/MainFooter/MainFooter";
-import NavRouter from "../navRouter/navRouter";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import MainFooter from "../../Global/MainFooter/MainFooter";
+import NavRouter from "../../routes/navRouter/navRouter";
 import ModalPotal from "../../modal/ModalPotal";
 import ProgressBar from "../../componet/ProgressBar/ProgressBar";
+// import Message from "../../Global/Message/Message";
+import saveMessagingDeviceToken from "../../service/message/saveMessagingDeviceToken";
 import ContainerHeader from "../../containers/ContainerHeader";
 import ContainerUpload from "../../containers/modals/ContainerUpload";
 import ContainerPostMenu from "../../containers/modals/ContainerPostMenu";
 import ContainerFollowView from "../../containers/modals/ContainerFollowView";
 import ContainerSend from "../../containers/modals/ContainerSend";
 import ContainerLocation from "../../containers/modals/ContainerLocation";
-import LoadingPage from "../../Global/Loading/LoadingPage";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -20,9 +21,7 @@ const AppContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-const RouteMain = ({
-  isLogin,
-  loading,
+const Main = ({
   uploadModal,
   locationModal,
   postModal,
@@ -35,8 +34,12 @@ const RouteMain = ({
   const postMenu = document.getElementById("postMenu");
   const follow = document.getElementById("follow");
   const send = document.getElementById("send");
+  const [token, setToken] = useState("");
 
-  if (loading) return <LoadingPage />;
+  useEffect(() => {
+    saveMessagingDeviceToken(setToken);
+  }, [token]);
+
   return (
     <AppContainer>
       {uploadModal && (
@@ -50,6 +53,12 @@ const RouteMain = ({
           <ContainerLocation />
         </ModalPotal>
       )}
+
+      {/* {messageModal && (
+        <ModalPotal potalName={message}>
+          <Message />
+        </ModalPotal>
+      )} */}
 
       {postModal && (
         <ModalPotal potalName={postMenu}>
@@ -69,13 +78,13 @@ const RouteMain = ({
         </ModalPotal>
       )}
 
-      {progressState !== 0 && <ProgressBar progressState={progressState} />}
+      {progressState && <ProgressBar progressState={progressState} />}
 
-      {isLogin && <ContainerHeader />}
+      <ContainerHeader />
       <NavRouter />
-      {isLogin && <MainFooter />}
+      <MainFooter />
     </AppContainer>
   );
 };
 
-export default RouteMain;
+export default Main;

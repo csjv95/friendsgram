@@ -1,10 +1,10 @@
 import { firebaseAuth } from "../firebase";
 
-const authCheckUser = (changeLoginState) => {
+const authCheckUser = (dispatch, type) => {
   firebaseAuth.onAuthStateChanged((user) => {
     if (user) {
       // User is signed in.
-      changeLoginState();
+      dispatch({ type });
     } else {
       // No user is signed in
       console.log("logOut");

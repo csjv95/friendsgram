@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changeLocationModalState,
@@ -7,36 +7,11 @@ import {
   changeSendModalState,
 } from "../redux/modules/modals/modalState";
 import { barState } from "../redux/modules/progressBar/progressBar";
-import RouteMain from "../routes/routeMain/routeMain";
 import LoadingPage from "../Global/Loading/LoadingPage";
-import { useHistory } from "react-router";
-import { firebaseAuth } from "../service/firebase";
-import saveMessagingDeviceToken from "../service/message/saveMessagingDeviceToken";
-import { loginAsync } from "../redux/modules/auth/isLogin";
+import Main from "../componet/Main/Main";
 
-const ContainerRouteMain = () => {
-  const [token, setToken] = useState("");
+const ContainerMain = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
-
-  useEffect(() => {
-    firebaseAuth.onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in.
-        dispatch(loginAsync());
-        saveMessagingDeviceToken(setToken);
-        history.push({
-          pathname: "/",
-        });
-      } else {
-        // No user is signed in
-        console.log("logOut");
-        history.push({
-          pathname: "/login",
-        });
-      }
-    });
-  }, [dispatch, history, token]);
 
   const changeLocationModal = () => dispatch(changeLocationModalState());
   const changePostModal = () => dispatch(changePostModalState());
@@ -66,20 +41,15 @@ const ContainerRouteMain = () => {
     error: userDataError,
   } = useSelector((state) => state.userData.userData);
 
-  const { isLogin, loading, error } = useSelector((state) => state.loginState);
-
   if (userDataError) return <div>{userDataError}</div>;
   // loading true
   if (userDataLoading) return <LoadingPage />;
   // no data
   if (!userData) return <div>데이터가 존재하지 않음</div>;
   // data
-  if (error) return <div>{error}</div>;
 
   return (
-    <RouteMain
-      isLogin={isLogin}
-      loading={loading}
+    <Main
       uploadModal={uploadModal}
       locationModal={locationModal}
       postModal={postModal}
@@ -96,4 +66,4 @@ const ContainerRouteMain = () => {
   );
 };
 
-export default ContainerRouteMain;
+export default ContainerMain;
