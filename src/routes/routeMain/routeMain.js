@@ -10,7 +10,6 @@ import ContainerPostMenu from "../../containers/modals/ContainerPostMenu";
 import ContainerFollowView from "../../containers/modals/ContainerFollowView";
 import ContainerSend from "../../containers/modals/ContainerSend";
 import ContainerLocation from "../../containers/modals/ContainerLocation";
-import LoadingPage from "../../Global/Loading/LoadingPage";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -70,7 +69,7 @@ const RouteMain = ({
       {progressState !== 0 && <ProgressBar progressState={progressState} />}
 
       {isLogin && <ContainerHeader />}
-      <NavRouter isLogin={isLogin} />
+      <NavRouter />
       {isLogin && <MainFooter />}
     </AppContainer>
   );

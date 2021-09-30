@@ -111,7 +111,7 @@ const SignUp = () => {
           />
           <StLoginInput
             type="password"
-            autocomplete="current-password"
+            autoComplete="current-password"
             placeholder="비밀번호"
             name="password"
             value={userData.password}

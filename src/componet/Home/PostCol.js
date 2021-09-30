@@ -183,6 +183,7 @@ const PostCol = ({
 
   const commentKeyDown = (event) => {
     if (event.code === "Enter" && event.shiftKey) {
+      console.log(event.target.value);
       setComment(event.target.value, "\n");
     } else if (event.code === "Enter") {
       sendComment(event);

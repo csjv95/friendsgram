@@ -44,6 +44,7 @@ import { StProfileImg } from "../StProfileImg/StProfileImg";
 import StButton from "../../Global/StButton/StButton";
 import setComments from "../../service/comments/setComments";
 import getComments from "../../service/comments/getComments";
+import { useDispatch, useSelector } from "react-redux";
 
 const StPostArticle = styled.article`
   width: 65%;
@@ -74,25 +75,28 @@ const PostRow = ({
   const { photoURL } = userData;
   const [heartData, setHeartData] = useState([]);
   const [heartLength, setHeartLength] = useState([]);
-  const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
+  // const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
   const [comment, setComment] = useState("");
   const [allComment, setAllComment] = useState([]);
   const justTextRef = useRef();
   const moreTextRef = useRef();
   const [viewEomji, setViewEmoji] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    const BOOKMARKPOSTIDS_SUCCESS = "bookMarkPostIds/BOOKMARKPOSTIDS_SUCCESS";
     getUserData(uid, setUserData);
     const heart = getHeart(setHeartData);
-    const bookMark = getBookMarkPostIds(setBookMarkPostIds);
+    // const bookMark = getBookMarkPostIds(setBookMarkPostIds);
+    getBookMarkPostIds(dispatch, BOOKMARKPOSTIDS_SUCCESS);
     const heartLength = getHeartLength(postId, setHeartLength);
 
     return () => {
       heart();
-      bookMark();
+      // bookMark();
       heartLength();
     };
-  }, [uid, postId]);
+  }, [dispatch, uid, postId]);
 
   useEffect(() => {
     const comments = getComments(postId, setAllComment);
@@ -101,6 +105,12 @@ const PostRow = ({
       comments();
     };
   }, [postId, uid]);
+
+  const bookMarkPostIds = useSelector(
+    (state) => state.bookMarkPostIds.bookMarkPostIds.bookMarkPostIds
+  );
+
+  if (!bookMarkPostIds) return <div>postCol에 있어</div>;
 
   const functionList = [
     {

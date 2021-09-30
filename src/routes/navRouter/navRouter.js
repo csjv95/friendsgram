@@ -12,13 +12,13 @@ import SignUp from "../../componet/SignUp/SignUp";
 import { useSelector } from "react-redux";
 import LoadingPage from "../../Global/Loading/LoadingPage";
 
-const NavRouter = ({ isLogin }) => {
-  // const isLogin = useSelector((state) => state.loginState.isLogin);
+const NavRouter = () => {
+  const isLogin = useSelector((state) => state.loginState.isLogin);
 
   return isLogin ? (
     <Switch>
       <Route exact path="/" component={ContainerHome} />)
-      <Route exact path="/direct" component={ContainerDirect} />
+      <Route path="/direct" component={ContainerDirect} />
       <Route path="/post" component={Upload} />)
       <Route path="/suggest" component={ContainerSuggest} />
       <Route path="/edit" component={ContainerEdit} />)
