@@ -4,6 +4,7 @@ import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRout
 import getPostData from "../../service/fireStore/getPostData";
 import PostCol from "./PostCol";
 import HomeFollow from "./HomeFollow";
+import ContainerPostCol from "../../containers/post/ContainerPostCol";
 
 const StHomeContainer = styled.section`
   margin: 0 auto;
@@ -41,7 +42,7 @@ const Home = ({
       <StHomeContainer>
         <StArticleList>
           {postData.map((article, index) => (
-            <PostCol
+            <ContainerPostCol
               key={index}
               article={article}
               followingList={followingList}

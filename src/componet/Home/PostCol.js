@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
@@ -46,6 +47,7 @@ import StButton from "../../Global/StButton/StButton";
 import setComments from "../../service/comments/setComments";
 import getComments from "../../service/comments/getComments";
 import { useDispatch, useSelector } from "react-redux";
+import LoadingSpinner from "../../Global/Loading/LoadingSpinner";
 
 const StArticleItem = styled.li`
   margin-right: 2em;
@@ -67,10 +69,10 @@ const ImageSliderContainer = styled.div`
 
 const PostCol = ({
   article,
-  handlePostMenu,
   setClickedPostId,
   setClickedPostUid,
-  changeSendModal,
+  handlePostMenu,
+  handleSend,
 }) => {
   const [match, setMatchUser] = useState({});
   const {
@@ -132,7 +134,7 @@ const PostCol = ({
     (state) => state.bookMarkPostIds.bookMarkPostIds.bookMarkPostIds
   );
   // container 만들면 지우기
-  if (!bookMarkPostIds) return <div>postCol에 있어</div>;
+  if (!bookMarkPostIds) return <LoadingSpinner />;
 
   const functionList = [
     {
@@ -166,7 +168,7 @@ const PostCol = ({
       clickHeart();
     } else if (index === 2) {
       // message 보내기 창
-      changeSendModal();
+      handleSend();
     } else if (index === 3) {
       clickBookMark();
     } else {
@@ -183,6 +185,7 @@ const PostCol = ({
   };
 
   const commentChange = (event) => {
+    // eslint-disable-next-line eqeqeq
     if (event.keyCode == "13") {
       setComment("");
     } else {

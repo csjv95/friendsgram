@@ -12,6 +12,7 @@ import bookMarkPostIds from "./bookMark/bookMarkPostIds";
 import currentUserUid from "./auth/currentUserUid";
 import isFollow from "./follow/isFollow";
 import location from "./location/location";
+import postData from "./post/postData";
 
 const rootReducer = combineReducers({
   loginState,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   currentUserUid,
   isFollow,
   location,
+  postData,
 });
 
 export default rootReducer;
