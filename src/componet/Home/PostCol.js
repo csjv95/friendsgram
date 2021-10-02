@@ -185,7 +185,6 @@ const PostCol = ({
   };
 
   const commentChange = (event) => {
-    // eslint-disable-next-line eqeqeq
     if (event.keyCode == "13") {
       setComment("");
     } else {
@@ -194,7 +193,6 @@ const PostCol = ({
   };
 
   const commentKeyDown = (event) => {
-    // console.log(event);
     if (event.keyCode == "13" && event.shiftKey) {
       setComment(event.target.value, "\n");
     } else if (event.keyCode == "13") {

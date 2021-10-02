@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 import getPostData from "../../service/fireStore/getPostData";
-import PostCol from "./PostCol";
 import HomeFollow from "./HomeFollow";
 import ContainerPostCol from "../../containers/post/ContainerPostCol";
 

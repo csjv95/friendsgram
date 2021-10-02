@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import getBookMarkPostIds from "../../service/bookMark/getBookMarkPostIds";
@@ -64,9 +65,9 @@ const StPostAside = styled.aside`
 const PostRow = ({
   post,
   currentUserUid,
-  handlePostMenu,
   setClickedPostId,
   setClickedPostUid,
+  handlePostMenu,
   handleSend,
 }) => {
   const { uid, text, timestamp, postId, displayName, location, noComments } =
@@ -152,15 +153,25 @@ const PostRow = ({
   };
 
   const sendComment = (event) => {
+    console.log(event.target.value);
     event.preventDefault();
     setComments(postId, uid, comment);
     setComment("");
+    viewEomji && setViewEmoji(!viewEomji);
+  };
+
+  const commentChange = (event) => {
+    if (event.keyCode == "13") {
+      setComment("");
+    } else {
+      setComment(event.target.value);
+    }
   };
 
   const commentKeyDown = (event) => {
-    if (event.code === "Enter" && event.shiftKey) {
+    if (event.keyCode == "13" && event.shiftKey) {
       setComment(event.target.value, "\n");
-    } else if (event.code === "Enter") {
+    } else if (event.keyCode == "13") {
       sendComment(event);
     }
   };
@@ -308,7 +319,7 @@ const PostRow = ({
               padding="1em 0 0 0 "
               flexGrow="1"
               value={comment}
-              onChange={(event) => setComment(event.target.value)}
+              onChange={(event) => commentChange(event)}
               onKeyDown={(event) => commentKeyDown(event)}
             />
             <button>게시</button>

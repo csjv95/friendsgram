@@ -89,7 +89,11 @@ const PostMenu = ({
                 <StButton
                   width="100%"
                   height="100%"
-                  btnText={item.text}
+                  btnText={
+                    item.index === 2 || item.index === 3
+                      ? `${item.text} (준비중입니다)`
+                      : item.text
+                  }
                   fontSize="1em"
                 />
               </StMenuItem>
@@ -107,7 +111,9 @@ const PostMenu = ({
                 <StButton
                   width="100%"
                   height="100%"
-                  btnText={item.text}
+                  btnText={
+                    item.index === 5 ? item.text : `${item.text} (준비중입니다)`
+                  }
                   fontSize="1em"
                 />
               </StMenuItem>

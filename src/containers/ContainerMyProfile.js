@@ -5,6 +5,7 @@ import getFollowingList from "../service/follow/getFollowingList";
 import getFollowerList from "../service/follow/getFollowerList";
 import {
   changeFollowModalState,
+  changePostModalState,
   changeSendModalState,
 } from "../redux/modules/modals/modalState";
 import getBookMarkPostIds from "../service/bookMark/getBookMarkPostIds";
@@ -27,7 +28,7 @@ const ContainerMyProfile = () => {
     authGetUid(dispatch, CURRENTUID);
   }, [dispatch]);
 
-  const changePostModal = () => dispatch(changeFollowModalState());
+  const changePostModal = () => dispatch(changePostModalState());
   const changeFollowModal = () => dispatch(changeFollowModalState());
   const changeSendModal = () => dispatch(changeSendModalState());
   const setClickedPostId = (postId) => dispatch(clickedPostId(postId));

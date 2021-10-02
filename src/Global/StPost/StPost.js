@@ -68,7 +68,7 @@ export const StFunctionList = styled.ul`
 `;
 
 export const StComments = styled.form`
-  position : ${({position}) => position};
+  position: ${({ position }) => position};
   padding: ${({ padding }) => padding};
   display: ${({ display }) => display};
   justify-content: ${({ justifyContent }) => justifyContent};
@@ -109,6 +109,7 @@ export const StMoreText = styled.div`
 
 export const StCommentContainer = styled.div`
   padding: ${({ padding }) => padding};
+  align-items: center;
   display: flex;
 `;
 
