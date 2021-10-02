@@ -9,7 +9,7 @@ const ImageWraper = styled.section`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  display :flex;
+  display: flex;
 `;
 
 const ImageList = styled.ul`
@@ -19,7 +19,8 @@ const ImageList = styled.ul`
 
 const ImageItem = styled.li`
   min-width: 100%;
-  min-height: 100%;
+  /* min-height: 100%; */
+  max-height: 40em;
 `;
 
 const Image = styled.img`
