@@ -64,7 +64,7 @@ const StHomeArticle = styled.article`
 
 const ImageSliderContainer = styled.div`
   max-width: 37.5em;
-  max-height: 40.5em;
+  /* max-height: 40.5em; */
 `;
 
 const PostCol = ({

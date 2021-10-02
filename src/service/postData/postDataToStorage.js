@@ -45,6 +45,7 @@ const postDataToStorage = async (imgs, postId, changeBarState) => {
                 imgUrl,
               }),
             });
+
           changeBarState(0);
           reload(1500);
         }
