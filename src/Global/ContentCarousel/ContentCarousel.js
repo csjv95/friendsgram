@@ -74,9 +74,9 @@ const ContentCarousel = ({
                   <PostRow
                     post={content}
                     currentUserUid={currentUserUid}
-                    handlePostMenu={handlePostMenu}
                     setClickedPostId={setClickedPostId}
                     setClickedPostUid={setClickedPostUid}
+                    handlePostMenu={handlePostMenu}
                     handleSend={handleSend}
                   />
                 </StModalMain>

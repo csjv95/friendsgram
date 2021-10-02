@@ -20,6 +20,7 @@ import getBookMarkPost from "../../service/bookMark/getBookMarkPost";
 import StButton from "../../Global/StButton/StButton";
 import { Theme } from "../../style/Theme";
 import setFollow from "../../service/follow/setFollow";
+import LoadingSpinner from "../../Global/Loading/LoadingSpinner";
 
 const StpPofileContainer = styled.section`
   margin: 0 auto;
@@ -272,18 +273,18 @@ const MyProfile = ({
                 currentUserUid={currentUserUid}
                 bookMarkPostIds={bookMarkPostIds}
                 postModal={postModal}
-                handlePost={handlePost}
                 bookMarkPosts={bookMarkPosts}
-                handlePostMenu={handlePostMenu}
                 setClickedPostId={setClickedPostId}
                 setClickedPostUid={setClickedPostUid}
+                handlePost={handlePost}
+                handlePostMenu={handlePostMenu}
                 handleSend={handleSend}
               />
             </section>
           </StpPofileContainer>
         </StMainRouterSection>
       ) : (
-        <EmptyPage />
+        <LoadingSpinner />
       )}
     </>
   );

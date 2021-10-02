@@ -10,8 +10,8 @@ const EditRouter = ({ userData }) => {
         <ChangeEdit userData={userData} />
       </Route>
       <Route path="/edit/password/change">
-        <ChangePw userData={userData}/>
-        </Route>
+        <ChangePw userData={userData} />
+      </Route>
     </Switch>
   );
 };

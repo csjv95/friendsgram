@@ -30,9 +30,9 @@ const Post = ({
         content={content}
         postId={postId}
         currentUserUid={currentUserUid}
-        handlePostMenu={handlePostMenu}
         setClickedPostId={setClickedPostId}
         setClickedPostUid={setClickedPostUid}
+        handlePostMenu={handlePostMenu}
         handleSend={handleSend}
       />
     </StModalContainer>

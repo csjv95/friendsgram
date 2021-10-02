@@ -49,13 +49,13 @@ const MyPost = ({
       {postModal && (
         <ModalPotal potalName={post}>
           <Post
-            handlePost={handlePost}
             content={myPostData}
             postId={postId}
             currentUserUid={currentUserUid}
-            handlePostMenu={handlePostMenu}
             setClickedPostId={setClickedPostId}
             setClickedPostUid={setClickedPostUid}
+            handlePost={handlePost}
+            handlePostMenu={handlePostMenu}
             handleSend={handleSend}
           />
         </ModalPotal>
