@@ -19,7 +19,8 @@ const ImageList = styled.ul`
 
 const ImageItem = styled.li`
   min-width: 100%;
-  min-height: 100%;
+  /* min-height: 100%; */
+  max-height: 40.5em;
 `;
 
 const Image = styled.img`
