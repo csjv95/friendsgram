@@ -175,17 +175,26 @@ const PostCol = ({
   };
 
   const sendComment = (event) => {
-    console.log(comment);
+    console.log(event.target.value);
     event.preventDefault();
     setComments(postId, uid, comment);
     setComment("");
+    viewEomji && setViewEmoji(!viewEomji);
+  };
+
+  const commentChange = (event) => {
+    if (event.keyCode == "13") {
+      setComment("");
+    } else {
+      setComment(event.target.value);
+    }
   };
 
   const commentKeyDown = (event) => {
-    if (event.code === "Enter" && event.shiftKey) {
-      console.log(event.target.value);
+    // console.log(event);
+    if (event.keyCode == "13" && event.shiftKey) {
       setComment(event.target.value, "\n");
-    } else if (event.code === "Enter") {
+    } else if (event.keyCode == "13") {
       sendComment(event);
     }
   };
@@ -325,7 +334,7 @@ const PostCol = ({
               padding="1em 0 0 0 "
               flexGrow="1"
               value={comment}
-              onChange={(event) => setComment(event.target.value)}
+              onChange={(event) => commentChange(event)}
               onKeyDown={(event) => commentKeyDown(event)}
             />
             <button onClick={sendComment}>제출</button>
