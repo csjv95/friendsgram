@@ -291,7 +291,7 @@ const PostCol = ({
           {/* allcooment가 3보다 크면 postRow보여주기 */}
 
           {allComment.map((item) => (
-            <StCommentContainer key={item.time}>
+            <StCommentContainer key={item.time} padding="0.2em 0">
               <StDisplayName>{item.displayName}</StDisplayName>
               <StComment>{item.comment}</StComment>
             </StCommentContainer>
