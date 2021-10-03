@@ -3,7 +3,7 @@ import ContainerRouteMain from "./containers/ContainerRouteMain";
 
 function App() {
   return <ContainerRouteMain />;
-  // main redux is finished
+  // start responsive version 3.0.0
 }
 
 export default App;
