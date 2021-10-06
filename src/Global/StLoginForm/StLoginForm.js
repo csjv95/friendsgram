@@ -28,8 +28,10 @@ export const StLoginFormUp = styled.form`
 `;
 
 export const StTitle = styled.h1`
+  margin: 1em;
   font-family: "Cookie", cursive;
   font-size: 3em;
+  font-weight: 600;
 `;
 
 export const StLoginInput = styled.input`
@@ -59,6 +61,12 @@ export const StAccessBtn = styled.button`
   border-radius: 0.3em;
   color: ${({ theme }) => theme.colors.textColorWhite};
   background-color: ${({ theme }) => theme.colors.skyblue};
+  font-weight: 600;
+  transition: color 300ms ease-in;
+
+  :hover {
+    color: blue;
+  }
 `;
 
 export const SyAccessDiv = styled.div`
