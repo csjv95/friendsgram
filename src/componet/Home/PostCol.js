@@ -50,12 +50,16 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingSpinner from "../../Global/Loading/LoadingSpinner";
 
 const StArticleItem = styled.li`
-  margin-right: 2em;
+  margin-right: 4em;
   margin-bottom: 4em;
   /* width: 38.375rem; */
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 0.2rem;
   background-color: ${({ theme }) => theme.colors.contentColor};
+
+  @media only screen and (max-width: 999px) {
+    margin-right: 0;
+  }
 `;
 
 const StHomeArticle = styled.article`
