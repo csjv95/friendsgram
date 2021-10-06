@@ -120,13 +120,13 @@ const SignUp = () => {
           />
           <StAccessBtn onClick={handleSubmit}>가입</StAccessBtn>
           <SyAccessDiv>
-            가입하면 Instagram의 약관, 데이터 정책 및 쿠키 정책에 동의하게
+            가입하면 Friendsgram 약관, 데이터 정책 및 쿠키 정책에 동의하게
             됩니다.
           </SyAccessDiv>
         </StLoginFormUp>
         <StLoginFormDown>
           <StSignUpSpan>
-            계정이 없으신가요? <Link to="/">로그인</Link>
+            계정이 있으신가요? <Link to="/login">로그인</Link>
           </StSignUpSpan>
         </StLoginFormDown>
       </StLoginSection>
