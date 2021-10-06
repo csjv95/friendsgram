@@ -17,6 +17,10 @@ const StButtonStyle = styled.button`
   font-weight: ${({ fontWeight }) => fontWeight};
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ color }) => color};
+
+  @media only screen and (max-width: 450px) {
+    font-size: 0.5em;
+  }
 `;
 
 const StButton = ({

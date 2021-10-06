@@ -13,11 +13,20 @@ import { useHistory } from "react-router";
 import { firebaseAuth } from "../service/firebase";
 import saveMessagingDeviceToken from "../service/message/saveMessagingDeviceToken";
 import { loginAsync } from "../redux/modules/auth/isLogin";
+import { useMediaQuery } from "react-responsive";
 
 const ContainerRouteMain = () => {
   const [token, setToken] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const pc = useMediaQuery({
+    query: "(min-width:1000px)",
+  });
+
+  const responsive = useMediaQuery({
+    query: "(max-width:999px)",
+  });
 
   useEffect(() => {
     firebaseAuth.onAuthStateChanged((user) => {
@@ -89,6 +98,8 @@ const ContainerRouteMain = () => {
       progressState={progressState}
       changeBarState={changeBarState}
       userData={userData}
+      pc={pc}
+      responsive={responsive}
     />
   );
 };

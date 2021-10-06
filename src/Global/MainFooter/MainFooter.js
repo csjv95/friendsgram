@@ -1,12 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import StButton from "../StButton/StButton";
 
 const FooterCotainer = styled.footer`
-  padding-top : 2em;
-  padding-bottom: 3em;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
   & :nth-child(n) {
     color: ${({ theme }) => theme.colors.textColorLihgtgrey};
+  }
+
+  @media only screen and (max-width: 450px) {
+    padding: 1rem;
+    font-size: 0.5rem;
   }
 `;
 
@@ -14,6 +20,8 @@ const FooterInfoCompany = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+
   & > :nth-child(n) {
     padding-right: 1em;
     font-size: small;
@@ -25,9 +33,16 @@ const FooterCopyRight = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
+
   & > :nth-child(n) {
     padding-right: 1em;
     font-size: small;
+  }
+
+  @media only screen and (max-width: 450px) {
+    & > :nth-child(n) {
+      padding-right: 0.5em;
+    }
   }
 `;
 
@@ -41,34 +56,34 @@ const MainFooter = () => {
     <FooterCotainer>
       <FooterInfoCompany>
         <li>
-          <button>소개</button>
+          <StButton btnText="소개" />
         </li>
         <li>
-          <button>블로그</button>
+          <StButton btnText="블로그" />
         </li>
         <li>
-          <button>채용정보</button>{" "}
+          <StButton btnText="채용정보" />
         </li>
         <li>
-          <button>도움말</button>
+          <StButton btnText="도움말" />
         </li>
         <li>
-          <button>API</button>
+          <StButton btnText="API" />
         </li>
         <li>
-          <button>개인정보처리방침</button>
+          <StButton btnText="개인정보처리방침" />
         </li>
         <li>
-          <button>약관</button>
+          <StButton btnText="약관" />
         </li>
         <li>
-          <button>인기계정</button>{" "}
+          <StButton btnText="인기계정" />
         </li>
         <li>
-          <button>해시태그</button>
+          <StButton btnText="해시태그" />
         </li>
         <li>
-          <button>위치</button>
+          <StButton btnText="위치" />
         </li>
       </FooterInfoCompany>
 

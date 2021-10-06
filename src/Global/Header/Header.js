@@ -33,11 +33,13 @@ const StHeaderContainer = styled.header`
   z-index: 100;
 `;
 
-const StHeaderLogo = styled.a`
+export const StHeaderLogo = styled.a`
+  width: ${({ width }) => width};
   font-family: "Cookie", cursive;
   font-size: 2em;
   color: ${({ theme }) => theme.colors.logoColor};
   text-decoration: none;
+  text-align: ${({ textAlign }) => textAlign};
 `;
 
 const StHeaderSearchLabel = styled.label`

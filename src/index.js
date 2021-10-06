@@ -11,6 +11,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import logger from "redux-logger";
 import ReduxThunk from "redux-thunk";
 import rootReducer from "./redux/modules";
+import GlobalStyles from "./Global/GlobalStyles/GlobalStyles";
 
 const store = createStore(
   rootReducer,
@@ -21,6 +22,7 @@ ReactDOM.render(
   <BrowserRouter>
     <ThemeProvider theme={Theme}>
       <Provider store={store}>
+        <GlobalStyles />
         <App />
       </Provider>
     </ThemeProvider>

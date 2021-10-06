@@ -13,12 +13,20 @@ const StHomeContainer = styled.section`
 const StArticleList = styled.ul`
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 600px) {
+    padding: 0 1em;
+  }
 `;
 
 const StFollowerCotainer = styled.section`
   width: 18.3125rem;
   display: flex;
   justify-content: center;
+
+  @media only screen and (max-width: 999px) {
+    display: none;
+  }
 `;
 
 const Home = ({
