@@ -10,8 +10,12 @@ import ContainerPostMenu from "../../containers/modals/ContainerPostMenu";
 import ContainerFollowView from "../../containers/modals/ContainerFollowView";
 import ContainerSend from "../../containers/modals/ContainerSend";
 import ContainerLocation from "../../containers/modals/ContainerLocation";
+import ResponsiveUpHeader from "../../Global/Header/ResponsiveUpHeader";
+import ResponsiveDownHeader from "../../Global/Header/ResponsiveDownHeader";
+import Empty from "../../Global/Empty/Empty";
 
 const AppContainer = styled.div`
+  position: relative;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -27,6 +31,8 @@ const RouteMain = ({
   followModal,
   sendModal,
   progressState,
+  pc,
+  responsive,
 }) => {
   const upload = document.getElementById("upload");
   const address = document.getElementById("address");
@@ -68,8 +74,10 @@ const RouteMain = ({
 
       {progressState !== 0 && <ProgressBar progressState={progressState} />}
 
-      {isLogin && <ContainerHeader />}
+      {isLogin && pc ? <ContainerHeader /> : <Empty></Empty>}
+      {isLogin && responsive ? <ResponsiveUpHeader /> : <Empty></Empty>}
       <NavRouter />
+      {isLogin && responsive ? <ResponsiveDownHeader /> : <Empty></Empty>}
       {isLogin && <MainFooter />}
     </AppContainer>
   );

@@ -15,7 +15,6 @@ body{
     sans-serif, "Cookie", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 ul{
