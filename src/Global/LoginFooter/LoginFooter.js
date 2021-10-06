@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const LoginFooter = () => {
   return (
-
     <StFooterEl>
       <StFooterUl>
         <StFooterLi>소개</StFooterLi>
@@ -42,25 +41,39 @@ const LoginFooter = () => {
 };
 
 const StFooterEl = styled.footer`
-  padding: 3em;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
+
+  @media only screen and (max-width: 450px) {
+    padding: 1rem;
+    font-size: 0.5rem;
+  }
 `;
 
 const StFooterUl = styled.ul`
   margin: 0.2em 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
   &:last-child {
     margin-top: 1em;
   }
 `;
 
 const StFooterLi = styled.li`
-  margin: 0 0.5em;
-  font-size: 0.7em;
+  margin: 0 0.5em 0.5em 0.5em;
+  font-size: 0.8em;
   color: ${({ theme }) => theme.colors.textColor};
+
+  @media only screen and (max-width: 450px) {
+    margin: 0 0.5em 1em 0.5em;
+    font-size: 0.5em;
+  }
 `;
 
 const StLanguage = styled.select`
@@ -68,6 +81,10 @@ const StLanguage = styled.select`
   background-color: transparent;
   font-size: 0.8em;
   color: ${({ theme }) => theme.colors.textColor};
+
+  @media only screen and (max-width: 450px) {
+    font-size: 0.5em;
+  }
 `;
 
 export default LoginFooter;
