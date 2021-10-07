@@ -33,17 +33,28 @@ import { CheckboxBlankCircle } from "@styled-icons/remix-line/CheckboxBlankCircl
 import { Check } from "@styled-icons/boxicons-regular/Check";
 import { FilePicture } from "@styled-icons/icomoon/FilePicture";
 import { Instagram } from "@styled-icons/bootstrap/Instagram";
+import { Home } from "@styled-icons/foundation/Home";
+import { SendPlane } from "@styled-icons/remix-fill/SendPlane";
 
 export const StInstagram = styled(Instagram)`
   width: ${({ width }) => width}em;
   height: ${({ height }) => height}em;
   color: ${({ color }) => color};
 `;
+
 export const StHomeIcon = styled(HomeAlt)`
   width: ${({ width }) => width}em;
 `;
 
+export const StFillHomeIcon = styled(Home)`
+  width: ${({ width }) => width}em;
+`;
+
 export const StSendIcon = styled(Send)`
+  width: ${({ width }) => width}em;
+`;
+
+export const StFillSendIcon = styled(SendPlane)`
   width: ${({ width }) => width}em;
 `;
 

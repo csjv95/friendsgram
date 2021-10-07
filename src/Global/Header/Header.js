@@ -10,6 +10,8 @@ import {
   StSettings,
   StTransfer,
   StLine,
+  StFillHomeIcon,
+  StFillSendIcon,
 } from "../StIcon/StIcon";
 import { StProfileImg } from "../StProfileImg/StProfileImg";
 import Search from "../../componet/Search/Search";
@@ -17,6 +19,7 @@ import { authLogout } from "../../service/auth/authLogout";
 import setSearchRecord from "../../service/search/setSearchRecord";
 import { StRectangle, StTriangle } from "../StBubbleChat/BubbleChat";
 import { Theme } from "../../style/Theme";
+import { useLocation } from "react-router";
 
 const StHeaderContainer = styled.header`
   width: 100%;
@@ -102,6 +105,14 @@ const Header = ({ handleUpload, userData, foregroundMessageCount }) => {
   const [search, setSearch] = useState(false); // when clcked the search input box show record
   const [searchText, setSearchText] = useState(""); //when typing at search input box
   const [profile, setProfile] = useState(false);
+  const loaction = useLocation().pathname;
+  console.log(loaction);
+
+  const navMenu = {
+    home: "/",
+    direct: "/direct",
+    profile: "/:username",
+  };
 
   const onSearchChange = (event) => {
     const text = event.target.value;
@@ -149,16 +160,24 @@ const Header = ({ handleUpload, userData, foregroundMessageCount }) => {
       <StHeaderNav>
         <StHeaderNavul>
           <StHeaderNavUlLi>
-            <NavLink exact to="/" activeStyle={activeStyle}>
-              <StHomeIcon width="1.5" />
+            <NavLink exact to="/">
+              {loaction === navMenu.home ? (
+                <StFillHomeIcon width="1.5" />
+              ) : (
+                <StHomeIcon width="1.5" />
+              )}
             </NavLink>
           </StHeaderNavUlLi>
           <StHeaderNavUlLi>
-            <NavLink exact to="/direct" activeStyle={activeStyle}>
+            <NavLink exact to="/direct">
               <span>
                 {foregroundMessageCount > 0 && foregroundMessageCount}
               </span>
-              <StSendIcon width="1.5" />
+              {loaction === navMenu.direct ? (
+                <StFillSendIcon width="1.5" />
+              ) : (
+                <StSendIcon width="1.5" />
+              )}
             </NavLink>
           </StHeaderNavUlLi>
           <StHeaderNavUlLi>
