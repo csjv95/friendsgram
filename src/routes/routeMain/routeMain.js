@@ -13,6 +13,7 @@ import ContainerLocation from "../../containers/modals/ContainerLocation";
 import ResponsiveUpHeader from "../../Global/Header/ResponsiveUpHeader";
 import ResponsiveDownHeader from "../../Global/Header/ResponsiveDownHeader";
 import Empty from "../../Global/Empty/Empty";
+import ContainerDownHeader from "../../containers/responsive/ContainerDownHeader";
 
 const AppContainer = styled.div`
   position: relative;
@@ -77,7 +78,7 @@ const RouteMain = ({
       {isLogin && pc ? <ContainerHeader /> : <Empty></Empty>}
       {isLogin && responsive ? <ResponsiveUpHeader /> : <Empty></Empty>}
       <NavRouter />
-      {isLogin && responsive ? <ResponsiveDownHeader /> : <Empty></Empty>}
+      {isLogin && responsive ? <ContainerDownHeader /> : <Empty></Empty>}
       {isLogin && <MainFooter />}
     </AppContainer>
   );

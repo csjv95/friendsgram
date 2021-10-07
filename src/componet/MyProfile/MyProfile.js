@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
-import EmptyPage from "../../Global/EmptyPage/EmptyPage";
 import Empty from "../../Global/Empty/Empty";
 import {
   StBookmarkIcon,

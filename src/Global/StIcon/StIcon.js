@@ -35,6 +35,11 @@ import { FilePicture } from "@styled-icons/icomoon/FilePicture";
 import { Instagram } from "@styled-icons/bootstrap/Instagram";
 import { Home } from "@styled-icons/foundation/Home";
 import { SendPlane } from "@styled-icons/remix-fill/SendPlane";
+import { Search } from "@styled-icons/bootstrap/Search";
+
+export const StSearch = styled(Search)`
+  width: ${({ width }) => width}em;
+`;
 
 export const StInstagram = styled(Instagram)`
   width: ${({ width }) => width}em;

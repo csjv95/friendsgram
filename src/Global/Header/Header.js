@@ -20,6 +20,7 @@ import setSearchRecord from "../../service/search/setSearchRecord";
 import { StRectangle, StTriangle } from "../StBubbleChat/BubbleChat";
 import { Theme } from "../../style/Theme";
 import { useLocation } from "react-router";
+import { StHeaderLogo } from "../Logo/StHeaderLogo";
 
 const StHeaderContainer = styled.header`
   width: 100%;
@@ -34,15 +35,6 @@ const StHeaderContainer = styled.header`
   margin-bottom: 4em;
   background-color: ${({ theme }) => theme.colors.contentColor};
   z-index: 100;
-`;
-
-export const StHeaderLogo = styled.a`
-  width: ${({ width }) => width};
-  font-family: "Cookie", cursive;
-  font-size: 2em;
-  color: ${({ theme }) => theme.colors.logoColor};
-  text-decoration: none;
-  text-align: ${({ textAlign }) => textAlign};
 `;
 
 const StHeaderSearchLabel = styled.label`
@@ -76,13 +68,13 @@ const StHeaderNavUlLiMy = styled.li`
   height: 1.5em;
 `;
 
-const StMyUl = styled.ul`
+export const StMyUl = styled.ul`
   margin: 0.5em 0;
   display: flex;
   flex-direction: column;
 `;
 
-const StMyLi = styled.li`
+export const StMyLi = styled.li`
   padding: 0.2em 0.5em;
   font-weight: 500;
   transition: all 300ms ease-in;
@@ -91,7 +83,7 @@ const StMyLi = styled.li`
   }
 `;
 
-const StLink = styled(Link)`
+export const StLink = styled(Link)`
   display: flex;
   justify-content: space-between;
 `;
@@ -100,18 +92,23 @@ const StLogoutBtn = styled.button`
   width: 100%;
 `;
 
+const StSearchForm = styled.form`
+  @media (max-width: 999px) {
+    /* screen width is less than 768px (medium) */
+    display: none;
+  }
+`;
+
 const Header = ({ handleUpload, userData, foregroundMessageCount }) => {
   const { displayName } = userData;
   const [search, setSearch] = useState(false); // when clcked the search input box show record
   const [searchText, setSearchText] = useState(""); //when typing at search input box
   const [profile, setProfile] = useState(false);
   const loaction = useLocation().pathname;
-  console.log(loaction);
 
   const navMenu = {
     home: "/",
     direct: "/direct",
-    profile: "/:username",
   };
 
   const onSearchChange = (event) => {
@@ -132,11 +129,12 @@ const Header = ({ handleUpload, userData, foregroundMessageCount }) => {
     setSearchRecord(searchText);
   };
 
-  const activeStyle = {
-    padding: `0.2em 0.2em 0.3em 0.2em`,
-    border: `1px solid`,
-    borderRadius: `50%`,
-  };
+  // navLink activeStyle
+  // const activeStyle = {
+  //   padding: `0.2em 0.2em 0.3em 0.2em`,
+  //   border: `1px solid`,
+  //   borderRadius: `50%`,
+  // };
 
   const onSearchClick = () => {
     setSearch(!search);
@@ -144,7 +142,7 @@ const Header = ({ handleUpload, userData, foregroundMessageCount }) => {
   return (
     <StHeaderContainer>
       <StHeaderLogo href="/">Friendsgram</StHeaderLogo>
-      <form onSubmit={onSearchSubmit}>
+      <StSearchForm onSubmit={onSearchSubmit}>
         <StHeaderSearchLabel htmlFor="search" onClick={onSearchClick}>
           <StHeaderSearch
             id="search"
@@ -155,7 +153,7 @@ const Header = ({ handleUpload, userData, foregroundMessageCount }) => {
           />
           {search && <Search searchText={searchText} />}
         </StHeaderSearchLabel>
-      </form>
+      </StSearchForm>
 
       <StHeaderNav>
         <StHeaderNavul>
@@ -203,7 +201,7 @@ const Header = ({ handleUpload, userData, foregroundMessageCount }) => {
           <>
             <StTriangle
               top="2em"
-              left="7.7em"
+              left="7em"
               borderTop="1em solid none"
               borderBottom={`0.8em solid ${Theme.colors.contentColor}`}
               borderLeft="0.8em solid transparent;"
