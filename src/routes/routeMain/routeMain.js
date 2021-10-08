@@ -86,8 +86,8 @@ const RouteMain = ({
       {isLogin && pc ? <ContainerHeader /> : <Empty></Empty>}
       {isLogin && responsive ? <ResponsiveUpHeader /> : <Empty></Empty>}
       <NavRouter />
-      {isLogin && responsive ? <ContainerDownHeader /> : <Empty></Empty>}
       {isLogin && <MainFooter />}
+      {isLogin && responsive ? <ContainerDownHeader /> : <Empty></Empty>}
     </AppContainer>
   );
 };
