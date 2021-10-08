@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { StRectangle, StTriangle } from "../StBubbleChat/BubbleChat";
 import { useSelector } from "react-redux";
-import { StHeaderLogo } from "../Logo/StHeaderLogo";
-import { StProfileImg } from "../StProfileImg/StProfileImg";
+import { StRectangle, StTriangle } from "../../Global/StBubbleChat/BubbleChat";
+import { StHeaderLogo } from "../../Global/Logo/StHeaderLogo";
+import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import {
   StBookmarkIcon,
   StLine,
   StSettings,
   StTransfer,
   StUserCircle,
-} from "../StIcon/StIcon";
-import StButton from "../StButton/StButton";
+} from "../../Global/StIcon/StIcon";
+import StButton from "../../Global/StButton/StButton";
 import { authLogout } from "../../service/auth/authLogout";
 import { Theme } from "../../style/Theme";
-import { StLink, StMyLi, StMyUl } from "./Header";
+import { StLink, StMyLi, StMyUl } from "../../Global/Header/Header";
 
 const StUpHeader = styled.header`
   width: 100%;
@@ -102,7 +102,7 @@ const ResponsiveUpHeader = () => {
               <StMyUl key={item.index} onClick={profileOnClick}>
                 <StMyLi>
                   <StLink to={item.to ? item.to : "/"}>
-                    <StButton btnText={item.icon} />
+                    <StButton btnText={item.icon} refontSize="0.5em" />
                     {item.index === 4 ? (
                       <StButton
                         width="100%"

@@ -207,7 +207,12 @@ const Header = ({ handleUpload, userData, foregroundMessageCount }) => {
               borderLeft="0.8em solid transparent;"
               borderRight="0.8em solid transparent;"
             />
-            <StRectangle top="2.4em" width="13em" height="auto">
+            <StRectangle
+              top="2.4em"
+              width="13em"
+              height="auto"
+              profileWidth="9em"
+            >
               <StMyUl onClick={profileOnClick}>
                 <StMyLi>
                   <StLink to={`/${displayName}`}>

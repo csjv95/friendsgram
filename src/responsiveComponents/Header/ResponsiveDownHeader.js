@@ -4,10 +4,9 @@ import {
   StHomeIcon,
   StSendIcon,
   StPlusSquare,
-} from "../StIcon/StIcon";
+} from "../../Global/StIcon/StIcon";
 import { Link } from "react-router-dom";
-import StButton from "../StButton/StButton";
-import LoadingSpinner from "../Loading/LoadingSpinner";
+import StButton from "../../Global/StButton/StButton";
 
 const DownHeader = styled.header`
   position: fixed;
@@ -18,7 +17,7 @@ const DownHeader = styled.header`
   border-top: 1px solid ${({ theme }) => theme.colors.borderColor};
   background-color: ${({ theme }) => theme.colors.contentColor};
   text-align: center;
-  z-index: 10000000;
+  z-index: 1000;
 `;
 
 const DownNav = styled.nav`
@@ -35,10 +34,14 @@ const navList = [
   { index: 3, icon: <StSendIcon width="1.5" />, to: "/direct" },
 ];
 
-const ResponsiveDownHeader = ({ foregroundMessageCount, handleUpload }) => {
+const ResponsiveDownHeader = ({
+  foregroundMessageCount,
+  handleUpload,
+  handleSearch,
+}) => {
   const selectFnc = (index) => {
     if (index === 1) {
-      console.log("message modal");
+      handleSearch();
     } else if (index === 2) {
       handleUpload();
     } else {

@@ -1,11 +1,14 @@
 import { useEffect } from "react";
-import ResponsiveDownHeader from "../../Global/Header/ResponsiveDownHeader";
+import ResponsiveDownHeader from "../../responsiveComponents/Header/ResponsiveDownHeader";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import foregroundMessage from "../../service/message/foregroundMessage";
 import readCount from "../../service/message/readCount";
 import unreadCount from "../../service/message/unreadCount";
-import { changeUploadModalState } from "../../redux/modules/modals/modalState";
+import {
+  changeSearchModalState,
+  changeUploadModalState,
+} from "../../redux/modules/modals/modalState";
 
 const ContainerDownHeader = () => {
   const dispatch = useDispatch();
@@ -22,11 +25,13 @@ const ContainerDownHeader = () => {
   const { unread } = useSelector((state) => state.unread.unread);
 
   const changeUploadModal = () => dispatch(changeUploadModalState());
+  const changeSearchModal = () => dispatch(changeSearchModalState());
 
   return (
     <ResponsiveDownHeader
       foregroundMessageCount={unread}
       handleUpload={changeUploadModal}
+      handleSearch={changeSearchModal}
     />
   );
 };

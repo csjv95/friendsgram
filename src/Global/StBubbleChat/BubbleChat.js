@@ -25,6 +25,6 @@ export const StRectangle = styled.section`
   box-shadow: 3px -2px 7px 1px rgb(236 219 219 / 60%);
 
   @media only screen and (max-width: 450px) {
-    width: 9em;
+    width: ${({ profileWidth }) => profileWidth};
   }
 `;

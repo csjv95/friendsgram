@@ -37,10 +37,11 @@ const StPostForm = styled.form`
   }
 `;
 
-const CloseBtnCotainer = styled.div`
+export const CloseBtnCotainer = styled.div`
   display: flex;
   justify-content: flex-end;
   border-bottom: none;
+  background-color: ${({ bgColor }) => bgColor};
   & button {
     font-weight: 600;
   }

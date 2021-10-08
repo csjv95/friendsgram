@@ -5,6 +5,7 @@ import {
   changePostModalState,
   changeFollowModalState,
   changeSendModalState,
+  changeSearchModalState,
 } from "../redux/modules/modals/modalState";
 import { barState } from "../redux/modules/progressBar/progressBar";
 import RouteMain from "../routes/routeMain/routeMain";
@@ -48,6 +49,7 @@ const ContainerRouteMain = () => {
   const changePostModal = () => dispatch(changePostModalState());
   const changeFollowModal = () => dispatch(changeFollowModalState());
   const changeSendModal = () => dispatch(changeSendModalState());
+  const changeSearchModal = () => dispatch(changeSearchModalState());
   const changeBarState = (bar) => dispatch(barState(bar));
 
   const {
@@ -56,6 +58,7 @@ const ContainerRouteMain = () => {
     postModal,
     followModal,
     sendModal,
+    searchModal,
     progressState,
   } = useSelector((state) => ({
     uploadModal: state.modalState.uploadModal,
@@ -63,6 +66,7 @@ const ContainerRouteMain = () => {
     postModal: state.modalState.postModal,
     followModal: state.modalState.followModal,
     sendModal: state.modalState.sendModal,
+    searchModal: state.modalState.searchModal,
     progressState: state.progressBar.progressState,
   }));
 
@@ -91,10 +95,12 @@ const ContainerRouteMain = () => {
       postModal={postModal}
       followModal={followModal}
       sendModal={sendModal}
+      searchModal={searchModal}
       changeLocationModal={changeLocationModal}
       changePostModal={changePostModal}
       changeFollowModal={changeFollowModal}
       changeSendModal={changeSendModal}
+      changeSearchModal={changeSearchModal}
       progressState={progressState}
       changeBarState={changeBarState}
       userData={userData}
