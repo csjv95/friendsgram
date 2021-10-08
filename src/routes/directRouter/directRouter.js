@@ -2,13 +2,26 @@ import React from "react";
 import { Route, Switch } from "react-router";
 import EmptyChat from "../../componet/Direct/Chat/EmptyChat";
 import UserChat from "../../componet/Direct/Chat/UserChat";
+import DirectFriend from "../../responsiveComponents/Direct/DirectFriend";
 
-const DirectRouter = ({ changeSendModal, currentUserUid }) => {
+const DirectRouter = ({
+  changeSendModal,
+  currentUserUid,
+  responsive,
+  userData,
+}) => {
   return (
     <Switch>
-      <Route exact path="/direct">
-        <EmptyChat changeSendModal={changeSendModal} />
-      </Route>
+      {responsive ? (
+        <Route exact path="/direct">
+          <DirectFriend userData={userData} changeSendModal={changeSendModal} />
+        </Route>
+      ) : (
+        <Route exact path="/direct">
+          <EmptyChat changeSendModal={changeSendModal} />
+        </Route>
+      )}
+
       <Route path="/direct/:rommId">
         <UserChat currentUserUid={currentUserUid} />
       </Route>

@@ -5,9 +5,15 @@ import { changeSendModalState } from "../redux/modules/modals/modalState";
 import getCurrentUserData from "../service/fireStore/getCurrentUserData";
 import { authGetUid } from "../service/auth/authGetUid";
 import { useMediaQuery } from "react-responsive";
+import DirectFriend from "../responsiveComponents/Direct/DirectFriend";
+import DirectRouter from "../routes/directRouter/directRouter";
 
 const ContainerDirect = () => {
   const dispatch = useDispatch();
+
+  const pc = useMediaQuery({
+    query: "(min-width:900px)",
+  });
 
   const responsive = useMediaQuery({
     query: "(max-width:900px)",
@@ -29,14 +35,19 @@ const ContainerDirect = () => {
 
   return (
     <>
-      {responsive ? (
-        <DirectFriend />
-      ) : (
+      {responsive && (
+        <DirectRouter
+          responsive={responsive}
+          userData={userData}
+          changeSendModal={changeSendModal}
+          currentUserUid={currentUserUid}
+        />
+      )}
+      {pc && (
         <Direct
           userData={userData}
           changeSendModal={changeSendModal}
           currentUserUid={currentUserUid}
-          responsive={responsive}
         />
       )}
     </>
