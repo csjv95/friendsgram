@@ -52,6 +52,7 @@ const Direct = ({ userData, changeSendModal, currentUserUid }) => {
 
   useEffect(() => {
     getMessageRoom(setChatRooms);
+
     return () => {
       setChatRooms("");
     };
