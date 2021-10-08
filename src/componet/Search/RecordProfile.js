@@ -16,7 +16,7 @@ const StProfileLink = styled(Link)`
   flex-grow: 1;
 `;
 
-const RecordProfile = ({ user }) => {
+const RecordProfile = ({ user, handleSearch }) => {
   const [match, setMatchUserData] = useState([]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const RecordProfile = ({ user }) => {
     <>
       {match && (
         <StRecordSection>
-          <StProfileLink to={`/${match.displayName}`}>
+          <StProfileLink to={`/${match.displayName}`} onClick={handleSearch}>
             <StProfileNoLink
               listWidth="80%"
               imgHeight="3em"

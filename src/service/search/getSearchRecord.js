@@ -9,7 +9,7 @@ const getSearchRecord = (setRecord) => {
     .collection("record")
     .doc(currentUserUid);
 
-  record.get().then((record) => setRecord(record.data().record));
+  record.onSnapshot((record) => setRecord(record.data().record));
 };
 
 export default getSearchRecord;

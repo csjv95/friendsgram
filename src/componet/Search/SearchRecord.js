@@ -21,7 +21,7 @@ const StTitle = styled.h1`
   font-size: 1em;
 `;
 
-const SearchRecord = () => {
+const SearchRecord = ({ handleSearch }) => {
   const [record, setRecord] = useState([]);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const SearchRecord = () => {
       </StSearchList>
       <StSearchListBottome>
         {record.map((user) => (
-          <RecordProfile key={user} user={user} />
+          <RecordProfile key={user} user={user} handleSearch={handleSearch} />
         ))}
       </StSearchListBottome>
     </>

@@ -73,7 +73,7 @@ const ResponsiveSearch = ({
         {search && (
           <StRectangle width="100%" height="100%">
             {/* 클릭했을때 */}
-            {!searchText && <SearchRecord />}
+            {!searchText && <SearchRecord handleSearch={handleSearch} />}
 
             {/* 검색할떄 */}
             {searchText &&

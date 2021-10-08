@@ -15,6 +15,7 @@ const ContainerSearch = () => {
   }, [searchText]);
 
   const changeSearchModal = () => dispatch(changeSearchModalState());
+
   return (
     <ResponsiveSearch
       recomendUser={recomendUser}
