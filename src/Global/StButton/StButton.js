@@ -19,7 +19,8 @@ const StButtonStyle = styled.button`
   color: ${({ color }) => color};
 
   @media only screen and (max-width: 450px) {
-    font-size: 0.5em;
+    font-size: ${({ refontSize }) => refontSize};
+    background-color: ${({ rebgc }) => rebgc};
   }
 `;
 
@@ -40,6 +41,7 @@ const StButton = ({
   color,
   btnText,
   onClick,
+  refontSize,
 }) => {
   return (
     <StButtonStyle
@@ -58,6 +60,7 @@ const StButton = ({
       fontWeight={fontWeight}
       bgColor={bgColor}
       color={color}
+      refontSize={refontSize}
     >
       {btnText}
     </StButtonStyle>

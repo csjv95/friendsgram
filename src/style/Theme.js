@@ -27,8 +27,15 @@ const borders = {
   modalRadius: "1em",
 };
 
+const mediaQuery = {
+  pc: "min-width:1000px",
+  responsive: "max-width:999px",
+  direct: "max-width:900px",
+};
+
 export const Theme = {
   colors,
   fonts,
   borders,
+  mediaQuery,
 };

@@ -10,9 +10,10 @@ import ContainerPostMenu from "../../containers/modals/ContainerPostMenu";
 import ContainerFollowView from "../../containers/modals/ContainerFollowView";
 import ContainerSend from "../../containers/modals/ContainerSend";
 import ContainerLocation from "../../containers/modals/ContainerLocation";
-import ResponsiveUpHeader from "../../Global/Header/ResponsiveUpHeader";
-import ResponsiveDownHeader from "../../Global/Header/ResponsiveDownHeader";
+import ResponsiveUpHeader from "../../responsiveComponents/Header/ResponsiveUpHeader";
 import Empty from "../../Global/Empty/Empty";
+import ContainerDownHeader from "../../responsiveContainers/Header/ContainerDownHeader";
+import ContainerSearch from "../../responsiveContainers/modals/ContainerSearch";
 
 const AppContainer = styled.div`
   position: relative;
@@ -30,6 +31,7 @@ const RouteMain = ({
   postModal,
   followModal,
   sendModal,
+  searchModal,
   progressState,
   pc,
   responsive,
@@ -39,6 +41,7 @@ const RouteMain = ({
   const postMenu = document.getElementById("postMenu");
   const follow = document.getElementById("follow");
   const send = document.getElementById("send");
+  const search = document.getElementById("search");
 
   return (
     <AppContainer>
@@ -72,13 +75,19 @@ const RouteMain = ({
         </ModalPotal>
       )}
 
+      {searchModal && (
+        <ModalPotal potalName={search}>
+          <ContainerSearch />
+        </ModalPotal>
+      )}
+
       {progressState !== 0 && <ProgressBar progressState={progressState} />}
 
       {isLogin && pc ? <ContainerHeader /> : <Empty></Empty>}
       {isLogin && responsive ? <ResponsiveUpHeader /> : <Empty></Empty>}
       <NavRouter />
-      {isLogin && responsive ? <ResponsiveDownHeader /> : <Empty></Empty>}
       {isLogin && <MainFooter />}
+      {isLogin && responsive ? <ContainerDownHeader /> : <Empty></Empty>}
     </AppContainer>
   );
 };

@@ -3,6 +3,7 @@ const LOCATION = "modalState/locationModal";
 const POST = "modalState/postMenuModal";
 const FOLLOW = "modalState/followModal";
 const SEND = "modalState/sendModal";
+const SEARCH = "modalState/searchModal";
 
 export const changeUploadModalState = () => ({
   type: UPLOAD,
@@ -24,12 +25,17 @@ export const changeSendModalState = () => ({
   type: SEND,
 });
 
+export const changeSearchModalState = () => ({
+  type: SEARCH,
+});
+
 const initialState = {
   uploadModal: false,
   locationModal: false,
   postModal: false,
   followModal: false,
   sendModal: false,
+  searchModal: false,
 };
 
 export default function modalState(state = initialState, action) {
@@ -58,6 +64,12 @@ export default function modalState(state = initialState, action) {
       return {
         ...state,
         sendModal: !state.sendModal,
+      };
+
+    case SEARCH:
+      return {
+        ...state,
+        searchModal: !state.searchModal,
       };
     default:
       return state;

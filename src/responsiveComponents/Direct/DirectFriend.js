@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
-import DirectRouter from "../../routes/directRouter/directRouter";
 import StButton from "../../Global/StButton/StButton";
-import { StPencilSquare } from "../../Global/StIcon/StIcon";
-import { StList, StItem } from "../../Global/StList/StList";
+import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
+import { StItem, StList } from "../../Global/StList/StList";
 import { Theme } from "../../style/Theme";
+import { StPencilSquare } from "../../Global/StIcon/StIcon";
+import { NavLink } from "react-router-dom";
 import getMessageRoom from "../../service/message/getMessageRoom";
 import StProfileChat from "../../Global/StProfile/StProfileChat";
 
 const StDirectContainer = styled.section`
-  width: 900px;
+  width: 100%;
   max-height: 40em;
   margin: 0 auto;
   display: flex;
@@ -19,22 +18,9 @@ const StDirectContainer = styled.section`
   background-color: ${({ theme }) => theme.colors.contentColor};
 `;
 
-const StDirectFriends = styled.section`
-  width: 40%;
-  border-right: 1px solid ${({ theme }) => theme.colors.borderColor};
-`;
-
-const StDirectChat = styled.section`
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-`;
-
-const StFriendsList = styled.ul`
-  height: 36em;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
+const StDirectFriends = styled.div`
+  width: 100%;
+  overflow: hidden;
 `;
 
 const StNavLink = styled(NavLink)`
@@ -46,10 +32,16 @@ const StNavLink = styled(NavLink)`
   }
 `;
 
-const Direct = ({ userData, changeSendModal, currentUserUid }) => {
+const StFriendsList = styled.ul`
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+`;
+
+const DirectFriend = ({ userData, changeSendModal, currentUserUid }) => {
   const [chatRooms, setChatRooms] = useState([]);
   const [clickedRoomId, setClickedRoomId] = useState("");
-
   useEffect(() => {
     getMessageRoom(setChatRooms);
 
@@ -59,7 +51,7 @@ const Direct = ({ userData, changeSendModal, currentUserUid }) => {
   }, [clickedRoomId]);
 
   return (
-    <StMainRouterSection>
+    <StMainRouterSection padding="3em 0 0 0">
       <StDirectContainer>
         <StDirectFriends>
           <StList
@@ -115,15 +107,9 @@ const Direct = ({ userData, changeSendModal, currentUserUid }) => {
               ))}
           </StFriendsList>
         </StDirectFriends>
-        <StDirectChat>
-          <DirectRouter
-            changeSendModal={changeSendModal}
-            currentUserUid={currentUserUid}
-          />
-        </StDirectChat>
       </StDirectContainer>
     </StMainRouterSection>
   );
 };
 
-export default Direct;
+export default DirectFriend;

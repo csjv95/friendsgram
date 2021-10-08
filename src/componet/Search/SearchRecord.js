@@ -47,6 +47,7 @@ const SearchRecord = () => {
             bgColor={Theme.colors.contentColor}
             color={Theme.colors.blue}
             btnText="모두 지우기"
+            refontSize="0.9em"
           />
         </li>
       </StSearchList>
