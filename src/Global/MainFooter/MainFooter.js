@@ -6,13 +6,14 @@ const FooterCotainer = styled.footer`
   padding-top: 2rem;
   padding-bottom: 3rem;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
+
   & :nth-child(n) {
     color: ${({ theme }) => theme.colors.textColorLihgtgrey};
   }
 
   @media only screen and (max-width: 450px) {
     padding: 1rem;
-    font-size: 0.5rem;
+    font-size: 0.5em;
   }
 `;
 
@@ -52,39 +53,26 @@ const Select = styled.select`
 `;
 
 const MainFooter = () => {
+  const footerList = [
+    { text: "소개", index: 0 },
+    { text: "블로그", index: 1 },
+    { text: "채용정보", index: 2 },
+    { text: "도움말", index: 3 },
+    { text: "API", index: 4 },
+    { text: "개인정보처리방침", index: 5 },
+    { text: "약관", index: 6 },
+    { text: "인기계정", index: 7 },
+    { text: "해시태그", index: 8 },
+    { text: "위치", index: 9 },
+  ];
   return (
     <FooterCotainer>
       <FooterInfoCompany>
-        <li>
-          <StButton btnText="소개" />
-        </li>
-        <li>
-          <StButton btnText="블로그" />
-        </li>
-        <li>
-          <StButton btnText="채용정보" />
-        </li>
-        <li>
-          <StButton btnText="도움말" />
-        </li>
-        <li>
-          <StButton btnText="API" />
-        </li>
-        <li>
-          <StButton btnText="개인정보처리방침" />
-        </li>
-        <li>
-          <StButton btnText="약관" />
-        </li>
-        <li>
-          <StButton btnText="인기계정" />
-        </li>
-        <li>
-          <StButton btnText="해시태그" />
-        </li>
-        <li>
-          <StButton btnText="위치" />
-        </li>
+        {footerList.map((item) => (
+          <li key={item.index}>
+            <StButton btnText={item.text} refontSize="0.5em" rebgc="red" />
+          </li>
+        ))}
       </FooterInfoCompany>
 
       <FooterCopyRight>
