@@ -5,7 +5,13 @@ import setSearchRecord from "../../service/search/setSearchRecord";
 import getMatchDisplayName from "../../service/usersData/getMatchDisplayName";
 import CheckBoxProfile from "../Profile/CheckBoxProfile";
 
-const SearchProfile = ({ user, isCheckBox, checkUser, setCheckUser }) => {
+const SearchProfile = ({
+  user,
+  isCheckBox,
+  checkUser,
+  setCheckUser,
+  handleSearch,
+}) => {
   const [match, setMatchUserData] = useState([]);
   const [check, setCheck] = useState(false);
 
@@ -15,6 +21,7 @@ const SearchProfile = ({ user, isCheckBox, checkUser, setCheckUser }) => {
 
   const onClick = () => {
     setSearchRecord(match.displayName);
+    handleSearch();
   };
 
   const checkBoxClick = () => {

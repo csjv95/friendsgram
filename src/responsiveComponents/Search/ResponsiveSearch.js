@@ -78,7 +78,11 @@ const ResponsiveSearch = ({
             {/* 검색할떄 */}
             {searchText &&
               recomendUser.map((user) => (
-                <SearchProfile key={user} user={user} />
+                <SearchProfile
+                  key={user}
+                  user={user}
+                  handleSearch={handleSearch}
+                />
               ))}
           </StRectangle>
         )}
