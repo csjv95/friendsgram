@@ -17,6 +17,7 @@ const StButtonStyle = styled.button`
   font-weight: ${({ fontWeight }) => fontWeight};
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ color }) => color};
+  cursor: ${({ cursor }) => cursor};
 
   @media only screen and (max-width: 450px) {
     font-size: ${({ refontSize }) => refontSize};
@@ -42,6 +43,7 @@ const StButton = ({
   btnText,
   onClick,
   refontSize,
+  cursor,
 }) => {
   return (
     <StButtonStyle
@@ -60,6 +62,7 @@ const StButton = ({
       fontWeight={fontWeight}
       bgColor={bgColor}
       color={color}
+      cursor={cursor}
       refontSize={refontSize}
     >
       {btnText}
