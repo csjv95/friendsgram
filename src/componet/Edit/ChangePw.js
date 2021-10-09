@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 import StButton from "../../Global/StButton/StButton";
 import {
@@ -12,6 +13,7 @@ import {
   StEditInput,
 } from "../../Global/StEditForm/StEditForm";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
+import ResponsiveChangePw from "../../responsiveComponents/ChangePw/ResponsiveChangePw";
 import authPwChange from "../../service/auth/authPwChange";
 import { Theme } from "../../style/Theme";
 
@@ -22,6 +24,10 @@ const ChangePw = ({ userData }) => {
     lastPw: "",
     newPw: "",
     checkPw: "",
+  });
+
+  const responsive = useMediaQuery({
+    query: "(max-width:900px)",
   });
 
   const onSubmit = (event) => {
@@ -45,86 +51,99 @@ const ChangePw = ({ userData }) => {
   };
 
   return (
-    <StEditMain
-      width="75%"
-      padding="1em 0"
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-    >
-      <StImgSection marginLeft="8em" display="flex" alignItmes="center">
-        <StProfileImg src={photoURL} alt="my-profile-img" height="3em" />
-        <StChnageImgList marginLeft="2em">
-          <li>{displayName}</li>
-        </StChnageImgList>
-      </StImgSection>
+    <>
+      {responsive ? (
+        <ResponsiveChangePw userData={userData} />
+      ) : (
+        <StEditMain
+          width="75%"
+          padding="1em 0"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <StImgSection marginLeft="8em" display="flex" alignItmes="center">
+            <StProfileImg src={photoURL} alt="my-profile-img" height="5em" />
+            <StChnageImgList marginLeft="2em">
+              <li>{displayName}</li>
+            </StChnageImgList>
+          </StImgSection>
 
-      <StChangeForm onSubmit={onSubmit} padding="2em 4em" flexGrow="1">
-        <StSetContainer width="100%" height="3em" display="flex">
-          <StLabelContainer
-            width="25%"
-            marginRight="2em"
-            paddingTop="0.6em"
-            textAlign="right"
-          >
-            <label htmlFor="lastPw">이전 비밀번호</label>
-          </StLabelContainer>
-          <StIputContainer width="70%">
-            <StEditInput
-              width="100%"
-              height="2.8em"
-              type="password"
-              name="lastPw"
-              onChange={onChangeInput}
-              bgColor={Theme.colors.backgroundColor}
-            />
-          </StIputContainer>
-        </StSetContainer>
+          <StChangeForm onSubmit={onSubmit} padding="2em 4em" flexGrow="1">
+            <StSetContainer width="100%" height="3em" display="flex">
+              <StLabelContainer
+                width="25%"
+                marginRight="2em"
+                paddingTop="0.6em"
+                textAlign="right"
+              >
+                <label htmlFor="lastPw">이전 비밀번호</label>
+              </StLabelContainer>
+              <StIputContainer width="70%">
+                <StEditInput
+                  width="100%"
+                  height="2.8em"
+                  type="password"
+                  name="lastPw"
+                  onChange={onChangeInput}
+                  bgColor={Theme.colors.backgroundColor}
+                />
+              </StIputContainer>
+            </StSetContainer>
 
-        <StSetContainer width="100%" height="3em" display="flex">
-          <StLabelContainer
-            width="25%"
-            marginRight="2em"
-            paddingTop="0.6em"
-            textAlign="right"
-          >
-            <label htmlFor="newPw">새 비밀번호</label>
-          </StLabelContainer>
-          <StIputContainer width="70%">
-            <StEditInput
-              width="100%"
-              height="2.8em"
-              type="password"
-              name="newPw"
-              onChange={onChangeInput}
-              bgColor={Theme.colors.backgroundColor}
-            />
-          </StIputContainer>
-        </StSetContainer>
+            <StSetContainer width="100%" height="3em" display="flex">
+              <StLabelContainer
+                width="25%"
+                marginRight="2em"
+                paddingTop="0.6em"
+                textAlign="right"
+              >
+                <label htmlFor="newPw">새 비밀번호</label>
+              </StLabelContainer>
+              <StIputContainer width="70%">
+                <StEditInput
+                  width="100%"
+                  height="2.8em"
+                  type="password"
+                  name="newPw"
+                  onChange={onChangeInput}
+                  bgColor={Theme.colors.backgroundColor}
+                />
+              </StIputContainer>
+            </StSetContainer>
 
-        <StSetContainer width="100%" height="3em" display="flex">
-          <StLabelContainer
-            width="25%"
-            marginRight="2em"
-            paddingTop="0.6em"
-            textAlign="right"
-          >
-            <label htmlFor="checkPw">새 비밀번호 확인</label>
-          </StLabelContainer>
-          <StIputContainer width="70%">
-            <StEditInput
-              width="100%"
-              height="2.8em"
-              type="password"
-              name="checkPw"
-              onChange={onChangeInput}
-              bgColor={Theme.colors.backgroundColor}
+            <StSetContainer width="100%" height="3em" display="flex">
+              <StLabelContainer
+                width="25%"
+                marginRight="2em"
+                paddingTop="0.6em"
+                textAlign="right"
+              >
+                <label htmlFor="checkPw">새 비밀번호 확인</label>
+              </StLabelContainer>
+              <StIputContainer width="70%">
+                <StEditInput
+                  width="100%"
+                  height="2.8em"
+                  type="password"
+                  name="checkPw"
+                  onChange={onChangeInput}
+                  bgColor={Theme.colors.backgroundColor}
+                />
+              </StIputContainer>
+            </StSetContainer>
+            <StButton
+              width="10em"
+              padding="0.5em"
+              btnText="비밀번호 변경"
+              bgColor={Theme.colors.skyblue}
+              color={Theme.colors.textColorWhite}
+              fontWeight="600"
             />
-          </StIputContainer>
-        </StSetContainer>
-        <StButton width="10em" padding="0.5em" btnText="비밀번호 변경" />
-      </StChangeForm>
-    </StEditMain>
+          </StChangeForm>
+        </StEditMain>
+      )}
+    </>
   );
 };
 
