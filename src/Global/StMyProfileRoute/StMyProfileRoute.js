@@ -4,6 +4,14 @@ export const StPostList = styled.ul`
   width: 56.25rem;
   display: flex;
   flex-wrap: wrap;
+
+  @media only screen and (max-width: 900px) {
+    width: 37.5rem;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const StPostItem = styled.li`
@@ -12,6 +20,10 @@ export const StPostItem = styled.li`
   height: 18em;
   padding: 0.5em;
   cursor: pointer;
+
+  @media only screen and (max-width: 600px) {
+    height: 11em;
+  }
 `;
 
 export const StPostButton = styled.button`

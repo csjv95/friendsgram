@@ -23,12 +23,25 @@ import LoadingSpinner from "../../Global/Loading/LoadingSpinner";
 
 const StpPofileContainer = styled.section`
   margin: 0 auto;
+
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+    padding: 0 0.6em;
+  }
 `;
 
 const StTopSection = styled.section`
   width: 56.25rem;
   margin-bottom: 2em;
   display: flex;
+
+  @media only screen and (max-width: 900px) {
+    width: 37.5rem;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const StInformation = styled.section`
@@ -42,20 +55,41 @@ const StInformation = styled.section`
   & > :first-child {
     margin-top: 0;
   }
+
+  @media only screen and (max-width: 600px) {
+    margin-left: 6em;
+  }
+
+  @media only screen and (max-width: 450px) {
+    margin-left: 2em;
+    font-size: 0.9em;
+  }
 `;
 
 const StInfoTop = styled.ul`
   display: flex;
-  & > :nth-child(n) {
+  align-items: center;
+
+  & > :nth-child(-n + 2) {
     margin-right: 0.5em;
   }
+
   &:first-child {
     font-size: 2em;
+  }
+
+  @media only screen and (max-width: 600px) {
+    &:first-child {
+      font-size: 1em;
+      font-weight: 600;
+    }
   }
 `;
 
 const StInfoMid = styled.ul`
   display: flex;
+  align-items: center;
+
   & > :nth-child(n) {
     margin-right: 0.5em;
   }
@@ -82,6 +116,20 @@ const StNavUl = styled.ul`
   & :nth-child(n) {
     display: flex;
     font-weight: 600;
+  }
+
+  @media only screen and (max-width: 900px) {
+    width: 37.5rem;
+    padding: 0 0 1em 0;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    padding: 0 0 1em 0;
+  }
+
+  @media only screen and (max-width: 450px) {
+    font-size: 0.9em;
   }
 `;
 
@@ -136,6 +184,7 @@ const MyProfile = ({
                 src={matchUser.photoURL}
                 alt="my-profile-img"
                 height="10em"
+                reHeight="8em"
               />
               <StInformation>
                 <StInfoTop>
@@ -172,8 +221,16 @@ const MyProfile = ({
                     <StSettings width="1" />
                   </li>
                 </StInfoTop>
+
                 <StInfoMid>
-                  <li>게시물 {myPostData.length}</li>
+                  <li>
+                    <StButton
+                      width="100%"
+                      fontSize="1em"
+                      btnText={`게시물 ${myPostData.length}`}
+                      cursor="auto"
+                    />
+                  </li>
                   <li
                     onClick={() => {
                       setIsFollow("팔로워");
@@ -199,8 +256,9 @@ const MyProfile = ({
                     />
                   </li>
                 </StInfoMid>
+
                 <StInfoBottom>
-                  <li>{matchUser.name}</li>
+                  <li style={{ paddingBottom: "0.5em" }}>{matchUser.name}</li>
                   {matchUser.introduction ? (
                     <li>{matchUser.introduction}</li>
                   ) : (
