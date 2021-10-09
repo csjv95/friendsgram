@@ -14,6 +14,7 @@ import {
   StImgInput,
 } from "../../../Global/StEditForm/StEditForm";
 import { StProfileImg } from "../../../Global/StProfileImg/StProfileImg";
+import { StDiv } from "../../../Global/StTags/StTags";
 import setUserData from "../../../service/usersData/setUserData";
 import setUserProfileImg from "../../../service/usersData/setUserProfileImg";
 
@@ -91,10 +92,10 @@ const ChangeEdit = ({ userData }) => {
               placeholder={name ? name : "이름"}
               onChange={onChangeInput}
             />
-            <div>
+            <StDiv>
               사람들이 이름, 별명 또는 비즈니스 이름 등 회원님의 알려진 이름을
               사용하여 회원님의 계정을 찾을 수 있도록 도와주세요.
-            </div>
+            </StDiv>
           </StIputContainer>
         </StSetContainer>
 
@@ -158,11 +159,11 @@ const ChangeEdit = ({ userData }) => {
               placeholder={introduction ? introduction : "소개"}
               onChange={onChangeInput}
             />
-            <div>개인정보</div>
-            <div>
+            <StDiv>개인정보</StDiv>
+            <StDiv>
               비즈니스나 반려동물 등에 사용된 계정인 경우에도 회원님의 개인
               정보를 입력하세요. 공개 프로필에는 포함되지 않습니다.
-            </div>
+            </StDiv>
           </StIputContainer>
         </StSetContainer>
 
