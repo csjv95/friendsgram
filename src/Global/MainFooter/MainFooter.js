@@ -13,7 +13,7 @@ const FooterCotainer = styled.footer`
 
   @media only screen and (max-width: 450px) {
     padding: 1rem;
-    font-size: 0.5em;
+    font-size: 0.9em;
   }
 `;
 
@@ -43,6 +43,7 @@ const FooterCopyRight = styled.ul`
   @media only screen and (max-width: 450px) {
     & > :nth-child(n) {
       padding-right: 0.5em;
+      font-size: 0.9em;
     }
   }
 `;
@@ -50,6 +51,10 @@ const FooterCopyRight = styled.ul`
 const Select = styled.select`
   border: none;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
+
+  @media only screen and (max-width: 450px) {
+    font-size: 0.9em;
+  }
 `;
 
 const MainFooter = () => {

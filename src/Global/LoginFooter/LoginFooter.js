@@ -49,7 +49,7 @@ const StFooterEl = styled.footer`
 
   @media only screen and (max-width: 450px) {
     padding: 1rem;
-    font-size: 0.5rem;
+    font-size: 0.9rem;
   }
 `;
 
