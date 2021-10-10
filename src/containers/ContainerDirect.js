@@ -5,7 +5,6 @@ import { changeSendModalState } from "../redux/modules/modals/modalState";
 import getCurrentUserData from "../service/fireStore/getCurrentUserData";
 import { authGetUid } from "../service/auth/authGetUid";
 import { useMediaQuery } from "react-responsive";
-import DirectFriend from "../responsiveComponents/Direct/DirectFriend";
 import DirectRouter from "../routes/directRouter/directRouter";
 
 const ContainerDirect = () => {

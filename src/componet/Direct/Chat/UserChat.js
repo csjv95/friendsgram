@@ -52,6 +52,10 @@ const StChatInputBox = styled.div`
   align-items: center;
   border: 1px solid ${Theme.colors.borderColor};
   border-radius: 2em;
+
+  @media only screen and (max-width: 900px) {
+    margin-bottom: 2em;
+  }
 `;
 
 const StChatForm = styled.form`

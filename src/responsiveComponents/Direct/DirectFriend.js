@@ -16,6 +16,10 @@ const StDirectContainer = styled.section`
   display: flex;
   border: 1px solid lightgray;
   background-color: ${({ theme }) => theme.colors.contentColor};
+
+  @media only screen and (max-width: 900px) {
+    max-height: 100%;
+  }
 `;
 
 const StDirectFriends = styled.div`
@@ -37,6 +41,10 @@ const StFriendsList = styled.ul`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+
+  @media only screen and (max-width: 900px) {
+    height: 100%;
+  }
 `;
 
 const DirectFriend = ({ userData, changeSendModal, currentUserUid }) => {
