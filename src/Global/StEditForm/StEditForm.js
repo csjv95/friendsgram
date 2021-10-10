@@ -6,29 +6,38 @@ export const StEditMain = styled.main`
   display: ${({ display }) => display};
   flex-direction: ${({ flexDirection }) => flexDirection};
   align-items: ${({ alignItmes }) => alignItmes};
+
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 export const StImgSection = styled.section`
   margin-left: ${({ marginLeft }) => marginLeft};
+  margin-bottom: ${({ marginBottom }) => marginBottom};
   display: ${({ display }) => display};
-  align-items: ${({alignItmes})=> alignItmes};
+  align-items: ${({ alignItmes }) => alignItmes};
+  justify-content: ${({ justifyContent }) => justifyContent};
 `;
 
 export const StChnageImgList = styled.ul`
   margin-left: ${({ marginLeft }) => marginLeft};
 
   & > :first-child {
-    font-size: 1.5em;
+    font-size: 2em;
+    margin-bottom: 0.5em;
   }
 `;
 
 export const StImgLabel = styled.label`
   cursor: pointer;
+  color: ${({ color }) => color};
+  font-weight: ${({ fontWeight }) => fontWeight};
 `;
 
 export const StImgInput = styled.input`
-  display : none;
-`
+  display: none;
+`;
 
 export const StChangeForm = styled.form`
   padding: ${({ padding }) => padding};

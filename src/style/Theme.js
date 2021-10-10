@@ -10,7 +10,7 @@ const colors = {
   lightgrey: "#d3d3d3",
   blue: "#6666f9",
   blueviolet: "#8a2be2",
-  skyblue: "#e0f1ff",
+  skyblue: "#b2dffc",
   skyblueInnerText: "#0095f6",
   red: "#ed4956",
   black: "#262626",

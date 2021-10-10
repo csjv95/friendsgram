@@ -35,6 +35,7 @@ export const StDiv = styled.div`
   font-weight: ${({ fontWeight }) => fontWeight};
   color: ${({ color }) => color};
   overflow: ${({ overFlow }) => overFlow};
+  line-height: ${({ lineHeight }) => lineHeight};
 `;
 
 export const StSpan = styled.span`

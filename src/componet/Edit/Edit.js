@@ -10,11 +10,20 @@ const StEditContainer = styled.section`
   display: flex;
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   background-color: ${({ theme }) => theme.colors.contentColor};
+
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+    border: none;
+  }
 `;
 
 const StEditAside = styled.aside`
   width: 25%;
   border-right: 1px solid ${({ theme }) => theme.colors.borderColor};
+
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
 `;
 
 const StEditList = styled.ul``;
@@ -34,12 +43,12 @@ const StEditListItem = styled.li`
 
 const StNavLink = styled(NavLink)`
   width: 100%;
-  padding: 1em 1em 1em 2em;
+  padding: 1em;
 `;
 
-const Edit = ({ userData }) => {
+const Edit = ({ userData, responsive }) => {
   return (
-    <StMainRouterSection>
+    <StMainRouterSection rePaddingTop="3em">
       <StEditContainer>
         <StEditAside>
           <StEditList>

@@ -10,10 +10,12 @@ import ContainerPostMenu from "../../containers/modals/ContainerPostMenu";
 import ContainerFollowView from "../../containers/modals/ContainerFollowView";
 import ContainerSend from "../../containers/modals/ContainerSend";
 import ContainerLocation from "../../containers/modals/ContainerLocation";
-import ResponsiveUpHeader from "../../responsiveComponents/Header/ResponsiveUpHeader";
+
 import Empty from "../../Global/Empty/Empty";
 import ContainerDownHeader from "../../responsiveContainers/Header/ContainerDownHeader";
 import ContainerSearch from "../../responsiveContainers/modals/ContainerSearch";
+import ContainerUpHeader from "../../responsiveContainers/Header/ContainerUpHeader";
+import { useLocation } from "react-router";
 
 const AppContainer = styled.div`
   position: relative;
@@ -42,6 +44,7 @@ const RouteMain = ({
   const follow = document.getElementById("follow");
   const send = document.getElementById("send");
   const search = document.getElementById("search");
+  const location = useLocation().pathname;
 
   return (
     <AppContainer>
@@ -84,9 +87,9 @@ const RouteMain = ({
       {progressState !== 0 && <ProgressBar progressState={progressState} />}
 
       {isLogin && pc ? <ContainerHeader /> : <Empty></Empty>}
-      {isLogin && responsive ? <ResponsiveUpHeader /> : <Empty></Empty>}
+      {isLogin && responsive ? <ContainerUpHeader /> : <Empty></Empty>}
       <NavRouter />
-      {isLogin && <MainFooter />}
+      {isLogin && location === "/" ? <MainFooter /> : <Empty></Empty>}
       {isLogin && responsive ? <ContainerDownHeader /> : <Empty></Empty>}
     </AppContainer>
   );

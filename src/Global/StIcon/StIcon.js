@@ -36,8 +36,18 @@ import { Instagram } from "@styled-icons/bootstrap/Instagram";
 import { Home } from "@styled-icons/foundation/Home";
 import { SendPlane } from "@styled-icons/remix-fill/SendPlane";
 import { Search } from "@styled-icons/bootstrap/Search";
+import { Key } from "@styled-icons/bootstrap/Key";
+import { KeyFill } from "@styled-icons/bootstrap/KeyFill";
 
 export const StSearch = styled(Search)`
+  width: ${({ width }) => width}em;
+`;
+
+export const StKey = styled(Key)`
+  width: ${({ width }) => width}em;
+`;
+
+export const StKeyFill = styled(KeyFill)`
   width: ${({ width }) => width}em;
 `;
 
