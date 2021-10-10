@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ResponsiveUpHeader from "../../responsiveComponents/Header/ResponsiveUpHeader";
 import { useLocation } from "react-router-dom";
 import { authLogout } from "../../service/auth/authLogout";
@@ -9,11 +9,12 @@ import {
   StTransfer,
   StUserCircle,
 } from "../../Global/StIcon/StIcon";
+import { changeMobileMenuModalState } from "../../redux/modules/modals/modalState";
 
 const ContainerUpHeader = () => {
   const [profile, setProfile] = useState(false);
-
   const location = useLocation().pathname;
+  const dispatch = useDispatch();
 
   const photoURL = useSelector(
     (state) => state.userData.userData.data.photoURL
@@ -22,6 +23,14 @@ const ContainerUpHeader = () => {
   const displayName = useSelector(
     (state) => state.userData.userData.data.displayName
   );
+
+  const editMenuList = [
+    { text: "edit", link: "/edit", index: 0 },
+    { text: `change pw`, link: "/edit/password/change", index: 1 },
+  ];
+
+  const changeMobileMenu = () =>
+    dispatch(changeMobileMenuModalState(editMenuList));
 
   const profiles = [
     {
@@ -57,6 +66,7 @@ const ContainerUpHeader = () => {
       photoURL={photoURL}
       profileOnClick={profileOnClick}
       onLogout={onLogout}
+      handleMobileMenu={changeMobileMenu}
     />
   );
 };

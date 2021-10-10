@@ -35,11 +35,14 @@ const ResponsiveUpHeader = ({
   photoURL,
   profileOnClick,
   onLogout,
+  handleMobileMenu,
 }) => {
   return (
     <StUpHeader>
       {location.includes("/edit") && (
-        <StButton btnText={<StSettings width="1.5em" />} />
+        <StButton
+          btnText={<StSettings width="1.5em" onClick={handleMobileMenu} />}
+        />
       )}
       <StHeaderLogo href="/" width="100%" textAlign="center">
         Friendsgram
