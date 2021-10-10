@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { StKeyFill, StSettings } from "../../Global/StIcon/StIcon";
 import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRouterSection";
 import EditRouter from "../../routes/editRouter/editRouter";
 
@@ -14,7 +13,7 @@ const StEditContainer = styled.section`
 
   @media only screen and (max-width: 900px) {
     width: 100%;
-    margin: 0 1em;
+    border: none;
   }
 `;
 
@@ -23,7 +22,7 @@ const StEditAside = styled.aside`
   border-right: 1px solid ${({ theme }) => theme.colors.borderColor};
 
   @media only screen and (max-width: 900px) {
-    width: auto;
+    display: none;
   }
 `;
 
@@ -49,42 +48,24 @@ const StNavLink = styled(NavLink)`
 
 const Edit = ({ userData, responsive }) => {
   return (
-    <StMainRouterSection>
+    <StMainRouterSection rePaddingTop="3em">
       <StEditContainer>
         <StEditAside>
-          {responsive ? (
-            <StEditList>
-              <StEditListItem>
-                <StNavLink exact to="/edit" activeClassName={"selected"}>
-                  <StSettings width="1.5" />
-                </StNavLink>
-              </StEditListItem>
-              <StEditListItem>
-                <StNavLink
-                  to="/edit/password/change"
-                  activeClassName={"selected"}
-                >
-                  <StKeyFill width="1.5" />
-                </StNavLink>
-              </StEditListItem>
-            </StEditList>
-          ) : (
-            <StEditList>
-              <StEditListItem>
-                <StNavLink exact to="/edit" activeClassName={"selected"}>
-                  프로필 편집
-                </StNavLink>
-              </StEditListItem>
-              <StEditListItem>
-                <StNavLink
-                  to="/edit/password/change"
-                  activeClassName={"selected"}
-                >
-                  비밀번호 변경
-                </StNavLink>
-              </StEditListItem>
-            </StEditList>
-          )}
+          <StEditList>
+            <StEditListItem>
+              <StNavLink exact to="/edit" activeClassName={"selected"}>
+                프로필 편집
+              </StNavLink>
+            </StEditListItem>
+            <StEditListItem>
+              <StNavLink
+                to="/edit/password/change"
+                activeClassName={"selected"}
+              >
+                비밀번호 변경
+              </StNavLink>
+            </StEditListItem>
+          </StEditList>
         </StEditAside>
         <EditRouter userData={userData} />
       </StEditContainer>

@@ -7,6 +7,10 @@ export const StMainRouterSection = styled.section`
   display: flex;
   flex-wrap: wrap;
   background-color: ${({ theme }) => theme.colors.backgroundColor};
+
+  @media only screen and (max-width: 900px) {
+    padding-top: ${({ rePaddingTop }) => rePaddingTop};
+  }
 `;
 
 export const StSectionControl = styled.section`

@@ -19,6 +19,8 @@ import { StDiv } from "../../../Global/StTags/StTags";
 import setUserData from "../../../service/usersData/setUserData";
 import setUserProfileImg from "../../../service/usersData/setUserProfileImg";
 import ResponsiveChangeEidt from "../../../responsiveComponents/ChangeEdit/ResponsiveChangeEidt";
+import { Theme } from "../../../style/Theme";
+
 const ChangeEdit = ({ userData }) => {
   const {
     photoURL,
@@ -101,7 +103,12 @@ const ChangeEdit = ({ userData }) => {
                   placeholder={name ? name : "이름"}
                   onChange={onChangeInput}
                 />
-                <StDiv padding="0.2em 0">
+                <StDiv
+                  padding="0.2em 0"
+                  color={Theme.colors.lightgrey}
+                  fontSize="0.9em"
+                  lineHeight="17px"
+                >
                   사람들이 이름, 별명 또는 비즈니스 이름 등 회원님의 알려진
                   이름을 사용하여 회원님의 계정을 찾을 수 있도록 도와주세요.
                 </StDiv>
@@ -169,7 +176,12 @@ const ChangeEdit = ({ userData }) => {
                   onChange={onChangeInput}
                 />
                 <StDiv padding="0.2em 0">개인정보</StDiv>
-                <StDiv padding="0.2em 0">
+                <StDiv
+                  padding="0.2em 0"
+                  fontSize="0.9em"
+                  lineHeight="17px"
+                  color={Theme.colors.lightgrey}
+                >
                   비즈니스나 반려동물 등에 사용된 계정인 경우에도 회원님의 개인
                   정보를 입력하세요. 공개 프로필에는 포함되지 않습니다.
                 </StDiv>
@@ -242,6 +254,9 @@ const ChangeEdit = ({ userData }) => {
               btnText="제출"
               width="4em"
               padding="0.1em"
+              bgColor={Theme.colors.skyblue}
+              color={Theme.colors.textColorWhite}
+              fontWeight="600"
               onClick={onSubmit}
             />
           </StChangeForm>

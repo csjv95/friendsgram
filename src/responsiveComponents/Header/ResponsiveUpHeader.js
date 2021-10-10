@@ -1,18 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
 import { StRectangle, StTriangle } from "../../Global/StBubbleChat/BubbleChat";
 import { StHeaderLogo } from "../../Global/Logo/StHeaderLogo";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
-import {
-  StBookmarkIcon,
-  StLine,
-  StSettings,
-  StTransfer,
-  StUserCircle,
-} from "../../Global/StIcon/StIcon";
+import { StLine, StSettings } from "../../Global/StIcon/StIcon";
 import StButton from "../../Global/StButton/StButton";
-import { authLogout } from "../../service/auth/authLogout";
 import { Theme } from "../../style/Theme";
 import { StLink, StMyLi, StMyUl } from "../../Global/Header/Header";
 
@@ -36,45 +28,19 @@ const StProfile = styled.div`
   align-content: flex-end;
 `;
 
-const ResponsiveUpHeader = () => {
-  const [profile, setProfile] = useState(false);
-
-  const photoURL = useSelector(
-    (state) => state.userData.userData.data.photoURL
-  );
-
-  const displayName = useSelector(
-    (state) => state.userData.userData.data.displayName
-  );
-
-  const profiles = [
-    {
-      icon: <StUserCircle width="1.5" />,
-      text: "프로필",
-      index: 0,
-      to: `/${displayName}`,
-    },
-    {
-      icon: <StBookmarkIcon width="1.5" />,
-      text: "저장됨",
-      index: 1,
-      to: `/${displayName}/saved`,
-    },
-    { icon: <StSettings width="1.5" />, text: "설정", index: 2, to: "/edit" },
-    { icon: <StTransfer width="1.5" />, text: "계정전환 (준비중)", index: 3 },
-    { text: "로그아웃", index: 4 },
-  ];
-
-  const profileOnClick = () => {
-    setProfile(!profile);
-  };
-
-  const onLogout = () => {
-    authLogout();
-  };
-
+const ResponsiveUpHeader = ({
+  profile,
+  location,
+  profiles,
+  photoURL,
+  profileOnClick,
+  onLogout,
+}) => {
   return (
     <StUpHeader>
+      {location.includes("/edit") && (
+        <StButton btnText={<StSettings width="1.5em" />} />
+      )}
       <StHeaderLogo href="/" width="100%" textAlign="center">
         Friendsgram
       </StHeaderLogo>

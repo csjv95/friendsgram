@@ -31,6 +31,8 @@ export const StChnageImgList = styled.ul`
 
 export const StImgLabel = styled.label`
   cursor: pointer;
+  color: ${({ color }) => color};
+  font-weight: ${({ fontWeight }) => fontWeight};
 `;
 
 export const StImgInput = styled.input`
