@@ -22,11 +22,11 @@ const ContainerRouteMain = () => {
   const history = useHistory();
 
   const pc = useMediaQuery({
-    query: "(min-width:1000px)",
+    query: "(min-width:900px)",
   });
 
   const responsive = useMediaQuery({
-    query: "(max-width:999px)",
+    query: "(max-width:900px)",
   });
 
   useEffect(() => {
@@ -59,6 +59,7 @@ const ContainerRouteMain = () => {
     followModal,
     sendModal,
     searchModal,
+    mobileMenuModal,
     progressState,
   } = useSelector((state) => ({
     uploadModal: state.modalState.uploadModal,
@@ -67,6 +68,7 @@ const ContainerRouteMain = () => {
     followModal: state.modalState.followModal,
     sendModal: state.modalState.sendModal,
     searchModal: state.modalState.searchModal,
+    mobileMenuModal: state.modalState.mobileMenuModal.state,
     progressState: state.progressBar.progressState,
   }));
 
@@ -96,6 +98,7 @@ const ContainerRouteMain = () => {
       followModal={followModal}
       sendModal={sendModal}
       searchModal={searchModal}
+      mobileMenuModal={mobileMenuModal}
       changeLocationModal={changeLocationModal}
       changePostModal={changePostModal}
       changeFollowModal={changeFollowModal}

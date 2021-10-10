@@ -10,12 +10,12 @@ import ContainerPostMenu from "../../containers/modals/ContainerPostMenu";
 import ContainerFollowView from "../../containers/modals/ContainerFollowView";
 import ContainerSend from "../../containers/modals/ContainerSend";
 import ContainerLocation from "../../containers/modals/ContainerLocation";
-
 import Empty from "../../Global/Empty/Empty";
 import ContainerDownHeader from "../../responsiveContainers/Header/ContainerDownHeader";
 import ContainerSearch from "../../responsiveContainers/modals/ContainerSearch";
 import ContainerUpHeader from "../../responsiveContainers/Header/ContainerUpHeader";
 import { useLocation } from "react-router";
+import ContainerMobileMenu from "../../responsiveContainers/modals/ContainerMobileMenu";
 
 const AppContainer = styled.div`
   position: relative;
@@ -34,6 +34,7 @@ const RouteMain = ({
   followModal,
   sendModal,
   searchModal,
+  mobileMenuModal,
   progressState,
   pc,
   responsive,
@@ -44,6 +45,8 @@ const RouteMain = ({
   const follow = document.getElementById("follow");
   const send = document.getElementById("send");
   const search = document.getElementById("search");
+  const mobileMenu = document.getElementById("mobile_menu");
+
   const location = useLocation().pathname;
 
   return (
@@ -81,6 +84,12 @@ const RouteMain = ({
       {searchModal && (
         <ModalPotal potalName={search}>
           <ContainerSearch />
+        </ModalPotal>
+      )}
+
+      {mobileMenuModal && (
+        <ModalPotal potalName={mobileMenu}>
+          <ContainerMobileMenu />
         </ModalPotal>
       )}
 

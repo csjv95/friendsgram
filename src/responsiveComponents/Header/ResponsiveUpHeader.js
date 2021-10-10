@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { StRectangle, StTriangle } from "../../Global/StBubbleChat/BubbleChat";
 import { StHeaderLogo } from "../../Global/Logo/StHeaderLogo";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
-import { StLine, StSettings } from "../../Global/StIcon/StIcon";
 import StButton from "../../Global/StButton/StButton";
-import { Theme } from "../../style/Theme";
-import { StLink, StMyLi, StMyUl } from "../../Global/Header/Header";
+import { StSettings } from "../../Global/StIcon/StIcon";
+// import { StRectangle, StTriangle } from "../../Global/StBubbleChat/BubbleChat";
+// import { Theme } from "../../style/Theme";
+// import { StLink, StMyLi, StMyUl } from "../../Global/Header/Header";
 
 const StUpHeader = styled.header`
   width: 100%;
@@ -30,16 +30,20 @@ const StProfile = styled.div`
 
 const ResponsiveUpHeader = ({
   profile,
-  location,
   profiles,
-  photoURL,
   profileOnClick,
   onLogout,
+  location,
+  photoURL,
+  handleMobileEditMenu,
+  handleMobileProfileMen,
 }) => {
   return (
     <StUpHeader>
       {location.includes("/edit") && (
-        <StButton btnText={<StSettings width="1.5em" />} />
+        <StButton
+          btnText={<StSettings width="1.5em" onClick={handleMobileEditMenu} />}
+        />
       )}
       <StHeaderLogo href="/" width="100%" textAlign="center">
         Friendsgram
@@ -49,11 +53,11 @@ const ResponsiveUpHeader = ({
           src={photoURL}
           alt="my"
           height="100%"
-          onClick={profileOnClick}
+          onClick={handleMobileProfileMen}
         />
       </StProfile>
 
-      {profile && (
+      {/* {profile && (
         <>
           <StTriangle
             top="2.7em"
@@ -86,7 +90,7 @@ const ResponsiveUpHeader = ({
             ))}
           </StRectangle>
         </>
-      )}
+      )} */}
     </StUpHeader>
   );
 };

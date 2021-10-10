@@ -93,7 +93,7 @@ const StLogoutBtn = styled.button`
 `;
 
 const StSearchForm = styled.form`
-  @media (max-width: 999px) {
+  @media (max-width: 900px) {
     /* screen width is less than 768px (medium) */
     display: none;
   }
