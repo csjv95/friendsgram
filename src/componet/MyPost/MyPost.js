@@ -8,6 +8,10 @@ import {
   StPostButton,
   StPostImg,
 } from "../../Global/StMyProfileRoute/StMyProfileRoute";
+import { useMediaQuery } from "react-responsive";
+import { useHistory } from "react-router";
+import { clickedPostId } from "../../redux/modules/post/clickPost";
+import { useDispatch } from "react-redux";
 
 const MyPost = ({
   myPostData,
@@ -21,15 +25,26 @@ const MyPost = ({
   handleSend,
 }) => {
   const [postId, setPostId] = useState("");
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const responsive = useMediaQuery({
+    query: "(max-width:1024px)",
+  });
 
   return (
     <StPostList>
       {myPostData.map((data, postId) => (
         <StPostItem
           key={postId}
-          onClick={() => {
+          onClick={async () => {
             handlePost();
             setPostId(postId);
+            dispatch(clickedPostId(data.postId));
+            responsive &&
+              history.push({
+                pathname: `/post/${data.postId}`,
+              });
           }}
         >
           <StPostButton>

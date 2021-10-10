@@ -22,6 +22,7 @@ const Post = ({
       display="flex"
       justifyContent="center"
       alignItems="center"
+      bgColor={Theme.colors.modalBgColor}
     >
       <StModalBtn position="fixed" top="1em" right="1em" onClick={onCloseModal}>
         <StClear width="2.5em" color={Theme.colors.contentColor} />

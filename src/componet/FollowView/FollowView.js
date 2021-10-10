@@ -34,6 +34,7 @@ const FollowView = ({
       display="flex"
       justifyContent="center"
       alignItems="center"
+      bgColor={Theme.colors.modalBgColor}
     >
       <StModalMain
         width="25em"
@@ -54,11 +55,13 @@ const FollowView = ({
             textAlign="center"
             borderBottom={`1px solid ${Theme.colors.borderColor}`}
           >
-            <StTitle>{isFollow === "팔로워" ? isFollow : isFollow}</StTitle>
+            <StTitle padding="1em">
+              {isFollow === "팔로워" ? isFollow : isFollow}
+            </StTitle>
             <StButton
               onClick={handleFollow}
               position="absolute"
-              top="1.7em"
+              top="1em"
               right="1em"
               width="3em"
               btnText={<StClear width="2em" />}

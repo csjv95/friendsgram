@@ -4,6 +4,7 @@ import styled from "styled-components";
 import StButton from "../../Global/StButton/StButton";
 import { StCloseIcon } from "../../Global/StIcon/StIcon";
 import { StModalContainer } from "../../Global/StModal/StModal";
+import { Theme } from "../../style/Theme";
 
 const StMobileMenuMain = styled.main`
   padding-top: 3em;
@@ -48,6 +49,8 @@ const MobileMenu = ({ handleMobileMenu, list }) => {
       height="100%"
       display="flex"
       flexDirectioin="column"
+      bgColor={Theme.colors.backgroundColor}
+      postModal={Theme.colors.backgroundColor}
     >
       <StTitle>옵션</StTitle>
       <StButton
@@ -63,7 +66,7 @@ const MobileMenu = ({ handleMobileMenu, list }) => {
         <StMobileList onClick={handleMobileMenu}>
           {list.map((item) => (
             <StMobileItem key={item.index}>
-              <StLink to={item.to}>
+              <StLink to={item.to ? item.to : "/"}>
                 {item.icon}
                 {item.text}
               </StLink>

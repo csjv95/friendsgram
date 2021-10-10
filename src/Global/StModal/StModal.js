@@ -10,11 +10,11 @@ export const StModalContainer = styled.section`
   flex-direction: ${({ flexDirectioin }) => flexDirectioin};
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: ${({ alignItems }) => alignItems};
-  background-color: ${({ theme }) => theme.colors.backgroundColor};
+  background-color: ${({ bgColor }) => bgColor};
   z-index: 999999;
 
   @media only screen and (max-width: 900px) {
-    background-color: ${({ theme }) => theme.colors.backgroundColor};
+    background-color: ${({ postModal }) => postModal};
   }
 `;
 

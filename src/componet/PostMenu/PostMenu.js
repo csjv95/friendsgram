@@ -69,6 +69,7 @@ const PostMenu = ({
       display="flex"
       justifyContent="center"
       alignItems="center"
+      bgColor={Theme.colors.modalBgColor}
     >
       <StModalMain
         width="25em"

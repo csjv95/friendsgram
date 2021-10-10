@@ -3,11 +3,11 @@ const POSTDATA_SUCCESS = "postData/POSTDATA_SUCCESS";
 const POSTDATA_ERROR = "postData/POSTDATA_ERROR";
 
 export const postDataAsync = (postData) => (dispatch) => {
-  dispatch({ POSTDATA });
+  dispatch({ type: POSTDATA });
   try {
-    dispatch({ POSTDATA_SUCCESS, postData });
+    dispatch({ type: POSTDATA_SUCCESS, postData });
   } catch (error) {
-    dispatch({ POSTDATA_ERROR, error });
+    dispatch({ type: POSTDATA_ERROR, error });
   }
 };
 

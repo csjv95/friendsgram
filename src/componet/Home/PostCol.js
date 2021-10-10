@@ -94,7 +94,6 @@ const PostCol = ({
   const [photoURL, setPhotoURL] = useState("");
   const [heartData, setHeartData] = useState([]);
   const [heartLength, setHeartLength] = useState([]);
-  // const [bookMarkPostIds, setBookMarkPostIds] = useState([]);
   const [comment, setComment] = useState("");
   const [allComment, setAllComment] = useState([]);
   const justTextRef = useRef();
@@ -105,16 +104,15 @@ const PostCol = ({
   useEffect(() => {
     const BOOKMARKPOSTIDS_SUCCESS = "bookMarkPostIds/BOOKMARKPOSTIDS_SUCCESS";
 
-    getMatchUid(uid, setMatchUser);
     const heart = getHeart(setHeartData);
-    // const bookMark = getBookMarkPostIds(setBookMarkPostIds);
-    getBookMarkPostIds(dispatch, BOOKMARKPOSTIDS_SUCCESS);
     const heartLength = getHeartLength(postId, setHeartLength);
+
+    getMatchUid(uid, setMatchUser);
+    getBookMarkPostIds(dispatch, BOOKMARKPOSTIDS_SUCCESS);
 
     return () => {
       heart();
       heartLength();
-      // bookMark();
     };
   }, [uid, postId, dispatch]);
 
