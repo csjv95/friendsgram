@@ -49,6 +49,7 @@ export const StChangeForm = styled.form`
 export const StSetContainer = styled.div`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
+  padding: ${({ padding }) => padding};
   display: ${({ display }) => display};
 `;
 

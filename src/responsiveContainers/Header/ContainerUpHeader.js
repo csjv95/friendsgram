@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import { authLogout } from "../../service/auth/authLogout";
 import {
   StBookmarkIcon,
+  StKey,
+  StLogOut,
   StSettings,
   StTransfer,
   StUserCircle,
@@ -25,12 +27,14 @@ const ContainerUpHeader = () => {
   );
 
   const editMenuList = [
-    { text: "edit", link: "/edit", index: 0 },
-    { text: `change pw`, link: "/edit/password/change", index: 1 },
+    { icon: <StSettings width="1.5" />, text: "edit", index: 0, to: "/edit" },
+    {
+      icon: <StKey width="1.5" />,
+      text: `change pw`,
+      index: 1,
+      to: "/edit/password/change",
+    },
   ];
-
-  const changeMobileMenu = () =>
-    dispatch(changeMobileMenuModalState(editMenuList));
 
   const profiles = [
     {
@@ -47,8 +51,14 @@ const ContainerUpHeader = () => {
     },
     { icon: <StSettings width="1.5" />, text: "설정", index: 2, to: "/edit" },
     { icon: <StTransfer width="1.5" />, text: "계정전환 (준비중)", index: 3 },
-    { text: "로그아웃", index: 4 },
+    { icon: <StLogOut width="1.5" />, text: "로그아웃", index: 4 },
   ];
+
+  const changeMobileEditMenu = () =>
+    dispatch(changeMobileMenuModalState(editMenuList));
+
+  const changeMobileProfileMenu = () =>
+    dispatch(changeMobileMenuModalState(profiles));
 
   const profileOnClick = () => {
     setProfile(!profile);
@@ -66,7 +76,8 @@ const ContainerUpHeader = () => {
       photoURL={photoURL}
       profileOnClick={profileOnClick}
       onLogout={onLogout}
-      handleMobileMenu={changeMobileMenu}
+      handleMobileEditMenu={changeMobileEditMenu}
+      handleMobileProfileMen={changeMobileProfileMenu}
     />
   );
 };

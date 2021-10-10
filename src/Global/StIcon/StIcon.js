@@ -38,8 +38,13 @@ import { SendPlane } from "@styled-icons/remix-fill/SendPlane";
 import { Search } from "@styled-icons/bootstrap/Search";
 import { Key } from "@styled-icons/bootstrap/Key";
 import { KeyFill } from "@styled-icons/bootstrap/KeyFill";
+import { LogOut } from "@styled-icons/boxicons-regular/LogOut";
 
 export const StSearch = styled(Search)`
+  width: ${({ width }) => width}em;
+`;
+
+export const StLogOut = styled(LogOut)`
   width: ${({ width }) => width}em;
 `;
 

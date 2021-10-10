@@ -46,7 +46,7 @@ const StNavLink = styled(NavLink)`
   padding: 1em;
 `;
 
-const Edit = ({ userData, responsive }) => {
+const Edit = ({ userData }) => {
   return (
     <StMainRouterSection rePaddingTop="3em">
       <StEditContainer>

@@ -36,6 +36,11 @@ const StMobileItem = styled.li`
   }
 `;
 
+const StLink = styled(Link)`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const MobileMenu = ({ handleMobileMenu, list }) => {
   return (
     <StModalContainer
@@ -58,7 +63,10 @@ const MobileMenu = ({ handleMobileMenu, list }) => {
         <StMobileList onClick={handleMobileMenu}>
           {list.map((item) => (
             <StMobileItem key={item.index}>
-              <Link to={item.link}>{item.text}</Link>
+              <StLink to={item.to}>
+                {item.icon}
+                {item.text}
+              </StLink>
             </StMobileItem>
           ))}
         </StMobileList>

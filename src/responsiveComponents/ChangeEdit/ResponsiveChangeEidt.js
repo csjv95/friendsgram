@@ -112,7 +112,7 @@ const ResponsiveChangeEidt = ({ userData }) => {
       </StImgSection>
       <StChangeForm onSubmit={onSubmit}>
         {editList.map((item) => (
-          <StSetContainer key={item.index} width="100%" padding="0.5em 0">
+          <StSetContainer key={item.index} width="100%" padding="0.2em 0">
             <StDiv padding="0.5em 0" fontWeight="600" fontSize="0.9em">
               {item.title}
             </StDiv>
@@ -128,7 +128,7 @@ const ResponsiveChangeEidt = ({ userData }) => {
             />
             {item.index === 0 && (
               <StDiv
-                padding="1em 0"
+                padding="0.5em 0"
                 color={Theme.colors.lightgrey}
                 fontSize="0.8em"
                 lineHeight="17px"
@@ -138,7 +138,7 @@ const ResponsiveChangeEidt = ({ userData }) => {
             )}
             {item.index === 3 && (
               <StDiv
-                padding="1em 0"
+                padding="0.5em 0"
                 color={Theme.colors.lightgrey}
                 fontSize="0.8em"
                 lineHeight="17px"
@@ -150,7 +150,7 @@ const ResponsiveChangeEidt = ({ userData }) => {
         ))}
         <StButton
           width="10em"
-          margin="1em  0"
+          margin="2em 0"
           padding="0.5em"
           btnText="제출"
           bgColor={Theme.colors.skyblue}

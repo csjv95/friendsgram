@@ -22,11 +22,11 @@ const ContainerRouteMain = () => {
   const history = useHistory();
 
   const pc = useMediaQuery({
-    query: "(min-width:1000px)",
+    query: "(min-width:900px)",
   });
 
   const responsive = useMediaQuery({
-    query: "(max-width:999px)",
+    query: "(max-width:900px)",
   });
 
   useEffect(() => {
