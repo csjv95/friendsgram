@@ -13,6 +13,7 @@ import currentUserUid from "./auth/currentUserUid";
 import isFollow from "./follow/isFollow";
 import location from "./location/location";
 import postData from "./post/postData";
+import userImg from "./auth/userImg";
 
 const rootReducer = combineReducers({
   loginState,
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   isFollow,
   location,
   postData,
+  userImg,
 });
 
 export default rootReducer;
