@@ -7,7 +7,10 @@ const getPostUsePostId = async (postId, dispatch) => {
     .where("postId", "==", postId)
     .get();
 
-  (await post).forEach((item) => dispatch(postDataAsync(item.data())));
+  (await post).forEach((item) => {
+    const postData = item.data();
+    dispatch(postDataAsync(postData));
+  });
 };
 
 export default getPostUsePostId;

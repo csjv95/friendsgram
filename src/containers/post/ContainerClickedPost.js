@@ -15,14 +15,6 @@ const ContainerClickedPost = ({ postId }) => {
     getPostUsePostId(postId, dispatch);
   }, [postId, dispatch]);
 
-  // useEffect(() => {
-  //   const profileImg = getUserImg(postData.postData.uid, setPhotoURL);
-
-  //   return () => {
-  //     profileImg();
-  //   };
-  // }, [postData.postData.uid]);
-
   if (loading) return <LoadingSpinner />;
 
   return <ClickedPost post={postData} photoURL={photoURL} />;
