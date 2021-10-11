@@ -30,7 +30,8 @@ const ClickedPost = (post) => {
             justifyContent="center"
             alignItems="center"
           >
-            <StProfileImg src={photoURL} alt="my profile img" height="100%" />
+            hello
+            {/* <StProfileImg src={photoURL} alt="my profile img" height="100%" /> */}
           </StProfileContainer>
         </StPostHeader>
       </div>

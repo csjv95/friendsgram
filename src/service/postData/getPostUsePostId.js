@@ -1,4 +1,4 @@
-import { onePost, postDataAsync } from "../../redux/modules/post/postData";
+import { postDataAsync } from "../../redux/modules/post/postData";
 import { firebaseStore } from "../firebase";
 
 const getPostUsePostId = async (postId, dispatch) => {
@@ -8,8 +8,8 @@ const getPostUsePostId = async (postId, dispatch) => {
     .get();
 
   (await post).forEach((item) => {
-    const post = item.data();
-    dispatch(onePost(post));
+    const postData = item.data();
+    dispatch(postDataAsync(postData));
   });
 };
 
