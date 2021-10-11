@@ -3,17 +3,12 @@ const POSTDATA_SUCCESS = "postData/POSTDATA_SUCCESS";
 const POSTDATA_ERROR = "postData/POSTDATA_ERROR";
 const ONE_POST = "postData/ONE_POST";
 
-export const onePost = (post) => ({
-  type: ONE_POST,
-  post,
-});
-
 export const postDataAsync = (postData) => async (dispatch) => {
-  await dispatch({ POSTDATA });
+  await dispatch({ type: POSTDATA });
   try {
-    await dispatch({ POSTDATA_SUCCESS, postData });
+    await dispatch({ type: POSTDATA_SUCCESS, postData });
   } catch (error) {
-    await dispatch({ POSTDATA_ERROR, error });
+    await dispatch({ type: POSTDATA_ERROR, error });
   }
 };
 
@@ -22,17 +17,11 @@ const initialState = {
     postData: [],
     loading: false,
     error: null,
-    post: [],
   },
 };
 
 export default function postData(state = initialState, action) {
   switch (action.type) {
-    case ONE_POST:
-      return {
-        ...state,
-        post: action.post,
-      };
     case POSTDATA:
       return {
         ...state,

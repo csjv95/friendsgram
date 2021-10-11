@@ -7,13 +7,15 @@ import LoadingSpinner from "../../Global/Loading/LoadingSpinner";
 const ContainerClickedPost = ({ postId }) => {
   const dispatch = useDispatch();
 
-  const post = useSelector((state) => state.postData.post);
+  const { postData, loading } = useSelector((state) => state.postData.postData);
 
   useEffect(() => {
     getPostUsePostId(postId, dispatch);
   }, [postId, dispatch]);
 
-  return <ClickedPost post={post} />;
+  if (loading) return <LoadingSpinner width="5em" />;
+
+  return <ClickedPost postData={postData} />;
 };
 
 export default ContainerClickedPost;

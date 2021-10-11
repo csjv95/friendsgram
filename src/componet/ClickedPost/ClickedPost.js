@@ -5,16 +5,17 @@ import { StPostHeader, StProfileContainer } from "../../Global/StPost/StPost";
 import { StProfileImg } from "../../Global/StProfileImg/StProfileImg";
 import getUserData from "../../service/usersData/getUserData";
 
-const ClickedPost = (post) => {
+const ClickedPost = ({ postData }) => {
   const [userData, setUserData] = useState([]);
 
-  // useEffect(() => {
-  //   getUserData(post.post.uid, setUserData);
-  // }, [post.post.uid]);
+  useEffect(() => {
+    getUserData(postData.uid, setUserData);
+  }, [postData.uid]);
 
-  console.log(post);
+  console.log(postData.uid);
 
   const { photoURL } = userData;
+
   return (
     <StMainRouterSection rePaddingTop="3em">
       <div>
@@ -31,7 +32,7 @@ const ClickedPost = (post) => {
             alignItems="center"
           >
             hello
-            {/* <StProfileImg src={photoURL} alt="my profile img" height="100%" /> */}
+            <StProfileImg src={photoURL} alt="my profile img" height="100%" />
           </StProfileContainer>
         </StPostHeader>
       </div>
