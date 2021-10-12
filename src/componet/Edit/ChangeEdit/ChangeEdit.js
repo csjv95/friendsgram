@@ -20,8 +20,14 @@ import setUserData from "../../../service/usersData/setUserData";
 import setUserProfileImg from "../../../service/usersData/setUserProfileImg";
 import ResponsiveChangeEidt from "../../../responsiveComponents/ChangeEdit/ResponsiveChangeEidt";
 import { Theme } from "../../../style/Theme";
+import { useDispatch, useSelector } from "react-redux";
+import { barState } from "../../../redux/modules/progressBar/progressBar";
 
 const ChangeEdit = ({ userData }) => {
+  const dispatch = useDispatch();
+
+  const changeBarState = (bar) => dispatch(barState(bar));
+
   const {
     photoURL,
     displayName,
@@ -32,7 +38,6 @@ const ChangeEdit = ({ userData }) => {
     phoneNum,
     gen,
   } = userData;
-
   const [reUserData, setReUserData] = useState({});
 
   const responsive = useMediaQuery({
@@ -52,7 +57,7 @@ const ChangeEdit = ({ userData }) => {
 
   const profileImgChange = (event) => {
     const img = event.target.files[0];
-    setUserProfileImg(img);
+    setUserProfileImg(img, changeBarState);
   };
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useEffect, useRef, useState } from "react";
 import ClickedPost from "../../componet/ClickedPost/ClickedPost";
 import getPostUsePostId from "../../service/postData/getPostUsePostId";

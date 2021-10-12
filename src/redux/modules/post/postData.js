@@ -1,7 +1,6 @@
 const POSTDATA = "postData/POSTDATA";
 const POSTDATA_SUCCESS = "postData/POSTDATA_SUCCESS";
 const POSTDATA_ERROR = "postData/POSTDATA_ERROR";
-const ONE_POST = "postData/ONE_POST";
 
 export const postDataAsync = (postData) => async (dispatch) => {
   await dispatch({ type: POSTDATA });
