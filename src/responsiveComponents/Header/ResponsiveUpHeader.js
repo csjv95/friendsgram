@@ -39,15 +39,15 @@ const ResponsiveUpHeader = ({
   handleMobileProfileMen,
 }) => {
   return (
-    <StUpHeader>
+    <StUpHeader display="flex">
       {location.includes("/edit") && (
         <StButton
           btnText={<StSettings width="1.5em" onClick={handleMobileEditMenu} />}
         />
       )}
-      <StHeaderLogo href="/" width="100%" textAlign="center">
-        Friendsgram
-      </StHeaderLogo>
+      <div style={{ width: "100%", textAlign: "center" }}>
+        <StHeaderLogo href="/">Friendsgram</StHeaderLogo>
+      </div>
       <StProfile>
         <StProfileImg
           src={photoURL}
@@ -56,41 +56,6 @@ const ResponsiveUpHeader = ({
           onClick={handleMobileProfileMen}
         />
       </StProfile>
-
-      {/* {profile && (
-        <>
-          <StTriangle
-            top="2.7em"
-            right="0.8em"
-            borderTop="1em solid none"
-            borderBottom={`0.5em solid ${Theme.colors.contentColor}`}
-            borderLeft="0.5em solid transparent;"
-            borderRight="0.5em solid transparent;"
-          />
-          <StRectangle top="3em" right="0" width="13em" height="auto">
-            {profiles.map((item) => (
-              <StMyUl key={item.index} onClick={profileOnClick}>
-                <StMyLi>
-                  <StLink to={item.to ? item.to : "/"}>
-                    <StButton btnText={item.icon} refontSize="0.5em" />
-                    {item.index === 4 ? (
-                      <StButton
-                        width="100%"
-                        btnText={item.text}
-                        fontWeight="600"
-                        onClick={onLogout}
-                      />
-                    ) : (
-                      <StButton btnText={item.text} fontWeight="600" />
-                    )}
-                  </StLink>
-                </StMyLi>
-                {item.index === 3 && <StLine />}
-              </StMyUl>
-            ))}
-          </StRectangle>
-        </>
-      )} */}
     </StUpHeader>
   );
 };
