@@ -12,6 +12,7 @@ import { Theme } from "../../style/Theme";
 
 const StSearchMain = styled.main`
   width: 100%;
+  background-color: ${({ theme }) => theme.colors.backgroundColor};
 `;
 
 const StSearchInput = styled.input`
