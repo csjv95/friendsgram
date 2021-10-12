@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Empty from "../Empty/Empty";
 import { StDotFill, StLeftArrow, StRightArrow } from "../StIcon/StIcon";
 import { Theme } from "../../style/Theme";
+import LoadingPage from "../Loading/LoadingPage";
 
 const ImageWraper = styled.section`
   position: relative;
@@ -76,6 +77,7 @@ const ImageSlider = ({ imgs }) => {
     setImgIndex(index);
   };
 
+  if (!imgs) return <LoadingPage />;
   return (
     <>
       <ImageWraper>

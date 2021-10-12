@@ -5,9 +5,9 @@ const LOGIN_ERROR = "isLogin/LOGIN_ERROR";
 export const loginAsync = () => async (dispatch) => {
   await dispatch({ type: LOGIN });
   try {
-    dispatch({ type: LOGIN_SUCCESS });
+    await dispatch({ type: LOGIN_SUCCESS });
   } catch (error) {
-    dispatch({ type: LOGIN_ERROR, error });
+    await dispatch({ type: LOGIN_ERROR, error });
   }
 };
 

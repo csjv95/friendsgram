@@ -8,6 +8,8 @@ import {
 import { StImageMultiple } from "../../Global/StIcon/StIcon";
 import ModalPotal from "../../modal/ModalPotal";
 import Post from "../Post/Post";
+import { useMediaQuery } from "react-responsive";
+import { useHistory } from "react-router";
 
 const Saved = ({
   handlePost,
@@ -21,6 +23,11 @@ const Saved = ({
   handleSend,
 }) => {
   const [postId, setPostId] = useState([]);
+  const history = useHistory();
+
+  const responsive = useMediaQuery({
+    query: "(max-width:1024px)",
+  });
 
   return (
     <StPostList>
@@ -31,6 +38,10 @@ const Saved = ({
             onClick={() => {
               handlePost();
               setPostId(postId);
+              responsive &&
+                history.push({
+                  pathname: `/post/${data.postId}`,
+                });
             }}
           >
             <StPostButton>

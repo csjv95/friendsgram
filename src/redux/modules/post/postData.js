@@ -15,7 +15,7 @@ export const postDataAsync = (postData) => async (dispatch) => {
 const initialState = {
   postData: {
     postData: [],
-    loading: false,
+    loading: true,
     error: null,
   },
 };
