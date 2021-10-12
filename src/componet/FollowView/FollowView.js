@@ -42,6 +42,9 @@ const FollowView = ({
         display="flex"
         borderRadius={Theme.borders.modalRadius}
         bgColor={Theme.colors.contentColor}
+        sendModalWidth="100%"
+        sendModalborderHeight="100%"
+        sendModalborderRadius="0"
       >
         {/* following or follower */}
         <StList
