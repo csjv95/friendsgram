@@ -12,16 +12,19 @@ import getBookMarkPostIds from "../service/bookMark/getBookMarkPostIds";
 import { authGetUid } from "../service/auth/authGetUid";
 import { clickedPostId, clickedPostUid } from "../redux/modules/post/clickPost";
 import { isFollowState } from "../redux/modules/follow/isFollow";
+import getCurrentUserData from "../service/fireStore/getCurrentUserData";
 
 const ContainerMyProfile = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const GET_USER_DATA_SUCCESS = "userData/GET_USER_DATA_SUCCESS";
     const FOLLOWINGLIST_SUCCESS = "followingList/FOLLOWINGLIST_SUCCESS";
     const FOLLOWERLIST_SUCCESS = "follwerList/FOLLOWERLIST_SUCCESS";
     const BOOKMARKPOSTIDS_SUCCESS = "bookMarkPostIds/BOOKMARKPOSTIDS_SUCCESS";
     const CURRENTUID = "getUid/CURRENTUID";
 
+    getCurrentUserData(dispatch, GET_USER_DATA_SUCCESS);
     getFollowingList(dispatch, FOLLOWINGLIST_SUCCESS);
     getFollowerList(dispatch, FOLLOWERLIST_SUCCESS);
     getBookMarkPostIds(dispatch, BOOKMARKPOSTIDS_SUCCESS);
