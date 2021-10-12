@@ -49,6 +49,9 @@ const Send = ({ handleSend, roomId, setRoomId }) => {
       display="flex"
       justifyContent="center"
       alignItems="center"
+      sendModaldisplay="block"
+      sendModalLeft="0"
+      sendModalTop="0"
       bgColor={Theme.colors.modalBgColor}
     >
       <StModalMain
@@ -56,6 +59,9 @@ const Send = ({ handleSend, roomId, setRoomId }) => {
         border={`1px solid ${Theme.colors.borderColor}`}
         borderRadius="1em"
         bgColor={Theme.colors.contentColor}
+        sendModalWidth="100%"
+        sendModalborderHeight="100%"
+        sendModalborderRadius="0"
       >
         <StHeader
           padding="0.5em 1em"

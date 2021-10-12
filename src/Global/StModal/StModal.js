@@ -16,6 +16,12 @@ export const StModalContainer = styled.section`
   @media only screen and (max-width: 900px) {
     background-color: ${({ postModal }) => postModal};
   }
+
+  @media only screen and (max-width: 600px) {
+    display: ${({ sendModaldisplay }) => sendModaldisplay};
+    left: ${({ sendModalLeft }) => sendModalLeft};
+    top: ${({ sendModalTop }) => sendModalTop};
+  }
 `;
 
 export const StModalMain = styled.div`
@@ -32,6 +38,12 @@ export const StModalMain = styled.div`
   border: ${({ border }) => border};
   border-radius: ${({ borderRadius }) => borderRadius};
   background-color: ${({ bgColor }) => bgColor};
+
+  @media only screen and (max-width: 600px) {
+    width: ${({ sendModalWidth }) => sendModalWidth};
+    border-radius: ${({ sendModalborderRadius }) => sendModalborderRadius};
+    height: ${({ sendModalborderHeight }) => sendModalborderHeight};
+  }
 `;
 
 export const StModalBtn = styled.button`
