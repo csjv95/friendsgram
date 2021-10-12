@@ -4,8 +4,8 @@ import ContainerRouteMain from "./containers/ContainerRouteMain";
 
 function App() {
   return <ContainerRouteMain />;
-  // start responsive version 3.0.0!!
-  // makeing responesive header
+  // start responsive version 3.0.1!!
+  // finsh responesive
 }
 
 export default App;
