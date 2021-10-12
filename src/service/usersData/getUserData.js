@@ -3,8 +3,8 @@ import { firebaseStore } from "../firebase";
 const getUserData = (uid, setData) => {
   const userData = firebaseStore.collection("users").doc(uid);
 
-  userData.get().then((data) => {
-    setData(data.data());
+  userData.get().then(async (data) => {
+    await setData(data.data());
   });
 };
 

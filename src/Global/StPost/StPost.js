@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StPostHeader = styled.header`
+  width: ${({ width }) => width};
   padding: ${({ padding }) => padding};
   display: ${({ display }) => display};
   justify-content: ${({ justifyContent }) => justifyContent};
@@ -25,6 +26,7 @@ export const StProfileInfo = styled.div`
 
 export const StProfileId = styled.span`
   font-weight: ${({ fontWeight }) => fontWeight};
+  margin-bottom: 0.2em;
 `;
 
 export const StProfileLocation = styled.span`
@@ -88,7 +90,7 @@ export const StTextContainer = styled.div`
 `;
 
 export const StDisplayName = styled.span`
-  margin: 0 0.5em;
+  margin: 0.5em 0.5em;
   font-size: 0.8em;
   font-weight: 600;
 `;

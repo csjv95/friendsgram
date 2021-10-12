@@ -16,7 +16,7 @@ export const getBookMarkPostIdAsync = () => async (dispatch) => {
 const initialState = {
   bookMarkPostIds: {
     loading: false,
-    bookMarkPostIds: null,
+    bookMarkPostIds: [],
     error: null,
   },
 };

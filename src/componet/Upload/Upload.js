@@ -35,6 +35,11 @@ const StPostForm = styled.form`
   & > :nth-child(n + 2) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
   }
+
+  @media only screen and (max-width: 600px) {
+    width: ${({ Rewidth }) => Rewidth};
+    height: ${({ Reheight }) => Reheight};
+  }
 `;
 
 export const CloseBtnCotainer = styled.div`
@@ -230,7 +235,7 @@ const Upload = ({
 
   return (
     <StPostCotainer>
-      <StPostForm onSubmit={preventDefault}>
+      <StPostForm Rewidth="100%" Reheight="100%" onSubmit={preventDefault}>
         <CloseBtnCotainer>
           <button
             onClick={() => {

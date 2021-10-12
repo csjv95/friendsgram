@@ -62,13 +62,16 @@ const StArticleItem = styled.li`
   }
 `;
 
-const StHomeArticle = styled.article`
+export const StHomeArticle = styled.article`
   width: 100%;
 `;
 
-const ImageSliderContainer = styled.div`
+export const ImageSliderContainer = styled.div`
   max-width: 37.5em;
   /* max-height: 40.5em; */
+  @media only screen and (max-width: 600px) {
+    max-width: ${({ reMaxWidth }) => reMaxWidth};
+  }
 `;
 
 const PostCol = ({
@@ -130,11 +133,12 @@ const PostCol = ({
     return () => {
       comments();
     };
-  }, [postId, uid]);
+  }, [postId]);
 
   const bookMarkPostIds = useSelector(
     (state) => state.bookMarkPostIds.bookMarkPostIds.bookMarkPostIds
   );
+
   // container 만들면 지우기
   if (!bookMarkPostIds) return <LoadingSpinner />;
 
@@ -181,7 +185,7 @@ const PostCol = ({
   const sendComment = (event) => {
     console.log(event.target.value);
     event.preventDefault();
-    setComments(postId, uid, comment);
+    setComments(postId, comment);
     setComment("");
     viewEomji && setViewEmoji(!viewEomji);
   };

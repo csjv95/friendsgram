@@ -5,7 +5,8 @@ const setUserProfileImg = async (img, setProgressBar) => {
   const currentUid = firebaseAuth.currentUser.uid;
 
   //storage에 사진 넣기
-  const uploadTask = await firebaseStorage
+  // const uploadTask =
+  await firebaseStorage
     .ref()
     .child(`${currentUid}/profileImg/recently`)
     .put(img);

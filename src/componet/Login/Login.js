@@ -24,6 +24,9 @@ import {
 } from "../../Global/StIcon/StIcon";
 
 const Login = () => {
+  //google ,faceBook 회원정보 받아서 firebase 에 저장하기
+  const test = false;
+
   const [userLoginData, setUserLoginData] = useState({
     id: "",
     pw: "",
