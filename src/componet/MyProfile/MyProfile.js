@@ -109,6 +109,7 @@ const StNavUl = styled.ul`
   padding: 0 10em;
   display: flex;
   justify-content: space-around;
+  
 
   & > :nth-child(n) {
     font-size: 0.8em;

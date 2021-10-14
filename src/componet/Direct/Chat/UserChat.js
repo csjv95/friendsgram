@@ -15,6 +15,7 @@ import { Theme } from "../../../style/Theme";
 const StChat = styled.ul`
   flex-grow: 1;
   height: 36em;
+  padding : 0 1em;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
