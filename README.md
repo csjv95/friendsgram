@@ -1,6 +1,6 @@
-# Instagram
+# Friendsgram
 
-Let's start~!
+Instagram Clone coding 
 
 ## Outline
 
@@ -9,10 +9,11 @@ Let's start~!
 <div markdown="1"> 
  
 [1.About the project](##About-the-project)    
-[3.Skills](##Skills)  
-[4.Detail](##Detail)
-[5.Problems and Resolutions](#Problems-and-Resolutions)       
-[6.Acknowledgements](#Acknowledgements)   
+[2.Skills](##Skills)  
+[3.Detail](##Detail)  
+[4.Problems and Resolutions](#Problems-and-Resolutions)          
+[5.Acknowledgements](#Acknowledgements)      
+
 </div>
 </details></br>
 
@@ -48,8 +49,18 @@ Let's start~!
     <img src="project_img\main.PNG" alt="home" />   
        
   - Message  
-    서로에게 메세지를 또는 링크를 주고 받을 수 있습니다   
-     <img src="project_img/message.png" alt="message" />
+    서로에게 메세지를 또는 링크를 주고 받을 수 있습니다    
+
+    <img src="project_img/message.png" alt="message" />
+
+      - 알람기능
+          - pc    
+          <img src="project_img\messageAlram.PNG" alt="upload" />
+          - mobile   
+
+          <img src="project_img\messageAlarmMobile.jpg" alt="upload" /> 
+
+     
 
   - upload
 
