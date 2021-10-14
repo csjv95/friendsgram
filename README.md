@@ -9,7 +9,6 @@ Let's start~!
 <div markdown="1"> 
  
 [1.About the project](##About-the-project)    
-[2.Screen Shots](##Screen-Shots)   
 [3.Skills](##Skills)  
 [4.Detail](##Detail)
 [5.Problems and Resolutions](#Problems-and-Resolutions)       
@@ -25,6 +24,7 @@ Let's start~!
 - React
 - React BrowserRouter
 - Styled component, styled component icons
+- Redux
 - Firebase
 
 ## Detail
@@ -32,17 +32,24 @@ Let's start~!
 - Before sigin in
 
   - Sigin In
-    - 로그인
+    - 로그인   
+    <img src="project_img\login.PNG" alt="login" width="100%"/>
+
   - Sigin Up
-    - 회원가입 <br><br>
+    - 회원가입   
+     <img src="project_img\signUp.PNG" alt="signUp"  width="100%" />
+    <br><br>   
 
 - After sigin in
 
   - Home  
     홈에서는 제일 많은 부분이 보여지는 곳인데 유저가 팔로우 한 유저의 게시물과 나의 게시물들을 시간순서에 맞게 보여지도록 하였습니다
 
+    <img src="project_img\main.PNG" alt="home" />   
+       
   - Message  
-    서로에게 메세지를 또는 링크를 주고 받을 수 있습니다
+    서로에게 메세지를 또는 링크를 주고 받을 수 있습니다   
+     <img src="project_img/message.png" alt="message" />
 
   - upload
 
@@ -56,6 +63,8 @@ Let's start~!
       1. Reset 버튼이 있습니다
       1. 실수로 나가기 버튼을 눌러도 작성한것을 기억합니다 <br><br>
 
+    <img src="project_img\upload.PNG" alt="upload" />
+
   - MyProfile
 
     - Profile
@@ -63,16 +72,16 @@ Let's start~!
       - My Post
         - 사용자가 작성한 포스트들을 볼수 있습니다
       - Saved
-        - 사용자가 북마크한 포스트들을 나만 볼수 있습니다
+        - 사용자가 북마크한 포스트들을 (나만 볼수 있습니다)
       - Heart
-        - 사용자가 좋아요를한 포스트들을 볼수 있습니다
-      - Tag
+        - 사용자가 좋아요를한 포스트들을 볼수 있습니다   
+       - Saved
+          - 사용자가 북마크한 포스트들을 (나만 볼수 있습니다)   
 
-    - Saved
 
-      - 사용자가 북마크한 포스트들을 나만 볼수 있습니다
+      <img src="project_img\myPage.PNG" alt="myPage" />
 
-    - Setting
+  - Setting
 
       - Profile Edit
 
@@ -86,11 +95,15 @@ Let's start~!
         1. 전화번호
         1. 성별 <br><br>
 
+        <img src="project_img\editProfile.PNG" alt="editProfile" />
+
       - PassWord Change
         - 사용자의 비밀번호를 업데이트할 수 있습니다 <br><br>
         1. 이전 비밀번호
         1. 새로운 비밀번호
         1. 새로운 비밀번호 확인
+
+         <img src="project_img\editPw.PNG" alt="editPw" />
 
 ## Problems and Resolutions
 
@@ -246,7 +259,8 @@ export default sendMessage;
 ## version
 
 1.0.0 => FriendsGram 첫 배포!  
-2.0.0 => Redux를 이용해서 데이터 관리
+2.0.0 => Redux,redux-Thunk를 이용해서 데이터 관리   
+3.0.0 => 반응형 웹페이지 제작
 
 ## Acknowledgements
 
