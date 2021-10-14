@@ -51,14 +51,16 @@ Instagram Clone coding
   - Message  
     서로에게 메세지를 또는 링크를 주고 받을 수 있습니다    
 
-    <img src="project_img/message.png" alt="message" />
+    <img src="project_img\message.PNG" alt="message" />
 
       - 알람기능
           - pc    
-          <img src="project_img\messageAlram.PNG" alt="upload" />
+
+          <img src="project_img\messageAlram.png" alt="messageAlram" />   
+
           - mobile   
 
-          <img src="project_img\messageAlarmMobile.jpg" alt="upload" /> 
+          <img src="project_img\messageAlarmMobile.jpg" alt="messageAlram" /> 
 
      
 
