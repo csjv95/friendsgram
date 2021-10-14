@@ -65,10 +65,10 @@ const MobileMenu = ({ handleMobileMenu, list }) => {
       <StMobileMenuMain style={{ paddingTop: "3em" }}>
         <StMobileList onClick={handleMobileMenu}>
           {list.map((item) => (
-            <StMobileItem key={item.index}>
-              <StLink to={item.to ? item.to : "/"}>
+            <StMobileItem key={item.index} >
+              <StLink to={item.to ? item.to : "/"} onClick={item.onClick && item.onClick}>
                 {item.icon}
-                {item.text}
+                {item.text} 
               </StLink>
             </StMobileItem>
           ))}

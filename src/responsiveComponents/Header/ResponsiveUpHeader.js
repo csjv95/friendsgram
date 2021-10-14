@@ -29,14 +29,10 @@ const StProfile = styled.div`
 `;
 
 const ResponsiveUpHeader = ({
-  profile,
-  profiles,
-  profileOnClick,
-  onLogout,
   location,
   photoURL,
   handleMobileEditMenu,
-  handleMobileProfileMen,
+  changeMobileProfileMenu,
 }) => {
   return (
     <StUpHeader display="flex">
@@ -53,7 +49,7 @@ const ResponsiveUpHeader = ({
           src={photoURL}
           alt="my"
           height="100%"
-          onClick={handleMobileProfileMen}
+          onClick={changeMobileProfileMenu}
         />
       </StProfile>
     </StUpHeader>

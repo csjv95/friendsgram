@@ -26,6 +26,10 @@ const ContainerUpHeader = () => {
     (state) => state.userData.userData.data.displayName
   );
 
+  const onLogout = () => {
+    authLogout();
+  };
+
   const editMenuList = [
     { icon: <StSettings width="1.5" />, text: "edit", index: 0, to: "/edit" },
     {
@@ -51,7 +55,7 @@ const ContainerUpHeader = () => {
     },
     { icon: <StSettings width="1.5" />, text: "설정", index: 2, to: "/edit" },
     { icon: <StTransfer width="1.5" />, text: "계정전환 (준비중)", index: 3 },
-    { icon: <StLogOut width="1.5" />, text: "로그아웃", index: 4 },
+    { icon: <StLogOut width="1.5" />, text: "로그아웃", index: 4 ,onClick : onLogout},
   ];
 
   const changeMobileEditMenu = () =>
@@ -64,9 +68,6 @@ const ContainerUpHeader = () => {
     setProfile(!profile);
   };
 
-  const onLogout = () => {
-    authLogout();
-  };
 
   return (
     <ResponsiveUpHeader
@@ -77,7 +78,7 @@ const ContainerUpHeader = () => {
       profileOnClick={profileOnClick}
       onLogout={onLogout}
       handleMobileEditMenu={changeMobileEditMenu}
-      handleMobileProfileMen={changeMobileProfileMenu}
+      changeMobileProfileMenu={changeMobileProfileMenu}
     />
   );
 };
