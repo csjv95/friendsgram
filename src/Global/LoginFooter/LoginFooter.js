@@ -34,7 +34,7 @@ const LoginFooter = () => {
             <option value="english">Engilsh</option>
           </StLanguage>
         </StFooterLi>
-        <StFooterLi>© 2021 Instagram from fackebook</StFooterLi>
+        <StFooterLi>© 2021 Friendstagram from SJ</StFooterLi>
       </StFooterUl>
     </StFooterEl>
   );

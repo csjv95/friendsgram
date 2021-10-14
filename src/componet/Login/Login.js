@@ -41,7 +41,8 @@ const Login = () => {
 
   const onClick = (event) => {
     event.preventDefault();
-    googleAuth();
+    alert("준비중입니다")
+    // googleAuth();
   };
 
   const onLogin = (event) => {

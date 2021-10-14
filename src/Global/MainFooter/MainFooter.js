@@ -87,7 +87,7 @@ const MainFooter = () => {
             <option value="english">english</option>
           </Select>
         </li>
-        <li>© 2021 Outstagram from SJ</li>
+        <li>© 2021 Friendsgram from SJ</li>
       </FooterCopyRight>
     </FooterCotainer>
   );

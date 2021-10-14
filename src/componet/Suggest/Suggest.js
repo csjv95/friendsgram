@@ -10,6 +10,7 @@ const StSuggestContainer = styled.section`
 `;
 
 const StSuggetTitle = styled.h1`
+  padding-bottom : 1em;
   font-size: 1em;
   font-weight: 600;
 `;
@@ -20,6 +21,11 @@ const StSugget = styled.ul`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.contentColor};
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    
+  }
 `;
 
 const Suggest = ({
@@ -27,8 +33,6 @@ const Suggest = ({
   followingList,
   StSectionPaddingTop,
   StSectionBackgroundColor,
-  StlistWidth,
-  StListPadding,
 }) => {
   const onBtnClick = async (event) => {
     const targetUser = event.target.parentNode.dataset.uid;
@@ -42,7 +46,7 @@ const Suggest = ({
     >
       <StSuggestContainer>
         <StSuggetTitle>회원님을 위한 추천</StSuggetTitle>
-        <StSugget width={StlistWidth} padding={StListPadding}>
+        <StSugget width="38em" padding="1em">
           {usersList.map((user) => (
             <Profiles
               key={user.uid}

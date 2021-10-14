@@ -43,7 +43,8 @@ const SignUp = () => {
 
   const onClick = (event) => {
     event.preventDefault();
-    googleAuth();
+    // googleAuth();
+    alert("준비중입니다")
   };
 
   const handleSubmit = (event) => {

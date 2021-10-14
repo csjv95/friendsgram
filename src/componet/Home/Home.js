@@ -4,6 +4,8 @@ import { StMainRouterSection } from "../../Global/StMainRouterSection/StMainRout
 import getPostData from "../../service/fireStore/getPostData";
 import HomeFollow from "./HomeFollow";
 import ContainerPostCol from "../../containers/post/ContainerPostCol";
+import { useHistory } from "react-router-dom";
+import ContainerSuggest from "../../containers/ContainerSuggest";
 
 const StHomeContainer = styled.section`
   margin: 0 auto;
@@ -39,6 +41,7 @@ const Home = ({
   changeSendModal,
 }) => {
   const [postData, setPostData] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     getPostData(setPostData, followingList);
@@ -47,26 +50,31 @@ const Home = ({
   return (
     <StMainRouterSection>
       <StHomeContainer>
-        <StArticleList>
-          {postData.map((article, index) => (
-            <ContainerPostCol
-              key={index}
-              article={article}
+        {postData.length ? 
+        <>
+          <StArticleList>
+            {postData.map((article, index) => (
+              <ContainerPostCol
+                key={index}
+                article={article}
+                followingList={followingList}
+                handlePostMenu={handlePostMenu}
+                setClickedPostId={setClickedPostId}
+                setClickedPostUid={setClickedPostUid}
+                changeSendModal={changeSendModal}
+              />
+            ))}
+          </StArticleList>
+
+          <StFollowerCotainer>
+            <HomeFollow
+              userData={userData}
+              usersList={usersList}
               followingList={followingList}
-              handlePostMenu={handlePostMenu}
-              setClickedPostId={setClickedPostId}
-              setClickedPostUid={setClickedPostUid}
-              changeSendModal={changeSendModal}
             />
-          ))}
-        </StArticleList>
-        <StFollowerCotainer>
-          <HomeFollow
-            userData={userData}
-            usersList={usersList}
-            followingList={followingList}
-          />
-        </StFollowerCotainer>
+          </StFollowerCotainer>
+        </>
+        : <ContainerSuggest />}
       </StHomeContainer>
     </StMainRouterSection>
   );

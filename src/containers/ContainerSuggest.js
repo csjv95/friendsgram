@@ -37,8 +37,6 @@ const ContainerSuggest = () => {
       followingList={followingList}
       StSectionPaddingTop="4em"
       StSectionBackgroundColor={Theme.colors.backgroundColor}
-      StlistWidth="38em"
-      StListPadding="1em"
     />
   );
 };
