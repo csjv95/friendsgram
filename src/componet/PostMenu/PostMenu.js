@@ -34,19 +34,22 @@ const PostMenu = ({
   clickedPostId,
   clickedPostUid,
   currentUserUid,
+  history,
 }) => {
+
+
   const myPostMenuList = [
     { text: "삭제", index: 1, ftn: "del" },
-    { text: "게시물로 이동", index: 2, ftn: "" },
-    { text: "링크 복사", index: 3, ftn: "" },
+    { text: "게시물로 이동", index: 2, ftn: "move" },
+    { text: "링크 복사", index: 3, ftn: "copy" },
     { text: "취소", index: 4, ftn: "cancel" },
   ];
 
   const userPostMenuList = [
     { text: "신고", index: 1, ftn: "" },
-    { text: "팔로우 취소", index: 2, ftn: "" },
-    { text: "게시물 이동", index: 3, ftn: "" },
-    { text: "링크복사", index: 4, ftn: "" },
+    // { text: "팔로우 취소", index: 2, ftn: "" },
+    { text: "게시물 이동", index: 3, ftn: "move" },
+    { text: "링크복사", index: 4, ftn: "copy" },
     { text: "취소", index: 5, ftn: "cancel" },
   ];
 
@@ -59,8 +62,19 @@ const PostMenu = ({
       delPost();
     } else if (ftn === "cancel") {
       handlePostMenu();
-    } else if (ftn === "") {
-      alert("준비중입니다...");
+    } else if(ftn === "move") {
+      history.push({
+        pathname: `/post/${clickedPostId}`
+      })
+      handlePostMenu();
+    }else if (ftn === "copy") {
+      const t = document.createElement("textarea");
+      document.body.appendChild(t);
+      t.value = `https://instargram-graph.web.app/post/${clickedPostId}`;
+      t.select();
+      document.execCommand('copy');
+      document.body.removeChild(t);
+      handlePostMenu();
     }
   };
 
@@ -90,11 +104,7 @@ const PostMenu = ({
                 <StButton
                   width="100%"
                   height="100%"
-                  btnText={
-                    item.index === 2 || item.index === 3
-                      ? `${item.text} (준비중입니다)`
-                      : item.text
-                  }
+                  btnText={item.text}
                   fontSize="1em"
                 />
               </StMenuItem>
@@ -113,7 +123,7 @@ const PostMenu = ({
                   width="100%"
                   height="100%"
                   btnText={
-                    item.index === 5 ? item.text : `${item.text} (준비중입니다)`
+                    item.index === 1 ?  `${item.text} (준비중입니다)` : item.text
                   }
                   fontSize="1em"
                 />

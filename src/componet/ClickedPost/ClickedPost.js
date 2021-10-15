@@ -53,6 +53,17 @@ const StPostContainer = styled.section`
   }
 `;
 
+const StListContainer = styled.div`
+  padding-top: 2em;
+  margin: 0 auto; 
+  min-width: 37em;
+
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+    min-width: 100%;
+  }
+`
+
 const ClickedPost = ({
   postData,
   userPosts,
@@ -227,13 +238,13 @@ const ClickedPost = ({
         </StPostContainer>
       </div>
       {userPosts && (
-        <div style={{ paddingTop: "2em", margin: "0px auto" }}>
+        <StListContainer >
           <StLine />
           <StDiv width="100%" padding="1em 1em" display="flex">
             <StSpan fontSize="0.9e," fontWeight="600">
               {postData.displayName}{" "}
             </StSpan>
-            <StDiv color="grey">{`님 계시물 더 보기`}</StDiv>
+            <StDiv color="grey">{`님 게시물 더 보기`}</StDiv>
           </StDiv>
 
           <ul
@@ -267,7 +278,7 @@ const ClickedPost = ({
               </StPostItem>
             ))}
           </ul>
-        </div>
+        </StListContainer>
       )}
     </StMainRouterSection>
   );

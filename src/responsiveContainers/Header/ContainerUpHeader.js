@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ResponsiveUpHeader from "../../responsiveComponents/Header/ResponsiveUpHeader";
 import { useLocation } from "react-router-dom";
@@ -12,11 +12,18 @@ import {
   StUserCircle,
 } from "../../Global/StIcon/StIcon";
 import { changeMobileMenuModalState } from "../../redux/modules/modals/modalState";
+import getCurrentUserData from "../../service/fireStore/getCurrentUserData";
 
 const ContainerUpHeader = () => {
   const [profile, setProfile] = useState(false);
   const location = useLocation().pathname;
   const dispatch = useDispatch();
+  
+  useEffect(()=> {
+    const GET_USER_DATA_SUCCESS = "userData/GET_USER_DATA_SUCCESS";
+    
+    getCurrentUserData(dispatch,GET_USER_DATA_SUCCESS)
+  },[dispatch])
 
   const photoURL = useSelector(
     (state) => state.userData.userData.data.photoURL

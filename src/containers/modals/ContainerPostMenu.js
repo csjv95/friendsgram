@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import PostMenu from "../../componet/PostMenu/PostMenu";
 import { changePostModalState } from "../../redux/modules/modals/modalState";
 import { authGetUid } from "../../service/auth/authGetUid";
 
 const ContainerPostMenu = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const changePostModal = () => dispatch(changePostModalState());
 
@@ -26,6 +28,7 @@ const ContainerPostMenu = () => {
       currentUserUid={currentUserUid}
       clickedPostId={clickedPostId}
       clickedPostUid={clickedPostUid}
+      history={history}
     />
   );
 };
