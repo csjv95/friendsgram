@@ -1,6 +1,6 @@
 # Friendsgram
 
-Instagram Clone coding 
+Instagram Clone coding
 
 ## Outline
 
@@ -12,7 +12,7 @@ Instagram Clone coding
 [2.Skills](##Skills)  
 [3.Detail](##Detail)  
 [4.Problems and Resolutions](#Problems-and-Resolutions)          
-[5.Acknowledgements](#Acknowledgements)      
+[5.Acknowledgements](#Acknowledgements)
 
 </div>
 </details></br>
@@ -33,13 +33,14 @@ Instagram Clone coding
 - Before sigin in
 
   - Sigin In
-    - 로그인   
-    <img src="project_img\login.PNG" alt="login" width="100%"/>
+
+    - 로그인  
+      <img src="project_img\login.PNG" alt="login" width="100%"/>
 
   - Sigin Up
-    - 회원가입   
-     <img src="project_img\signUp.PNG" alt="signUp"  width="100%" />
-    <br><br>   
+    - 회원가입  
+       <img src="project_img\signUp.PNG" alt="signUp"  width="100%" />
+      <br><br>
 
 - After sigin in
 
@@ -47,22 +48,22 @@ Instagram Clone coding
     홈에서는 제일 많은 부분이 보여지는 곳인데 유저가 팔로우 한 유저의 게시물과 나의 게시물들을 시간순서에 맞게 보여지도록 하였습니다
 
     <img src="project_img\main.PNG" alt="home" />   
-       
+
+
   - Message  
-    서로에게 메세지를 또는 링크를 주고 받을 수 있습니다    
+    서로에게 메세지를 또는 링크를 주고 받을 수 있습니다
 
     <img src="project_img\message.PNG" alt="message" />
 
-      - 알람기능
-          - pc    
+    - 알람기능
 
-          <img src="project_img\messageAlram.png" alt="messageAlram" />   
+      - pc
 
-          - mobile   
+        <img src="project_img\messageAlram.png" alt="messageAlram" />
 
-          <img src="project_img\messageAlarmMobile.jpg" alt="messageAlram" /> 
+      - mobile
 
-     
+        <img src="project_img\messageAlarmMobile.jpg" alt="messageAlram" />
 
   - upload
 
@@ -87,36 +88,50 @@ Instagram Clone coding
       - Saved
         - 사용자가 북마크한 포스트들을 (나만 볼수 있습니다)
       - Heart
-        - 사용자가 좋아요를한 포스트들을 볼수 있습니다   
-       - Saved
-          - 사용자가 북마크한 포스트들을 (나만 볼수 있습니다)   
-
+        - 사용자가 좋아요를한 포스트들을 볼수 있습니다
+      - Saved
+        - 사용자가 북마크한 포스트들을 (나만 볼수 있습니다)
 
       <img src="project_img\myPage.PNG" alt="myPage" />
 
   - Setting
 
-      - Profile Edit
+    - Profile Edit
 
-        - 사용자의 프로필을 업데이트할 수 있습니다 <br><br>
+      - 사용자의 프로필을 업데이트할 수 있습니다 <br><br>
 
-        1. 이름
-        1. 사용자 이름
-        1. 웹사이트
-        1. 소개
-        1. 이메일
-        1. 전화번호
-        1. 성별 <br><br>
+      1. 이름
+      1. 사용자 이름
+      1. 웹사이트
+      1. 소개
+      1. 이메일
+      1. 전화번호
+      1. 성별 <br><br>
 
-        <img src="project_img\editProfile.PNG" alt="editProfile" />
+      <img src="project_img\editProfile.PNG" alt="editProfile" />
 
-      - PassWord Change
-        - 사용자의 비밀번호를 업데이트할 수 있습니다 <br><br>
-        1. 이전 비밀번호
-        1. 새로운 비밀번호
-        1. 새로운 비밀번호 확인
+    - PassWord Change
 
-         <img src="project_img\editPw.PNG" alt="editPw" />
+      - 사용자의 비밀번호를 업데이트할 수 있습니다 <br><br>
+
+      1. 이전 비밀번호
+      1. 새로운 비밀번호
+      1. 새로운 비밀번호 확인
+
+       <img src="project_img\editPw.PNG" alt="editPw" />
+
+  - Search  
+    검색을 통해 유저를 찾을수 있습니다
+
+    - 검색기록
+      이때가지 사용자가 검색을 한 기록을 볼수 있으며 기록을 부분삭제 전체 삭제 할수 있습니다
+
+      <img src="project_img\searchRecord.PNG" alt="searchRecord" />
+
+    - 검색  
+      검색을 통해 유저를 찾을수 있습니다 검색 문자에 맞춰 오름차순으로 정렬했습니다
+
+    <img src="project_img\search.PNG" alt="home" />
 
 ## Problems and Resolutions
 
@@ -272,7 +287,7 @@ export default sendMessage;
 ## version
 
 1.0.0 => FriendsGram 첫 배포!  
-2.0.0 => Redux,redux-Thunk를 이용해서 데이터 관리   
+2.0.0 => Redux,redux-Thunk를 이용해서 데이터 관리  
 3.0.0 => 반응형 웹페이지 제작
 
 ## Acknowledgements
